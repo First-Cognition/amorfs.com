@@ -1,7 +1,6 @@
 import {
   HeroSection,
-  ProblemSection,
-  SolutionSection,
+  ProblemSolutionSection,
   ProductSection,
   HowItWorksSection,
   FeaturesSection,
@@ -19,8 +18,7 @@ export default function Home() {
       </div>
       
       <HeroSection />
-      <ProblemSection />
-      <SolutionSection />
+      <ProblemSolutionSection />
       <ProductSection />
       <HowItWorksSection />
       <FeaturesSection />
