@@ -23,6 +23,10 @@
   font-family: var(--font-manrope);
 }
 
+@utility font-inter {
+  font-family: var(--font-inter);
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;

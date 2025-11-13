@@ -3,10 +3,11 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 
 export default function FeaturesSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const cardsRef = useRef<HTMLDivElement[]>([]);
+  const badgesRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -14,18 +15,19 @@ export default function FeaturesSection() {
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      cardsRef.current.forEach((card, index) => {
-        gsap.from(card, {
+      // Animate badges with stagger
+      badgesRef.current.forEach((badge, index) => {
+        gsap.from(badge, {
           scrollTrigger: {
-            trigger: card,
-            start: "top 85%",
+            trigger: badge,
+            start: "top 90%",
             toggleActions: "play none none reverse",
           },
-          y: 80,
+          scale: 0,
           opacity: 0,
-          duration: 0.6,
-          delay: index * 0.1,
-          ease: "power3.out",
+          duration: 0.8,
+          delay: index * 0.08,
+          ease: "back.out(1.7)",
         });
       });
     }, sectionRef);
@@ -33,132 +35,171 @@ export default function FeaturesSection() {
     return () => ctx.revert();
   }, []);
 
-  const features = [
-    {
-      icon: "⚡",
-      title: "Lightning Fast",
-      description: "Optimized performance ensures your work never slows down.",
-      gradient: "from-yellow-400 to-orange-500",
+  const badges = [
+    { 
+      text: "Zero\nKnowledge", 
+      x: 327, 
+      y: 457, 
+      width: 160, 
+      height: 160,
+      variant: "default" 
     },
-    {
-      icon: "🔐",
-      title: "Secure by Default",
-      description: "Enterprise-grade security with end-to-end encryption.",
-      gradient: "from-green-400 to-cyan-500",
+    { 
+      text: "Cross Devices", 
+      x: 1124, 
+      y: 224, 
+      width: 120, 
+      height: 120,
+      variant: "variant2" 
     },
-    {
-      icon: "🎨",
-      title: "Customizable",
-      description: "Tailor every aspect to match your brand and workflow.",
-      gradient: "from-pink-400 to-purple-500",
+    { 
+      text: "Beautiful Templates", 
+      x: 943, 
+      y: 465, 
+      width: 160, 
+      height: 160,
+      variant: "default" 
     },
-    {
-      icon: "📱",
-      title: "Mobile Ready",
-      description: "Work seamlessly across all your devices.",
-      gradient: "from-blue-400 to-indigo-500",
+    { 
+      text: "Instant Reuse", 
+      x: 160, 
+      y: 220, 
+      width: 120, 
+      height: 120,
+      variant: "variant2" 
     },
-    {
-      icon: "🤖",
-      title: "AI-Powered",
-      description: "Smart automation that learns and adapts to your needs.",
-      gradient: "from-purple-400 to-pink-500",
+    { 
+      text: "Language Agnostic", 
+      x: 348, 
+      y: 125, 
+      width: 160, 
+      height: 160,
+      variant: "default" 
     },
-    {
-      icon: "🌐",
-      title: "Global CDN",
-      description: "Fast content delivery worldwide with 99.9% uptime.",
-      gradient: "from-cyan-400 to-blue-500",
+    { 
+      text: "Easy Sharing", 
+      x: 988, 
+      y: 289, 
+      width: 120, 
+      height: 120,
+      variant: "variant2" 
     },
-    {
-      icon: "📊",
-      title: "Advanced Analytics",
-      description: "Deep insights with real-time data visualization.",
-      gradient: "from-red-400 to-pink-500",
+    { 
+      text: "Full Control", 
+      x: 293, 
+      y: 307, 
+      width: 120, 
+      height: 120,
+      variant: "variant2" 
     },
-    {
-      icon: "🔄",
-      title: "Auto Sync",
-      description: "Your data automatically synced across all devices.",
-      gradient: "from-green-400 to-teal-500",
-    },
-    {
-      icon: "💬",
-      title: "Live Chat Support",
-      description: "Get help instantly from our expert support team.",
-      gradient: "from-orange-400 to-red-500",
+    { 
+      text: "Auto\nCapture", 
+      x: 923, 
+      y: 128, 
+      width: 120, 
+      height: 120,
+      variant: "variant2" 
     },
   ];
 
   return (
     <section
       ref={sectionRef}
-      className="relative w-full overflow-hidden bg-white py-24 sm:py-32"
+      className="relative w-full overflow-hidden min-h-[800px] max-w-[1440px] mx-auto"
     >
-      {/* Background Decoration */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -left-48 top-0 h-96 w-96 rounded-full bg-blue-100 opacity-50 blur-3xl" />
-        <div className="absolute -right-48 bottom-0 h-96 w-96 rounded-full bg-purple-100 opacity-50 blur-3xl" />
+      {/* Background Image */}
+      <div className="absolute inset-0 rounded-[20px] overflow-hidden">
+        <Image
+          src="/images/feature-bg.png"
+          alt="Feature Background"
+          fill
+          className="object-cover"
+          priority
+        />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        {/* Header */}
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-base font-semibold leading-7 text-blue-600">
-            Features
+      {/* Video BG Overlay */}
+      <div 
+        className="absolute overflow-hidden rounded-[20px]"
+        style={{
+          left: "-5.3%",
+          top: "-0.06%",
+          width: "110.5%",
+          height: "100.1%",
+        }}
+      >
+        <Image
+          src="/images/feature-video-bg.png"
+          alt="Video Background"
+          fill
+          className="object-cover opacity-10"
+        />
+      </div>
+
+      {/* Content Container */}
+      <div className="relative h-full flex flex-col py-[60px]">
+        {/* Main Content */}
+        <div className="flex-1 flex flex-col items-center gap-6 px-4">
+          {/* Title */}
+          <h2 
+            className="font-michroma text-[28px] md:text-[28px] leading-[1.4] tracking-[-0.04em] text-center whitespace-pre-line"
+            style={{ color: "#2DD4C2" }}
+          >
+            Everything{"\n"}You Need
           </h2>
-          <p className="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-            Everything You Need to Succeed
-          </p>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
-            Packed with powerful features designed to help you work smarter and achieve more.
-          </p>
-        </div>
 
-        {/* Features Grid */}
-        <div className="mx-auto mt-16 grid max-w-6xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              ref={(el) => {
-                if (el) cardsRef.current[index] = el;
+          {/* Features Container - Relative positioning for badges */}
+          <div className="relative w-full max-w-[1294px] aspect-[1294/524] mx-auto">
+            {/* Globe Image */}
+            <div 
+              className="absolute"
+              style={{
+                left: "30.91%",
+                top: "30.92%",
+                width: "49.46%",
+                height: "97.63%",
               }}
-              className="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-md transition-all hover:-translate-y-2 hover:shadow-2xl"
             >
-              {/* Icon with Gradient Background */}
-              <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-gray-100 to-gray-200 text-3xl transition-all group-hover:scale-110">
-                {feature.icon}
-              </div>
-
-              <h3 className="mb-3 text-xl font-bold text-gray-900">
-                {feature.title}
-              </h3>
-              
-              <p className="text-gray-600">{feature.description}</p>
-
-              {/* Gradient Border on Hover */}
-              <div className="absolute inset-0 rounded-2xl opacity-0 transition-opacity group-hover:opacity-100">
-                <div
-                  className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${feature.gradient} opacity-20 blur-xl`}
-                />
-              </div>
-
-              {/* Bottom Gradient Line */}
-              <div
-                className={`absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r ${feature.gradient} transition-all duration-300 group-hover:w-full`}
+              <Image
+                src="/images/feature-globe.svg"
+                alt="Globe"
+                fill
+                className="object-contain"
               />
             </div>
-          ))}
-        </div>
 
-        {/* Bottom CTA */}
-        <div className="mt-16 text-center">
-          <p className="text-lg text-gray-600">
-            Want to see more?{" "}
-            <button className="font-semibold text-blue-600 transition-colors hover:text-blue-700">
-              Explore all features →
-            </button>
-          </p>
+            {/* Feature Badges */}
+            {badges.map((badge, index) => (
+              <div
+                key={index}
+                ref={(el) => {
+                  if (el) badgesRef.current[index] = el;
+                }}
+                className="absolute flex items-center justify-center text-center transition-all hover:scale-105 cursor-pointer"
+                style={{
+                  left: `${(badge.x / 1294) * 100}%`,
+                  top: `${(badge.y / 524) * 100}%`,
+                  width: `${(badge.width / 1294) * 100}%`,
+                  height: `${(badge.height / 524) * 100}%`,
+                  padding: "0.62% 1.55%",
+                  background: "rgba(255, 255, 255, 0.06)",
+                  border: "1px solid rgba(255, 255, 255, 0.17)",
+                  borderRadius: "1000px",
+                  backdropFilter: "blur(10px)",
+                  WebkitBackdropFilter: "blur(10px)",
+                }}
+              >
+                <span 
+                  className="font-inter leading-[1.5] text-white text-center whitespace-pre-line w-full"
+                  style={{
+                    fontSize: "clamp(10px, 1.39vw, 18px)",
+                  }}
+                >
+                  {badge.text}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
