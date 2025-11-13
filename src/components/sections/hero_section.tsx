@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import Header from "@/components/layout/Header";
 
 export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -68,11 +67,8 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-[rgba(0,61,76,0.4)]" />
       </div>
 
-      {/* Header */}
-      <Header />
-
       {/* Content Section - Centered */}
-      <div className="relative z-10 flex flex-1 flex-col items-center justify-center self-stretch px-6">
+      <div className="relative z-10 flex flex-1 flex-col items-center justify-center self-stretch px-6 pt-16">
         <div className="flex w-full max-w-[800px] flex-col items-center gap-6 sm:gap-8">
           {/* Headline */}
           <h1

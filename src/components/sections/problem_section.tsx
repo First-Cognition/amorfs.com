@@ -10,8 +10,8 @@ if (typeof window !== "undefined") {
 
 export default function ProblemSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -34,82 +34,100 @@ export default function ProblemSection() {
     return () => ctx.revert();
   }, []);
 
-  const problems = [
-    {
-      icon: "⚠️",
-      title: "Inefficient Workflows",
-      description: "Traditional methods waste time and resources on repetitive tasks.",
-    },
-    {
-      icon: "🔒",
-      title: "Security Concerns",
-      description: "Data breaches and privacy issues are constant threats.",
-    },
-    {
-      icon: "📉",
-      title: "Poor User Experience",
-      description: "Complex interfaces lead to frustration and low adoption rates.",
-    },
-    {
-      icon: "💸",
-      title: "High Costs",
-      description: "Legacy systems require expensive maintenance and upgrades.",
-    },
-  ];
-
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen w-full overflow-hidden bg-gray-900 py-24 sm:py-32"
+      className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden"
     >
-      {/* Video Background */}
-      <div className="absolute inset-0 z-0 opacity-30">
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="h-full w-full object-cover"
-        >
-          <source src="/VIdeo problem.mp4" type="video/mp4" />
-        </video>
+      {/* Background Image - Full Screen */}
+      <div className="absolute inset-0 z-0">
+        <div
+          className="h-full w-full"
+          style={{
+            backgroundImage: "url('/images/problem-bg.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        />
       </div>
 
-      {/* Content */}
-      <div ref={contentRef} className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-base font-semibold leading-7 text-blue-400">
-            The Challenge
-          </h2>
-          <p className="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            Problems We Solve
-          </p>
-          <p className="mt-6 text-lg leading-8 text-gray-300">
-            Modern businesses face numerous challenges that hinder growth and innovation.
-            Here's what stands in your way.
-          </p>
-        </div>
-
-        {/* Problem Grid */}
-        <div className="mx-auto mt-16 grid max-w-6xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {problems.map((problem, index) => (
-            <div
-              key={index}
-              className="group relative rounded-2xl border border-gray-700 bg-gray-800/50 p-8 backdrop-blur-sm transition-all hover:border-blue-500 hover:bg-gray-800"
+      {/* Main Content */}
+      <div 
+        ref={contentRef} 
+        className="flex w-full items-stretch justify-stretch px-10"
+        style={{ gap: "120px" }}
+      >
+        {/* Content Container */}
+        <div 
+          className="flex w-full items-center px-20"
+          style={{ gap: "120px" }}
+        >
+          {/* Left Content - Text */}
+          <div className="flex flex-1 flex-col justify-center" style={{ gap: "32px" }}>
+            {/* Label */}
+            <h2 
+              className="text-[20px] leading-[1.4em] tracking-[-0.04em] font-michroma"
+              style={{
+                fontWeight: 400,
+                color: "#2DD4C2",
+                textShadow: "0px 4px 4px rgba(0, 0, 0, 0.05)",
+              }}
             >
-              <div className="mb-4 text-4xl">{problem.icon}</div>
-              <h3 className="mb-2 text-xl font-semibold text-white">
-                {problem.title}
-              </h3>
-              <p className="text-gray-400">{problem.description}</p>
-              
-              {/* Hover Effect */}
-              <div className="absolute inset-0 rounded-2xl opacity-0 transition-opacity group-hover:opacity-100">
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/10 to-purple-500/10" />
+              Data Problem
+            </h2>
+
+            {/* Content Group */}
+            <div className="flex flex-col items-center self-stretch" style={{ gap: "16px" }}>
+              {/* Headline */}
+              <div className="flex flex-col justify-center self-stretch">
+                <h3 
+                  className="text-[44px] leading-[1.3em] tracking-[-0.04em] font-manrope"
+                  style={{
+                    fontWeight: 500,
+                    color: "rgba(255, 255, 255, 0.88)",
+                  }}
+                >
+                  You enter the same information
+                </h3>
               </div>
+
+              {/* Description */}
+              <p 
+                className="text-[18px] leading-[1.5em] tracking-[-0.03em] font-manrope"
+                style={{
+                  fontWeight: 450,
+                  color: "rgba(255, 255, 255, 0.55)",
+                }}
+              >
+                Forms, profiles, applications - endless repetition. Your data is scattered across dozens of sites, locked away in incompatible formats, impossible to reuse.
+              </p>
             </div>
-          ))}
+          </div>
+
+          {/* Right Content - Video */}
+          <div className="relative flex-shrink-0">
+            <div 
+              className="relative overflow-hidden"
+              style={{
+                width: "524px",
+                height: "478px",
+                borderRadius: "24px",
+                backgroundColor: "#19549B",
+              }}
+            >
+              <video
+                ref={videoRef}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="h-full w-full object-cover"
+              >
+                <source src="/VIdeo problem.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </div>
         </div>
       </div>
     </section>

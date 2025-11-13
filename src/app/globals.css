@@ -15,6 +15,14 @@
   --font-inter: var(--font-inter);
 }
 
+@utility font-michroma {
+  font-family: var(--font-michroma);
+}
+
+@utility font-manrope {
+  font-family: var(--font-manrope);
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
