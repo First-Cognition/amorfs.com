@@ -1,166 +1,281 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef, useState } from "react";
+import { BookmarkCheck, FolderOpen, RefreshCw } from "lucide-react";
+import ScrollStack, { ScrollStackItem } from "../ScrollStack";
 
 export default function HowItWorksSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const stepsRef = useRef<HTMLDivElement[]>([]);
-  const lineRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const [titleOpacity, setTitleOpacity] = useState(1);
+  const [stackCompleted, setStackCompleted] = useState(false);
+  const [showScrollIndicator, setShowScrollIndicator] = useState(false);
+  const isInSectionRef = useRef(false);
+  const preventScrollRef = useRef(false);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    
-    if (!sectionRef.current) return;
+    let rafId: number | null = null;
+    let ticking = false;
 
-    const ctx = gsap.context(() => {
-      // Animate steps
-      stepsRef.current.forEach((step, index) => {
-        gsap.from(step, {
-          scrollTrigger: {
-            trigger: step,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-          x: index % 2 === 0 ? -100 : 100,
-          opacity: 0,
-          duration: 0.8,
-          ease: "power3.out",
-        });
-      });
+    const handleScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        rafId = requestAnimationFrame(() => {
+          if (!sectionRef.current || !titleRef.current) {
+            ticking = false;
+            return;
+          }
 
-      // Animate connecting line
-      if (lineRef.current) {
-        gsap.from(lineRef.current, {
-          scrollTrigger: {
-            trigger: lineRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            scrub: 1,
-          },
-          scaleY: 0,
-          transformOrigin: "top",
+          const sectionRect = sectionRef.current.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          const scrollY = window.scrollY;
+          const sectionTop = sectionRect.top;
+          const sectionBottom = sectionRect.bottom;
+          const sectionScrolled = scrollY - (sectionRef.current.offsetTop || 0);
+          const sectionHeight = sectionRef.current.offsetHeight;
+
+          // Check if user is in the section
+          const inSection = sectionTop <= 0 && sectionBottom > windowHeight;
+          isInSectionRef.current = inSection;
+
+          // Near the end of section (last 20% of section height)
+          const nearEnd = sectionScrolled > sectionHeight * 0.8;
+
+          // Prevent scroll if in section, not completed, and not near end
+          preventScrollRef.current = inSection && !stackCompleted && !nearEnd;
+
+          // If stack completed and scrolled past section, allow natural scroll
+          if (stackCompleted && sectionBottom <= 0) {
+            preventScrollRef.current = false;
+            setShowScrollIndicator(false);
+          }
+
+          // Show scroll indicator when stack completed and still in section
+          if (stackCompleted && inSection && nearEnd) {
+            setShowScrollIndicator(true);
+          } else if (!stackCompleted || !inSection) {
+            setShowScrollIndicator(false);
+          }
+
+          // Fade out title as we scroll down
+          if (sectionTop < windowHeight / 2 && sectionTop > -windowHeight) {
+            const scrollProgress = Math.max(
+              0,
+              Math.min(1, (windowHeight / 2 - sectionTop) / (windowHeight / 2))
+            );
+            const newOpacity = Math.round((1 - scrollProgress) * 100) / 100;
+            setTitleOpacity(newOpacity);
+          }
+          ticking = false;
         });
       }
-    }, sectionRef);
+    };
 
-    return () => ctx.revert();
-  }, []);
+    // Prevent default scroll when in section and stack not completed
+    const preventScroll = (e: WheelEvent) => {
+      if (!sectionRef.current) return;
 
-  const steps = [
-    {
-      number: "1",
-      title: "Sign Up & Setup",
-      description:
-        "Create your account in seconds. Our onboarding wizard guides you through the initial setup process.",
-      icon: "🚀",
-      color: "from-blue-500 to-cyan-500",
-    },
-    {
-      number: "2",
-      title: "Configure Your Workspace",
-      description:
-        "Customize your workspace to match your workflow. Import existing data or start fresh.",
-      icon: "⚙️",
-      color: "from-purple-500 to-pink-500",
-    },
-    {
-      number: "3",
-      title: "Invite Your Team",
-      description:
-        "Collaborate with colleagues by inviting them to your workspace. Assign roles and permissions.",
-      icon: "👥",
-      color: "from-orange-500 to-red-500",
-    },
-    {
-      number: "4",
-      title: "Start Building",
-      description:
-        "Begin creating and automating your workflows. Our AI assists you every step of the way.",
-      icon: "🎯",
-      color: "from-green-500 to-teal-500",
-    },
-  ];
+      const sectionRect = sectionRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      // Check if trying to scroll down out of section
+      const atBottomOfSection = sectionRect.bottom <= windowHeight + 100;
+
+      if (preventScrollRef.current && e.deltaY > 0 && !atBottomOfSection) {
+        // Prevent scroll down while in section and stack not complete
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("wheel", preventScroll, { passive: false });
+    window.addEventListener("touchmove", preventScroll as any, { passive: false });
+    handleScroll(); // Initial check
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("wheel", preventScroll);
+      window.removeEventListener("touchmove", preventScroll as any);
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+      }
+    };
+  }, [stackCompleted]);
+
+  const handleStackComplete = () => {
+    setStackCompleted(true);
+  };
 
   return (
     <section
       ref={sectionRef}
-      className="relative w-full overflow-hidden bg-gray-900 py-24 sm:py-32"
+      className="relative w-full min-h-[300vh] overflow-hidden"
+      style={{
+        background: "linear-gradient(180deg, #000000 0%, #0A1628 100%)",
+      }}
     >
-      {/* Background Gradient */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/20 via-gray-900 to-gray-900" />
+      {/* Video Background - Absolute within section */}
+      <div 
+        className="absolute inset-0 w-full h-full opacity-10 pointer-events-none z-0"
+        style={{
+          willChange: "transform",
+          transform: "translate3d(0, 0, 0)",
+          backfaceVisibility: "hidden",
+        }}
+      >
+        <video
+          className="w-full h-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+          style={{
+            transform: "translate3d(0, 0, 0)",
+            backfaceVisibility: "hidden",
+          }}
+        >
+          <source src="/Video ocean BG.mp4" type="video/mp4" />
+        </video>
+      </div>
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        {/* Header */}
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-base font-semibold leading-7 text-blue-400">
-            Getting Started
-          </h2>
-          <p className="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            How It Works
-          </p>
-          <p className="mt-6 text-lg leading-8 text-gray-300">
-            Get up and running in minutes with our simple 4-step process.
-          </p>
-        </div>
+      {/* Title - Center Screen at First */}
+      <div className="h-screen flex items-center justify-center px-6 sticky top-0 z-10">
+        <h2
+          ref={titleRef}
+          className="text-center text-4xl lg:text-[60px] leading-[1.4] tracking-[-0.04em] font-michroma text-[#2DD4C2]"
+          style={{
+            textShadow: "0px 4px 4px rgba(0, 0, 0, 0.05)",
+            opacity: titleOpacity,
+            willChange: "opacity",
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+            transform: "translate3d(0, 0, 0)",
+            WebkitFontSmoothing: "antialiased",
+          }}
+        >
+          How Amorfs Works
+        </h2>
+      </div>
 
-        {/* Steps */}
-        <div className="relative mx-auto mt-16 max-w-4xl">
-          {/* Vertical Line */}
-          <div
-            ref={lineRef}
-            className="absolute left-1/2 top-0 hidden h-full w-1 -translate-x-1/2 bg-gradient-to-b from-blue-500 via-purple-500 to-green-500 lg:block"
-          />
-
-          <div className="space-y-16">
-            {steps.map((step, index) => (
-              <div
-                key={index}
-                ref={(el) => {
-                  if (el) stepsRef.current[index] = el;
-                }}
-                className={`relative flex flex-col gap-8 lg:flex-row ${
-                  index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                }`}
-              >
-                {/* Content */}
-                <div className="flex-1">
-                  <div
-                    className={`rounded-3xl border border-gray-700 bg-gray-800/50 p-8 backdrop-blur-sm ${
-                      index % 2 === 0 ? "lg:text-right" : "lg:text-left"
-                    }`}
-                  >
-                    <div className="mb-4 text-6xl">{step.icon}</div>
-                    <h3 className="mb-4 text-2xl font-bold text-white">
-                      {step.title}
-                    </h3>
-                    <p className="text-gray-300">{step.description}</p>
-                  </div>
+      {/* ScrollStack Cards - Start after title */}
+      <div className="relative -mt-[50vh] z-20">
+        <ScrollStack
+          useWindowScroll={true}
+          itemDistance={150}
+          itemScale={0.03}
+          itemStackDistance={30}
+          stackPosition="25%"
+          scaleEndPosition="10%"
+          baseScale={0.88}
+          onStackComplete={handleStackComplete}
+        >
+          {/* Step 1: Capture */}
+          <ScrollStackItem itemClassName="bg-[#DDEBF9] border-2 border-[#A0C2E0] !rounded-[60px] max-w-[900px] mx-auto !h-auto">
+            <div className="flex flex-col lg:flex-row gap-[44px]">
+              {/* Content */}
+              <div className="flex flex-col gap-5 w-full lg:w-[240px]">
+                {/* Icon */}
+                <div className="flex items-center justify-center w-fit p-3 rounded-full bg-[#0F408F]">
+                  <BookmarkCheck className="w-7 h-7 text-[#EFF5FF]" />
                 </div>
 
-                {/* Number Badge */}
-                <div className="flex items-center justify-center lg:w-24">
-                  <div
-                    className={`flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br ${step.color} text-2xl font-bold text-white shadow-lg`}
-                  >
-                    {step.number}
-                  </div>
-                </div>
+                {/* Title */}
+                <h3 className="text-2xl lg:text-[32px] leading-[1.25] tracking-[-0.03em] text-[#073071] font-manrope font-medium">
+                  1. Capture
+                </h3>
 
-                {/* Spacer */}
-                <div className="hidden flex-1 lg:block" />
+                {/* Description */}
+                <p className="text-base lg:text-[18px] leading-[1.5] tracking-[-0.03em] text-[#073071] font-manrope">
+                  Enter information once in any web form. Amorfs saves it
+                  automatically.
+                </p>
               </div>
-            ))}
-          </div>
-        </div>
 
-        {/* CTA */}
-        <div className="mt-16 text-center">
-          <button className="rounded-full bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl">
-            Start Your Journey
-          </button>
-        </div>
+              {/* Placeholder for illustration */}
+              <div className="flex-1 min-h-[300px] bg-white rounded-[24px]" />
+            </div>
+          </ScrollStackItem>
+
+          {/* Step 2: Store */}
+          <ScrollStackItem itemClassName="bg-[#DDEBF9] border-2 border-[#A0C2E0] !rounded-[60px] max-w-[900px] mx-auto !h-auto">
+            <div className="flex flex-col lg:flex-row gap-[44px]">
+              {/* Content */}
+              <div className="flex flex-col gap-5 w-full lg:w-[240px]">
+                {/* Icon */}
+                <div className="flex items-center justify-center w-fit p-3 rounded-full bg-[#0F408F]">
+                  <FolderOpen className="w-7 h-7 text-[#EFF5FF]" />
+                </div>
+
+                {/* Title */}
+                <h3 className="text-2xl lg:text-[32px] leading-[1.25] tracking-[-0.03em] text-[#073071] font-manrope font-medium">
+                  2. Store
+                </h3>
+
+                {/* Description */}
+                <p className="text-base lg:text-[18px] leading-[1.5] tracking-[-0.03em] text-[#073071] font-manrope">
+                  Your data lives in an intuitive text format that's easy to
+                  read, edit, and share backed by a sophisticated semantic model
+                  that understands concepts, not just text.
+                </p>
+              </div>
+
+              {/* Placeholder for illustration */}
+              <div className="flex-1 min-h-[300px] bg-white rounded-[24px]" />
+            </div>
+          </ScrollStackItem>
+
+          {/* Step 3: Reuse */}
+          <ScrollStackItem itemClassName="bg-[#DDEBF9] border-2 border-[#A0C2E0] !rounded-[60px] max-w-[900px] mx-auto !h-auto">
+            <div className="flex flex-col lg:flex-row gap-[44px]">
+              {/* Content */}
+              <div className="flex flex-col gap-5 w-full lg:w-[240px]">
+                {/* Icon */}
+                <div className="flex items-center justify-center w-fit p-3 rounded-full bg-[#0F408F]">
+                  <RefreshCw className="w-7 h-7 text-[#EFF5FF]" />
+                </div>
+
+                {/* Title */}
+                <h3 className="text-2xl lg:text-[32px] leading-[1.25] tracking-[-0.03em] text-[#073071] font-manrope font-medium">
+                  3. Reuse
+                </h3>
+
+                {/* Description */}
+                <p className="text-base lg:text-[18px] leading-[1.5] tracking-[-0.03em] text-[#073071] font-manrope">
+                  Fill forms instantly. Transform data into beautiful
+                  presentations. Share with others.
+                </p>
+              </div>
+
+              {/* Placeholder for illustration */}
+              <div className="flex-1 min-h-[300px] bg-white rounded-[24px]" />
+            </div>
+          </ScrollStackItem>
+        </ScrollStack>
+
+        {/* Scroll Indicator - Show when stack completed and ready to leave section */}
+        {showScrollIndicator && (
+          <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-30 animate-bounce transition-opacity duration-300">
+            <div className="flex flex-col items-center gap-2 bg-black/40 backdrop-blur-sm px-4 py-2 rounded-full">
+              <div className="flex items-center gap-2">
+                <p className="text-white/80 text-sm font-manrope">Scroll to continue</p>
+                <svg
+                  className="w-5 h-5 text-white/80"
+                  fill="none"
+                  strokeWidth="2"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
