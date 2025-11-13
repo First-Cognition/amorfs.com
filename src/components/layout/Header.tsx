@@ -15,7 +15,7 @@ export default function Header() {
   return (
     <header className="relative z-50 flex w-full items-center justify-between px-6 py-2 sm:px-8 md:px-10">
       {/* Logo */}
-      <div className="flex items-center gap-[5px]">
+      <div className="flex items-center gap-[5px]" suppressHydrationWarning>
         <Image
           src="/full-horizontal-white.svg"
           alt="Amorfs Logo"
@@ -27,11 +27,12 @@ export default function Header() {
       </div>
 
       {/* Navigation */}
-      <nav className="hidden items-center gap-4 md:flex">
+      <nav className="hidden items-center gap-4 md:flex" suppressHydrationWarning>
         <a
           href="#pricing"
           className="text-center text-sm leading-[1.5em] text-white/88 transition-colors hover:text-white"
           style={{ fontFamily: "var(--font-manrope)" }}
+          suppressHydrationWarning
         >
           Pricing
         </a>
@@ -39,6 +40,7 @@ export default function Header() {
           href="#technology"
           className="text-center text-sm leading-[1.5em] text-white/88 transition-colors hover:text-white"
           style={{ fontFamily: "var(--font-manrope)" }}
+          suppressHydrationWarning
         >
           Technology
         </a>
@@ -46,6 +48,7 @@ export default function Header() {
           href="#blog"
           className="text-center text-sm leading-[1.5em] text-white/88 transition-colors hover:text-white"
           style={{ fontFamily: "var(--font-manrope)" }}
+          suppressHydrationWarning
         >
           Blog
         </a>
@@ -53,6 +56,7 @@ export default function Header() {
           href="#faq"
           className="text-center text-sm leading-[1.5em] text-white/88 transition-colors hover:text-white"
           style={{ fontFamily: "var(--font-manrope)" }}
+          suppressHydrationWarning
         >
           FAQ
         </a>
@@ -60,6 +64,7 @@ export default function Header() {
           href="#contact"
           className="text-center text-sm leading-[1.5em] text-white/88 transition-colors hover:text-white"
           style={{ fontFamily: "var(--font-manrope)" }}
+          suppressHydrationWarning
         >
           Contact
         </a>

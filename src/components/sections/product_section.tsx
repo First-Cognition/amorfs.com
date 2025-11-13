@@ -5,16 +5,14 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
 export default function ProductSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = useState(0);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    
     if (!sectionRef.current || !imageRef.current) return;
 
     const ctx = gsap.context(() => {

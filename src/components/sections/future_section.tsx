@@ -4,10 +4,6 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
 export default function FutureSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -15,6 +11,8 @@ export default function FutureSection() {
   const cardsRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
