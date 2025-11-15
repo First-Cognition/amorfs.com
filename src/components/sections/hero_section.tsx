@@ -129,7 +129,7 @@ export default function HeroSection() {
               Dive Deeper
             </span>
             <button
-              className="flex h-8 w-8 items-center justify-center rounded-full border border-white/40 transition-all hover:border-white/60 hover:bg-white/10"
+              className="flex h-8 w-8 items-center justify-center transition-all hover:bg-white/10"
               aria-label="Scroll down"
               onClick={() => {
                 window.scrollTo({
@@ -139,16 +139,26 @@ export default function HeroSection() {
               }}
             >
               <svg
-                className="h-4 w-4 animate-bounce text-white"
+                className="h-5 w-5 animate-bounce text-white"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
               >
+                {/* Mouse body */}
                 <path
+                  d="M12 2C8.13 2 5 5.13 5 9v6c0 3.87 3.13 7 7 7s7-3.13 7-7V9c0-3.87-3.13-7-7-7z"
+                  strokeWidth={2}
                   strokeLinecap="round"
                   strokeLinejoin="round"
+                />
+                {/* Scroll wheel */}
+                <line
+                  x1="12"
+                  y1="6"
+                  x2="12"
+                  y2="10"
                   strokeWidth={2}
-                  d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                  strokeLinecap="round"
                 />
               </svg>
             </button>

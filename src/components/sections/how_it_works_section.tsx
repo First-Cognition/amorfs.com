@@ -252,30 +252,6 @@ export default function HowItWorksSection() {
             </div>
           </ScrollStackItem>
         </ScrollStack>
-
-        {/* Scroll Indicator - Show when stack completed and ready to leave section */}
-        {showScrollIndicator && (
-          <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-30 animate-bounce transition-opacity duration-300">
-            <div className="flex flex-col items-center gap-2 bg-black/40 backdrop-blur-sm px-4 py-2 rounded-full">
-              <div className="flex items-center gap-2">
-                <p className="text-white/80 text-sm font-manrope">Scroll to continue</p>
-                <svg
-                  className="w-5 h-5 text-white/80"
-                  fill="none"
-                  strokeWidth="2"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                  />
-                </svg>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </section>
   );
