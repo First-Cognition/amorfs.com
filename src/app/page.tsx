@@ -4,8 +4,7 @@ import {
   ProductSection,
   HowItWorksSection,
   FeaturesSection,
-  FutureSection,
-  FooterSection,
+  FutureFooterSection,
 } from "@/components/sections";
 import Header from "@/components/layout/Header";
 
@@ -22,8 +21,7 @@ export default function Home() {
       <ProductSection />
       <HowItWorksSection />
       <FeaturesSection />
-      <FutureSection />
-      <FooterSection />
+      <FutureFooterSection />
     </main>
   );
 }

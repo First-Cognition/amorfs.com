@@ -3,12 +3,12 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 
 export default function FutureSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<HTMLDivElement[]>([]);
+  const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -16,176 +16,259 @@ export default function FutureSection() {
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Animate main content
-      gsap.from(contentRef.current, {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 70%",
-          toggleActions: "play none none reverse",
-        },
-        y: 100,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-      });
-
-      // Animate roadmap cards
-      cardsRef.current.forEach((card, index) => {
-        gsap.from(card, {
+      // Animate main card
+      if (cardRef.current) {
+        gsap.from(cardRef.current, {
           scrollTrigger: {
-            trigger: card,
-            start: "top 85%",
+            trigger: sectionRef.current,
+            start: "top 70%",
             toggleActions: "play none none reverse",
           },
-          x: index % 2 === 0 ? -100 : 100,
+          y: 100,
           opacity: 0,
-          duration: 0.8,
+          duration: 1,
           ease: "power3.out",
         });
-      });
+      }
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
-  const roadmap = [
-    {
-      quarter: "Q1 2025",
-      title: "AI Copilot",
-      description: "Intelligent assistant that helps you work faster with natural language commands.",
-      status: "In Development",
-      color: "bg-blue-500",
-    },
-    {
-      quarter: "Q2 2025",
-      title: "Advanced Integrations",
-      description: "Connect with 100+ popular tools and services seamlessly.",
-      status: "Planned",
-      color: "bg-purple-500",
-    },
-    {
-      quarter: "Q3 2025",
-      title: "Mobile Apps",
-      description: "Native iOS and Android apps for the ultimate mobile experience.",
-      status: "Planned",
-      color: "bg-pink-500",
-    },
-    {
-      quarter: "Q4 2025",
-      title: "Enterprise Suite",
-      description: "Advanced features for large organizations with complex needs.",
-      status: "Planned",
-      color: "bg-orange-500",
-    },
-  ];
-
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen w-full overflow-hidden bg-gradient-to-b from-gray-900 via-blue-900 to-gray-900 py-24 sm:py-32"
+      className="relative w-full h-screen overflow-hidden"
     >
-      {/* Video Background */}
-      <div className="absolute inset-0 z-0 opacity-20">
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="h-full w-full object-cover"
-        >
-          <source src="/Video ocean BG.mp4" type="video/mp4" />
-        </video>
+      {/* Background Image - Full Screen */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/future-bg.png"
+          alt="Future Background"
+          fill
+          className="object-cover"
+          priority
+        />
+        {/* Overlay - rgba(3, 38, 65, 0.3) */}
+        <div className="absolute inset-0 bg-[rgba(3,38,65,0.3)]" />
       </div>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-gray-900/80 via-blue-900/80 to-gray-900/80" />
+      {/* Content Container */}
+      <div className="relative z-10 flex h-full w-full flex-col items-center justify-center gap-6 px-4">
+        {/* Main Card */}
+        <div
+          ref={cardRef}
+          className="relative w-full max-w-[760px] rounded-[60px] border-2 border-white bg-[rgba(255,255,255,0.82)] p-[60px] backdrop-blur-[4px]"
+        >
+          <div className="flex flex-col items-center gap-5">
+            {/* Title */}
+            <h2
+              className="text-center text-[32px] font-semibold leading-[1.25em] tracking-[-0.03em]"
+              style={{
+                fontFamily: "var(--font-manrope)",
+                color: "#073071",
+              }}
+            >
+              Powering the Future of AI
+            </h2>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-        {/* Header */}
-        <div ref={contentRef} className="mx-auto max-w-2xl text-center">
-          <h2 className="text-base font-semibold leading-7 text-blue-400">
-            What's Next
-          </h2>
-          <p className="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            The Future is Bright
-          </p>
-          <p className="mt-6 text-lg leading-8 text-gray-300">
-            We're constantly innovating and building new features to help you stay ahead.
-            Here's what's coming next.
-          </p>
-        </div>
-
-        {/* Roadmap Timeline */}
-        <div className="mx-auto mt-16 max-w-5xl">
-          <div className="space-y-8">
-            {roadmap.map((item, index) => (
-              <div
-                key={index}
-                ref={(el) => {
-                  if (el) cardsRef.current[index] = el;
-                }}
-                className={`flex flex-col gap-6 lg:flex-row ${
-                  index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                }`}
+            {/* Icon/Logo */}
+            <div className="flex h-[23px] w-[78px] items-center justify-center">
+              <svg
+                width="79"
+                height="23"
+                viewBox="0 0 79 23"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                {/* Content Card */}
-                <div className="flex-1">
-                  <div className="group relative overflow-hidden rounded-3xl border border-gray-700 bg-gray-800/50 p-8 backdrop-blur-sm transition-all hover:border-blue-500 hover:bg-gray-800/70">
-                    {/* Status Badge */}
-                    <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1 text-sm font-semibold text-white">
-                      <div className={`h-2 w-2 rounded-full ${item.color} animate-pulse`} />
-                      {item.status}
-                    </div>
+                <ellipse
+                  cx="7.295"
+                  cy="11.5"
+                  rx="7.295"
+                  ry="7.295"
+                  fill="#0F408F"
+                />
+                <rect
+                  x="11.43"
+                  y="10.94"
+                  width="22.86"
+                  height="1.12"
+                  fill="#0F408F"
+                />
+                <ellipse
+                  cx="34.725"
+                  cy="11.5"
+                  rx="11.5"
+                  ry="11.5"
+                  fill="#0F408F"
+                />
+                <rect
+                  x="34.725"
+                  y="0.56"
+                  width="22.86"
+                  height="1.12"
+                  fill="#0F408F"
+                />
+                <ellipse
+                  cx="57.885"
+                  cy="11.5"
+                  rx="7.295"
+                  ry="7.295"
+                  fill="#0F408F"
+                />
+              </svg>
+            </div>
 
-                    <h3 className="mb-3 text-2xl font-bold text-white">
-                      {item.title}
-                    </h3>
-                    
-                    <p className="mb-4 text-gray-300">{item.description}</p>
+            {/* Description */}
+            <div className="w-full max-w-[500px]">
+              <p
+                className="text-center text-[18px] leading-[1.5em] tracking-[-0.03em]"
+                style={{
+                  fontFamily: "var(--font-manrope)",
+                  color: "#525252",
+                  fontWeight: 450,
+                }}
+              >
+                Amorfs is not just a tool.
+                <br />
+                <br />
+                It's the foundation for how intelligent systems should understand
+                information.
+                <br />
+                <br />
+                By capturing small data with complete fidelity and representing it
+                at the concept level, Amorfs enables AI to reason more accurately
+                and efficiently. It's a glimpse into a future where data flows
+                seamlessly, intelligently, and naturally.
+              </p>
+            </div>
 
-                    {/* Quarter Label */}
-                    <div className="text-sm font-semibold text-blue-400">
-                      {item.quarter}
-                    </div>
-
-                    {/* Hover Effect */}
-                    <div className="absolute right-0 top-0 h-32 w-32 translate-x-16 translate-y-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 opacity-0 blur-3xl transition-opacity group-hover:opacity-30" />
-                  </div>
-                </div>
-
-                {/* Connector Circle */}
-                <div className="hidden items-center justify-center lg:flex lg:w-16">
-                  <div className={`h-4 w-4 rounded-full ${item.color}`} />
-                </div>
-
-                {/* Spacer */}
-                <div className="hidden flex-1 lg:block" />
-              </div>
-            ))}
+            {/* Button */}
+            <div className="mt-5 flex justify-center">
+              <button
+                className="group relative rounded-full border border-[#0F408F] px-5 py-3 text-center text-[16px] font-semibold uppercase leading-[1.5em] tracking-[-0.03em] text-[#0F408F] transition-all hover:bg-[#0F408F] hover:text-white"
+                style={{
+                  fontFamily: "var(--font-manrope)",
+                }}
+              >
+                Learn more our vision
+                {/* Hover circle effect */}
+                <span className="absolute left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#0F408F] opacity-0 transition-opacity group-hover:opacity-20" />
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* CTA Section */}
-        <div className="mt-20 rounded-3xl border border-blue-500/30 bg-gradient-to-r from-blue-900/30 to-purple-900/30 p-12 text-center backdrop-blur-sm">
-          <h3 className="text-3xl font-bold text-white">
-            Want to Shape Our Future?
+        {/* CTA Section - Positioned at bottom */}
+        <div
+          className="absolute bottom-[100px] flex flex-col items-center gap-6"
+          style={{ opacity: 0 }}
+        >
+          {/* Title */}
+          <h3
+            className="text-center text-[60px] font-normal leading-[1.3em] tracking-[-0.04em] text-white"
+            style={{
+              fontFamily: "var(--font-michroma)",
+              textShadow: "0 0.5px 0 #FFFFFF",
+              WebkitTextStroke: "0.5px #FFFFFF",
+            }}
+          >
+            Your Data
+            <br />
+            Your Way
           </h3>
-          <p className="mt-4 text-lg text-gray-300">
-            Join our beta program and get early access to upcoming features.
-          </p>
-          <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-            <button className="rounded-full bg-white px-8 py-4 font-semibold text-gray-900 transition-all hover:scale-105 hover:bg-gray-100">
-              Join Beta Program
-            </button>
-            <button className="rounded-full border-2 border-white px-8 py-4 font-semibold text-white transition-all hover:bg-white hover:text-gray-900">
-              View Full Roadmap
-            </button>
+
+          {/* Buttons Container */}
+          <div className="relative flex gap-6">
+            {/* Install Extension Button */}
+            <div className="relative flex h-[200px] w-[200px] flex-col items-center justify-center gap-4 rounded-full border-2 border-white/55 bg-white/17 p-6 backdrop-blur-[20px]">
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 28 28"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M14 5V19M14 19L9 14M14 19L19 14M5 19V22.5C5 23.0523 5.44772 23.5 6 23.5H22C22.5523 23.5 23 23.0523 23 22.5V19"
+                  stroke="white"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              <span
+                className="text-center text-[20px] font-semibold leading-[1.4em] tracking-[-0.03em] text-white"
+                style={{
+                  fontFamily: "var(--font-manrope)",
+                }}
+              >
+                Install
+                <br />
+                Extension
+              </span>
+            </div>
+
+            {/* Open Studio Button */}
+            <div className="relative flex h-[200px] w-[200px] flex-col items-center justify-center gap-4 rounded-full border-2 border-white/55 bg-white/17 p-6 backdrop-blur-[20px]">
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 28 28"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M14 5V19M14 19L9 14M14 19L19 14M5 19V22.5C5 23.0523 5.44772 23.5 6 23.5H22C22.5523 23.5 23 23.0523 23 22.5V19"
+                  stroke="white"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              <span
+                className="text-center text-[20px] font-semibold leading-[1.4em] tracking-[-0.03em] text-white"
+                style={{
+                  fontFamily: "var(--font-manrope)",
+                }}
+              >
+                Open
+                <br />
+                Studio
+              </span>
+            </div>
+
+            {/* View Pricing Button */}
+            <div className="relative flex h-[200px] w-[200px] flex-col items-center justify-center gap-4 rounded-full border-2 border-white/55 bg-white/17 p-6 backdrop-blur-[20px]">
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 28 28"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M14 5V19M14 19L9 14M14 19L19 14M5 19V22.5C5 23.0523 5.44772 23.5 6 23.5H22C22.5523 23.5 23 23.0523 23 22.5V19"
+                  stroke="white"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              <span
+                className="text-center text-[20px] font-semibold leading-[1.4em] tracking-[-0.03em] text-white"
+                style={{
+                  fontFamily: "var(--font-manrope)",
+                }}
+              >
+                View
+                <br />
+                Pricing
+              </span>
+            </div>
           </div>
         </div>
       </div>
     </section>
   );
 }
-
-

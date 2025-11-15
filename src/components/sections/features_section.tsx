@@ -15,87 +15,105 @@ export default function FeaturesSection() {
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Animate badges with stagger
-      badgesRef.current.forEach((badge, index) => {
-        gsap.from(badge, {
-          scrollTrigger: {
-            trigger: badge,
-            start: "top 90%",
-            toggleActions: "play none none reverse",
-          },
-          scale: 0,
-          opacity: 0,
-          duration: 0.8,
-          delay: index * 0.08,
-          ease: "back.out(1.7)",
-        });
+      // Animate badges with stagger (skip badges with noAnimation flag)
+      let animationIndex = 0;
+      badges.forEach((badge, index) => {
+        const badgeElement = badgesRef.current[index];
+        if (badgeElement && !badge.noAnimation) {
+          gsap.from(badgeElement, {
+            scrollTrigger: {
+              trigger: badgeElement,
+              start: "top 90%",
+              toggleActions: "play none none reverse",
+            },
+            scale: 0,
+            opacity: 0,
+            duration: 0.8,
+            delay: animationIndex * 0.08,
+            ease: "back.out(1.7)",
+          });
+          animationIndex++;
+        }
       });
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
+  // Calculate positions relative to centered globe
+  // Original globe center: x=720 (400+320), y=417.8 (162+255.8)
+  // Container center: x=647 (1294/2), y=262 (524/2)
+  // Offset to center globe: dx=73, dy=155.8
+  const globeCenterX = 720;
+  const globeCenterY = 417.8;
+  const containerCenterX = 647;
+  const containerCenterY = 262;
+  const offsetX = globeCenterX - containerCenterX; // 73
+  const offsetY = globeCenterY - containerCenterY; // 155.8
+
   const badges = [
     { 
       text: "Zero\nKnowledge", 
-      x: 327, 
-      y: 457, 
+      x: 327 - offsetX, 
+      y: 457 - offsetY, 
       width: 160, 
       height: 160,
-      variant: "default" 
+      variant: "default",
+      noAnimation: true
     },
     { 
       text: "Cross Devices", 
-      x: 1124, 
-      y: 224, 
+      x: 1124 - offsetX, 
+      y: 224 - offsetY, 
       width: 120, 
       height: 120,
       variant: "variant2" 
     },
     { 
       text: "Beautiful Templates", 
-      x: 943, 
-      y: 465, 
+      x: 943 - offsetX, 
+      y: 465 - offsetY, 
       width: 160, 
       height: 160,
-      variant: "default" 
+      variant: "default",
+      noAnimation: true
     },
     { 
       text: "Instant Reuse", 
-      x: 160, 
-      y: 220, 
+      x: 160 - offsetX, 
+      y: 220 - offsetY, 
       width: 120, 
       height: 120,
       variant: "variant2" 
     },
     { 
       text: "Language Agnostic", 
-      x: 348, 
-      y: 125, 
+      x: 348 - offsetX, 
+      y: 125 - offsetY, 
       width: 160, 
       height: 160,
       variant: "default" 
     },
     { 
       text: "Easy Sharing", 
-      x: 988, 
-      y: 289, 
+      x: 988 - offsetX, 
+      y: 289 - offsetY, 
       width: 120, 
       height: 120,
       variant: "variant2" 
     },
     { 
       text: "Full Control", 
-      x: 293, 
-      y: 307, 
+      x: 293 - offsetX, 
+      y: 307 - offsetY, 
       width: 120, 
       height: 120,
       variant: "variant2" 
     },
     { 
       text: "Auto\nCapture", 
-      x: 923, 
-      y: 128, 
+      x: 923 - offsetX, 
+      y: 128 - offsetY, 
       width: 120, 
       height: 120,
       variant: "variant2" 
@@ -105,10 +123,10 @@ export default function FeaturesSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full overflow-hidden min-h-[800px] max-w-[1440px] mx-auto"
+      className="relative w-full h-screen overflow-hidden"
     >
-      {/* Background Image */}
-      <div className="absolute inset-0 rounded-[20px] overflow-hidden">
+      {/* Background Image - Full Screen */}
+      <div className="absolute inset-0 overflow-hidden">
         <Image
           src="/images/feature-bg.png"
           alt="Feature Background"
@@ -118,28 +136,29 @@ export default function FeaturesSection() {
         />
       </div>
 
-      {/* Video BG Overlay */}
-      <div 
-        className="absolute overflow-hidden rounded-[20px]"
-        style={{
-          left: "-5.3%",
-          top: "-0.06%",
-          width: "110.5%",
-          height: "100.1%",
-        }}
-      >
-        <Image
-          src="/images/feature-video-bg.png"
-          alt="Video Background"
-          fill
-          className="object-cover opacity-10"
-        />
+      {/* Video BG Overlay - Full Screen */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div 
+          className="absolute"
+          style={{
+            left: "-76px",
+            top: "-0.5px",
+            width: "calc(100% + 152px)",
+            height: "calc(100% + 1px)",
+          }}
+        >
+          <Image
+            src="/images/feature-video-bg.png"
+            alt="Video Background"
+            fill
+            className="object-cover opacity-10"
+          />
+        </div>
       </div>
 
-      {/* Content Container */}
-      <div className="relative h-full flex flex-col py-[60px]">
-        {/* Main Content */}
-        <div className="flex-1 flex flex-col items-center gap-6 px-4">
+      {/* Content Container - Centered with max-width */}
+      <div className="relative w-full h-full flex flex-col items-center justify-center py-[60px] px-4">
+        <div className="w-full max-w-[1440px] mx-auto flex flex-col items-center gap-6">
           {/* Title */}
           <h2 
             className="font-michroma text-[28px] md:text-[28px] leading-[1.4] tracking-[-0.04em] text-center whitespace-pre-line"
@@ -149,22 +168,27 @@ export default function FeaturesSection() {
           </h2>
 
           {/* Features Container - Relative positioning for badges */}
-          <div className="relative w-full max-w-[1294px] aspect-[1294/524] mx-auto">
-            {/* Globe Image */}
+          <div className="relative w-full max-w-[1294px] aspect-[1294/524]">
+            {/* Globe GIF - Centered */}
             <div 
               className="absolute"
               style={{
-                left: "30.91%",
-                top: "30.92%",
+                left: "50%",
+                top: "50%",
+                transform: "translate(-50%, -50%)",
                 width: "49.46%",
                 height: "97.63%",
               }}
             >
               <Image
-                src="/images/feature-globe.svg"
-                alt="Globe"
+                src="/Video-ocean-globe.gif"
+                alt="Ocean Globe"
                 fill
                 className="object-contain"
+                style={{
+                  pointerEvents: "none",
+                }}
+                unoptimized
               />
             </div>
 
@@ -173,7 +197,9 @@ export default function FeaturesSection() {
               <div
                 key={index}
                 ref={(el) => {
-                  if (el) badgesRef.current[index] = el;
+                  if (el && !badge.noAnimation) {
+                    badgesRef.current[index] = el;
+                  }
                 }}
                 className="absolute flex items-center justify-center text-center transition-all hover:scale-105 cursor-pointer"
                 style={{
