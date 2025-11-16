@@ -103,21 +103,47 @@ export default function HowItWorksSection() {
                 return (
                   <ScrollStackItem
                     key={index}
-                    itemClassName="bg-[#DDEBF9] border-2 border-[#A0C2E0] rounded-[60px] p-10"
+                    itemClassName="bg-[#DDEBF9] border-2 border-[#A0C2E0] rounded-[60px] !p-0 !h-auto !my-8"
                   >
-                    <div className="flex flex-row gap-10 items-start h-full">
+                    <div 
+                      className="flex flex-row items-center justify-center"
+                      style={{
+                        gap: "44px",
+                        padding: "40px",
+                        width: "813px",
+                        height: "380px",
+                        boxSizing: "border-box",
+                      }}
+                    >
                       {/* Left Content */}
-                      <div className="flex flex-col justify-center gap-5 flex-shrink-0 w-[240px]">
+                      <div 
+                        className="flex flex-col justify-center flex-shrink-0"
+                        style={{
+                          gap: "20px",
+                          width: "240px",
+                        }}
+                      >
                         {/* Icon */}
-                        <div className="flex items-center justify-center w-12 h-12 rounded-full bg-[#0F408F] p-3">
+                        <div 
+                          className="flex items-center justify-center rounded-full"
+                          style={{
+                            backgroundColor: "#0F408F",
+                            borderRadius: "100px",
+                            padding: "12px",
+                            width: "fit-content",
+                          }}
+                        >
                           <IconComponent className="w-7 h-7 text-white" />
                         </div>
 
                         {/* Title */}
                         <h3
-                          className="font-manrope text-[32px] leading-[1.25em] tracking-[-0.03em]"
+                          className="font-manrope"
                           style={{
                             fontWeight: 500,
+                            fontSize: "32px",
+                            lineHeight: "1.25em",
+                            letterSpacing: "-0.03em",
                             color: "#073071",
                           }}
                         >
@@ -126,9 +152,12 @@ export default function HowItWorksSection() {
 
                         {/* Description */}
                         <p
-                          className="font-manrope text-[18px] leading-[1.5em] tracking-[-0.03em]"
+                          className="font-manrope"
                           style={{
                             fontWeight: 450,
+                            fontSize: "18px",
+                            lineHeight: "1.5em",
+                            letterSpacing: "-0.03em",
                             color: "#073071",
                           }}
                         >
@@ -137,7 +166,13 @@ export default function HowItWorksSection() {
                       </div>
 
                       {/* Right Image Placeholder */}
-                      <div className="flex-1 h-[300px] bg-white rounded-[24px] flex-shrink-0" />
+                      <div 
+                        className="bg-white rounded-[24px] flex-shrink-0"
+                        style={{
+                          width: "453px",
+                          height: "300px",
+                        }}
+                      />
                     </div>
                   </ScrollStackItem>
                 );
