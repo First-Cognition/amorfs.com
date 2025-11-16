@@ -2,7 +2,7 @@ import {
   HeroSection,
   ProblemSolutionSection,
   ProductSection,
-  // HowItWorksSection,
+  HowItWorksSection,
   FeaturesSection,
   FutureFooterSection,
 } from "@/components/sections";
@@ -19,7 +19,7 @@ export default function Home() {
       <HeroSection />
       <ProblemSolutionSection />
       <ProductSection />
-      {/* <HowItWorksSection /> */}
+      <HowItWorksSection />
       <FeaturesSection />
       <FutureFooterSection />
     </main>

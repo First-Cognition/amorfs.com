@@ -39,3 +39,14 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Hide scrollbar for ScrollStack when using window scroll */
+.scroll-stack-no-scrollbar > div {
+  overflow: hidden !important;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scroll-stack-no-scrollbar > div::-webkit-scrollbar {
+  display: none;
+}
