@@ -338,7 +338,7 @@ export default function FutureFooterSection() {
             </div>
 
             {/* Bottom Bar */}
-            <div className="absolute bottom-0 left-0 right-0 w-full border-t border-white/10 bg-gradient-to-t from-black/50 to-transparent px-10 py-6">
+            <div className="absolute bottom-0 left-0 right-0 w-full bg-gradient-to-t from-black/50 to-transparent px-10 py-6">
               <div className="mx-auto flex max-w-[1440px] flex-col items-center justify-between gap-4 sm:flex-row">
                 <p
                   className="text-[16px] font-medium leading-[1.4em] tracking-[-0.02em] text-white/68"
