@@ -20,6 +20,7 @@ const Magnet: React.FC<MagnetProps> = ({
   inactiveTransition = 'transform 0.5s ease-in-out',
   wrapperClassName = '',
   innerClassName = '',
+  style,
   ...props
 }) => {
   const [isActive, setIsActive] = useState<boolean>(false);
@@ -61,11 +62,20 @@ const Magnet: React.FC<MagnetProps> = ({
 
   const transitionStyle = isActive ? activeTransition : inactiveTransition;
 
+  // Merge default styles with props.style
+  // If position is absolute, don't set display: inline-block
+  const isAbsolute = style?.position === 'absolute';
+  const wrapperStyle = {
+    position: (style?.position as any) || 'relative',
+    ...(isAbsolute ? {} : { display: 'inline-block' }),
+    ...style,
+  };
+
   return (
     <div
       ref={magnetRef}
       className={wrapperClassName}
-      style={{ position: 'relative', display: 'inline-block' }}
+      style={wrapperStyle}
       {...props}
     >
       <div

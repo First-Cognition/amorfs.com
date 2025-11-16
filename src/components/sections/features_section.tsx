@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
+import Magnet from "@/components/Magnet";
 
 export default function FeaturesSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -194,36 +195,46 @@ export default function FeaturesSection() {
 
             {/* Feature Badges */}
             {badges.map((badge, index) => (
-              <div
+              <Magnet
                 key={index}
-                ref={(el) => {
-                  if (el && !badge.noAnimation) {
-                    badgesRef.current[index] = el;
-                  }
-                }}
-                className="absolute flex items-center justify-center text-center transition-all hover:scale-105 cursor-pointer"
+                padding={100}
+                magnetStrength={10}
                 style={{
+                  position: "absolute",
                   left: `${(badge.x / 1294) * 100}%`,
                   top: `${(badge.y / 524) * 100}%`,
                   width: `${(badge.width / 1294) * 100}%`,
                   height: `${(badge.height / 524) * 100}%`,
-                  padding: "0.62% 1.55%",
-                  background: "rgba(255, 255, 255, 0.06)",
-                  border: "1px solid rgba(255, 255, 255, 0.17)",
-                  borderRadius: "1000px",
-                  backdropFilter: "blur(10px)",
-                  WebkitBackdropFilter: "blur(10px)",
                 }}
+                wrapperClassName="cursor-pointer"
+                innerClassName="w-full h-full"
               >
-                <span 
-                  className="font-inter leading-[1.5] text-white text-center whitespace-pre-line w-full"
+                <div
+                  ref={(el) => {
+                    if (el && !badge.noAnimation) {
+                      badgesRef.current[index] = el;
+                    }
+                  }}
+                  className="flex items-center justify-center text-center transition-all hover:scale-105 w-full h-full"
                   style={{
-                    fontSize: "clamp(10px, 1.39vw, 18px)",
+                    padding: "0.62% 1.55%",
+                    background: "rgba(255, 255, 255, 0.06)",
+                    border: "1px solid rgba(255, 255, 255, 0.17)",
+                    borderRadius: "1000px",
+                    backdropFilter: "blur(10px)",
+                    WebkitBackdropFilter: "blur(10px)",
                   }}
                 >
-                  {badge.text}
-                </span>
-              </div>
+                  <span 
+                    className="font-inter leading-[1.5] text-white text-center whitespace-pre-line w-full"
+                    style={{
+                      fontSize: "clamp(10px, 1.39vw, 18px)",
+                    }}
+                  >
+                    {badge.text}
+                  </span>
+                </div>
+              </Magnet>
             ))}
           </div>
         </div>
