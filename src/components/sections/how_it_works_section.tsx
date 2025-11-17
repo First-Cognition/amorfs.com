@@ -37,7 +37,7 @@ export default function HowItWorksSection() {
       className="relative w-full min-h-screen overflow-hidden"
     >
       {/* Background Image - Full Screen */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
+      <div className="absolute inset-0 z-0 overflow-hidden" suppressHydrationWarning>
         <Image
           src="/images/how-it-works-bg.png"
           alt="How It Works Background"
@@ -48,7 +48,7 @@ export default function HowItWorksSection() {
       </div>
 
       {/* Video BG Overlay - Full Screen */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
+      <div className="absolute inset-0 z-0 overflow-hidden" suppressHydrationWarning>
         <div
           className="absolute"
           style={{
@@ -57,6 +57,7 @@ export default function HowItWorksSection() {
             width: "calc(100% + 152px)",
             height: "calc(100% + 1px)",
           }}
+          suppressHydrationWarning
         >
           <Image
             src="/images/how-it-works-video-bg.png"
@@ -68,9 +69,9 @@ export default function HowItWorksSection() {
       </div>
 
       {/* Content Container - Centered */}
-      <div className="relative z-10 w-full min-h-screen flex flex-col items-center justify-center py-12 sm:py-16 md:py-20">
+      <div className="relative z-10 w-full min-h-screen flex flex-col items-center justify-center py-12 sm:py-16 md:py-20" suppressHydrationWarning>
         {/* Title Section */}
-        <div className="w-full max-w-[1440px] mx-auto px-4 pb-6 sm:pb-8 md:pb-10 flex flex-col items-center gap-2">
+        <div className="w-full max-w-[1440px] mx-auto px-4 pb-6 sm:pb-8 md:pb-10 flex flex-col items-center gap-2" suppressHydrationWarning>
           <h2
             className="font-michroma text-2xl sm:text-3xl md:text-4xl lg:text-[48px] xl:text-[60px] leading-[1.4em] tracking-[-0.04em] text-center"
             style={{
@@ -83,8 +84,8 @@ export default function HowItWorksSection() {
         </div>
 
         {/* ScrollStack Container */}
-        <div className="relative w-full flex-1 flex items-center justify-center min-h-0">
-          <div className="w-full max-w-[1440px] mx-auto px-4 h-full">
+        <div className="relative w-full flex-1 flex items-center justify-center min-h-0" suppressHydrationWarning>
+          <div className="w-full max-w-[1440px] mx-auto px-4 h-full" suppressHydrationWarning>
             <ScrollStack
               className="w-full h-full scroll-stack-no-scrollbar"
               useWindowScroll={true}
@@ -111,6 +112,7 @@ export default function HowItWorksSection() {
                         padding: "20px",
                         boxSizing: "border-box",
                       }}
+                      suppressHydrationWarning
                     >
                       {/* Left Content */}
                       <div 
@@ -120,6 +122,7 @@ export default function HowItWorksSection() {
                           width: "100%",
                           maxWidth: "240px",
                         }}
+                        suppressHydrationWarning
                       >
                         {/* Icon */}
                         <div 
@@ -130,6 +133,7 @@ export default function HowItWorksSection() {
                             padding: "8px",
                             width: "fit-content",
                           }}
+                          suppressHydrationWarning
                         >
                           <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white" />
                         </div>
@@ -164,6 +168,7 @@ export default function HowItWorksSection() {
                       {/* Right Image Placeholder */}
                       <div 
                         className="bg-white rounded-xl sm:rounded-2xl md:rounded-[24px] flex-shrink-0 w-full sm:w-auto aspect-[453/300] sm:w-[453px] sm:h-[300px]"
+                        suppressHydrationWarning
                       />
                     </div>
                   </ScrollStackItem>

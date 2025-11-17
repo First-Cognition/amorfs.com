@@ -149,7 +149,7 @@ export default function ProblemSolutionSection() {
       className="relative h-screen w-full overflow-hidden"
     >
       {/* Background Image - Shared for both Problem and Solution */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0" suppressHydrationWarning>
         <Image
           src="/images/solution-section-bg.png"
           alt="Background"
@@ -163,12 +163,14 @@ export default function ProblemSolutionSection() {
       <div 
         ref={problemContentRef}
         className="absolute inset-0 flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-10"
+        suppressHydrationWarning
       >
         <div 
           className="flex w-full max-w-7xl flex-col items-center gap-6 sm:gap-8 md:gap-12 lg:flex-row lg:items-center lg:gap-16 xl:gap-[120px] lg:px-10 xl:px-20"
+          suppressHydrationWarning
         >
           {/* Left Content - Text */}
-          <div className="flex w-full flex-col justify-center gap-4 sm:gap-6 md:gap-8 lg:flex-1 lg:gap-8">
+          <div className="flex w-full flex-col justify-center gap-4 sm:gap-6 md:gap-8 lg:flex-1 lg:gap-8" suppressHydrationWarning>
             {/* Label */}
             <h2 
               className="text-base sm:text-lg md:text-xl leading-[1.4em] tracking-[-0.04em] font-michroma"
@@ -182,9 +184,9 @@ export default function ProblemSolutionSection() {
             </h2>
 
             {/* Content Group */}
-            <div className="flex flex-col items-start self-stretch gap-3 sm:gap-4 md:gap-6">
+            <div className="flex flex-col items-start self-stretch gap-3 sm:gap-4 md:gap-6" suppressHydrationWarning>
               {/* Headline */}
-              <div className="flex flex-col justify-center self-stretch">
+              <div className="flex flex-col justify-center self-stretch" suppressHydrationWarning>
                 <h3 
                   className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] leading-[1.3em] tracking-[-0.04em] font-manrope"
                   style={{
@@ -210,12 +212,13 @@ export default function ProblemSolutionSection() {
           </div>
 
           {/* Right Content - Video */}
-          <div className="relative flex-shrink-0 w-full lg:w-auto">
+          <div className="relative flex-shrink-0 w-full lg:w-auto" suppressHydrationWarning>
             <div 
               className="relative overflow-hidden w-full aspect-[524/478] max-w-full lg:w-[524px] lg:h-[478px] rounded-xl sm:rounded-2xl md:rounded-3xl"
               style={{
                 backgroundColor: "#19549B",
               }}
+              suppressHydrationWarning
             >
               <video
                 ref={videoRef}
@@ -236,9 +239,10 @@ export default function ProblemSolutionSection() {
       <div 
         ref={solutionContentRef}
         className="absolute inset-0 flex flex-col items-center justify-center px-4 py-12 sm:px-6 sm:py-16 md:px-8 md:py-24 lg:px-10 lg:py-[200px] opacity-0"
+        suppressHydrationWarning
       >
-        <div className="flex w-full max-w-[800px] flex-col items-center gap-8 sm:gap-12 md:gap-16 lg:gap-[120px] px-4 sm:px-6 md:px-10 lg:px-20">
-          <div className="flex w-full flex-col items-center justify-center gap-4 sm:gap-6 md:gap-8">
+        <div className="flex w-full max-w-[800px] flex-col items-center gap-8 sm:gap-12 md:gap-16 lg:gap-[120px] px-4 sm:px-6 md:px-10 lg:px-20" suppressHydrationWarning>
+          <div className="flex w-full flex-col items-center justify-center gap-4 sm:gap-6 md:gap-8" suppressHydrationWarning>
             {/* Small Title */}
             <h2
               className="w-full text-center font-michroma text-base sm:text-lg md:text-xl leading-[1.4em] tracking-[-0.04em] text-[#2DD4C2] [text-shadow:0px_4px_4px_rgba(0,0,0,0.05)]"
@@ -247,14 +251,15 @@ export default function ProblemSolutionSection() {
             </h2>
 
             {/* Main Content Group - with text swap */}
-            <div className="relative flex w-full flex-col items-center gap-3 sm:gap-4 self-stretch">
+            <div className="relative flex w-full flex-col items-center gap-3 sm:gap-4 self-stretch" suppressHydrationWarning>
               {/* Initial Text - Will fade out on scroll */}
               <div
                 ref={initialTextRef}
                 className="absolute inset-0 flex flex-col items-center gap-3 sm:gap-4"
+                suppressHydrationWarning
               >
                 {/* Main Heading */}
-                <div className="flex flex-col items-center gap-2 sm:gap-3">
+                <div className="flex flex-col items-center gap-2 sm:gap-3" suppressHydrationWarning>
                   <ScrollReveal
                     containerClassName="my-0"
                     textClassName="text-center font-manrope text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-medium leading-[1.3em] tracking-[-0.04em] text-white/88"
@@ -264,7 +269,7 @@ export default function ProblemSolutionSection() {
                 </div>
 
                 {/* Subtitle */}
-                <div className="flex items-center justify-center gap-2 p-2">
+                <div className="flex items-center justify-center gap-2 p-2" suppressHydrationWarning>
                   <p className="text-center font-manrope text-sm sm:text-base md:text-lg font-normal leading-[1.5em] tracking-[-0.03em] text-white/55">
                     {t("solution.initialSubtitle")}
                   </p>
@@ -275,11 +280,12 @@ export default function ProblemSolutionSection() {
               <div
                 ref={optionsTextRef}
                 className="flex flex-col items-center gap-3 sm:gap-4 opacity-0"
+                suppressHydrationWarning
               >
                 {/* Browser Extension & Data Studio Options */}
-                <div className="flex flex-col items-center gap-3 sm:gap-4 self-stretch">
+                <div className="flex flex-col items-center gap-3 sm:gap-4 self-stretch" suppressHydrationWarning>
                   {/* Browser Extension */}
-                  <div className="flex flex-row items-center gap-2 sm:gap-3">
+                  <div className="flex flex-row items-center gap-2 sm:gap-3" suppressHydrationWarning>
                     <h1 className="text-center font-manrope text-xl sm:text-2xl md:text-3xl lg:text-[44px] font-medium leading-[1.3em] tracking-[-0.04em] text-white/88">
                       <span className="text-white/60">{`{ `}</span>
                       {t("solution.optionsTitle")}
@@ -288,7 +294,7 @@ export default function ProblemSolutionSection() {
                   </div>
 
                   {/* Data Studio */}
-                  <div className="flex flex-row items-center gap-2 sm:gap-3">
+                  <div className="flex flex-row items-center gap-2 sm:gap-3" suppressHydrationWarning>
                     <h1 className="text-center font-manrope text-xl sm:text-2xl md:text-3xl lg:text-[44px] font-medium leading-[1.3em] tracking-[-0.04em] text-white/88">
                       <span className="text-white/60">{`{ `}</span>
                       {t("solution.optionsTitle2")}
@@ -299,7 +305,7 @@ export default function ProblemSolutionSection() {
               </div>
 
               {/* Spacer to maintain layout height */}
-              <div className="invisible flex flex-col items-center gap-2 sm:gap-3">
+              <div className="invisible flex flex-col items-center gap-2 sm:gap-3" suppressHydrationWarning>
                 <h1 className="text-center font-manrope text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-medium leading-[1.3em] tracking-[-0.04em] text-white/88">
                   Capture Once, <br />
                   Use Everywhere

@@ -54,7 +54,7 @@ export default function HeroSection() {
   return (
     <section className="relative flex min-h-screen w-full flex-col overflow-hidden">
       {/* Video Background */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0" suppressHydrationWarning>
         <video
           ref={videoRef}
           autoPlay
@@ -66,12 +66,12 @@ export default function HeroSection() {
           <source src="/Video Hero.mp4" type="video/mp4" />
         </video>
         {/* Overlay - rgba(0, 61, 76, 0.4) */}
-        <div className="absolute inset-0 bg-[rgba(0,61,76,0.4)]" />
+        <div className="absolute inset-0 bg-[rgba(0,61,76,0.4)]" suppressHydrationWarning />
       </div>
 
       {/* Content Section - Centered */}
-      <div className="relative z-10 flex flex-1 flex-col items-center justify-center self-stretch px-4 pt-20 sm:px-6 sm:pt-16 md:px-8 lg:px-10">
-        <div className="flex w-full max-w-[800px] flex-col items-center gap-4 sm:gap-6 md:gap-8">
+      <div className="relative z-10 flex flex-1 flex-col items-center justify-center self-stretch px-4 pt-20 sm:px-6 sm:pt-16 md:px-8 lg:px-10" suppressHydrationWarning>
+        <div className="flex w-full max-w-[800px] flex-col items-center gap-4 sm:gap-6 md:gap-8" suppressHydrationWarning>
           {/* Headline */}
           <h1
             ref={titleRef}
@@ -101,7 +101,7 @@ export default function HeroSection() {
           </p>
 
           {/* CTA Button */}
-          <div ref={ctaRef} className="flex flex-col items-center justify-center w-full sm:w-auto">
+          <div ref={ctaRef} className="flex flex-col items-center justify-center w-full sm:w-auto" suppressHydrationWarning>
             <button
               className="flex items-center justify-center gap-2 rounded-[1000px] bg-[#0F408F] px-4 py-2.5 text-sm sm:px-5 sm:py-3 sm:text-base transition-all hover:bg-[#0D3678] active:scale-95"
               style={{ fontFamily: "var(--font-manrope)" }}
@@ -116,6 +116,7 @@ export default function HeroSection() {
           <div
             ref={footerRef}
             className="mt-6 flex flex-col items-center gap-2 sm:mt-8 md:mt-12"
+            suppressHydrationWarning
           >
             <span
               className="text-[10px] text-white/80 sm:text-xs md:text-sm"
@@ -162,11 +163,12 @@ export default function HeroSection() {
       </div>
 
       {/* Footer Info - Fixed at bottom */}
-      <div className="absolute bottom-4 left-0 right-0 z-10 flex items-end justify-between px-4 sm:bottom-6 sm:px-6 md:bottom-8 md:px-8 lg:px-10">
+      <div className="absolute bottom-4 left-0 right-0 z-10 flex items-end justify-between px-4 sm:bottom-6 sm:px-6 md:bottom-8 md:px-8 lg:px-10" suppressHydrationWarning>
         {/* Built in */}
         <div
           className="text-[10px] leading-tight text-white/60 sm:text-xs"
           style={{ fontFamily: "var(--font-manrope)" }}
+          suppressHydrationWarning
         >
           <span className="hidden sm:inline">
             {t("hero.builtIn")}
@@ -176,12 +178,13 @@ export default function HeroSection() {
         </div>
 
         {/* Spacer for center alignment */}
-        <div className="flex-1" />
+        <div className="flex-1" suppressHydrationWarning />
 
         {/* Power by */}
         <div
           className="text-right text-[10px] leading-tight text-white/60 sm:text-xs"
           style={{ fontFamily: "var(--font-manrope)" }}
+          suppressHydrationWarning
         >
           <span className="hidden sm:inline">
             {t("hero.powerBy")}

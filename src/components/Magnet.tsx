@@ -76,6 +76,7 @@ const Magnet: React.FC<MagnetProps> = ({
       ref={magnetRef}
       className={wrapperClassName}
       style={wrapperStyle}
+      suppressHydrationWarning
       {...props}
     >
       <div
@@ -85,6 +86,7 @@ const Magnet: React.FC<MagnetProps> = ({
           transition: transitionStyle,
           willChange: 'transform'
         }}
+        suppressHydrationWarning
       >
         {children}
       </div>

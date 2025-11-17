@@ -129,7 +129,7 @@ export default function FeaturesSection() {
       className="relative w-full h-screen overflow-hidden"
     >
       {/* Background Image - Full Screen */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden" suppressHydrationWarning>
         <Image
           src="/images/feature-bg.png"
           alt="Feature Background"
@@ -140,7 +140,7 @@ export default function FeaturesSection() {
       </div>
 
       {/* Video BG Overlay - Full Screen */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden" suppressHydrationWarning>
         <div 
           className="absolute"
           style={{
@@ -149,6 +149,7 @@ export default function FeaturesSection() {
             width: "calc(100% + 152px)",
             height: "calc(100% + 1px)",
           }}
+          suppressHydrationWarning
         >
           <Image
             src="/images/feature-video-bg.png"
@@ -160,8 +161,8 @@ export default function FeaturesSection() {
       </div>
 
       {/* Content Container - Centered with max-width */}
-      <div className="relative w-full h-full flex flex-col items-center justify-center py-8 sm:py-12 md:py-16 lg:py-[60px] px-4">
-        <div className="w-full max-w-[1440px] mx-auto flex flex-col items-center gap-4 sm:gap-5 md:gap-6">
+      <div className="relative w-full h-full flex flex-col items-center justify-center py-8 sm:py-12 md:py-16 lg:py-[60px] px-4" suppressHydrationWarning>
+        <div className="w-full max-w-[1440px] mx-auto flex flex-col items-center gap-4 sm:gap-5 md:gap-6" suppressHydrationWarning>
           {/* Title */}
           <h2 
             className="font-michroma text-xl sm:text-2xl md:text-[28px] leading-[1.4] tracking-[-0.04em] text-center whitespace-pre-line"
@@ -171,7 +172,7 @@ export default function FeaturesSection() {
           </h2>
 
           {/* Features Container - Relative positioning for badges */}
-          <div className="relative w-full max-w-[1294px] aspect-[1294/524] min-h-[200px] sm:min-h-[300px] md:min-h-[400px]">
+          <div className="relative w-full max-w-[1294px] aspect-[1294/524] min-h-[200px] sm:min-h-[300px] md:min-h-[400px]" suppressHydrationWarning>
             {/* Globe GIF - Centered */}
             <div 
               className="absolute"
@@ -182,6 +183,7 @@ export default function FeaturesSection() {
                 width: "49.46%",
                 height: "97.63%",
               }}
+              suppressHydrationWarning
             >
               <Image
                 src="/Video-ocean-globe.gif"

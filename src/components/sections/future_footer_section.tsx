@@ -81,7 +81,7 @@ export default function FutureFooterSection() {
       className="relative w-full min-h-screen overflow-hidden"
     >
       {/* Video Background - Full Screen (Shared) */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0" suppressHydrationWarning>
         <video
           ref={videoRef}
           autoPlay
@@ -93,18 +93,19 @@ export default function FutureFooterSection() {
           <source src="/Video footer.mp4" type="video/mp4" />
         </video>
         {/* Overlay - rgba(3, 38, 65, 0.3) */}
-        <div className="absolute inset-0 bg-[rgba(3,38,65,0.3)]" />
+        <div className="absolute inset-0 bg-[rgba(3,38,65,0.3)]" suppressHydrationWarning />
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 flex min-h-screen w-full flex-col items-center justify-center gap-6 px-4 py-20">
+      <div className="relative z-10 flex min-h-screen w-full flex-col items-center justify-center gap-6 px-4 py-20" suppressHydrationWarning>
         {/* Future Section - Shown initially */}
         {!showFooter && (
           <div
             ref={futureCardRef}
             className="relative w-full max-w-[760px] rounded-2xl sm:rounded-3xl md:rounded-[60px] border-2 border-white bg-[rgba(255,255,255,0.82)] p-6 sm:p-8 md:p-12 lg:p-[60px] backdrop-blur-[4px]"
+            suppressHydrationWarning
           >
-            <div className="flex flex-col items-center gap-4 sm:gap-5">
+            <div className="flex flex-col items-center gap-4 sm:gap-5" suppressHydrationWarning>
               {/* Title */}
               <h2
                 className="text-center text-xl sm:text-2xl md:text-3xl lg:text-[32px] font-semibold leading-[1.25em] tracking-[-0.03em]"
@@ -117,14 +118,14 @@ export default function FutureFooterSection() {
               </h2>
 
               {/* Icon/Logo */}
-              <div className="flex h-[18px] w-[62px] sm:h-[20px] sm:w-[70px] md:h-[23px] md:w-[78px] items-center justify-center">
+              <div className="flex h-[18px] w-[62px] sm:h-[20px] sm:w-[70px] md:h-[23px] md:w-[78px] items-center justify-center" suppressHydrationWarning>
                 <svg width="79" height="23" viewBox="0 0 79 23" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
                   <path d="M39.0879 0C42.9316 0 46.3349 1.88578 48.423 4.78263C50.5876 7.78567 53.4842 10.9385 57.1861 10.9385C60.8131 10.9385 63.7283 7.61773 66.6946 5.53053C67.8797 4.69672 69.3244 4.20712 70.8838 4.20703C74.9114 4.20703 78.1768 7.47237 78.1768 11.5C78.1767 15.5276 74.9114 18.793 70.8838 18.793C69.3235 18.7929 67.8779 18.3027 66.6924 17.468C63.7269 15.3801 60.812 12.0596 57.1853 12.0596C53.484 12.0596 50.5881 15.2121 48.4245 18.2152C46.3365 21.1133 42.9326 23 39.0879 23C35.2434 22.9999 31.8398 21.1132 29.7521 18.2153C27.5886 15.2121 24.6927 12.0596 20.9914 12.0596C17.3647 12.0596 14.4499 15.3801 11.4844 17.468C10.2988 18.3027 8.85328 18.7929 7.29297 18.793C3.26539 18.793 8.81353e-05 15.5276 0 11.5C0 7.47237 3.26534 4.20703 7.29297 4.20703C8.85241 4.2071 10.2971 4.69669 11.4821 5.53051C14.4485 7.61772 17.3636 10.9385 20.9907 10.9385C24.6926 10.9385 27.5891 7.78568 29.7536 4.78256C31.8415 1.88583 35.2443 9.57582e-05 39.0879 0Z" fill="#0F408F"/>
               </svg>
               </div>
 
               {/* Description */}
-              <div className="w-full max-w-[500px]">
+              <div className="w-full max-w-[500px]" suppressHydrationWarning>
                 <p
                   className="text-center text-sm sm:text-base md:text-lg leading-[1.5em] tracking-[-0.03em]"
                   style={{
@@ -143,7 +144,7 @@ export default function FutureFooterSection() {
               </div>
 
               {/* Button */}
-              <div className="mt-4 sm:mt-5 flex justify-center">
+              <div className="mt-4 sm:mt-5 flex justify-center" suppressHydrationWarning>
                 <button
                   onClick={handleLearnMoreClick}
                   className="group relative rounded-full border border-[#0F408F] px-4 py-2.5 sm:px-5 sm:py-3 text-center text-sm sm:text-base font-semibold uppercase leading-[1.5em] tracking-[-0.03em] text-[#0F408F] transition-all hover:bg-[#0F408F] hover:text-white active:scale-95"

@@ -18,6 +18,7 @@ export const ScrollStackItem: React.FC<ScrollStackItemProps> = ({ children, item
       WebkitFontSmoothing: 'antialiased',
       MozOsxFontSmoothing: 'grayscale',
     }}
+    suppressHydrationWarning
   >
     {children}
   </div>
@@ -380,10 +381,10 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
         willChange: 'scroll-position'
       }}
     >
-      <div className="scroll-stack-inner pt-[20vh] px-20 pb-[50rem] min-h-screen">
+      <div className="scroll-stack-inner pt-[20vh] px-20 pb-[50rem] min-h-screen" suppressHydrationWarning>
         {children}
         {/* Spacer so the last pin can release cleanly */}
-        <div className="scroll-stack-end w-full h-px" />
+        <div className="scroll-stack-end w-full h-px" suppressHydrationWarning />
       </div>
     </div>
   );
