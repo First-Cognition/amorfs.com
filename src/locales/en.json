@@ -1,0 +1,117 @@
+{
+  "header": {
+    "nav": {
+      "pricing": "Pricing",
+      "technology": "Technology",
+      "blog": "Blog",
+      "faq": "FAQ",
+      "contact": "Contact"
+    },
+    "installExtension": "Install Extension"
+  },
+  "hero": {
+    "title": "Your {Data} Beautifully Organized Finally",
+    "dataHighlight": "{Data}",
+    "subtitle": "Stop retyping the same information. Amorfs captures what you enter once, stores it securely, and lets you reuse it anywhere—or transform it into something beautiful to share.",
+    "cta": "Explore Amorfs Studio",
+    "diveDeeper": "Dive Deeper",
+    "builtIn": "Built in",
+    "powerBy": "Power by",
+    "firstCognition": "First Cognition"
+  },
+  "problem": {
+    "label": "Data Problem",
+    "title": "You enter the same information",
+    "description": "Forms, profiles, applications - endless repetition. Your data is scattered across dozens of sites, locked away in incompatible formats, impossible to reuse."
+  },
+  "solution": {
+    "label": "Amorfs Solution",
+    "initialTitle": "Capture Once, Use Everywhere",
+    "initialSubtitle": "We're solving data from the ground up. No more endless retyping. No more scattered information.",
+    "optionsTitle": "Browser Extension",
+    "optionsTitle2": "Data Studio"
+  },
+  "product": {
+    "extension": {
+      "number": "1",
+      "title": "Amorfs Extension",
+      "buttonText": "Install Extension",
+      "heading": "Never Retype the Same Thing Twice",
+      "description": "The extension watches as you fill out forms and automatically captures your data - names, addresses, preferences, any details you enter. Next time it's right there, ready to reuse with a click.",
+      "perfectFor": "Perfect for ones:",
+      "features": [
+        "Tired of repetitive form-filling",
+        "Executive assistants managing information for others",
+        "Who value their time and privacy"
+      ]
+    },
+    "studio": {
+      "number": "2",
+      "title": "Amorfs Studio",
+      "buttonText": "Open Studio",
+      "heading": "Curate. Design. Share.",
+      "description": "Transform your data into something beautiful. Amorfs Studio lets you personalize and curate your information, then bring it to life with stunning layout templates from our library or create your own.",
+      "perfectFor": "Perfect for ones:",
+      "features": [
+        "Catalog treasures with style",
+        "craft beautiful data presentations",
+        "Organize and showcase any collection",
+        "Create templates others can use"
+      ]
+    },
+    "privacy": {
+      "title": "Your Privacy",
+      "title2": "Guaranteed",
+      "description1": "Our zero-knowledge",
+      "description2": "architecture means we never see your unencrypted data. You're in complete control."
+    }
+  },
+  "features": {
+    "title": "Everything\nYou Need",
+    "badges": {
+      "zeroKnowledge": "Zero\nKnowledge",
+      "crossDevices": "Cross Devices",
+      "beautifulTemplates": "Beautiful Templates",
+      "instantReuse": "Instant Reuse",
+      "languageAgnostic": "Language Agnostic",
+      "easySharing": "Easy Sharing",
+      "fullControl": "Full Control",
+      "autoCapture": "Auto\nCapture"
+    }
+  },
+  "howItWorks": {
+    "title": "How Amorfs Works",
+    "steps": {
+      "capture": {
+        "number": "1",
+        "title": "Capture",
+        "description": "Enter information once in any web form. Amorfs saves it automatically."
+      },
+      "store": {
+        "number": "2",
+        "title": "Store",
+        "description": "Your data lives in an intuitive text format that's easy to read, edit, and share backed by a sophisticated semantic model that understands concepts, not just text."
+      },
+      "reuse": {
+        "number": "3",
+        "title": "Reuse",
+        "description": "Fill forms instantly. Transform data into beautiful presentations. Share with others."
+      }
+    }
+  },
+  "future": {
+    "title": "Powering the Future of AI",
+    "description": "Amorfs is not just a tool.\n\nIt's the foundation for how intelligent systems should understand information.\n\nBy capturing small data with complete fidelity and representing it at the concept level, Amorfs enables AI to reason more accurately and efficiently. It's a glimpse into a future where data flows seamlessly, intelligently, and naturally.",
+    "button": "Learn more our vision",
+    "ctaTitle": "Your Data\nYour Way",
+    "installExtension": "Install\nExtension",
+    "openStudio": "Open\nStudio",
+    "viewPricing": "View\nPricing"
+  },
+  "footer": {
+    "copyright": "© 2025 Amorfs. All rights reserved.",
+    "privacy": "Privacy and Policy",
+    "terms": "Terms and Conditions"
+  }
+}
+

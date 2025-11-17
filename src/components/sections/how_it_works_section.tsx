@@ -4,30 +4,29 @@ import { useRef } from "react";
 import Image from "next/image";
 import ScrollStack, { ScrollStackItem } from "@/components/ScrollStack";
 import { BookmarkCheck, FolderOpen, RefreshCw } from "lucide-react";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export default function HowItWorksSection() {
+  const t = useTranslation();
   const sectionRef = useRef<HTMLElement>(null);
 
   const steps = [
     {
-      number: "1",
-      title: "Capture",
-      description:
-        "Enter information once in any web form. Amorfs saves it automatically.",
+      number: t("howItWorks.steps.capture.number"),
+      title: t("howItWorks.steps.capture.title"),
+      description: t("howItWorks.steps.capture.description"),
       icon: BookmarkCheck,
     },
     {
-      number: "2",
-      title: "Store",
-      description:
-        "Your data lives in an intuitive text format that's easy to read, edit, and share backed by a sophisticated semantic model that understands concepts, not just text.",
+      number: t("howItWorks.steps.store.number"),
+      title: t("howItWorks.steps.store.title"),
+      description: t("howItWorks.steps.store.description"),
       icon: FolderOpen,
     },
     {
-      number: "3",
-      title: "Reuse",
-      description:
-        "Fill forms instantly. Transform data into beautiful presentations. Share with others.",
+      number: t("howItWorks.steps.reuse.number"),
+      title: t("howItWorks.steps.reuse.title"),
+      description: t("howItWorks.steps.reuse.description"),
       icon: RefreshCw,
     },
   ];
@@ -79,7 +78,7 @@ export default function HowItWorksSection() {
               textShadow: "0px 4px 4px rgba(0, 0, 0, 0.05)",
             }}
           >
-            How Amorfs Works
+            {t("howItWorks.title")}
           </h2>
         </div>
 

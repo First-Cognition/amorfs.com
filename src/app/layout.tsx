@@ -1,31 +1,32 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Michroma, Manrope, Inter } from "next/font/google";
 import "./globals.css";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin"],
+  subsets: ["latin", "vietnamese"],
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
-  subsets: ["latin"],
+  subsets: ["latin", "vietnamese"],
 });
 
 const michroma = Michroma({
   weight: "400",
   variable: "--font-michroma",
-  subsets: ["latin"],
+  subsets: ["latin", "vietnamese"],
 });
 
 const manrope = Manrope({
   variable: "--font-manrope",
-  subsets: ["latin"],
+  subsets: ["latin", "vietnamese"],
 });
 
 const inter = Inter({
   variable: "--font-inter",
-  subsets: ["latin"],
+  subsets: ["latin", "vietnamese"],
 });
 
 export const metadata: Metadata = {
@@ -39,12 +40,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${michroma.variable} ${manrope.variable} ${inter.variable} antialiased`}
         suppressHydrationWarning
       >
-        {children}
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

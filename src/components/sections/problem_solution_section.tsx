@@ -5,8 +5,10 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import ScrollReveal from "@/components/ScrollReveal";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export default function ProblemSolutionSection() {
+  const t = useTranslation();
   const sectionRef = useRef<HTMLElement>(null);
   const problemContentRef = useRef<HTMLDivElement>(null);
   const solutionContentRef = useRef<HTMLDivElement>(null);
@@ -176,7 +178,7 @@ export default function ProblemSolutionSection() {
                 textShadow: "0px 4px 4px rgba(0, 0, 0, 0.05)",
               }}
             >
-              Data Problem
+              {t("problem.label")}
             </h2>
 
             {/* Content Group */}
@@ -190,7 +192,7 @@ export default function ProblemSolutionSection() {
                     color: "rgba(255, 255, 255, 0.88)",
                   }}
                 >
-                  You enter the same information
+                  {t("problem.title")}
                 </h3>
               </div>
 
@@ -202,7 +204,7 @@ export default function ProblemSolutionSection() {
                   color: "rgba(255, 255, 255, 0.55)",
                 }}
               >
-                Forms, profiles, applications - endless repetition. Your data is scattered across dozens of sites, locked away in incompatible formats, impossible to reuse.
+                {t("problem.description")}
               </p>
             </div>
           </div>
@@ -241,7 +243,7 @@ export default function ProblemSolutionSection() {
             <h2
               className="w-full text-center font-michroma text-base sm:text-lg md:text-xl leading-[1.4em] tracking-[-0.04em] text-[#2DD4C2] [text-shadow:0px_4px_4px_rgba(0,0,0,0.05)]"
             >
-              Amorfs Solution
+              {t("solution.label")}
             </h2>
 
             {/* Main Content Group - with text swap */}
@@ -257,16 +259,14 @@ export default function ProblemSolutionSection() {
                     containerClassName="my-0"
                     textClassName="text-center font-manrope text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-medium leading-[1.3em] tracking-[-0.04em] text-white/88"
                   >
-                    Capture Once, Use Everywhere
+                    {t("solution.initialTitle")}
                   </ScrollReveal>
                 </div>
 
                 {/* Subtitle */}
                 <div className="flex items-center justify-center gap-2 p-2">
                   <p className="text-center font-manrope text-sm sm:text-base md:text-lg font-normal leading-[1.5em] tracking-[-0.03em] text-white/55">
-                    We're solving data from the ground up.
-                    <br className="hidden sm:inline" />
-                    No more endless retyping. No more scattered information.
+                    {t("solution.initialSubtitle")}
                   </p>
                 </div>
               </div>
@@ -282,7 +282,7 @@ export default function ProblemSolutionSection() {
                   <div className="flex flex-row items-center gap-2 sm:gap-3">
                     <h1 className="text-center font-manrope text-xl sm:text-2xl md:text-3xl lg:text-[44px] font-medium leading-[1.3em] tracking-[-0.04em] text-white/88">
                       <span className="text-white/60">{`{ `}</span>
-                      Browser Extension
+                      {t("solution.optionsTitle")}
                       <span className="text-white/60">{` }`}</span>
                     </h1>
                   </div>
@@ -291,7 +291,7 @@ export default function ProblemSolutionSection() {
                   <div className="flex flex-row items-center gap-2 sm:gap-3">
                     <h1 className="text-center font-manrope text-xl sm:text-2xl md:text-3xl lg:text-[44px] font-medium leading-[1.3em] tracking-[-0.04em] text-white/88">
                       <span className="text-white/60">{`{ `}</span>
-                      Data Studio
+                      {t("solution.optionsTitle2")}
                       <span className="text-white/60">{` }`}</span>
                     </h1>
                   </div>

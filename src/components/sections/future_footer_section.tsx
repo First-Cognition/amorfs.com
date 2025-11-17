@@ -1,11 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Magnet from "@/components/Magnet";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export default function FutureFooterSection() {
+  const t = useTranslation();
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const futureCardRef = useRef<HTMLDivElement>(null);
@@ -111,7 +113,7 @@ export default function FutureFooterSection() {
                   color: "#073071",
                 }}
               >
-                Powering the Future of AI
+                {t("future.title")}
               </h2>
 
               {/* Icon/Logo */}
@@ -131,17 +133,12 @@ export default function FutureFooterSection() {
                     fontWeight: 450,
                   }}
                 >
-                  Amorfs is not just a tool.
-                  <br />
-                  <br />
-                  It's the foundation for how intelligent systems should understand
-                  information.
-                  <br />
-                  <br />
-                  By capturing small data with complete fidelity and representing it
-                  at the concept level, Amorfs enables AI to reason more accurately
-                  and efficiently. It's a glimpse into a future where data flows
-                  seamlessly, intelligently, and naturally.
+                  {t("future.description").split("\n").map((line, i) => (
+                    <React.Fragment key={i}>
+                      {line}
+                      {i < t("future.description").split("\n").length - 1 && <br />}
+                    </React.Fragment>
+                  ))}
                 </p>
               </div>
 
@@ -154,7 +151,7 @@ export default function FutureFooterSection() {
                     fontFamily: "var(--font-manrope)",
                   }}
                 >
-                  Learn more our vision
+                  {t("future.button")}
                   {/* Hover circle effect */}
                   <span className="absolute left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#0F408F] opacity-0 transition-opacity group-hover:opacity-20" />
                 </button>
@@ -180,9 +177,12 @@ export default function FutureFooterSection() {
                   WebkitTextStroke: "0.5px #FFFFFF",
                 }}
               >
-                Your Data
-                <br />
-                Your Way
+                {t("future.ctaTitle").split("\n").map((line, i) => (
+                  <React.Fragment key={i}>
+                    {line}
+                    {i < t("future.ctaTitle").split("\n").length - 1 && <br />}
+                  </React.Fragment>
+                ))}
               </h3>
 
               {/* Buttons Container */}
@@ -216,9 +216,12 @@ export default function FutureFooterSection() {
                         fontFamily: "var(--font-manrope)",
                       }}
                     >
-                      Install
-                      <br />
-                      Extension
+                      {t("future.installExtension").split("\n").map((line, i) => (
+                        <React.Fragment key={i}>
+                          {line}
+                          {i < t("future.installExtension").split("\n").length - 1 && <br />}
+                        </React.Fragment>
+                      ))}
                     </span>
                   </div>
                 </Magnet>
@@ -261,9 +264,12 @@ export default function FutureFooterSection() {
                         fontFamily: "var(--font-manrope)",
                       }}
                     >
-                      Open
-                      <br />
-                      Studio
+                      {t("future.openStudio").split("\n").map((line, i) => (
+                        <React.Fragment key={i}>
+                          {line}
+                          {i < t("future.openStudio").split("\n").length - 1 && <br />}
+                        </React.Fragment>
+                      ))}
                     </span>
                   </div>
                 </Magnet>
@@ -310,9 +316,12 @@ export default function FutureFooterSection() {
                         fontFamily: "var(--font-manrope)",
                       }}
                     >
-                      View
-                      <br />
-                      Pricing
+                      {t("future.viewPricing").split("\n").map((line, i) => (
+                        <React.Fragment key={i}>
+                          {line}
+                          {i < t("future.viewPricing").split("\n").length - 1 && <br />}
+                        </React.Fragment>
+                      ))}
                     </span>
                   </div>
                 </Magnet>
@@ -328,7 +337,7 @@ export default function FutureFooterSection() {
                     fontFamily: "var(--font-manrope)",
                   }}
                 >
-                  © 2025 Amorfs. All rights reserved.
+                  {t("footer.copyright")}
                 </p>
                 <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 md:gap-6">
                   <a
@@ -338,7 +347,7 @@ export default function FutureFooterSection() {
                       fontFamily: "var(--font-manrope)",
                     }}
                   >
-                    Privacy and Policy
+                    {t("footer.privacy")}
                   </a>
                   <a
                     href="#terms"
@@ -347,7 +356,7 @@ export default function FutureFooterSection() {
                       fontFamily: "var(--font-manrope)",
                     }}
                   >
-                    Terms and Conditions
+                    {t("footer.terms")}
                   </a>
                 </div>
               </div>

@@ -5,8 +5,10 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import Magnet from "@/components/Magnet";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export default function FeaturesSection() {
+  const t = useTranslation();
   const sectionRef = useRef<HTMLElement>(null);
   const badgesRef = useRef<HTMLDivElement[]>([]);
 
@@ -54,7 +56,7 @@ export default function FeaturesSection() {
 
   const badges = [
     { 
-      text: "Zero\nKnowledge", 
+      text: t("features.badges.zeroKnowledge"), 
       x: 327 - offsetX, 
       y: 457 - offsetY, 
       width: 160, 
@@ -63,7 +65,7 @@ export default function FeaturesSection() {
       noAnimation: true
     },
     { 
-      text: "Cross Devices", 
+      text: t("features.badges.crossDevices"), 
       x: 1124 - offsetX, 
       y: 224 - offsetY, 
       width: 120, 
@@ -71,7 +73,7 @@ export default function FeaturesSection() {
       variant: "variant2" 
     },
     { 
-      text: "Beautiful Templates", 
+      text: t("features.badges.beautifulTemplates"), 
       x: 943 - offsetX, 
       y: 465 - offsetY, 
       width: 160, 
@@ -80,7 +82,7 @@ export default function FeaturesSection() {
       noAnimation: true
     },
     { 
-      text: "Instant Reuse", 
+      text: t("features.badges.instantReuse"), 
       x: 160 - offsetX, 
       y: 220 - offsetY, 
       width: 120, 
@@ -88,7 +90,7 @@ export default function FeaturesSection() {
       variant: "variant2" 
     },
     { 
-      text: "Language Agnostic", 
+      text: t("features.badges.languageAgnostic"), 
       x: 348 - offsetX, 
       y: 125 - offsetY, 
       width: 160, 
@@ -96,7 +98,7 @@ export default function FeaturesSection() {
       variant: "default" 
     },
     { 
-      text: "Easy Sharing", 
+      text: t("features.badges.easySharing"), 
       x: 988 - offsetX, 
       y: 289 - offsetY, 
       width: 120, 
@@ -104,7 +106,7 @@ export default function FeaturesSection() {
       variant: "variant2" 
     },
     { 
-      text: "Full Control", 
+      text: t("features.badges.fullControl"), 
       x: 293 - offsetX, 
       y: 307 - offsetY, 
       width: 120, 
@@ -112,7 +114,7 @@ export default function FeaturesSection() {
       variant: "variant2" 
     },
     { 
-      text: "Auto\nCapture", 
+      text: t("features.badges.autoCapture"), 
       x: 923 - offsetX, 
       y: 128 - offsetY, 
       width: 120, 
@@ -165,7 +167,7 @@ export default function FeaturesSection() {
             className="font-michroma text-xl sm:text-2xl md:text-[28px] leading-[1.4] tracking-[-0.04em] text-center whitespace-pre-line"
             style={{ color: "#2DD4C2" }}
           >
-            Everything{"\n"}You Need
+            {t("features.title")}
           </h2>
 
           {/* Features Container - Relative positioning for badges */}

@@ -4,8 +4,10 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { Draggable } from "gsap/Draggable";
 import { CheckCircle2, ShieldCheck } from "lucide-react";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export default function ProductSection() {
+  const t = useTranslation();
   const sectionRef = useRef<HTMLElement>(null);
   const slidesContainerRef = useRef<HTMLDivElement>(null);
   const slidesInnerRef = useRef<HTMLDivElement>(null);
@@ -149,31 +151,31 @@ export default function ProductSection() {
 
   const products = [
     {
-      number: "1",
-      title: "Amorfs Extension",
-      buttonText: "Install Extension",
-      heading: "Never Retype the Same Thing Twice",
-      description:
-        "The extension watches as you fill out forms and automatically captures your data - names, addresses, preferences, any details you enter. Next time it's right there, ready to reuse with a click.",
+      number: t("product.extension.number"),
+      title: t("product.extension.title"),
+      buttonText: t("product.extension.buttonText"),
+      heading: t("product.extension.heading"),
+      description: t("product.extension.description"),
+      perfectFor: t("product.extension.perfectFor"),
       features: [
-        "Tired of repetitive form-filling",
-        "Executive assistants managing information for others",
-        "Who value their time and privacy",
+        t("product.extension.features.0"),
+        t("product.extension.features.1"),
+        t("product.extension.features.2"),
       ],
       bgColor: "bg-[#9EC2E7]",
     },
     {
-      number: "2",
-      title: "Amorfs Studio",
-      buttonText: "Open Studio",
-      heading: "Curate. Design. Share.",
-      description:
-        "Transform your data into something beautiful. Amorfs Studio lets you personalize and curate your information, then bring it to life with stunning layout templates from our library or create your own.",
+      number: t("product.studio.number"),
+      title: t("product.studio.title"),
+      buttonText: t("product.studio.buttonText"),
+      heading: t("product.studio.heading"),
+      description: t("product.studio.description"),
+      perfectFor: t("product.studio.perfectFor"),
       features: [
-        "Catalog treasures with style",
-        "craft beautiful data presentations",
-        "Organize and showcase any collection",
-        "Create templates others can use",
+        t("product.studio.features.0"),
+        t("product.studio.features.1"),
+        t("product.studio.features.2"),
+        t("product.studio.features.3"),
       ],
       bgColor: "bg-[#9EC2E7]",
     },
@@ -235,7 +237,7 @@ export default function ProductSection() {
               {/* Features Box */}
               <div className="w-full rounded-xl sm:rounded-2xl border border-[#0E4478] bg-[#0A2647]/50 p-4 sm:p-5">
                 <p className="mb-2 sm:mb-3 font-['Manrope'] text-xs sm:text-sm font-bold leading-[1.5] tracking-normal text-white/90">
-                  Perfect for ones:
+                  {products[0].perfectFor}
                 </p>
                 <div className="flex flex-col gap-2 sm:gap-2.5">
                   {products[0].features.map((feature, idx) => (
@@ -290,7 +292,7 @@ export default function ProductSection() {
               {/* Features Box */}
               <div className="w-full rounded-xl sm:rounded-2xl border border-[#0E4478] bg-[#0A2647]/50 p-4 sm:p-5">
                 <p className="mb-2 sm:mb-3 font-['Manrope'] text-xs sm:text-sm font-bold leading-[1.5] tracking-normal text-white/90">
-                  Perfect for ones:
+                  {products[1].perfectFor}
                 </p>
                 <div className="flex flex-col gap-2 sm:gap-2.5">
                   {products[1].features.map((feature, idx) => (
@@ -311,10 +313,10 @@ export default function ProductSection() {
             {/* Left Side - Heading */}
             <div className="flex w-full lg:w-[400px] shrink-0 flex-col leading-none self-start pt-0 sm:pt-8 md:pt-12 lg:pt-[150px]">
               <h2 className="font-['Manrope'] text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[72px] font-medium leading-[1.1] tracking-[-0.04em] text-white/[0.35]">
-                Your Privacy
+                {t("product.privacy.title")}
               </h2>
               <h2 className="font-['Manrope'] text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[72px] font-medium leading-[1.1] tracking-[-0.04em] text-white">
-                Guaranteed
+                {t("product.privacy.title2")}
               </h2>
             </div>
 
@@ -327,10 +329,10 @@ export default function ProductSection() {
 
               {/* Description Text */}
               <p className="relative z-10 font-['Manrope'] text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-[34px] font-medium leading-[1.3] tracking-[-0.03em] text-white">
-                Our zero-knowledge
+                {t("product.privacy.description1")}
               </p>
               <p className="relative z-10 font-['Manrope'] text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-[34px] font-medium leading-[1.3] tracking-[-0.03em] text-white/[0.5]">
-                architecture means we never see your unencrypted data. You&apos;re in complete control.
+                {t("product.privacy.description2")}
               </p>
             </div>
           </div>

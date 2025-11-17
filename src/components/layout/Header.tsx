@@ -2,14 +2,19 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export default function Header() {
   const [isLangOpen, setIsLangOpen] = useState(false);
-  const [currentLang, setCurrentLang] = useState("EN");
+  const { language, setLanguage } = useLanguage();
+  const t = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const handleLangChange = (lang: string) => {
-    setCurrentLang(lang);
+  const currentLang = language.toUpperCase();
+
+  const handleLangChange = (lang: "en" | "vi") => {
+    setLanguage(lang);
     setIsLangOpen(false);
   };
 
@@ -47,7 +52,7 @@ export default function Header() {
           style={{ fontFamily: "var(--font-manrope)" }}
           suppressHydrationWarning
         >
-          Pricing
+          {t("header.nav.pricing")}
         </a>
         <a
           href="#technology"
@@ -55,7 +60,7 @@ export default function Header() {
           style={{ fontFamily: "var(--font-manrope)" }}
           suppressHydrationWarning
         >
-          Technology
+          {t("header.nav.technology")}
         </a>
         <a
           href="#blog"
@@ -63,7 +68,7 @@ export default function Header() {
           style={{ fontFamily: "var(--font-manrope)" }}
           suppressHydrationWarning
         >
-          Blog
+          {t("header.nav.blog")}
         </a>
         <a
           href="#faq"
@@ -71,7 +76,7 @@ export default function Header() {
           style={{ fontFamily: "var(--font-manrope)" }}
           suppressHydrationWarning
         >
-          FAQ
+          {t("header.nav.faq")}
         </a>
         <a
           href="#contact"
@@ -79,7 +84,7 @@ export default function Header() {
           style={{ fontFamily: "var(--font-manrope)" }}
           suppressHydrationWarning
         >
-          Contact
+          {t("header.nav.contact")}
         </a>
 
         {/* Language Selector */}
@@ -148,7 +153,7 @@ export default function Header() {
                 style={{ fontFamily: "var(--font-manrope)" }}
               >
                 <button
-                  onClick={() => handleLangChange("EN")}
+                  onClick={() => handleLangChange("en")}
                   className={`w-full px-4 py-2 text-left text-sm transition-colors hover:bg-white/20 ${
                     currentLang === "EN"
                       ? "bg-white/15 text-white"
@@ -158,7 +163,7 @@ export default function Header() {
                   EN
                 </button>
                 <button
-                  onClick={() => handleLangChange("VI")}
+                  onClick={() => handleLangChange("vi")}
                   className={`w-full px-4 py-2 text-left text-sm transition-colors hover:bg-white/20 ${
                     currentLang === "VI"
                       ? "bg-white/15 text-white"
@@ -178,7 +183,7 @@ export default function Header() {
           style={{ fontFamily: "var(--font-manrope)" }}
         >
           <span className="text-center text-sm font-semibold leading-[1.71em] tracking-[-0.02em] text-white">
-            Install Extension
+            {t("header.installExtension")}
           </span>
         </button>
       </nav>
@@ -279,7 +284,7 @@ export default function Header() {
                 style={{ fontFamily: "var(--font-manrope)" }}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Pricing
+                {t("header.nav.pricing")}
               </a>
               <a
                 href="#technology"
@@ -287,7 +292,7 @@ export default function Header() {
                 style={{ fontFamily: "var(--font-manrope)" }}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Technology
+                {t("header.nav.technology")}
               </a>
               <a
                 href="#blog"
@@ -295,7 +300,7 @@ export default function Header() {
                 style={{ fontFamily: "var(--font-manrope)" }}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Blog
+                {t("header.nav.blog")}
               </a>
               <a
                 href="#faq"
@@ -303,7 +308,7 @@ export default function Header() {
                 style={{ fontFamily: "var(--font-manrope)" }}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                FAQ
+                {t("header.nav.faq")}
               </a>
               <a
                 href="#contact"
@@ -311,7 +316,7 @@ export default function Header() {
                 style={{ fontFamily: "var(--font-manrope)" }}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Contact
+                {t("header.nav.contact")}
               </a>
             </nav>
 
@@ -373,7 +378,7 @@ export default function Header() {
                 {isLangOpen && (
                   <div className="mt-2 overflow-hidden rounded-lg border border-white/20 bg-white/10 backdrop-blur-md">
                     <button
-                      onClick={() => handleLangChange("EN")}
+                      onClick={() => handleLangChange("en")}
                       className={`w-full px-4 py-3 text-left text-base transition-colors hover:bg-white/20 ${
                         currentLang === "EN"
                           ? "bg-white/15 text-white"
@@ -384,7 +389,7 @@ export default function Header() {
                       EN
                     </button>
                     <button
-                      onClick={() => handleLangChange("VI")}
+                      onClick={() => handleLangChange("vi")}
                       className={`w-full px-4 py-3 text-left text-base transition-colors hover:bg-white/20 ${
                         currentLang === "VI"
                           ? "bg-white/15 text-white"
@@ -405,7 +410,7 @@ export default function Header() {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 <span className="text-center text-base font-semibold leading-[1.71em] tracking-[-0.02em] text-white">
-                  Install Extension
+                  {t("header.installExtension")}
                 </span>
               </button>
             </div>

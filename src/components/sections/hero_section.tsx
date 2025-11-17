@@ -1,9 +1,11 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export default function HeroSection() {
+  const t = useTranslation();
   const videoRef = useRef<HTMLVideoElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
@@ -79,12 +81,14 @@ export default function HeroSection() {
               textShadow: "0px 4px 4px rgba(0, 0, 0, 0.05)",
             }}
           >
-            Your{" "}
-            <span className="text-[#5DD4C5]">{"{Data}"}</span>
-            <br />
-            Beautifully Organized
-            <br />
-            Finally
+            {t("hero.title").split(t("hero.dataHighlight")).map((part, i, arr) => (
+              <React.Fragment key={i}>
+                {part}
+                {i < arr.length - 1 && (
+                  <span className="text-[#5DD4C5]">{t("hero.dataHighlight")}</span>
+                )}
+              </React.Fragment>
+            ))}
           </h1>
 
           {/* Subheadline */}
@@ -93,22 +97,7 @@ export default function HeroSection() {
             className="w-full text-center text-xs leading-[1.5em] text-white/90 sm:text-sm md:text-base lg:text-lg"
             style={{ fontFamily: "var(--font-inter)" }}
           >
-            Stop retyping the same information.{" "}
-            <span className="hidden sm:inline md:hidden lg:inline">
-              <br />
-            </span>
-            <span className="hidden md:inline">
-              <br />
-            </span>
-            Amorfs captures what you enter once, stores it securely,{" "}
-            <span className="hidden sm:inline md:hidden lg:inline">
-              <br />
-            </span>
-            <span className="hidden md:inline">
-              <br />
-            </span>
-            and lets you reuse it anywhere—or transform it into something
-            beautiful to share.
+            {t("hero.subtitle")}
           </p>
 
           {/* CTA Button */}
@@ -118,7 +107,7 @@ export default function HeroSection() {
               style={{ fontFamily: "var(--font-manrope)" }}
             >
               <span className="text-center font-semibold leading-[1.5em] tracking-[-0.03em] text-white">
-                Explore Amorfs Studio
+                {t("hero.cta")}
               </span>
             </button>
           </div>
@@ -132,7 +121,7 @@ export default function HeroSection() {
               className="text-[10px] text-white/80 sm:text-xs md:text-sm"
               style={{ fontFamily: "var(--font-manrope)" }}
             >
-              Dive Deeper
+              {t("hero.diveDeeper")}
             </span>
             <button
               className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-full transition-all hover:bg-white/10 active:scale-95"
@@ -180,7 +169,7 @@ export default function HeroSection() {
           style={{ fontFamily: "var(--font-manrope)" }}
         >
           <span className="hidden sm:inline">
-            Built in
+            {t("hero.builtIn")}
             <br />
           </span>
           2025
@@ -195,10 +184,10 @@ export default function HeroSection() {
           style={{ fontFamily: "var(--font-manrope)" }}
         >
           <span className="hidden sm:inline">
-            Power by
+            {t("hero.powerBy")}
             <br />
           </span>
-          First Cognition
+          {t("hero.firstCognition")}
         </div>
       </div>
     </section>
