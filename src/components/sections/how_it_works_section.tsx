@@ -69,11 +69,11 @@ export default function HowItWorksSection() {
       </div>
 
       {/* Content Container - Centered */}
-      <div className="relative z-10 w-full min-h-screen flex flex-col items-center justify-center py-20">
+      <div className="relative z-10 w-full min-h-screen flex flex-col items-center justify-center py-12 sm:py-16 md:py-20">
         {/* Title Section */}
-        <div className="w-full max-w-[1440px] mx-auto px-4 pb-10 flex flex-col items-center gap-2">
+        <div className="w-full max-w-[1440px] mx-auto px-4 pb-6 sm:pb-8 md:pb-10 flex flex-col items-center gap-2">
           <h2
-            className="font-michroma text-[48px] md:text-[60px] leading-[1.4em] tracking-[-0.04em] text-center"
+            className="font-michroma text-2xl sm:text-3xl md:text-4xl lg:text-[48px] xl:text-[60px] leading-[1.4em] tracking-[-0.04em] text-center"
             style={{
               color: "#2DD4C2",
               textShadow: "0px 4px 4px rgba(0, 0, 0, 0.05)",
@@ -103,24 +103,23 @@ export default function HowItWorksSection() {
                 return (
                   <ScrollStackItem
                     key={index}
-                    itemClassName="bg-[#DDEBF9] border-2 border-[#A0C2E0] rounded-[60px] !p-0 !h-auto !my-8"
+                    itemClassName="bg-[#DDEBF9] border-2 border-[#A0C2E0] rounded-2xl sm:rounded-3xl md:rounded-[60px] !p-0 !h-auto !my-4 sm:!my-6 md:!my-8"
                   >
                     <div 
-                      className="flex flex-row items-center justify-center"
+                      className="flex flex-col sm:flex-row items-center justify-center w-full max-w-[813px] mx-auto"
                       style={{
-                        gap: "44px",
-                        padding: "40px",
-                        width: "813px",
-                        height: "380px",
+                        gap: "20px",
+                        padding: "20px",
                         boxSizing: "border-box",
                       }}
                     >
                       {/* Left Content */}
                       <div 
-                        className="flex flex-col justify-center flex-shrink-0"
+                        className="flex flex-col justify-center flex-shrink-0 w-full sm:w-auto"
                         style={{
-                          gap: "20px",
-                          width: "240px",
+                          gap: "12px",
+                          width: "100%",
+                          maxWidth: "240px",
                         }}
                       >
                         {/* Icon */}
@@ -129,19 +128,18 @@ export default function HowItWorksSection() {
                           style={{
                             backgroundColor: "#0F408F",
                             borderRadius: "100px",
-                            padding: "12px",
+                            padding: "8px",
                             width: "fit-content",
                           }}
                         >
-                          <IconComponent className="w-7 h-7 text-white" />
+                          <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white" />
                         </div>
 
                         {/* Title */}
                         <h3
-                          className="font-manrope"
+                          className="font-manrope text-xl sm:text-2xl md:text-3xl lg:text-[32px]"
                           style={{
                             fontWeight: 500,
-                            fontSize: "32px",
                             lineHeight: "1.25em",
                             letterSpacing: "-0.03em",
                             color: "#073071",
@@ -152,10 +150,9 @@ export default function HowItWorksSection() {
 
                         {/* Description */}
                         <p
-                          className="font-manrope"
+                          className="font-manrope text-sm sm:text-base md:text-lg"
                           style={{
                             fontWeight: 450,
-                            fontSize: "18px",
                             lineHeight: "1.5em",
                             letterSpacing: "-0.03em",
                             color: "#073071",
@@ -167,11 +164,7 @@ export default function HowItWorksSection() {
 
                       {/* Right Image Placeholder */}
                       <div 
-                        className="bg-white rounded-[24px] flex-shrink-0"
-                        style={{
-                          width: "453px",
-                          height: "300px",
-                        }}
+                        className="bg-white rounded-xl sm:rounded-2xl md:rounded-[24px] flex-shrink-0 w-full sm:w-auto aspect-[453/300] sm:w-[453px] sm:h-[300px]"
                       />
                     </div>
                   </ScrollStackItem>

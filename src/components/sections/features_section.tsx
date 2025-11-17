@@ -158,18 +158,18 @@ export default function FeaturesSection() {
       </div>
 
       {/* Content Container - Centered with max-width */}
-      <div className="relative w-full h-full flex flex-col items-center justify-center py-[60px] px-4">
-        <div className="w-full max-w-[1440px] mx-auto flex flex-col items-center gap-6">
+      <div className="relative w-full h-full flex flex-col items-center justify-center py-8 sm:py-12 md:py-16 lg:py-[60px] px-4">
+        <div className="w-full max-w-[1440px] mx-auto flex flex-col items-center gap-4 sm:gap-5 md:gap-6">
           {/* Title */}
           <h2 
-            className="font-michroma text-[28px] md:text-[28px] leading-[1.4] tracking-[-0.04em] text-center whitespace-pre-line"
+            className="font-michroma text-xl sm:text-2xl md:text-[28px] leading-[1.4] tracking-[-0.04em] text-center whitespace-pre-line"
             style={{ color: "#2DD4C2" }}
           >
             Everything{"\n"}You Need
           </h2>
 
           {/* Features Container - Relative positioning for badges */}
-          <div className="relative w-full max-w-[1294px] aspect-[1294/524]">
+          <div className="relative w-full max-w-[1294px] aspect-[1294/524] min-h-[200px] sm:min-h-[300px] md:min-h-[400px]">
             {/* Globe GIF - Centered */}
             <div 
               className="absolute"
@@ -197,8 +197,9 @@ export default function FeaturesSection() {
             {badges.map((badge, index) => (
               <Magnet
                 key={index}
-                padding={100}
+                padding={50}
                 magnetStrength={10}
+                className="sm:!p-[50px] md:!p-[75px] lg:!p-[100px]"
                 style={{
                   position: "absolute",
                   left: `${(badge.x / 1294) * 100}%`,
@@ -217,7 +218,7 @@ export default function FeaturesSection() {
                   }}
                   className="flex items-center justify-center text-center transition-all hover:scale-105 w-full h-full"
                   style={{
-                    padding: "0.62% 1.55%",
+                    padding: "clamp(4px, 0.62%, 8px) clamp(8px, 1.55%, 20px)",
                     background: "rgba(255, 255, 255, 0.06)",
                     border: "1px solid rgba(255, 255, 255, 0.17)",
                     borderRadius: "1000px",
@@ -228,7 +229,7 @@ export default function FeaturesSection() {
                   <span 
                     className="font-inter leading-[1.5] text-white text-center whitespace-pre-line w-full"
                     style={{
-                      fontSize: "clamp(10px, 1.39vw, 18px)",
+                      fontSize: "clamp(8px, 1.2vw, 18px)",
                     }}
                   >
                     {badge.text}

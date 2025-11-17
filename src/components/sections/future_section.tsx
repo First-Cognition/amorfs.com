@@ -54,16 +54,16 @@ export default function FutureSection() {
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 flex h-full w-full flex-col items-center justify-center gap-6 px-4">
+      <div className="relative z-10 flex h-full w-full flex-col items-center justify-center gap-4 sm:gap-6 px-4 sm:px-6 md:px-8">
         {/* Main Card */}
         <div
           ref={cardRef}
-          className="relative w-full max-w-[760px] rounded-[60px] border-2 border-white bg-[rgba(255,255,255,0.82)] p-[60px] backdrop-blur-[4px]"
+          className="relative w-full max-w-[760px] rounded-2xl sm:rounded-3xl md:rounded-[60px] border-2 border-white bg-[rgba(255,255,255,0.82)] p-6 sm:p-8 md:p-12 lg:p-[60px] backdrop-blur-[4px]"
         >
-          <div className="flex flex-col items-center gap-5">
+          <div className="flex flex-col items-center gap-4 sm:gap-5">
             {/* Title */}
             <h2
-              className="text-center text-[32px] font-semibold leading-[1.25em] tracking-[-0.03em]"
+              className="text-center text-xl sm:text-2xl md:text-3xl lg:text-[32px] font-semibold leading-[1.25em] tracking-[-0.03em]"
               style={{
                 fontFamily: "var(--font-manrope)",
                 color: "#073071",
@@ -73,13 +73,14 @@ export default function FutureSection() {
             </h2>
 
             {/* Icon/Logo */}
-            <div className="flex h-[23px] w-[78px] items-center justify-center">
+            <div className="flex h-[18px] w-[62px] sm:h-[20px] sm:w-[70px] md:h-[23px] md:w-[78px] items-center justify-center">
               <svg
                 width="79"
                 height="23"
                 viewBox="0 0 79 23"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                className="w-full h-full"
               >
                 <ellipse
                   cx="7.295"
@@ -122,7 +123,7 @@ export default function FutureSection() {
             {/* Description */}
             <div className="w-full max-w-[500px]">
               <p
-                className="text-center text-[18px] leading-[1.5em] tracking-[-0.03em]"
+                className="text-center text-sm sm:text-base md:text-lg leading-[1.5em] tracking-[-0.03em]"
                 style={{
                   fontFamily: "var(--font-manrope)",
                   color: "#525252",
@@ -144,9 +145,9 @@ export default function FutureSection() {
             </div>
 
             {/* Button */}
-            <div className="mt-5 flex justify-center">
+            <div className="mt-4 sm:mt-5 flex justify-center">
               <button
-                className="group relative rounded-full border border-[#0F408F] px-5 py-3 text-center text-[16px] font-semibold uppercase leading-[1.5em] tracking-[-0.03em] text-[#0F408F] transition-all hover:bg-[#0F408F] hover:text-white"
+                className="group relative rounded-full border border-[#0F408F] px-4 py-2.5 sm:px-5 sm:py-3 text-center text-sm sm:text-base font-semibold uppercase leading-[1.5em] tracking-[-0.03em] text-[#0F408F] transition-all hover:bg-[#0F408F] hover:text-white active:scale-95"
                 style={{
                   fontFamily: "var(--font-manrope)",
                 }}
