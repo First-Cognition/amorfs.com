@@ -12,7 +12,7 @@
   "hero": {
     "title": "Dữ liệu của bạn được sắp xếp hoàn hảo",
     "dataHighlight": "{Data}",
-    "subtitle": "Không cần nhập lại. Amorfs tự động lưu lại mọi thông tin bạn nhập, bảo mật tuyệt đối, và cho phép bạn sử dụng lại ở bất cứ đâu—hoặc biến đổi thành những thứ đẹp đẽ để chia sẻ.",
+    "subtitle": "Không cần nhập lại. Amorfs tự động lưu lại mọi thông tin bạn nhập, bảo mật tuyệt đối, và cho phép bạn sử dụng lại ở bất cứ đâu - hoặc biến đổi thành những thứ đẹp đẽ để chia sẻ.",
     "cta": "Khám phá Amorfs Studio",
     "diveDeeper": "Tìm hiểu thêm",
     "builtIn": "Được xây dựng bởi",
@@ -22,7 +22,7 @@
   "problem": {
     "label": "Vấn đề dữ liệu",
     "title": "Bạn phải nhập lại cùng một thông tin nhiều lần",
-    "description": "Biểu mẫu, hồ sơ, đơn đăng ký—sự lặp lại không ngừng. Dữ liệu của bạn bị phân tán trên hàng chục trang web, bị khóa trong các định dạng không tương thích, không thể tái sử dụng."
+    "description": "Biểu mẫu, hồ sơ, đơn đăng ký-sự lặp lại không ngừng. Dữ liệu của bạn bị phân tán trên hàng chục trang web, bị khóa trong các định dạng không tương thích, không thể tái sử dụng."
   },
   "solution": {
     "label": "Giải pháp Amorfs",
@@ -37,7 +37,7 @@
       "title": "Amorfs Extension",
       "buttonText": "Cài đặt Extension",
       "heading": "Không bao giờ phải nhập lại",
-      "description": "Tiện ích tự động theo dõi và lưu lại mọi thông tin bạn nhập vào biểu mẫu—tên, địa chỉ, sở thích, bất kỳ chi tiết nào. Lần sau, mọi thứ đã sẵn sàng, chỉ cần một cú nhấp để sử dụng lại.",
+      "description": "Tiện ích tự động theo dõi và lưu lại mọi thông tin bạn nhập vào biểu mẫu-tên, địa chỉ, sở thích, bất kỳ chi tiết nào. Lần sau, mọi thứ đã sẵn sàng, chỉ cần một cú nhấp để sử dụng lại.",
       "perfectFor": "Phù hợp với:",
       "features": [
         "Những người mệt mỏi với việc điền biểu mẫu lặp đi lặp lại",

@@ -203,7 +203,7 @@ export default function FeaturesSection() {
                 key={index}
                 padding={50}
                 magnetStrength={10}
-                className="sm:!p-[50px] md:!p-[75px] lg:!p-[100px]"
+                className="cursor-pointer"
                 style={{
                   position: "absolute",
                   left: `${(badge.x / 1294) * 100}%`,
@@ -220,20 +220,30 @@ export default function FeaturesSection() {
                       badgesRef.current[index] = el;
                     }
                   }}
-                  className="flex items-center justify-center text-center transition-all hover:scale-105 w-full h-full"
+                  className="flex items-center justify-center text-center transition-all hover:scale-105"
                   style={{
-                    padding: "clamp(4px, 0.62%, 8px) clamp(8px, 1.55%, 20px)",
+                    width: "100%",
+                    height: "100%",
+                    minWidth: "100%",
+                    minHeight: "100%",
+                    aspectRatio: "1",
+                    padding: "clamp(8px, 1.2vw, 16px)",
                     background: "rgba(255, 255, 255, 0.06)",
                     border: "1px solid rgba(255, 255, 255, 0.17)",
-                    borderRadius: "1000px",
+                    borderRadius: "50%",
                     backdropFilter: "blur(10px)",
                     WebkitBackdropFilter: "blur(10px)",
+                    boxSizing: "border-box",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
                   }}
                 >
                   <span 
-                    className="font-inter leading-[1.5] text-white text-center whitespace-pre-line w-full"
+                    className="font-inter leading-[1.4] text-white text-center whitespace-pre-line"
                     style={{
                       fontSize: "clamp(8px, 1.2vw, 18px)",
+                      lineHeight: "1.4",
                     }}
                   >
                     {badge.text}
