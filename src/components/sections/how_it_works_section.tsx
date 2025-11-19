@@ -5,9 +5,12 @@ import Image from "next/image";
 import ScrollStack, { ScrollStackItem } from "@/components/ScrollStack";
 import { BookmarkCheck, FolderOpen, RefreshCw } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { getFontFamily } from "@/lib/utils/fonts";
 
 export default function HowItWorksSection() {
   const t = useTranslation();
+  const { language } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
 
   const steps = [
@@ -75,6 +78,7 @@ export default function HowItWorksSection() {
           <h2
             className="font-michroma text-2xl sm:text-3xl md:text-4xl lg:text-[48px] xl:text-[60px] leading-[1.4em] tracking-[-0.04em] text-center"
             style={{
+              fontFamily: getFontFamily(language, "michroma"),
               color: "#2DD4C2",
               textShadow: "0px 4px 4px rgba(0, 0, 0, 0.05)",
             }}
@@ -142,6 +146,7 @@ export default function HowItWorksSection() {
                         <h3
                           className="font-manrope text-xl sm:text-2xl md:text-3xl lg:text-[32px]"
                           style={{
+                            fontFamily: getFontFamily(language, "manrope"),
                             fontWeight: 500,
                             lineHeight: "1.25em",
                             letterSpacing: "-0.03em",
@@ -155,6 +160,7 @@ export default function HowItWorksSection() {
                         <p
                           className="font-manrope text-sm sm:text-base md:text-lg"
                           style={{
+                            fontFamily: getFontFamily(language, "manrope"),
                             fontWeight: 450,
                             lineHeight: "1.5em",
                             letterSpacing: "-0.03em",

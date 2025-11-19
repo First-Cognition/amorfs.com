@@ -6,9 +6,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import Magnet from "@/components/Magnet";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { getFontFamily } from "@/lib/utils/fonts";
 
 export default function FeaturesSection() {
   const t = useTranslation();
+  const { language } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
   const badgesRef = useRef<HTMLDivElement[]>([]);
 
@@ -166,7 +169,10 @@ export default function FeaturesSection() {
           {/* Title */}
           <h2 
             className="font-michroma text-xl sm:text-2xl md:text-[28px] leading-[1.4] tracking-[-0.04em] text-center whitespace-pre-line"
-            style={{ color: "#2DD4C2" }}
+            style={{ 
+              fontFamily: getFontFamily(language, "michroma"),
+              color: "#2DD4C2" 
+            }}
           >
             {t("features.title")}
           </h2>
@@ -242,6 +248,7 @@ export default function FeaturesSection() {
                   <span 
                     className="font-inter leading-[1.4] text-white text-center whitespace-pre-line"
                     style={{
+                      fontFamily: getFontFamily(language, "inter"),
                       fontSize: "clamp(8px, 1.2vw, 18px)",
                       lineHeight: "1.4",
                     }}

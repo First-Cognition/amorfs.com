@@ -54,15 +54,34 @@ html[lang="vi"] * {
 
 html {
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
+/* Scroll Snap Utilities */
+@utility scroll-snap-type-y {
+  scroll-snap-type: y proximity;
+}
+
+@utility scroll-snap-mandatory {
+  scroll-snap-type: y proximity;
+}
+
+@utility scroll-snap-align-start {
+  scroll-snap-align: start;
+}
+
+@utility scroll-snap-align-center {
+  scroll-snap-align: center;
+}
+
+
 /* Hide scrollbar for ScrollStack when using window scroll */
-.scroll-stack-no-scrollbar > div {
+.scroll-stack-no-scrollbar>div {
   overflow: hidden !important;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
 
-.scroll-stack-no-scrollbar > div::-webkit-scrollbar {
+.scroll-stack-no-scrollbar>div::-webkit-scrollbar {
   display: none;
 }

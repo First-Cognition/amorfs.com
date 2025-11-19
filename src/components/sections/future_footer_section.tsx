@@ -5,9 +5,12 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Magnet from "@/components/Magnet";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { getFontFamily } from "@/lib/utils/fonts";
 
 export default function FutureFooterSection() {
   const t = useTranslation();
+  const { language } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const futureCardRef = useRef<HTMLDivElement>(null);
@@ -110,7 +113,7 @@ export default function FutureFooterSection() {
               <h2
                 className="text-center text-xl sm:text-2xl md:text-3xl lg:text-[32px] font-semibold leading-[1.25em] tracking-[-0.03em]"
                 style={{
-                  fontFamily: "var(--font-manrope)",
+                  fontFamily: getFontFamily(language, "manrope"),
                   color: "#073071",
                 }}
               >
@@ -129,7 +132,7 @@ export default function FutureFooterSection() {
                 <p
                   className="text-center text-sm sm:text-base md:text-lg leading-[1.5em] tracking-[-0.03em]"
                   style={{
-                    fontFamily: "var(--font-manrope)",
+                    fontFamily: getFontFamily(language, "manrope"),
                     color: "#525252",
                     fontWeight: 450,
                   }}
@@ -149,7 +152,7 @@ export default function FutureFooterSection() {
                   onClick={handleLearnMoreClick}
                   className="group relative rounded-full border border-[#0F408F] px-4 py-2.5 sm:px-5 sm:py-3 text-center text-sm sm:text-base font-semibold uppercase leading-[1.5em] tracking-[-0.03em] text-[#0F408F] transition-all hover:bg-[#0F408F] hover:text-white active:scale-95"
                   style={{
-                    fontFamily: "var(--font-manrope)",
+                    fontFamily: getFontFamily(language, "manrope"),
                   }}
                 >
                   {t("future.button")}
@@ -173,7 +176,7 @@ export default function FutureFooterSection() {
               <h3
                 className="text-center text-3xl sm:text-4xl md:text-5xl lg:text-[60px] font-normal leading-[1.3em] tracking-[-0.04em] text-white"
                 style={{
-                  fontFamily: "var(--font-michroma)",
+                  fontFamily: getFontFamily(language, "michroma"),
                   textShadow: "0 0.5px 0 #FFFFFF",
                   WebkitTextStroke: "0.5px #FFFFFF",
                 }}
@@ -214,7 +217,7 @@ export default function FutureFooterSection() {
                     <span
                       className="text-center text-sm sm:text-base md:text-lg lg:text-[20px] font-semibold leading-[1.4em] tracking-[-0.03em] text-white"
                       style={{
-                        fontFamily: "var(--font-manrope)",
+                        fontFamily: getFontFamily(language, "manrope"),
                       }}
                     >
                       {t("future.installExtension").split("\n").map((line, i) => (
@@ -262,7 +265,7 @@ export default function FutureFooterSection() {
                     <span
                       className="text-center text-sm sm:text-base md:text-lg lg:text-[20px] font-semibold leading-[1.4em] tracking-[-0.03em] text-white"
                       style={{
-                        fontFamily: "var(--font-manrope)",
+                        fontFamily: getFontFamily(language, "manrope"),
                       }}
                     >
                       {t("future.openStudio").split("\n").map((line, i) => (
@@ -314,7 +317,7 @@ export default function FutureFooterSection() {
                     <span
                       className="text-center text-sm sm:text-base md:text-lg lg:text-[20px] font-semibold leading-[1.4em] tracking-[-0.03em] text-white"
                       style={{
-                        fontFamily: "var(--font-manrope)",
+                        fontFamily: getFontFamily(language, "manrope"),
                       }}
                     >
                       {t("future.viewPricing").split("\n").map((line, i) => (
@@ -335,7 +338,7 @@ export default function FutureFooterSection() {
                 <p
                   className="text-sm sm:text-base font-medium leading-[1.4em] tracking-[-0.02em] text-white/68 text-center sm:text-left"
                   style={{
-                    fontFamily: "var(--font-manrope)",
+                    fontFamily: getFontFamily(language, "manrope"),
                   }}
                 >
                   {t("footer.copyright")}
@@ -345,7 +348,7 @@ export default function FutureFooterSection() {
                     href="#privacy"
                     className="text-sm sm:text-base font-medium leading-[1.4em] tracking-[-0.02em] text-white/68 transition-colors hover:text-white"
                     style={{
-                      fontFamily: "var(--font-manrope)",
+                      fontFamily: getFontFamily(language, "manrope"),
                     }}
                   >
                     {t("footer.privacy")}
@@ -354,7 +357,7 @@ export default function FutureFooterSection() {
                     href="#terms"
                     className="text-sm sm:text-base font-medium leading-[1.4em] tracking-[-0.02em] text-white/68 transition-colors hover:text-white"
                     style={{
-                      fontFamily: "var(--font-manrope)",
+                      fontFamily: getFontFamily(language, "manrope"),
                     }}
                   >
                     {t("footer.terms")}

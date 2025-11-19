@@ -6,9 +6,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import ScrollReveal from "@/components/ScrollReveal";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { getFontFamily } from "@/lib/utils/fonts";
 
 export default function ProblemSolutionSection() {
   const t = useTranslation();
+  const { language } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
   const problemContentRef = useRef<HTMLDivElement>(null);
   const solutionContentRef = useRef<HTMLDivElement>(null);
@@ -19,10 +22,29 @@ export default function ProblemSolutionSection() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    
+
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
+      // Initial fade-in animation when section enters viewport
+      gsap.fromTo(
+        sectionRef.current,
+        {
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+            end: "top 50%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+
       // Pin the entire section for scroll-based transitions
       const mainTimeline = gsap.timeline({
         scrollTrigger: {
@@ -45,8 +67,8 @@ export default function ProblemSolutionSection() {
       // Phase 2: Fade out Problem content
       mainTimeline.to(
         problemContentRef.current,
-        { 
-          opacity: 0, 
+        {
+          opacity: 0,
           y: -50,
           duration: 0.3,
         },
@@ -57,8 +79,8 @@ export default function ProblemSolutionSection() {
       mainTimeline.fromTo(
         solutionContentRef.current,
         { opacity: 0, y: 50 },
-        { 
-          opacity: 1, 
+        {
+          opacity: 1,
           y: 0,
           duration: 0.3,
         },
@@ -70,8 +92,8 @@ export default function ProblemSolutionSection() {
         mainTimeline.fromTo(
           decorationRef.current,
           { opacity: 0, scale: 0.8 },
-          { 
-            opacity: 1, 
+          {
+            opacity: 1,
             scale: 1,
             duration: 1,
           },
@@ -124,14 +146,14 @@ export default function ProblemSolutionSection() {
             ease: "none",
           }
         );
-        
+
       }
       if (decorationRef.current) {
         mainTimeline.fromTo(
           decorationRef.current,
           { opacity: 0, scale: 0.8 },
-          { 
-            opacity: 1, 
+          {
+            opacity: 1,
             scale: 1,
             duration: 1,
           },
@@ -145,8 +167,9 @@ export default function ProblemSolutionSection() {
 
   return (
     <section
+      id="problem-solution"
       ref={sectionRef}
-      className="relative h-screen w-full overflow-hidden"
+      className="relative h-screen w-full overflow-hidden scroll-snap-align-start opacity-0"
     >
       {/* Background Image - Shared for both Problem and Solution */}
       <div className="absolute inset-0 z-0" suppressHydrationWarning>
@@ -160,21 +183,22 @@ export default function ProblemSolutionSection() {
       </div>
 
       {/* Problem Content */}
-      <div 
+      <div
         ref={problemContentRef}
         className="absolute inset-0 flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-10"
         suppressHydrationWarning
       >
-        <div 
+        <div
           className="flex w-full max-w-7xl flex-col items-center gap-6 sm:gap-8 md:gap-12 lg:flex-row lg:items-center lg:gap-16 xl:gap-[120px] lg:px-10 xl:px-20"
           suppressHydrationWarning
         >
           {/* Left Content - Text */}
           <div className="flex w-full flex-col justify-center gap-4 sm:gap-6 md:gap-8 lg:flex-1 lg:gap-8" suppressHydrationWarning>
             {/* Label */}
-            <h2 
+            <h2
               className="text-base sm:text-lg md:text-xl leading-[1.4em] tracking-[-0.04em] font-michroma"
               style={{
+                fontFamily: getFontFamily(language, "michroma"),
                 fontWeight: 400,
                 color: "#2DD4C2",
                 textShadow: "0px 4px 4px rgba(0, 0, 0, 0.05)",
@@ -187,9 +211,10 @@ export default function ProblemSolutionSection() {
             <div className="flex flex-col items-start self-stretch gap-3 sm:gap-4 md:gap-6" suppressHydrationWarning>
               {/* Headline */}
               <div className="flex flex-col justify-center self-stretch" suppressHydrationWarning>
-                <h3 
+                <h3
                   className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] leading-[1.3em] tracking-[-0.04em] font-manrope"
                   style={{
+                    fontFamily: getFontFamily(language, "manrope"),
                     fontWeight: 500,
                     color: "rgba(255, 255, 255, 0.88)",
                   }}
@@ -199,9 +224,10 @@ export default function ProblemSolutionSection() {
               </div>
 
               {/* Description */}
-              <p 
+              <p
                 className="text-sm sm:text-base md:text-lg leading-[1.5em] tracking-[-0.03em] font-manrope"
                 style={{
+                  fontFamily: getFontFamily(language, "manrope"),
                   fontWeight: 450,
                   color: "rgba(255, 255, 255, 0.55)",
                 }}
@@ -213,7 +239,7 @@ export default function ProblemSolutionSection() {
 
           {/* Right Content - Video */}
           <div className="relative flex-shrink-0 w-full lg:w-auto" suppressHydrationWarning>
-            <div 
+            <div
               className="relative overflow-hidden w-full aspect-[524/478] max-w-full lg:w-[524px] lg:h-[478px] rounded-xl sm:rounded-2xl md:rounded-3xl"
               style={{
                 backgroundColor: "#19549B",
@@ -236,16 +262,17 @@ export default function ProblemSolutionSection() {
       </div>
 
       {/* Solution Content */}
-      <div 
+      <div
         ref={solutionContentRef}
         className="absolute inset-0 flex flex-col items-center justify-center px-4 py-12 sm:px-6 sm:py-16 md:px-8 md:py-24 lg:px-10 lg:py-[200px] opacity-0"
         suppressHydrationWarning
       >
-        <div className="flex w-full max-w-[800px] flex-col items-center gap-8 sm:gap-12 md:gap-16 lg:gap-[120px] px-4 sm:px-6 md:px-10 lg:px-20" suppressHydrationWarning>
+        <div className="flex w-full max-w-[800px] mx-auto flex-col items-center justify-center gap-8 sm:gap-12 md:gap-16 lg:gap-[120px] px-4 sm:px-6 md:px-10 lg:px-20" suppressHydrationWarning>
           <div className="flex w-full flex-col items-center justify-center gap-4 sm:gap-6 md:gap-8" suppressHydrationWarning>
             {/* Small Title */}
             <h2
               className="w-full text-center font-michroma text-base sm:text-lg md:text-xl leading-[1.4em] tracking-[-0.04em] text-[#2DD4C2] [text-shadow:0px_4px_4px_rgba(0,0,0,0.05)]"
+              style={{ fontFamily: getFontFamily(language, "michroma") }}
             >
               {t("solution.label")}
             </h2>
@@ -263,6 +290,7 @@ export default function ProblemSolutionSection() {
                   <ScrollReveal
                     containerClassName="my-0"
                     textClassName="text-center font-manrope text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-medium leading-[1.3em] tracking-[-0.04em] text-white/88"
+                    style={{ fontFamily: getFontFamily(language, "manrope") } as React.CSSProperties}
                   >
                     {t("solution.initialTitle")}
                   </ScrollReveal>
@@ -270,7 +298,10 @@ export default function ProblemSolutionSection() {
 
                 {/* Subtitle */}
                 <div className="flex items-center justify-center gap-2 p-2" suppressHydrationWarning>
-                  <p className="text-center font-manrope text-sm sm:text-base md:text-lg font-normal leading-[1.5em] tracking-[-0.03em] text-white/55">
+                  <p 
+                    className="text-center font-manrope text-sm sm:text-base md:text-lg font-normal leading-[1.5em] tracking-[-0.03em] text-white/55"
+                    style={{ fontFamily: getFontFamily(language, "manrope") }}
+                  >
                     {t("solution.initialSubtitle")}
                   </p>
                 </div>
@@ -286,7 +317,10 @@ export default function ProblemSolutionSection() {
                 <div className="flex flex-col items-center gap-3 sm:gap-4 self-stretch" suppressHydrationWarning>
                   {/* Browser Extension */}
                   <div className="flex flex-row items-center gap-2 sm:gap-3" suppressHydrationWarning>
-                    <h1 className="text-center font-manrope text-xl sm:text-2xl md:text-3xl lg:text-[44px] font-medium leading-[1.3em] tracking-[-0.04em] text-white/88">
+                    <h1 
+                      className="text-center font-manrope text-xl sm:text-2xl md:text-3xl lg:text-[44px] font-medium leading-[1.3em] tracking-[-0.04em] text-white/88"
+                      style={{ fontFamily: getFontFamily(language, "manrope") }}
+                    >
                       <span className="text-white/60">{`{ `}</span>
                       {t("solution.optionsTitle")}
                       <span className="text-white/60">{` }`}</span>
@@ -295,7 +329,10 @@ export default function ProblemSolutionSection() {
 
                   {/* Data Studio */}
                   <div className="flex flex-row items-center gap-2 sm:gap-3" suppressHydrationWarning>
-                    <h1 className="text-center font-manrope text-xl sm:text-2xl md:text-3xl lg:text-[44px] font-medium leading-[1.3em] tracking-[-0.04em] text-white/88">
+                    <h1 
+                      className="text-center font-manrope text-xl sm:text-2xl md:text-3xl lg:text-[44px] font-medium leading-[1.3em] tracking-[-0.04em] text-white/88"
+                      style={{ fontFamily: getFontFamily(language, "manrope") }}
+                    >
                       <span className="text-white/60">{`{ `}</span>
                       {t("solution.optionsTitle2")}
                       <span className="text-white/60">{` }`}</span>

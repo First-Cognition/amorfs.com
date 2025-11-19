@@ -5,9 +5,12 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { getFontFamily } from "@/lib/utils/fonts";
 
 export default function FutureSection() {
   const t = useTranslation();
+  const { language } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -67,7 +70,7 @@ export default function FutureSection() {
             <h2
               className="text-center text-xl sm:text-2xl md:text-3xl lg:text-[32px] font-semibold leading-[1.25em] tracking-[-0.03em]"
               style={{
-                fontFamily: "var(--font-manrope)",
+                fontFamily: getFontFamily(language, "manrope"),
                 color: "#073071",
               }}
             >
@@ -127,7 +130,7 @@ export default function FutureSection() {
               <p
                 className="text-center text-sm sm:text-base md:text-lg leading-[1.5em] tracking-[-0.03em]"
                 style={{
-                  fontFamily: "var(--font-manrope)",
+                  fontFamily: getFontFamily(language, "manrope"),
                   color: "#525252",
                   fontWeight: 450,
                 }}
@@ -146,7 +149,7 @@ export default function FutureSection() {
               <button
                 className="group relative rounded-full border border-[#0F408F] px-4 py-2.5 sm:px-5 sm:py-3 text-center text-sm sm:text-base font-semibold uppercase leading-[1.5em] tracking-[-0.03em] text-[#0F408F] transition-all hover:bg-[#0F408F] hover:text-white active:scale-95"
                 style={{
-                  fontFamily: "var(--font-manrope)",
+                  fontFamily: getFontFamily(language, "manrope"),
                 }}
               >
                 {t("future.button")}
@@ -166,7 +169,7 @@ export default function FutureSection() {
           <h3
             className="text-center text-[60px] font-normal leading-[1.3em] tracking-[-0.04em] text-white"
             style={{
-              fontFamily: "var(--font-michroma)",
+              fontFamily: getFontFamily(language, "michroma"),
               textShadow: "0 0.5px 0 #FFFFFF",
               WebkitTextStroke: "0.5px #FFFFFF",
             }}
@@ -201,7 +204,7 @@ export default function FutureSection() {
               <span
                 className="text-center text-[20px] font-semibold leading-[1.4em] tracking-[-0.03em] text-white"
                 style={{
-                  fontFamily: "var(--font-manrope)",
+                  fontFamily: getFontFamily(language, "manrope"),
                 }}
               >
                 {t("future.installExtension").split("\n").map((line, i) => (
@@ -233,7 +236,7 @@ export default function FutureSection() {
               <span
                 className="text-center text-[20px] font-semibold leading-[1.4em] tracking-[-0.03em] text-white"
                 style={{
-                  fontFamily: "var(--font-manrope)",
+                  fontFamily: getFontFamily(language, "manrope"),
                 }}
               >
                 {t("future.openStudio").split("\n").map((line, i) => (
@@ -265,7 +268,7 @@ export default function FutureSection() {
               <span
                 className="text-center text-[20px] font-semibold leading-[1.4em] tracking-[-0.03em] text-white"
                 style={{
-                  fontFamily: "var(--font-manrope)",
+                  fontFamily: getFontFamily(language, "manrope"),
                 }}
               >
                 {t("future.viewPricing").split("\n").map((line, i) => (

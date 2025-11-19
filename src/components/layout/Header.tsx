@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTranslation } from "@/hooks/useTranslation";
+import { getFontFamily } from "@/lib/utils/fonts";
 
 export default function Header() {
   const [isLangOpen, setIsLangOpen] = useState(false);
@@ -49,7 +50,7 @@ export default function Header() {
         <a
           href="#pricing"
           className="text-center text-sm leading-[1.5em] text-white/88 transition-colors hover:text-white"
-          style={{ fontFamily: "var(--font-manrope)" }}
+          style={{ fontFamily: getFontFamily(language, "manrope") }}
           suppressHydrationWarning
         >
           {t("header.nav.pricing")}
@@ -57,7 +58,7 @@ export default function Header() {
         <a
           href="#technology"
           className="text-center text-sm leading-[1.5em] text-white/88 transition-colors hover:text-white"
-          style={{ fontFamily: "var(--font-manrope)" }}
+          style={{ fontFamily: getFontFamily(language, "manrope") }}
           suppressHydrationWarning
         >
           {t("header.nav.technology")}
@@ -65,7 +66,7 @@ export default function Header() {
         <a
           href="#blog"
           className="text-center text-sm leading-[1.5em] text-white/88 transition-colors hover:text-white"
-          style={{ fontFamily: "var(--font-manrope)" }}
+          style={{ fontFamily: getFontFamily(language, "manrope") }}
           suppressHydrationWarning
         >
           {t("header.nav.blog")}
@@ -73,7 +74,7 @@ export default function Header() {
         <a
           href="#faq"
           className="text-center text-sm leading-[1.5em] text-white/88 transition-colors hover:text-white"
-          style={{ fontFamily: "var(--font-manrope)" }}
+          style={{ fontFamily: getFontFamily(language, "manrope") }}
           suppressHydrationWarning
         >
           {t("header.nav.faq")}
@@ -81,7 +82,7 @@ export default function Header() {
         <a
           href="#contact"
           className="text-center text-sm leading-[1.5em] text-white/88 transition-colors hover:text-white"
-          style={{ fontFamily: "var(--font-manrope)" }}
+          style={{ fontFamily: getFontFamily(language, "manrope") }}
           suppressHydrationWarning
         >
           {t("header.nav.contact")}
@@ -117,7 +118,7 @@ export default function Header() {
             </svg>
             <span
               className="text-center text-sm leading-[1.5em] text-white/88"
-              style={{ fontFamily: "var(--font-manrope)" }}
+              style={{ fontFamily: getFontFamily(language, "manrope") }}
             >
               {currentLang}
             </span>
@@ -150,7 +151,7 @@ export default function Header() {
               {/* Dropdown */}
               <div
                 className="absolute right-0 top-full z-50 mt-2 w-24 overflow-hidden rounded-lg border border-white/20 bg-white/10 shadow-lg backdrop-blur-md"
-                style={{ fontFamily: "var(--font-manrope)" }}
+                style={{ fontFamily: getFontFamily(language, "manrope") }}
               >
                 <button
                   onClick={() => handleLangChange("en")}
@@ -180,7 +181,7 @@ export default function Header() {
         {/* Install Extension Button */}
         <button
           className="flex h-10 items-center justify-center gap-2 rounded-full border border-white/55 bg-white/11 px-4 py-2 transition-all hover:bg-white/20"
-          style={{ fontFamily: "var(--font-manrope)" }}
+          style={{ fontFamily: getFontFamily(language, "manrope") }}
         >
           <span className="text-center text-sm font-semibold leading-[1.71em] tracking-[-0.02em] text-white">
             {t("header.installExtension")}
@@ -281,7 +282,7 @@ export default function Header() {
               <a
                 href="#pricing"
                 className="rounded-lg px-4 py-3 text-base font-medium leading-[1.5em] text-white/88 transition-colors hover:bg-white/10 hover:text-white"
-                style={{ fontFamily: "var(--font-manrope)" }}
+                style={{ fontFamily: getFontFamily(language, "manrope") }}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t("header.nav.pricing")}
@@ -289,7 +290,7 @@ export default function Header() {
               <a
                 href="#technology"
                 className="rounded-lg px-4 py-3 text-base font-medium leading-[1.5em] text-white/88 transition-colors hover:bg-white/10 hover:text-white"
-                style={{ fontFamily: "var(--font-manrope)" }}
+                style={{ fontFamily: getFontFamily(language, "manrope") }}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t("header.nav.technology")}
@@ -297,7 +298,7 @@ export default function Header() {
               <a
                 href="#blog"
                 className="rounded-lg px-4 py-3 text-base font-medium leading-[1.5em] text-white/88 transition-colors hover:bg-white/10 hover:text-white"
-                style={{ fontFamily: "var(--font-manrope)" }}
+                style={{ fontFamily: getFontFamily(language, "manrope") }}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t("header.nav.blog")}
@@ -305,7 +306,7 @@ export default function Header() {
               <a
                 href="#faq"
                 className="rounded-lg px-4 py-3 text-base font-medium leading-[1.5em] text-white/88 transition-colors hover:bg-white/10 hover:text-white"
-                style={{ fontFamily: "var(--font-manrope)" }}
+                style={{ fontFamily: getFontFamily(language, "manrope") }}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t("header.nav.faq")}
@@ -313,7 +314,7 @@ export default function Header() {
               <a
                 href="#contact"
                 className="rounded-lg px-4 py-3 text-base font-medium leading-[1.5em] text-white/88 transition-colors hover:bg-white/10 hover:text-white"
-                style={{ fontFamily: "var(--font-manrope)" }}
+                style={{ fontFamily: getFontFamily(language, "manrope") }}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t("header.nav.contact")}
@@ -352,7 +353,7 @@ export default function Header() {
                     </svg>
                     <span
                       className="text-base font-medium leading-[1.5em] text-white/88"
-                      style={{ fontFamily: "var(--font-manrope)" }}
+                      style={{ fontFamily: getFontFamily(language, "manrope") }}
                     >
                       {currentLang}
                     </span>
@@ -384,7 +385,7 @@ export default function Header() {
                           ? "bg-white/15 text-white"
                           : "text-white/88"
                       }`}
-                      style={{ fontFamily: "var(--font-manrope)" }}
+                      style={{ fontFamily: getFontFamily(language, "manrope") }}
                     >
                       EN
                     </button>
@@ -395,7 +396,7 @@ export default function Header() {
                           ? "bg-white/15 text-white"
                           : "text-white/88"
                       }`}
-                      style={{ fontFamily: "var(--font-manrope)" }}
+                      style={{ fontFamily: getFontFamily(language, "manrope") }}
                     >
                       VI
                     </button>
@@ -406,7 +407,7 @@ export default function Header() {
               {/* Install Extension Button */}
               <button
                 className="flex w-full items-center justify-center gap-2 rounded-full border border-white/55 bg-white/11 px-4 py-3 transition-all hover:bg-white/20"
-                style={{ fontFamily: "var(--font-manrope)" }}
+                style={{ fontFamily: getFontFamily(language, "manrope") }}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 <span className="text-center text-base font-semibold leading-[1.71em] tracking-[-0.02em] text-white">
