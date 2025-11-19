@@ -316,11 +316,11 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       card.style.willChange = 'transform';
       card.style.transformOrigin = 'top center';
       card.style.backfaceVisibility = 'hidden';
-      card.style.WebkitBackfaceVisibility = 'hidden';
+      card.style.setProperty('-webkit-backface-visibility', 'hidden');
       card.style.transform = 'translate3d(0px, 0px, 0px)';
       card.style.webkitTransform = 'translate3d(0px, 0px, 0px)';
-      card.style.WebkitFontSmoothing = 'antialiased';
-      card.style.MozOsxFontSmoothing = 'grayscale';
+      card.style.setProperty('-webkit-font-smoothing', 'antialiased');
+      card.style.setProperty('-moz-osx-font-smoothing', 'grayscale');
       // Enable hardware acceleration
       card.style.perspective = '1000px';
       card.style.transformStyle = 'preserve-3d';
