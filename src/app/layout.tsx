@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Michroma, Manrope, Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 
@@ -27,6 +28,103 @@ const manrope = Manrope({
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+});
+
+const prompt = localFont({
+  src: [
+    {
+      path: "../../public/fonts/prompt/Prompt-Thin.ttf",
+      weight: "100",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/prompt/Prompt-ThinItalic.ttf",
+      weight: "100",
+      style: "italic",
+    },
+    {
+      path: "../../public/fonts/prompt/Prompt-ExtraLight.ttf",
+      weight: "200",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/prompt/Prompt-ExtraLightItalic.ttf",
+      weight: "200",
+      style: "italic",
+    },
+    {
+      path: "../../public/fonts/prompt/Prompt-Light.ttf",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/prompt/Prompt-LightItalic.ttf",
+      weight: "300",
+      style: "italic",
+    },
+    {
+      path: "../../public/fonts/prompt/Prompt-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/prompt/Prompt-Italic.ttf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../../public/fonts/prompt/Prompt-Medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/prompt/Prompt-MediumItalic.ttf",
+      weight: "500",
+      style: "italic",
+    },
+    {
+      path: "../../public/fonts/prompt/Prompt-SemiBold.ttf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/prompt/Prompt-SemiBoldItalic.ttf",
+      weight: "600",
+      style: "italic",
+    },
+    {
+      path: "../../public/fonts/prompt/Prompt-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/prompt/Prompt-BoldItalic.ttf",
+      weight: "700",
+      style: "italic",
+    },
+    {
+      path: "../../public/fonts/prompt/Prompt-ExtraBold.ttf",
+      weight: "800",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/prompt/Prompt-ExtraBoldItalic.ttf",
+      weight: "800",
+      style: "italic",
+    },
+    {
+      path: "../../public/fonts/prompt/Prompt-Black.ttf",
+      weight: "900",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/prompt/Prompt-BlackItalic.ttf",
+      weight: "900",
+      style: "italic",
+    },
+  ],
+  variable: "--font-prompt",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -58,7 +156,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${michroma.variable} ${manrope.variable} ${inter.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${michroma.variable} ${manrope.variable} ${inter.variable} ${prompt.variable} antialiased`}
         suppressHydrationWarning
       >
         <LanguageProvider>

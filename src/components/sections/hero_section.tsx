@@ -3,9 +3,11 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function HeroSection() {
   const t = useTranslation();
+  const { language } = useLanguage();
   const videoRef = useRef<HTMLVideoElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
@@ -77,7 +79,7 @@ export default function HeroSection() {
             ref={titleRef}
             className="w-full text-center text-[32px] font-normal leading-[1.4em] tracking-[-0.04em] text-white sm:text-4xl md:text-5xl lg:text-[56px]"
             style={{
-              fontFamily: "var(--font-michroma)",
+              fontFamily: language === "vi" ? "var(--font-prompt)" : "var(--font-michroma)",
               textShadow: "0px 4px 4px rgba(0, 0, 0, 0.05)",
             }}
           >
