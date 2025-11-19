@@ -21,12 +21,12 @@ const michroma = Michroma({
 
 const manrope = Manrope({
   variable: "--font-manrope",
-  subsets: ["latin", "vietnamese"],
+  subsets: ["latin"],
 });
 
 const inter = Inter({
   variable: "--font-inter",
-  subsets: ["latin", "vietnamese"],
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
