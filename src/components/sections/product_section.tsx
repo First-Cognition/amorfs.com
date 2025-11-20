@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Draggable } from "gsap/Draggable";
 import { CheckCircle2, ShieldCheck } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -15,137 +16,169 @@ export default function ProductSection() {
   const draggableRef = useRef<Draggable[] | null>(null);
 
   useEffect(() => {
-    gsap.registerPlugin(Draggable);
+    gsap.registerPlugin(ScrollTrigger, Draggable);
 
-    if (!slidesContainerRef.current || !slidesInnerRef.current) return;
+    if (!sectionRef.current || !slidesContainerRef.current || !slidesInnerRef.current) return;
 
-    const slides = gsap.utils.toArray<HTMLElement>(".product-slide");
-    const numSlides = slides.length;
-    const progressPerItem = 1 / (numSlides - 1);
-    const threshold = progressPerItem / 5;
-    const slideDuration = 0.3;
+    const ctx = gsap.context(() => {
+      const slides = gsap.utils.toArray<HTMLElement>(".product-slide");
+      const numSlides = slides.length;
+      const progressPerItem = 1 / (numSlides - 1);
+      const threshold = progressPerItem / 5;
+      const slideDuration = 0.3;
 
-    const snapProgress = gsap.utils.snap(progressPerItem);
-    const snapProgressDirectional = (value: number, direction: number) => {
-      const snapped = snapProgress(value);
-      if (direction < 0 && value - snapped > threshold) {
-        return snapped + progressPerItem;
-      } else if (direction > 0 && snapped - value > threshold) {
-        return snapped - progressPerItem;
-      }
-      return snapped;
-    };
+      const snapProgress = gsap.utils.snap(progressPerItem);
+      const snapProgressDirectional = (value: number, direction: number) => {
+        const snapped = snapProgress(value);
+        if (direction < 0 && value - snapped > threshold) {
+          return snapped + progressPerItem;
+        } else if (direction > 0 && snapped - value > threshold) {
+          return snapped - progressPerItem;
+        }
+        return snapped;
+      };
 
-    let slideWidth: number;
-    let totalWidth: number;
-    let isScrolling = false;
+      let slideWidth: number;
+      let totalWidth: number;
+      let isScrolling = false;
+      let scrollTriggerInstance: ScrollTrigger | null = null;
 
-    // Create animation
-    const animation = gsap.to(slides, {
-      xPercent: -((numSlides - 1) * 100),
-      ease: "none",
-      paused: true,
-      duration: 1,
-    });
+      // Create animation
+      const animation = gsap.to(slides, {
+        xPercent: -((numSlides - 1) * 100),
+        ease: "none",
+        paused: true,
+        duration: 1,
+      });
 
-    animationRef.current = animation;
+      animationRef.current = animation;
 
-    // Create draggable
-    const draggable = Draggable.create(document.createElement("div"), {
-      type: "x",
-      edgeResistance: 0.9,
-      dragResistance: 0.0,
-      trigger: slidesContainerRef.current,
-      onPress(this: Draggable & { startProgress?: number }) {
-        gsap.killTweensOf(animation);
-        this.startProgress = animation.progress();
-      },
-      onDrag(this: Draggable & { startProgress?: number; startX?: number }) {
-        const change = ((this.startX || 0) - (this.x || 0)) / totalWidth;
-        animation.progress((this.startProgress || 0) + change);
-      },
-      onRelease(this: Draggable & { deltaX?: number }) {
-        gsap.to(animation, {
-          progress: snapProgressDirectional(
-            animation.progress(),
-            (this.deltaX || 0) > 0 ? 1 : -1
-          ),
-          duration: slideDuration,
-          overwrite: true,
-        });
-      },
-    });
+      // Create draggable
+      const draggable = Draggable.create(document.createElement("div"), {
+        type: "x",
+        edgeResistance: 0.9,
+        dragResistance: 0.0,
+        trigger: slidesContainerRef.current,
+        onPress(this: Draggable & { startProgress?: number }) {
+          gsap.killTweensOf(animation);
+          this.startProgress = animation.progress();
+        },
+        onDrag(this: Draggable & { startProgress?: number; startX?: number }) {
+          const change = ((this.startX || 0) - (this.x || 0)) / totalWidth;
+          animation.progress((this.startProgress || 0) + change);
+        },
+        onRelease(this: Draggable & { deltaX?: number }) {
+          gsap.to(animation, {
+            progress: snapProgressDirectional(
+              animation.progress(),
+              (this.deltaX || 0) > 0 ? 1 : -1
+            ),
+            duration: slideDuration,
+            overwrite: true,
+          });
+        },
+      });
 
-    draggableRef.current = draggable;
+      draggableRef.current = draggable;
 
-    // Handle wheel/scroll event
-    const handleWheel = (e: WheelEvent) => {
-      if (isScrolling) return;
+      // Pin the section and control slide progress with scroll
+      // Calculate end point based on number of slides (each slide needs scroll space)
+      const pinEnd = `+=${(numSlides - 1) * 100}%`;
       
-      const currentProgress = animation.progress();
-      let direction = 0;
-      
-      // Detect horizontal scroll (shift + wheel or trackpad horizontal)
-      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
-        direction = e.deltaX > 0 ? 1 : -1;
-      } else {
-        // Vertical scroll
-        direction = e.deltaY > 0 ? 1 : -1;
-      }
-      
-      // Allow native scroll at edges
-      // If at first slide and scrolling backwards, allow native scroll
-      if (currentProgress === 0 && direction === -1) {
-        return;
-      }
-      
-      // If at last slide and scrolling forwards, allow native scroll
-      if (currentProgress === 1 && direction === 1) {
-        return;
-      }
-      
-      // Prevent default scroll for slides in between
-      e.preventDefault();
-      
-      isScrolling = true;
-      
-      const newProgress = snapProgress(currentProgress + direction * progressPerItem);
-      
-      if (newProgress >= 0 && newProgress <= 1) {
-        gsap.to(animation, {
-          progress: newProgress,
-          duration: slideDuration,
-          ease: "power2.out",
-          overwrite: true,
-          onComplete: () => {
-            setTimeout(() => {
-              isScrolling = false;
-            }, 300);
-          },
-        });
-      } else {
-        isScrolling = false;
-      }
-    };
+      scrollTriggerInstance = ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top top",
+        end: pinEnd,
+        pin: true,
+        anticipatePin: 1,
+        scrub: 1,
+        onUpdate: (self) => {
+          // Map scroll progress to slide animation progress
+          const scrollProgress = self.progress;
+          const slideProgress = Math.min(scrollProgress, 1);
+          animation.progress(slideProgress);
+        },
+      });
 
-    const container = slidesContainerRef.current;
-    container.addEventListener("wheel", handleWheel, { passive: false });
+      // Handle wheel/scroll event for manual control
+      const handleWheel = (e: WheelEvent) => {
+        if (isScrolling || !scrollTriggerInstance) return;
+        
+        const currentProgress = animation.progress();
+        let direction = 0;
+        
+        // Detect horizontal scroll (shift + wheel or trackpad horizontal)
+        if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+          direction = e.deltaX > 0 ? 1 : -1;
+        } else {
+          // Vertical scroll
+          direction = e.deltaY > 0 ? 1 : -1;
+        }
+        
+        // If at first slide and scrolling backwards, allow native scroll
+        if (currentProgress === 0 && direction === -1) {
+          return;
+        }
+        
+        // If at last slide and scrolling forwards, allow native scroll
+        if (currentProgress >= 1 && direction === 1) {
+          return;
+        }
+        
+        // Prevent default scroll for slides in between
+        e.preventDefault();
+        
+        isScrolling = true;
+        
+        const newProgress = snapProgress(currentProgress + direction * progressPerItem);
+        
+        if (newProgress >= 0 && newProgress <= 1) {
+          // Calculate target scroll position based on new progress
+          const scrollDistance = scrollTriggerInstance.end - scrollTriggerInstance.start;
+          const targetScroll = scrollTriggerInstance.start + newProgress * scrollDistance;
+          
+          // Create a proxy object to animate scroll position
+          const scrollProxy = { y: window.scrollY };
+          
+          // Animate scroll position, ScrollTrigger will automatically update animation
+          gsap.to(scrollProxy, {
+            y: targetScroll,
+            duration: slideDuration,
+            ease: "power2.out",
+            overwrite: true,
+            onUpdate: () => {
+              window.scrollTo(0, scrollProxy.y);
+            },
+            onComplete: () => {
+              setTimeout(() => {
+                isScrolling = false;
+              }, 100);
+            },
+          });
+        } else {
+          isScrolling = false;
+        }
+      };
 
-    const resize = () => {
-      slideWidth = slides[0]?.offsetWidth || 0;
-      totalWidth = slideWidth * numSlides;
-    };
+      const container = slidesContainerRef.current;
+      container.addEventListener("wheel", handleWheel, { passive: false });
 
-    resize();
-    window.addEventListener("resize", resize);
+      const resize = () => {
+        slideWidth = slides[0]?.offsetWidth || 0;
+        totalWidth = slideWidth * numSlides;
+        
+        // Refresh ScrollTrigger on resize
+        if (scrollTriggerInstance) {
+          scrollTriggerInstance.refresh();
+        }
+      };
+
+      resize();
+      window.addEventListener("resize", resize);
+    }, sectionRef);
 
     return () => {
-      window.removeEventListener("resize", resize);
-      container.removeEventListener("wheel", handleWheel);
-      animation.kill();
-      if (draggable && draggable.length > 0) {
-        draggable[0].kill();
-      }
+      ctx.revert();
     };
   }, []);
 
