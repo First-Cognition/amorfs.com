@@ -8,6 +8,7 @@ import { getFontFamily } from "@/lib/utils/fonts";
 
 export default function Header() {
   const [isLangOpen, setIsLangOpen] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
   const { language, setLanguage } = useLanguage();
   const t = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -34,7 +35,7 @@ export default function Header() {
   return (
     <header className="relative z-50 flex w-full items-center justify-between px-6 py-2 sm:px-8 md:px-10">
       {/* Logo */}
-      <div className="flex items-center gap-[5px]" suppressHydrationWarning>
+      <a href="/" className="flex items-center gap-[5px]" suppressHydrationWarning>
         <Image
           src="/full-horizontal-white.svg"
           alt="Amorfs Logo"
@@ -43,13 +44,13 @@ export default function Header() {
           className="h-10 w-auto sm:h-[50px]"
           priority
         />
-      </div>
+      </a>
 
       {/* Navigation */}
       <nav className="hidden items-center gap-4 md:flex" suppressHydrationWarning>
-        <a
+        {/* <a
           href="#pricing"
-          className="text-center text-sm leading-[1.5em] text-white/88 transition-colors hover:text-white"
+          className="text-center text-base leading-[1.5em] text-white/88 transition-colors hover:text-white"
           style={{ fontFamily: getFontFamily(language, "manrope") }}
           suppressHydrationWarning
         >
@@ -57,15 +58,15 @@ export default function Header() {
         </a>
         <a
           href="#technology"
-          className="text-center text-sm leading-[1.5em] text-white/88 transition-colors hover:text-white"
+          className="text-center text-base leading-[1.5em] text-white/88 transition-colors hover:text-white"
           style={{ fontFamily: getFontFamily(language, "manrope") }}
           suppressHydrationWarning
         >
           {t("header.nav.technology")}
-        </a>
+        </a> */}
         <a
           href="#blog"
-          className="text-center text-sm leading-[1.5em] text-white/88 transition-colors hover:text-white"
+          className="text-center text-base leading-[1.5em] text-white/88 transition-colors hover:text-white"
           style={{ fontFamily: getFontFamily(language, "manrope") }}
           suppressHydrationWarning
         >
@@ -73,20 +74,69 @@ export default function Header() {
         </a>
         <a
           href="#faq"
-          className="text-center text-sm leading-[1.5em] text-white/88 transition-colors hover:text-white"
+          className="text-center text-base leading-[1.5em] text-white/88 transition-colors hover:text-white"
           style={{ fontFamily: getFontFamily(language, "manrope") }}
           suppressHydrationWarning
         >
           {t("header.nav.faq")}
         </a>
-        <a
-          href="#contact"
-          className="text-center text-sm leading-[1.5em] text-white/88 transition-colors hover:text-white"
-          style={{ fontFamily: getFontFamily(language, "manrope") }}
-          suppressHydrationWarning
-        >
-          {t("header.nav.contact")}
-        </a>
+
+        {/* Contact Dropdown */}
+        <div className="relative">
+          <button
+            className="text-center text-base leading-[1.5em] text-white/88 transition-colors hover:text-white flex items-center gap-1"
+            style={{ fontFamily: getFontFamily(language, "manrope") }}
+            onClick={() => setIsContactOpen(!isContactOpen)}
+          >
+            {t("header.nav.contact")}
+            <svg
+              className={`h-4 w-4 text-white/88 transition-transform ${isContactOpen ? "rotate-180" : ""
+                }`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+
+          {isContactOpen && (
+            <>
+              <div
+                className="fixed inset-0 z-40"
+                onClick={() => setIsContactOpen(false)}
+              />
+              <div
+                className="absolute right-0 top-full z-50 mt-2 w-64 overflow-hidden rounded-lg border border-white/20 bg-white/10 shadow-lg backdrop-blur-md"
+                style={{ fontFamily: getFontFamily(language, "manrope") }}
+              >
+                <div className="px-4 py-3 text-sm text-white/88 border-b border-white/10 cursor-default">
+                  Email (contact@amorfs.com)
+                </div>
+                <a
+                  href="https://x.com/AmorfsHQ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 w-full px-4 py-3 text-left text-sm text-white/88 transition-colors hover:bg-white/20 hover:text-white"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    className="h-4 w-4 fill-current"
+                  >
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  </svg>
+                  AmorfsHQ
+                </a>
+              </div>
+            </>
+          )}
+        </div>
 
         {/* Language Selector */}
         <div className="relative">
@@ -123,9 +173,8 @@ export default function Header() {
               {currentLang}
             </span>
             <svg
-              className={`h-4 w-4 text-white/88 transition-transform ${
-                isLangOpen ? "rotate-180" : ""
-              }`}
+              className={`h-4 w-4 text-white/88 transition-transform ${isLangOpen ? "rotate-180" : ""
+                }`}
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -147,7 +196,7 @@ export default function Header() {
                 className="fixed inset-0 z-40"
                 onClick={() => setIsLangOpen(false)}
               />
-              
+
               {/* Dropdown */}
               <div
                 className="absolute right-0 top-full z-50 mt-2 w-24 overflow-hidden rounded-lg border border-white/20 bg-white/10 shadow-lg backdrop-blur-md"
@@ -155,21 +204,19 @@ export default function Header() {
               >
                 <button
                   onClick={() => handleLangChange("en")}
-                  className={`w-full px-4 py-2 text-left text-sm transition-colors hover:bg-white/20 ${
-                    currentLang === "EN"
-                      ? "bg-white/15 text-white"
-                      : "text-white/88"
-                  }`}
+                  className={`w-full px-4 py-2 text-left text-sm transition-colors hover:bg-white/20 ${currentLang === "EN"
+                    ? "bg-white/15 text-white"
+                    : "text-white/88"
+                    }`}
                 >
                   EN
                 </button>
                 <button
                   onClick={() => handleLangChange("vi")}
-                  className={`w-full px-4 py-2 text-left text-sm transition-colors hover:bg-white/20 ${
-                    currentLang === "VI"
-                      ? "bg-white/15 text-white"
-                      : "text-white/88"
-                  }`}
+                  className={`w-full px-4 py-2 text-left text-sm transition-colors hover:bg-white/20 ${currentLang === "VI"
+                    ? "bg-white/15 text-white"
+                    : "text-white/88"
+                    }`}
                 >
                   VI
                 </button>
@@ -228,23 +275,20 @@ export default function Header() {
 
       {/* Mobile Menu Drawer */}
       <div
-        className={`fixed inset-0 z-50 md:hidden ${
-          isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"
-        }`}
+        className={`fixed inset-0 z-50 md:hidden ${isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"
+          }`}
       >
         {/* Backdrop */}
         <div
-          className={`absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${
-            isMobileMenuOpen ? "opacity-100" : "opacity-0"
-          }`}
+          className={`absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${isMobileMenuOpen ? "opacity-100" : "opacity-0"
+            }`}
           onClick={() => setIsMobileMenuOpen(false)}
         />
 
         {/* Drawer */}
         <div
-          className={`absolute right-0 top-0 h-full w-[85%] max-w-sm bg-[rgba(15,64,143,0.95)] backdrop-blur-xl shadow-2xl transition-transform duration-300 ease-out ${
-            isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-          }`}
+          className={`absolute right-0 top-0 h-full w-[85%] max-w-sm bg-[rgba(15,64,143,0.95)] backdrop-blur-xl shadow-2xl transition-transform duration-300 ease-out ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+            }`}
         >
           <div className="flex h-full flex-col overflow-y-auto">
             {/* Header */}
@@ -279,7 +323,7 @@ export default function Header() {
 
             {/* Navigation Links */}
             <nav className="flex flex-1 flex-col gap-1 px-4 py-6">
-              <a
+              {/* <a
                 href="#pricing"
                 className="rounded-lg px-4 py-3 text-base font-medium leading-[1.5em] text-white/88 transition-colors hover:bg-white/10 hover:text-white"
                 style={{ fontFamily: getFontFamily(language, "manrope") }}
@@ -294,7 +338,7 @@ export default function Header() {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t("header.nav.technology")}
-              </a>
+              </a> */}
               <a
                 href="#blog"
                 className="rounded-lg px-4 py-3 text-base font-medium leading-[1.5em] text-white/88 transition-colors hover:bg-white/10 hover:text-white"
@@ -359,9 +403,8 @@ export default function Header() {
                     </span>
                   </div>
                   <svg
-                    className={`h-4 w-4 text-white/88 transition-transform ${
-                      isLangOpen ? "rotate-180" : ""
-                    }`}
+                    className={`h-4 w-4 text-white/88 transition-transform ${isLangOpen ? "rotate-180" : ""
+                      }`}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -380,22 +423,20 @@ export default function Header() {
                   <div className="mt-2 overflow-hidden rounded-lg border border-white/20 bg-white/10 backdrop-blur-md">
                     <button
                       onClick={() => handleLangChange("en")}
-                      className={`w-full px-4 py-3 text-left text-base transition-colors hover:bg-white/20 ${
-                        currentLang === "EN"
-                          ? "bg-white/15 text-white"
-                          : "text-white/88"
-                      }`}
+                      className={`w-full px-4 py-3 text-left text-base transition-colors hover:bg-white/20 ${currentLang === "EN"
+                        ? "bg-white/15 text-white"
+                        : "text-white/88"
+                        }`}
                       style={{ fontFamily: getFontFamily(language, "manrope") }}
                     >
                       EN
                     </button>
                     <button
                       onClick={() => handleLangChange("vi")}
-                      className={`w-full px-4 py-3 text-left text-base transition-colors hover:bg-white/20 ${
-                        currentLang === "VI"
-                          ? "bg-white/15 text-white"
-                          : "text-white/88"
-                      }`}
+                      className={`w-full px-4 py-3 text-left text-base transition-colors hover:bg-white/20 ${currentLang === "VI"
+                        ? "bg-white/15 text-white"
+                        : "text-white/88"
+                        }`}
                       style={{ fontFamily: getFontFamily(language, "manrope") }}
                     >
                       VI
