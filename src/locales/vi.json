@@ -10,9 +10,9 @@
     "installExtension": "Cài đặt Extension"
   },
   "hero": {
-    "title": "{Dữ liệu} của bạn được sắp xếp hoàn hảo",
-    "dataHighlight": "{Dữ liệu}",
-    "subtitle": "Không cần nhập lại. Amorfs tự động lưu lại mọi thông tin bạn nhập, bảo mật tuyệt đối, và cho phép bạn sử dụng lại ở bất cứ đâu - hoặc biến đổi thành những thứ đẹp đẽ để chia sẻ.",
+    "title": "{Dữ Liệu} Của Bạn\nĐược Sắp Xếp Hoàn Hảo",
+    "dataHighlight": "{Dữ Liệu}",
+    "subtitle": "Không cần nhập lại.\nAmorfs tự động lưu lại mọi thông tin bạn nhập, bảo mật tuyệt đối,\nvà cho phép bạn sử dụng lại ở bất cứ đâu.\nHoặc biến đổi thành những thứ đẹp đẽ để chia sẻ.",
     "cta": "Khám phá Amorfs Studio",
     "diveDeeper": "Tìm hiểu thêm",
     "builtIn": "Được xây dựng bởi",

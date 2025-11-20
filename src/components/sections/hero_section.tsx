@@ -78,7 +78,7 @@ export default function HeroSection() {
           {/* Headline */}
           <h1
             ref={titleRef}
-            className="w-full text-center text-[32px] font-normal leading-[1.4em] tracking-[-0.04em] text-white sm:text-4xl md:text-5xl lg:text-[56px]"
+            className="w-full text-center text-[32px] font-normal leading-[1.4em] tracking-[-0.04em] text-white sm:text-4xl md:text-5xl lg:text-[56px] whitespace-pre-line"
             style={{
               fontFamily: getFontFamily(language, "michroma"),
               textShadow: "0px 4px 4px rgba(0, 0, 0, 0.05)",
@@ -97,7 +97,7 @@ export default function HeroSection() {
           {/* Subheadline */}
           <p
             ref={subtitleRef}
-            className="w-full text-center text-xs leading-[1.5em] text-white/90 sm:text-sm md:text-base lg:text-lg"
+            className="w-full text-center text-xs leading-[1.5em] text-white/90 sm:text-sm md:text-base lg:text-lg whitespace-pre-line"
             style={{ fontFamily: getFontFamily(language, "inter") }}
           >
             {t("hero.subtitle")}
@@ -127,7 +127,7 @@ export default function HeroSection() {
       >
         {/* Built in - Left */}
         <div
-          className="text-[10px] leading-tight text-white/60 sm:text-xs"
+          className="text-[14pt] leading-tight text-white/80 sm:text-[14pt]"
           style={{ fontFamily: getFontFamily(language, "manrope") }}
           suppressHydrationWarning
         >
@@ -140,12 +140,6 @@ export default function HeroSection() {
 
         {/* Dive Deeper - Center */}
         <div className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-1" suppressHydrationWarning>
-          <span
-            className="text-[10px] text-white/80 sm:text-xs"
-            style={{ fontFamily: getFontFamily(language, "manrope") }}
-          >
-            {t("hero.diveDeeper")}
-          </span>
           <button
             className="flex h-6 w-6 sm:h-8 sm:w-8 items-center justify-center rounded-full transition-all hover:bg-white/10 active:scale-95"
             aria-label="Scroll down"
@@ -183,11 +177,17 @@ export default function HeroSection() {
               />
             </svg>
           </button>
+          <span
+            className="text-[14pt] text-white/80 sm:text-[14pt]"
+            style={{ fontFamily: getFontFamily(language, "manrope") }}
+          >
+            {t("hero.diveDeeper")}
+          </span>
         </div>
 
         {/* Power by - Right */}
         <div
-          className="text-right text-[10px] leading-tight text-white/60 sm:text-xs"
+          className="text-right text-[14pt] leading-tight text-white/80 sm:text-[14pt]"
           style={{ fontFamily: getFontFamily(language, "manrope") }}
           suppressHydrationWarning
         >
@@ -195,7 +195,9 @@ export default function HeroSection() {
             {t("hero.powerBy")}
             <br />
           </span>
-          {t("hero.firstCognition")}
+          <a href="https://firstcognition.com/" target="_blank" rel="noopener noreferrer" className="hover:underline">
+            {t("hero.firstCognition")}
+          </a>
         </div>
       </div>
     </section>

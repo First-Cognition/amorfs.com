@@ -10,9 +10,9 @@
     "installExtension": "Install Extension"
   },
   "hero": {
-    "title": "Your {Data} Beautifully Organized Finally",
+    "title": "Your {Data}\nBeautifully Organized Finally",
     "dataHighlight": "{Data}",
-    "subtitle": "Stop retyping the same information. Amorfs captures what you enter once, stores it securely, and lets you reuse it anywhere-or transform it into something beautiful to share.",
+    "subtitle": "Stop retyping the same information.\nAmorfs captures what you enter once, stores it securely,\nand lets you reuse it anywhere.\nOr transform it into something beautiful to share.",
     "cta": "Explore Amorfs Studio",
     "diveDeeper": "Dive Deeper",
     "builtIn": "Built in",
