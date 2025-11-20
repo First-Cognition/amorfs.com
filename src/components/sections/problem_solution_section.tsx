@@ -8,6 +8,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { getFontFamily } from "@/lib/utils/fonts";
+import LightRays from "@/components/LightRays";
 
 export default function ProblemSolutionSection() {
   const t = useTranslation();
@@ -213,6 +214,21 @@ export default function ProblemSolutionSection() {
           fill
           className="object-cover"
           priority
+        />
+      </div>
+
+      {/* Light Rays Effect */}
+      <div className="absolute inset-0 z-[1] pointer-events-none mix-blend-screen opacity-50">
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#CFFAFE"
+          raysSpeed={0.2}
+          lightSpread={0.6}
+          rayLength={0.8}
+          pulsating={true}
+          fadeDistance={0.6}
+          followMouse={true}
+          mouseInfluence={0.05}
         />
       </div>
 
