@@ -404,7 +404,7 @@ export default function ProblemSolutionSection() {
       {/* Decorative SVG - Initially hidden */}
       <div
         ref={decorationRef}
-        className="pointer-events-none absolute right-[45%] top-[35%] -translate-x-1/2 -translate-y-1/2 h-[154px] w-[487px] sm:h-[205px] sm:w-[649px] md:h-[256px] md:w-[813px] lg:h-[308px] lg:w-[975px] lg:left-[45%] lg:top-[35%] lg:-translate-x-1/2 lg:-translate-y-1/2 rounded-[100px] opacity-0"
+        className="pointer-events-none absolute left-[50%] top-[35%] -translate-x-1/2 -translate-y-1/2 h-[154px] w-[487px] sm:h-[205px] sm:w-[649px] md:h-[256px] md:w-[813px] lg:h-[308px] lg:w-[975px] lg:left-[50%] lg:top-[35%] lg:-translate-x-1/2 lg:-translate-y-1/2 rounded-[100px] opacity-0"
         style={{ transform: 'rotate(-1.5deg)' }}
       >
         <Image
