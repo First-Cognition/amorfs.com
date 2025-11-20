@@ -46,11 +46,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Apply Prompt font when language is Vietnamese */
-html[lang="vi"] body,
-html[lang="vi"] * {
-  font-family: var(--font-prompt), Arial, Helvetica, sans-serif;
-}
+
 
 html {
   overflow-x: hidden;

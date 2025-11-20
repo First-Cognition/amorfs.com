@@ -7,19 +7,19 @@ export function getFontFamily(
   language: "en" | "vi",
   defaultFont: "michroma" | "manrope" | "inter" | "prompt" = "manrope"
 ): string {
-  // Always use Prompt font for Vietnamese text
-  if (language === "vi") {
-    return "var(--font-prompt)";
-  }
-  
-  // For other languages, use the specified default font
   const fontMap: Record<string, string> = {
     michroma: "var(--font-michroma)",
     manrope: "var(--font-manrope)",
     inter: "var(--font-inter)",
     prompt: "var(--font-prompt)",
   };
-  
+
+  // Only use Prompt font for Vietnamese if it's a title (Michroma)
+  // or if explicitly requested
+  if (language === "vi" && defaultFont === "michroma") {
+    return "var(--font-prompt)";
+  }
+
   return fontMap[defaultFont] || fontMap.manrope;
 }
 
