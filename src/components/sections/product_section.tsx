@@ -1,11 +1,28 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useMemo, useCallback } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { Draggable } from "gsap/Draggable";
 import { CheckCircle2, ShieldCheck } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
+
+// Debounce helper
+function debounce<T extends (...args: any[]) => any>(
+  func: T,
+  wait: number
+): (...args: Parameters<T>) => void {
+  let timeout: NodeJS.Timeout;
+  return function executedFunction(...args: Parameters<T>) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
 
 export default function ProductSection() {
   const t = useTranslation();
@@ -14,9 +31,10 @@ export default function ProductSection() {
   const slidesInnerRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<gsap.core.Tween | null>(null);
   const draggableRef = useRef<Draggable[] | null>(null);
+  const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger, Draggable);
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, Draggable);
 
     if (!sectionRef.current || !slidesContainerRef.current || !slidesInnerRef.current) return;
 
@@ -43,12 +61,13 @@ export default function ProductSection() {
       let isScrolling = false;
       let scrollTriggerInstance: ScrollTrigger | null = null;
 
-      // Create animation
+      // Create animation with GPU acceleration
       const animation = gsap.to(slides, {
         xPercent: -((numSlides - 1) * 100),
         ease: "none",
         paused: true,
         duration: 1,
+        force3D: true, // Force GPU acceleration
       });
 
       animationRef.current = animation;
@@ -82,9 +101,8 @@ export default function ProductSection() {
       draggableRef.current = draggable;
 
       // Pin the section and control slide progress with scroll
-      // Calculate end point based on number of slides (each slide needs scroll space)
       const pinEnd = `+=${(numSlides - 1) * 100}%`;
-      
+
       scrollTriggerInstance = ScrollTrigger.create({
         trigger: sectionRef.current,
         start: "top top",
@@ -92,21 +110,27 @@ export default function ProductSection() {
         pin: true,
         anticipatePin: 1,
         scrub: 1,
+        fastScrollEnd: true, // Performance optimization
         onUpdate: (self) => {
-          // Map scroll progress to slide animation progress
-          const scrollProgress = self.progress;
-          const slideProgress = Math.min(scrollProgress, 1);
-          animation.progress(slideProgress);
+          // Use RAF to throttle updates
+          if (rafRef.current !== null) {
+            cancelAnimationFrame(rafRef.current);
+          }
+          rafRef.current = requestAnimationFrame(() => {
+            const scrollProgress = self.progress;
+            const slideProgress = Math.min(scrollProgress, 1);
+            animation.progress(slideProgress);
+          });
         },
       });
 
-      // Handle wheel/scroll event for manual control
+      // Optimized wheel handler
       const handleWheel = (e: WheelEvent) => {
         if (isScrolling || !scrollTriggerInstance) return;
-        
+
         const currentProgress = animation.progress();
         let direction = 0;
-        
+
         // Detect horizontal scroll (shift + wheel or trackpad horizontal)
         if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
           direction = e.deltaX > 0 ? 1 : -1;
@@ -114,45 +138,40 @@ export default function ProductSection() {
           // Vertical scroll
           direction = e.deltaY > 0 ? 1 : -1;
         }
-        
+
         // If at first slide and scrolling backwards, allow native scroll
         if (currentProgress === 0 && direction === -1) {
           return;
         }
-        
+
         // If at last slide and scrolling forwards, allow native scroll
         if (currentProgress >= 1 && direction === 1) {
           return;
         }
-        
+
         // Prevent default scroll for slides in between
         e.preventDefault();
-        
+
         isScrolling = true;
-        
+
         const newProgress = snapProgress(currentProgress + direction * progressPerItem);
-        
+
         if (newProgress >= 0 && newProgress <= 1) {
-          // Calculate target scroll position based on new progress
+          // Calculate target scroll position
           const scrollDistance = scrollTriggerInstance.end - scrollTriggerInstance.start;
           const targetScroll = scrollTriggerInstance.start + newProgress * scrollDistance;
-          
-          // Create a proxy object to animate scroll position
-          const scrollProxy = { y: window.scrollY };
-          
-          // Animate scroll position, ScrollTrigger will automatically update animation
-          gsap.to(scrollProxy, {
-            y: targetScroll,
+
+          // Optimized scroll animation
+          gsap.to(window, {
+            scrollTo: { y: targetScroll, autoKill: true },
             duration: slideDuration,
             ease: "power2.out",
             overwrite: true,
-            onUpdate: () => {
-              window.scrollTo(0, scrollProxy.y);
-            },
             onComplete: () => {
-              setTimeout(() => {
+              // Small delay before allowing next scroll
+              requestAnimationFrame(() => {
                 isScrolling = false;
-              }, 100);
+              });
             },
           });
         } else {
@@ -161,28 +180,44 @@ export default function ProductSection() {
       };
 
       const container = slidesContainerRef.current;
-      container.addEventListener("wheel", handleWheel, { passive: false });
+      if (container) {
+        container.addEventListener("wheel", handleWheel, { passive: false });
+      }
 
-      const resize = () => {
+      // Debounced resize handler
+      const resize = debounce(() => {
         slideWidth = slides[0]?.offsetWidth || 0;
         totalWidth = slideWidth * numSlides;
-        
+
         // Refresh ScrollTrigger on resize
         if (scrollTriggerInstance) {
           scrollTriggerInstance.refresh();
         }
-      };
+      }, 150);
 
       resize();
       window.addEventListener("resize", resize);
+
+      // Cleanup
+      return () => {
+        if (container) {
+          container.removeEventListener("wheel", handleWheel);
+        }
+        window.removeEventListener("resize", resize);
+      };
     }, sectionRef);
 
     return () => {
+      // Clean up RAF
+      if (rafRef.current !== null) {
+        cancelAnimationFrame(rafRef.current);
+      }
       ctx.revert();
     };
   }, []);
 
-  const products = [
+  // Memoize products array to prevent recreation on every render
+  const products = useMemo(() => [
     {
       number: t("product.extension.number"),
       title: t("product.extension.title"),
@@ -212,7 +247,7 @@ export default function ProductSection() {
       ],
       bgColor: "bg-[#9EC2E7]",
     },
-  ];
+  ], [t]);
 
   return (
     <section
@@ -223,15 +258,25 @@ export default function ProductSection() {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
+        willChange: "transform", // Hint for GPU acceleration
       }}
     >
       {/* Slides Container */}
       <div
         ref={slidesContainerRef}
         className="relative flex h-full w-full overflow-hidden"
+        style={{ willChange: "contents" }}
         suppressHydrationWarning
       >
-        <div ref={slidesInnerRef} className="slides-inner flex h-full w-full" suppressHydrationWarning>
+        <div
+          ref={slidesInnerRef}
+          className="slides-inner flex h-full w-full"
+          style={{
+            willChange: "transform",
+            transform: "translateZ(0)", // Force GPU layer
+          }}
+          suppressHydrationWarning
+        >
           {/* Slide 1 - Amorfs Extension */}
           <div className="product-slide flex h-full w-full flex-shrink-0 items-center justify-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-[120px] px-4 sm:px-6 md:px-8 lg:px-10 py-4 sm:py-6 flex-col lg:flex-row" suppressHydrationWarning>
             {/* Left Side - Preview Box */}

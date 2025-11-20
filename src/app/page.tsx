@@ -1,7 +1,6 @@
 import {
   HeroSection,
-  ProblemSolutionSection,
-  ProductSection,
+  ProblemProductWrapper,
   HowItWorksSection,
   FeaturesSection,
   FutureFooterSection,
@@ -17,8 +16,7 @@ export default function Home() {
       </div>
 
       <HeroSection />
-      <ProblemSolutionSection />
-      <ProductSection />
+      <ProblemProductWrapper />
       <HowItWorksSection />
       <FeaturesSection />
       <FutureFooterSection />
