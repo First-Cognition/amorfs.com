@@ -133,7 +133,6 @@ export default function ProblemSolutionSection() {
           decorationRef.current,
           {
             y: 100,
-            rotation: -15,
           },
           {
             scrollTrigger: {
@@ -143,7 +142,6 @@ export default function ProblemSolutionSection() {
               scrub: 1.5,
             },
             y: -100,
-            rotation: 15,
             ease: "none",
           }
         );
@@ -406,13 +404,15 @@ export default function ProblemSolutionSection() {
       {/* Decorative SVG - Initially hidden */}
       <div
         ref={decorationRef}
-        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[114px] w-[361px] sm:h-[152px] sm:w-[481px] md:h-[190px] md:w-[602px] lg:h-[228px] lg:w-[722px] lg:left-[356px] lg:top-[264px] lg:translate-x-0 lg:translate-y-0 rounded-[100px] opacity-0"
+        className="pointer-events-none absolute right-[45%] top-[35%] -translate-x-1/2 -translate-y-1/2 h-[154px] w-[487px] sm:h-[205px] sm:w-[649px] md:h-[256px] md:w-[813px] lg:h-[308px] lg:w-[975px] lg:left-[45%] lg:top-[35%] lg:-translate-x-1/2 lg:-translate-y-1/2 rounded-[100px] opacity-0"
+        style={{ transform: 'rotate(-1.5deg)' }}
       >
         <Image
           src="/images/solution-decoration.svg"
           alt="Decoration"
           fill
           className="object-contain"
+          style={{ transform: 'rotate(-1.5deg)' }}
         />
       </div>
     </section>
