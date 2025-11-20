@@ -160,6 +160,40 @@ export default function ProblemSolutionSection() {
           "-=0.3"
         );
       }
+
+      // Custom scroll handler for "gentle scroll" up to Hero
+      let isScrolling = false;
+      const handleWheel = (e: WheelEvent) => {
+        // Only trigger if scrolling UP (deltaY < 0)
+        if (e.deltaY < 0 && !isScrolling) {
+          const st = mainTimeline.scrollTrigger;
+          // Check if we are at the very start of the ScrollTrigger (progress 0)
+          // We use a small threshold (0.01) to account for floating point precision
+          if (st && st.progress <= 0.01) {
+            const heroSection = document.querySelector('#hero');
+            if (heroSection) {
+              e.preventDefault();
+              isScrolling = true;
+              heroSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+              });
+
+              // Reset lock after animation
+              setTimeout(() => {
+                isScrolling = false;
+              }, 1000);
+            }
+          }
+        }
+      };
+
+      window.addEventListener('wheel', handleWheel, { passive: false });
+
+      return () => {
+        window.removeEventListener('wheel', handleWheel);
+        ctx.revert();
+      };
     }, sectionRef);
 
     return () => ctx.revert();
@@ -298,7 +332,7 @@ export default function ProblemSolutionSection() {
 
                 {/* Subtitle */}
                 <div className="flex items-center justify-center gap-2 p-2" suppressHydrationWarning>
-                  <p 
+                  <p
                     className="text-center font-manrope text-sm sm:text-base md:text-lg font-normal leading-[1.5em] tracking-[-0.03em] text-white/55"
                     style={{ fontFamily: getFontFamily(language, "manrope") }}
                   >
@@ -317,7 +351,7 @@ export default function ProblemSolutionSection() {
                 <div className="flex flex-col items-center gap-3 sm:gap-4 self-stretch" suppressHydrationWarning>
                   {/* Browser Extension */}
                   <div className="flex flex-row items-center gap-2 sm:gap-3" suppressHydrationWarning>
-                    <h1 
+                    <h1
                       className="text-center font-manrope text-xl sm:text-2xl md:text-3xl lg:text-[44px] font-medium leading-[1.3em] tracking-[-0.04em] text-white/88"
                       style={{ fontFamily: getFontFamily(language, "manrope") }}
                     >
@@ -329,7 +363,7 @@ export default function ProblemSolutionSection() {
 
                   {/* Data Studio */}
                   <div className="flex flex-row items-center gap-2 sm:gap-3" suppressHydrationWarning>
-                    <h1 
+                    <h1
                       className="text-center font-manrope text-xl sm:text-2xl md:text-3xl lg:text-[44px] font-medium leading-[1.3em] tracking-[-0.04em] text-white/88"
                       style={{ fontFamily: getFontFamily(language, "manrope") }}
                     >

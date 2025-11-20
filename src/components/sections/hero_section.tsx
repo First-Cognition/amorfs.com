@@ -52,6 +52,36 @@ export default function HeroSection() {
         },
         "-=0.3"
       );
+
+    // Custom scroll handler for "gentle scroll" effect
+    let isScrolling = false;
+
+    const handleWheel = (e: WheelEvent) => {
+      // Only trigger if scrolling down and we are at the top of the page
+      if (e.deltaY > 0 && window.scrollY < 50 && !isScrolling) {
+        const nextSection = document.querySelector('#problem-solution');
+        if (nextSection) {
+          // Prevent default scrolling to avoid conflict with smooth scroll
+          e.preventDefault();
+          isScrolling = true;
+          nextSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          });
+
+          // Reset lock after animation (approx 1s)
+          setTimeout(() => {
+            isScrolling = false;
+          }, 1000);
+        }
+      }
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: false });
+
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+    };
   }, []);
 
   return (
