@@ -4,10 +4,11 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
-import ScrollReveal from "@/components/ScrollReveal";
+
 import { useTranslation } from "@/hooks/useTranslation";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { getFontFamily } from "@/lib/utils/fonts";
+import TextType from "@/components/TextType";
 
 
 export default function ProblemSolutionSection() {
@@ -20,6 +21,8 @@ export default function ProblemSolutionSection() {
   const decorationRef = useRef<HTMLDivElement>(null);
   const initialTextRef = useRef<HTMLDivElement>(null);
   const optionsTextRef = useRef<HTMLDivElement>(null);
+  const solutionTitleRef = useRef<HTMLDivElement>(null);
+  const solutionSubtitleRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -87,6 +90,36 @@ export default function ProblemSolutionSection() {
         },
         "-=0.1"
       );
+
+      // Animate solution title with simple move-up effect (like hero title)
+      if (solutionTitleRef.current) {
+        mainTimeline.fromTo(
+          solutionTitleRef.current,
+          { y: 50, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power3.out",
+          },
+          "-=0.2"
+        );
+      }
+
+      // Animate solution subtitle with simple move-up effect
+      if (solutionSubtitleRef.current) {
+        mainTimeline.fromTo(
+          solutionSubtitleRef.current,
+          { y: 30, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.6,
+            ease: "power3.out",
+          },
+          "-=0.5"
+        );
+      }
 
       // Fade in decoration icons at the same time as Solution content
       if (decorationRef.current) {
@@ -320,18 +353,25 @@ export default function ProblemSolutionSection() {
                 suppressHydrationWarning
               >
                 {/* Main Heading */}
-                <div className="flex flex-col items-center gap-2 sm:gap-3" suppressHydrationWarning>
-                  <ScrollReveal
-                    containerClassName="my-0"
-                    textClassName="text-center font-manrope text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-medium leading-[1.3em] tracking-[-0.04em] text-white/88"
-                    style={{ fontFamily: getFontFamily(language, "manrope") } as React.CSSProperties}
+                <div
+                  ref={solutionTitleRef}
+                  className="flex flex-col items-center gap-2 sm:gap-3"
+                  suppressHydrationWarning
+                >
+                  <h3
+                    className="text-center font-manrope text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-medium leading-[1.3em] tracking-[-0.04em] text-white/88"
+                    style={{ fontFamily: getFontFamily(language, "manrope") }}
                   >
                     {t("solution.initialTitle")}
-                  </ScrollReveal>
+                  </h3>
                 </div>
 
                 {/* Subtitle */}
-                <div className="flex items-center justify-center gap-2 p-2" suppressHydrationWarning>
+                <div
+                  ref={solutionSubtitleRef}
+                  className="flex items-center justify-center gap-2 p-2"
+                  suppressHydrationWarning
+                >
                   <p
                     className="text-center font-manrope text-sm sm:text-base md:text-lg font-normal leading-[1.5em] tracking-[-0.03em] text-white/55"
                     style={{ fontFamily: getFontFamily(language, "manrope") }}
@@ -356,7 +396,15 @@ export default function ProblemSolutionSection() {
                       style={{ fontFamily: getFontFamily(language, "manrope") }}
                     >
                       <span className="text-white/60">{`{ `}</span>
-                      {t("solution.optionsTitle")}
+                      <TextType
+                        text={t("solution.optionsTitle")}
+                        as="span"
+                        className="inline"
+                        typingSpeed={80}
+                        initialDelay={500}
+                        loop={false}
+                        showCursor={false}
+                      />
                       <span className="text-white/60">{` }`}</span>
                     </h1>
                   </div>
@@ -368,7 +416,15 @@ export default function ProblemSolutionSection() {
                       style={{ fontFamily: getFontFamily(language, "manrope") }}
                     >
                       <span className="text-white/60">{`{ `}</span>
-                      {t("solution.optionsTitle2")}
+                      <TextType
+                        text={t("solution.optionsTitle2")}
+                        as="span"
+                        className="inline"
+                        typingSpeed={80}
+                        initialDelay={1500}
+                        loop={false}
+                        showCursor={false}
+                      />
                       <span className="text-white/60">{` }`}</span>
                     </h1>
                   </div>

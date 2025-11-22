@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -157,7 +158,7 @@ export default function HeroSection() {
       >
         {/* Built in - Left */}
         <div
-          className="text-[14pt] leading-tight text-white/80 sm:text-[14pt]"
+          className="text-[14px] leading-tight text-white/80 sm:text-[14px]"
           style={{ fontFamily: getFontFamily(language, "manrope") }}
           suppressHydrationWarning
         >
@@ -208,7 +209,7 @@ export default function HeroSection() {
             </svg>
           </button>
           <span
-            className="text-[14pt] text-white/80 sm:text-[14pt]"
+            className="text-[14px] text-white/80 sm:text-[14px]"
             style={{ fontFamily: getFontFamily(language, "manrope") }}
           >
             {t("hero.diveDeeper")}
@@ -217,15 +218,26 @@ export default function HeroSection() {
 
         {/* Power by - Right */}
         <div
-          className="text-right text-[14pt] leading-tight text-white/80 sm:text-[14pt]"
+          className="flex flex-col items-end text-right text-[14px] leading-tight text-white/80 sm:text-[14px]"
           style={{ fontFamily: getFontFamily(language, "manrope") }}
           suppressHydrationWarning
         >
           <span className="hidden sm:inline">
             {t("hero.powerBy")}
-            <br />
           </span>
-          <a href="https://firstcognition.com/" target="_blank" rel="noopener noreferrer" className="hover:underline">
+          <a
+            href="https://firstcognition.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 hover:underline"
+          >
+            <Image
+              src="/images/FC logo-symbol-transparent.png"
+              alt="First Cognition Logo"
+              width={32}
+              height={32}
+              className="opacity-80 brightness-0 invert"
+            />
             {t("hero.firstCognition")}
           </a>
         </div>

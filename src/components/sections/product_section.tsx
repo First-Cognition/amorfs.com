@@ -33,6 +33,11 @@ export default function ProductSection() {
   const draggableRef = useRef<Draggable[] | null>(null);
   const rafRef = useRef<number | null>(null);
 
+  // Refs for slide text animations
+  const slide1ContentRef = useRef<HTMLDivElement>(null);
+  const slide2ContentRef = useRef<HTMLDivElement>(null);
+  const slide3ContentRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, Draggable);
 
@@ -60,6 +65,34 @@ export default function ProductSection() {
       let totalWidth: number;
       let isScrolling = false;
       let scrollTriggerInstance: ScrollTrigger | null = null;
+      let currentSlideIndex = 0;
+
+      // Animate slide content with move-up effect
+      const animateSlideContent = (slideRef: React.RefObject<HTMLDivElement | null>) => {
+        if (!slideRef.current) return;
+
+        const elements = slideRef.current.querySelectorAll('.animate-text');
+
+        gsap.fromTo(
+          elements,
+          {
+            y: 50,
+            opacity: 0,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power3.out",
+            stagger: 0.1,
+          }
+        );
+      };
+
+      // Initial animation for first slide
+      setTimeout(() => {
+        animateSlideContent(slide1ContentRef);
+      }, 300);
 
       // Create animation with GPU acceleration
       const animation = gsap.to(slides, {
@@ -120,6 +153,21 @@ export default function ProductSection() {
             const scrollProgress = self.progress;
             const slideProgress = Math.min(scrollProgress, 1);
             animation.progress(slideProgress);
+
+            // Determine current slide and trigger animations
+            const newSlideIndex = Math.round(slideProgress * (numSlides - 1));
+            if (newSlideIndex !== currentSlideIndex) {
+              currentSlideIndex = newSlideIndex;
+
+              // Trigger animation for the new slide
+              if (currentSlideIndex === 0) {
+                animateSlideContent(slide1ContentRef);
+              } else if (currentSlideIndex === 1) {
+                animateSlideContent(slide2ContentRef);
+              } else if (currentSlideIndex === 2) {
+                animateSlideContent(slide3ContentRef);
+              }
+            }
           });
         },
       });
@@ -285,10 +333,10 @@ export default function ProductSection() {
             </div>
 
             {/* Right Side - Content */}
-            <div className="flex w-full lg:w-[500px] shrink-0 flex-col gap-4 sm:gap-5 md:gap-6" suppressHydrationWarning>
+            <div ref={slide1ContentRef} className="flex w-full lg:w-[500px] shrink-0 flex-col gap-4 sm:gap-5 md:gap-6" suppressHydrationWarning>
               {/* Top Section - Badge, Title & Button */}
               <div className="flex flex-col gap-3 sm:gap-4" suppressHydrationWarning>
-                <div className="flex items-center gap-2 sm:gap-3" suppressHydrationWarning>
+                <div className="flex items-center gap-2 sm:gap-3 animate-text" suppressHydrationWarning>
                   <div className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-[#0E4478]/40" suppressHydrationWarning>
                     <span className="font-['Michroma'] text-[10px] sm:text-xs font-normal leading-[1.4] tracking-[-0.04em] text-white">
                       {products[0].number}
@@ -298,23 +346,23 @@ export default function ProductSection() {
                     {products[0].title}
                   </h3>
                 </div>
-                <button className="w-fit rounded-full bg-white px-4 py-2 sm:px-6 sm:py-2.5 font-['Manrope'] text-xs sm:text-sm font-semibold leading-[1.71] tracking-[-0.02em] text-[#0A2647] transition-all hover:bg-white/90 active:scale-95">
+                <button className="w-fit rounded-full bg-white px-4 py-2 sm:px-6 sm:py-2.5 font-['Manrope'] text-xs sm:text-sm font-semibold leading-[1.71] tracking-[-0.02em] text-[#0A2647] transition-all hover:bg-white/90 active:scale-95 animate-text">
                   {products[0].buttonText}
                 </button>
               </div>
 
               {/* Heading */}
-              <h4 className="font-['Manrope'] text-lg sm:text-xl md:text-2xl font-semibold leading-[1.3] tracking-[-0.02em] text-white">
+              <h4 className="font-['Manrope'] text-lg sm:text-xl md:text-2xl font-semibold leading-[1.3] tracking-[-0.02em] text-white animate-text">
                 {products[0].heading}
               </h4>
 
               {/* Description */}
-              <p className="font-['Manrope'] text-sm sm:text-base font-normal leading-[1.6] tracking-normal text-white/80">
+              <p className="font-['Manrope'] text-sm sm:text-base font-normal leading-[1.6] tracking-normal text-white/80 animate-text">
                 {products[0].description}
               </p>
 
               {/* Features Box */}
-              <div className="w-full rounded-xl sm:rounded-2xl border border-[#0E4478] bg-[#0A2647]/50 p-4 sm:p-5" suppressHydrationWarning>
+              <div className="w-full rounded-xl sm:rounded-2xl border border-[#0E4478] bg-[#0A2647]/50 p-4 sm:p-5 animate-text" suppressHydrationWarning>
                 <p className="mb-2 sm:mb-3 font-['Manrope'] text-xs sm:text-sm font-bold leading-[1.5] tracking-normal text-white/90">
                   {products[0].perfectFor}
                 </p>
@@ -340,10 +388,10 @@ export default function ProductSection() {
             </div>
 
             {/* Right Side - Content */}
-            <div className="flex w-full lg:w-[500px] shrink-0 flex-col gap-4 sm:gap-5 md:gap-6" suppressHydrationWarning>
+            <div ref={slide2ContentRef} className="flex w-full lg:w-[500px] shrink-0 flex-col gap-4 sm:gap-5 md:gap-6" suppressHydrationWarning>
               {/* Top Section - Badge, Title & Button */}
               <div className="flex flex-col gap-3 sm:gap-4" suppressHydrationWarning>
-                <div className="flex items-center gap-2 sm:gap-3" suppressHydrationWarning>
+                <div className="flex items-center gap-2 sm:gap-3 animate-text" suppressHydrationWarning>
                   <div className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-[#0E4478]/40" suppressHydrationWarning>
                     <span className="font-['Michroma'] text-[10px] sm:text-xs font-normal leading-[1.4] tracking-[-0.04em] text-white">
                       {products[1].number}
@@ -353,23 +401,23 @@ export default function ProductSection() {
                     {products[1].title}
                   </h3>
                 </div>
-                <button className="w-fit rounded-full bg-white px-4 py-2 sm:px-6 sm:py-2.5 font-['Manrope'] text-xs sm:text-sm font-semibold leading-[1.71] tracking-[-0.02em] text-[#0A2647] transition-all hover:bg-white/90 active:scale-95">
+                <button className="w-fit rounded-full bg-white px-4 py-2 sm:px-6 sm:py-2.5 font-['Manrope'] text-xs sm:text-sm font-semibold leading-[1.71] tracking-[-0.02em] text-[#0A2647] transition-all hover:bg-white/90 active:scale-95 animate-text">
                   {products[1].buttonText}
                 </button>
               </div>
 
               {/* Heading */}
-              <h4 className="font-['Manrope'] text-lg sm:text-xl md:text-2xl font-semibold leading-[1.3] tracking-[-0.02em] text-white">
+              <h4 className="font-['Manrope'] text-lg sm:text-xl md:text-2xl font-semibold leading-[1.3] tracking-[-0.02em] text-white animate-text">
                 {products[1].heading}
               </h4>
 
               {/* Description */}
-              <p className="font-['Manrope'] text-sm sm:text-base font-normal leading-[1.6] tracking-normal text-white/80">
+              <p className="font-['Manrope'] text-sm sm:text-base font-normal leading-[1.6] tracking-normal text-white/80 animate-text">
                 {products[1].description}
               </p>
 
               {/* Features Box */}
-              <div className="w-full rounded-xl sm:rounded-2xl border border-[#0E4478] bg-[#0A2647]/50 p-4 sm:p-5" suppressHydrationWarning>
+              <div className="w-full rounded-xl sm:rounded-2xl border border-[#0E4478] bg-[#0A2647]/50 p-4 sm:p-5 animate-text" suppressHydrationWarning>
                 <p className="mb-2 sm:mb-3 font-['Manrope'] text-xs sm:text-sm font-bold leading-[1.5] tracking-normal text-white/90">
                   {products[1].perfectFor}
                 </p>
@@ -390,11 +438,11 @@ export default function ProductSection() {
           {/* Slide 3 - Privacy */}
           <div className="product-slide relative flex h-full w-full flex-shrink-0 items-center justify-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-[120px] px-4 sm:px-6 md:px-8 lg:px-16 xl:px-[200px] py-6 sm:py-8 md:py-10 flex-col lg:flex-row" suppressHydrationWarning>
             {/* Left Side - Heading */}
-            <div className="flex w-full lg:w-[400px] shrink-0 flex-col leading-none self-start pt-0 sm:pt-8 md:pt-12 lg:pt-[150px]" suppressHydrationWarning>
-              <h2 className="font-['Manrope'] text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[72px] font-medium leading-[1.1] tracking-[-0.04em] text-white/[0.35]">
+            <div ref={slide3ContentRef} className="flex w-full lg:w-[400px] shrink-0 flex-col leading-none self-start pt-0 sm:pt-8 md:pt-12 lg:pt-[150px]" suppressHydrationWarning>
+              <h2 className="font-['Manrope'] text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[72px] font-medium leading-[1.1] tracking-[-0.04em] text-white/[0.35] animate-text">
                 {t("product.privacy.title")}
               </h2>
-              <h2 className="font-['Manrope'] text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[72px] font-medium leading-[1.1] tracking-[-0.04em] text-white">
+              <h2 className="font-['Manrope'] text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[72px] font-medium leading-[1.1] tracking-[-0.04em] text-white animate-text">
                 {t("product.privacy.title2")}
               </h2>
             </div>
@@ -407,10 +455,10 @@ export default function ProductSection() {
               </div>
 
               {/* Description Text */}
-              <p className="relative z-10 font-['Manrope'] text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-[34px] font-medium leading-[1.3] tracking-[-0.03em] text-white">
+              <p className="relative z-10 font-['Manrope'] text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-[34px] font-medium leading-[1.3] tracking-[-0.03em] text-white animate-text">
                 {t("product.privacy.description1")}
               </p>
-              <p className="relative z-10 font-['Manrope'] text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-[34px] font-medium leading-[1.3] tracking-[-0.03em] text-white/[0.5]">
+              <p className="relative z-10 font-['Manrope'] text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-[34px] font-medium leading-[1.3] tracking-[-0.03em] text-white/[0.5] animate-text">
                 {t("product.privacy.description2")}
               </p>
             </div>
