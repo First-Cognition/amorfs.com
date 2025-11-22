@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getFontFamily } from "@/lib/utils/fonts";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 export default function Header() {
   const [isLangOpen, setIsLangOpen] = useState(false);
@@ -48,22 +49,43 @@ export default function Header() {
 
       {/* Navigation */}
       <nav className="hidden items-center gap-4 md:flex" suppressHydrationWarning>
-        {/* <a
-          href="#pricing"
-          className="text-center text-base leading-[1.5em] text-white/88 transition-colors hover:text-white"
-          style={{ fontFamily: getFontFamily(language, "manrope") }}
-          suppressHydrationWarning
-        >
-          {t("header.nav.pricing")}
-        </a>
-        <a
-          href="#technology"
-          className="text-center text-base leading-[1.5em] text-white/88 transition-colors hover:text-white"
-          style={{ fontFamily: getFontFamily(language, "manrope") }}
-          suppressHydrationWarning
-        >
-          {t("header.nav.technology")}
-        </a> */}
+        {/* Pricing Button with Tooltip */}
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <button
+              className="text-center text-base leading-[1.5em] text-white/88 transition-colors hover:text-white cursor-pointer"
+              style={{ fontFamily: getFontFamily(language, "manrope") }}
+            >
+              {t("header.nav.pricing")}
+            </button>
+          </TooltipTrigger>
+          <TooltipContent
+            side="bottom"
+            sideOffset={8}
+            className="bg-white/95 text-emerald-600 font-medium px-4 py-2 text-sm rounded-lg shadow-lg border border-emerald-200"
+          >
+            Coming soon!
+          </TooltipContent>
+        </Tooltip>
+
+        {/* Technology Button with Tooltip */}
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <button
+              className="text-center text-base leading-[1.5em] text-white/88 transition-colors hover:text-white cursor-pointer"
+              style={{ fontFamily: getFontFamily(language, "manrope") }}
+            >
+              {t("header.nav.technology")}
+            </button>
+          </TooltipTrigger>
+          <TooltipContent
+            side="bottom"
+            sideOffset={8}
+            className="bg-white/95 text-emerald-600 font-medium px-4 py-2 text-sm rounded-lg shadow-lg border border-emerald-200"
+          >
+            Coming soon!
+          </TooltipContent>
+        </Tooltip>
         <a
           href="#blog"
           className="text-center text-base leading-[1.5em] text-white/88 transition-colors hover:text-white"
@@ -323,22 +345,43 @@ export default function Header() {
 
             {/* Navigation Links */}
             <nav className="flex flex-1 flex-col gap-1 px-4 py-6">
-              {/* <a
-                href="#pricing"
-                className="rounded-lg px-4 py-3 text-base font-medium leading-[1.5em] text-white/88 transition-colors hover:bg-white/10 hover:text-white"
-                style={{ fontFamily: getFontFamily(language, "manrope") }}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {t("header.nav.pricing")}
-              </a>
-              <a
-                href="#technology"
-                className="rounded-lg px-4 py-3 text-base font-medium leading-[1.5em] text-white/88 transition-colors hover:bg-white/10 hover:text-white"
-                style={{ fontFamily: getFontFamily(language, "manrope") }}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {t("header.nav.technology")}
-              </a> */}
+              {/* Pricing Button with Tooltip - Mobile */}
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <button
+                    className="rounded-lg px-4 py-3 text-base font-medium leading-[1.5em] text-white/88 transition-colors hover:bg-white/10 hover:text-white text-left w-full"
+                    style={{ fontFamily: getFontFamily(language, "manrope") }}
+                  >
+                    {t("header.nav.pricing")}
+                  </button>
+                </TooltipTrigger>
+                <TooltipContent
+                  side="right"
+                  sideOffset={8}
+                  className="bg-white/95 text-emerald-600 font-medium px-4 py-2 text-sm rounded-lg shadow-lg border border-emerald-200"
+                >
+                  Coming soon!
+                </TooltipContent>
+              </Tooltip>
+
+              {/* Technology Button with Tooltip - Mobile */}
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <button
+                    className="rounded-lg px-4 py-3 text-base font-medium leading-[1.5em] text-white/88 transition-colors hover:bg-white/10 hover:text-white text-left w-full"
+                    style={{ fontFamily: getFontFamily(language, "manrope") }}
+                  >
+                    {t("header.nav.technology")}
+                  </button>
+                </TooltipTrigger>
+                <TooltipContent
+                  side="right"
+                  sideOffset={8}
+                  className="bg-white/95 text-emerald-600 font-medium px-4 py-2 text-sm rounded-lg shadow-lg border border-emerald-200"
+                >
+                  Coming soon!
+                </TooltipContent>
+              </Tooltip>
               <a
                 href="#blog"
                 className="rounded-lg px-4 py-3 text-base font-medium leading-[1.5em] text-white/88 transition-colors hover:bg-white/10 hover:text-white"

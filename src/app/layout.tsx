@@ -131,9 +131,9 @@ export const metadata: Metadata = {
   title: "Amorfs",
   description: "Amorfs is a platform for capturing and organizing your data.",
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
-    apple: "/favicon.svg",
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
   },
   openGraph: {
     title: "Amorfs",
