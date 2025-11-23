@@ -30,12 +30,12 @@ export default function FutureFooterSection() {
         },
         {
           opacity: 1,
-          duration: 0.6,
-          ease: "power2.out",
+          duration: 1.0,
+          ease: "power1.out",
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: "top 80%",
-            end: "top 50%",
+            start: "top 90%",
+            end: "top 60%",
             toggleActions: "play none none reverse",
           },
         }
@@ -56,8 +56,8 @@ export default function FutureFooterSection() {
       // Phase 1: Show Future content
       mainTimeline.fromTo(
         futureCardRef.current,
-        { opacity: 1, y: 0 },
-        { opacity: 1, y: 0, duration: 0.3 }
+        { opacity: 1 },
+        { opacity: 1, duration: 0.5 }
       );
 
       // Phase 2: Fade out Future content
@@ -65,22 +65,21 @@ export default function FutureFooterSection() {
         futureCardRef.current,
         {
           opacity: 0,
-          y: -50,
-          duration: 0.3,
+          duration: 0.5,
         },
-        "+=0.3"
+        "+=0.5"
       );
 
       // Phase 3: Fade in Footer content
       mainTimeline.fromTo(
         footerContentRef.current,
-        { opacity: 0, y: 50 },
+        { opacity: 0 },
         {
           opacity: 1,
-          y: 0,
-          duration: 0.3,
+          duration: 0.6,
+          ease: "power1.out"
         },
-        "-=0.1"
+        "-=0.2"
       );
     }, sectionRef);
 

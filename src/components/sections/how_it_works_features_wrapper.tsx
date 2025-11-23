@@ -22,6 +22,7 @@ export default function HowItWorksFeaturesWrapper() {
 
     // Features Refs
     const featuresContentRef = useRef<HTMLDivElement>(null);
+    const globeRef = useRef<HTMLDivElement>(null);
     const badgesRef = useRef<HTMLDivElement[]>([]);
 
     // Data for How It Works
@@ -65,8 +66,7 @@ export default function HowItWorksFeaturesWrapper() {
             y: 457 - offsetY,
             width: 160,
             height: 160,
-            variant: "default",
-            noAnimation: true
+            variant: "default"
         },
         {
             text: t("features.badges.crossDevices"),
@@ -82,8 +82,7 @@ export default function HowItWorksFeaturesWrapper() {
             y: 465 - offsetY,
             width: 160,
             height: 160,
-            variant: "default",
-            noAnimation: true
+            variant: "default"
         },
         {
             text: t("features.badges.instantReuse"),
@@ -167,12 +166,10 @@ export default function HowItWorksFeaturesWrapper() {
                 y: 100 // Start slightly down
             });
 
-            // Initial state for Features badges
-            badgesRef.current.forEach((badge) => {
-                if (badge) {
-                    gsap.set(badge, { scale: 0, opacity: 0 });
-                }
-            });
+            // Ensure globe starts at normal scale
+            if (globeRef.current) {
+                gsap.set(globeRef.current, { scale: 1 });
+            }
 
             // 1. Title Animation
             tl.to(titleRef.current, {
@@ -264,38 +261,48 @@ export default function HowItWorksFeaturesWrapper() {
             }, "<0.5"); // Overlap slightly
 
             // --- Features Animation ---
+            
+            // Hold to view features content
+            tl.to({}, { duration: 1.5 });
 
-            // Animate badges
-            // We can use a loop to stagger them in the timeline
-            let animationIndex = 0;
-            badges.forEach((badge, index) => {
-                const badgeElement = badgesRef.current[index];
-                if (badgeElement && !badge.noAnimation) {
-                    tl.to(badgeElement, {
-                        scale: 1,
-                        opacity: 1,
-                        duration: 0.5, // Faster duration for timeline scrub
-                        ease: "back.out(1.7)",
-                    }, `>${index === 0 ? 0 : 0.1}`); // Stagger
-                    animationIndex++;
-                } else if (badgeElement && badge.noAnimation) {
-                    // Ensure non-animated badges are visible if they were hidden initially
-                }
+            // --- Exit Animation (Zoom Globe -> Fade Out) ---
+            
+            // 1. Hide Badges and Title to clear the view
+            const activeBadges = badgesRef.current.filter(Boolean);
+            tl.to([activeBadges, titleRef.current], {
+                opacity: 0,
+                scale: 0.5,
+                duration: 0.6,
+                ease: "power2.in"
             });
 
-            badges.forEach((badge, index) => {
-                const badgeElement = badgesRef.current[index];
-                if (badgeElement && badge.noAnimation) {
-                    tl.to(badgeElement, {
-                        scale: 1,
-                        opacity: 1,
-                        duration: 0.5
-                    }, "<"); // Happen with the container fade in or previous action
-                }
+            // 2. Zoom Globe by 90% (scale from 1 to 1.9)  
+            if (globeRef.current) {
+                tl.to(globeRef.current, {
+                    scale: 1.9, // Zoom in by 90%
+                    duration: 1.2,
+                    ease: "power2.inOut",
+                    transformOrigin: "center center"
+                }, "<0.2"); // Start shortly after hiding badges
+            }
+
+            // 3. Hold the zoomed globe briefly
+            tl.to({}, { duration: 0.4 });
+
+            // 4. Fade out globe and features content
+            tl.to(featuresContentRef.current, {
+                opacity: 0,
+                duration: 0.8,
+                ease: "power1.inOut"
             });
 
-            // Hold final state
-            tl.to({}, { duration: 1 });
+            // 5. Fade out the entire section wrapper to reveal the next section
+            tl.to(wrapperRef.current, {
+                opacity: 0,
+                duration: 0.6,
+                ease: "power1.out",
+                pointerEvents: "none"
+            }, ">-0.4"); // Overlap with features fade out
 
         }, wrapperRef);
 
@@ -457,6 +464,7 @@ export default function HowItWorksFeaturesWrapper() {
                     <div className="relative w-full max-w-[1294px] aspect-[1294/524] min-h-[200px] sm:min-h-[300px] md:min-h-[400px]" suppressHydrationWarning>
                         {/* Globe Video - Centered */}
                         <div
+                            ref={globeRef}
                             className="absolute"
                             style={{
                                 left: "50%",
