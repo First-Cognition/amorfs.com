@@ -22,64 +22,73 @@ export default function FutureFooterSection() {
     if (!sectionRef.current || !futureCardRef.current || !footerContentRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Initial fade-in animation when section enters viewport
-      gsap.fromTo(
-        sectionRef.current,
-        {
-          opacity: 0,
-        },
-        {
-          opacity: 1,
-          duration: 1.0,
-          ease: "power1.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 90%",
-            end: "top 60%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
       // Pin the entire section for scroll-based transitions
       const mainTimeline = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "+=200%", // Pin for scroll duration
+          end: "+=300%", // Extended pin duration for smoother transitions
           scrub: 1,
           pin: true,
           anticipatePin: 1,
         },
       });
 
-      // Phase 1: Show Future content
+      // Phase 0: Hold background only (no content visible)
+      mainTimeline.to({}, { duration: 1.6 });
+
+      // Phase 1: Fade in and animate Future content from bottom
       mainTimeline.fromTo(
         futureCardRef.current,
-        { opacity: 1 },
-        { opacity: 1, duration: 0.5 }
+        { 
+          opacity: 0,
+          scale: 0.85,
+          y: 80
+        },
+        { 
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          duration: 1.8,
+          ease: "power2.out"
+        }
       );
 
-      // Phase 2: Fade out Future content
+      // Phase 2: Hold Future content visible
+      mainTimeline.to(
+        futureCardRef.current,
+        {
+          opacity: 1,
+          duration: 0.4
+        }
+      );
+
+      // Phase 3: Fade out Future content
       mainTimeline.to(
         futureCardRef.current,
         {
           opacity: 0,
-          duration: 0.5,
-        },
-        "+=0.5"
+          scale: 0.95,
+          y: -30,
+          duration: 0.6,
+          ease: "power2.in"
+        }
       );
 
-      // Phase 3: Fade in Footer content
+      // Phase 4: Fade in Footer content
       mainTimeline.fromTo(
         footerContentRef.current,
-        { opacity: 0 },
+        { 
+          opacity: 0,
+          y: 50
+        },
         {
           opacity: 1,
-          duration: 0.6,
-          ease: "power1.out"
+          y: 0,
+          duration: 0.7,
+          ease: "power2.out"
         },
-        "-=0.2"
+        "-=0.3"
       );
     }, sectionRef);
 
@@ -88,7 +97,7 @@ export default function FutureFooterSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative h-screen w-full overflow-hidden opacity-0"
+      className="relative h-screen w-full overflow-hidden"
     >
       {/* Video Background - Full Screen (Pinned) */}
       <div className="absolute inset-0 z-0" suppressHydrationWarning>
