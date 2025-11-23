@@ -17,7 +17,7 @@ export default function FeaturesSection() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    
+
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
@@ -58,71 +58,71 @@ export default function FeaturesSection() {
   const offsetY = globeCenterY - containerCenterY; // 155.8
 
   const badges = [
-    { 
-      text: t("features.badges.zeroKnowledge"), 
-      x: 327 - offsetX, 
-      y: 457 - offsetY, 
-      width: 160, 
+    {
+      text: t("features.badges.zeroKnowledge"),
+      x: 327 - offsetX,
+      y: 457 - offsetY,
+      width: 160,
       height: 160,
       variant: "default",
       noAnimation: true
     },
-    { 
-      text: t("features.badges.crossDevices"), 
-      x: 1124 - offsetX, 
-      y: 224 - offsetY, 
-      width: 120, 
+    {
+      text: t("features.badges.crossDevices"),
+      x: 1124 - offsetX,
+      y: 224 - offsetY,
+      width: 120,
       height: 120,
-      variant: "variant2" 
+      variant: "variant2"
     },
-    { 
-      text: t("features.badges.beautifulTemplates"), 
-      x: 943 - offsetX, 
-      y: 465 - offsetY, 
-      width: 160, 
+    {
+      text: t("features.badges.beautifulTemplates"),
+      x: 943 - offsetX,
+      y: 465 - offsetY,
+      width: 160,
       height: 160,
       variant: "default",
       noAnimation: true
     },
-    { 
-      text: t("features.badges.instantReuse"), 
-      x: 160 - offsetX, 
-      y: 220 - offsetY, 
-      width: 120, 
+    {
+      text: t("features.badges.instantReuse"),
+      x: 160 - offsetX,
+      y: 220 - offsetY,
+      width: 120,
       height: 120,
-      variant: "variant2" 
+      variant: "variant2"
     },
-    { 
-      text: t("features.badges.languageAgnostic"), 
-      x: 348 - offsetX, 
-      y: 125 - offsetY, 
-      width: 160, 
+    {
+      text: t("features.badges.languageAgnostic"),
+      x: 348 - offsetX,
+      y: 125 - offsetY,
+      width: 160,
       height: 160,
-      variant: "default" 
+      variant: "default"
     },
-    { 
-      text: t("features.badges.easySharing"), 
-      x: 988 - offsetX, 
-      y: 289 - offsetY, 
-      width: 120, 
+    {
+      text: t("features.badges.easySharing"),
+      x: 988 - offsetX,
+      y: 289 - offsetY,
+      width: 120,
       height: 120,
-      variant: "variant2" 
+      variant: "variant2"
     },
-    { 
-      text: t("features.badges.fullControl"), 
-      x: 293 - offsetX, 
-      y: 307 - offsetY, 
-      width: 120, 
+    {
+      text: t("features.badges.fullControl"),
+      x: 293 - offsetX,
+      y: 307 - offsetY,
+      width: 120,
       height: 120,
-      variant: "variant2" 
+      variant: "variant2"
     },
-    { 
-      text: t("features.badges.autoCapture"), 
-      x: 923 - offsetX, 
-      y: 128 - offsetY, 
-      width: 120, 
+    {
+      text: t("features.badges.autoCapture"),
+      x: 923 - offsetX,
+      y: 128 - offsetY,
+      width: 120,
       height: 120,
-      variant: "variant2" 
+      variant: "variant2"
     },
   ];
 
@@ -144,7 +144,7 @@ export default function FeaturesSection() {
 
       {/* Video BG Overlay - Full Screen */}
       <div className="absolute inset-0 overflow-hidden" suppressHydrationWarning>
-        <div 
+        <div
           className="absolute"
           style={{
             left: "-76px",
@@ -167,11 +167,11 @@ export default function FeaturesSection() {
       <div className="relative w-full h-full flex flex-col items-center justify-center py-8 sm:py-12 md:py-16 lg:py-[60px] px-4" suppressHydrationWarning>
         <div className="w-full max-w-[1440px] mx-auto flex flex-col items-center gap-4 sm:gap-5 md:gap-6" suppressHydrationWarning>
           {/* Title */}
-          <h2 
+          <h2
             className="font-michroma text-xl sm:text-2xl md:text-[28px] leading-[1.4] tracking-[-0.04em] text-center whitespace-pre-line"
-            style={{ 
+            style={{
               fontFamily: getFontFamily(language, "michroma"),
-              color: "#2DD4C2" 
+              color: "#2DD4C2"
             }}
           >
             {t("features.title")}
@@ -180,7 +180,7 @@ export default function FeaturesSection() {
           {/* Features Container - Relative positioning for badges */}
           <div className="relative w-full max-w-[1294px] aspect-[1294/524] min-h-[200px] sm:min-h-[300px] md:min-h-[400px]" suppressHydrationWarning>
             {/* Globe GIF - Centered */}
-            <div 
+            <div
               className="absolute"
               style={{
                 left: "50%",
@@ -191,15 +191,18 @@ export default function FeaturesSection() {
               }}
               suppressHydrationWarning
             >
-              <Image
-                src="/Video-ocean-globe.gif"
-                alt="Ocean Globe"
-                fill
-                className="object-contain"
+              <video
+                src="/Video ocean-globe.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="object-contain w-full h-full"
                 style={{
                   pointerEvents: "none",
+                  mixBlendMode: "screen",
+                  clipPath: "circle(closest-side)"
                 }}
-                unoptimized
               />
             </div>
 
@@ -245,7 +248,7 @@ export default function FeaturesSection() {
                     justifyContent: "center",
                   }}
                 >
-                  <span 
+                  <span
                     className="font-inter leading-[1.4] text-white text-center whitespace-pre-line"
                     style={{
                       fontFamily: getFontFamily(language, "inter"),
