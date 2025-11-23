@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect } from "react";
-import Image from "next/image";
+
 import { BookmarkCheck, FolderOpen, RefreshCw } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -14,6 +14,7 @@ export default function HowItWorksSection() {
   const { language } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const titleRef = useRef<HTMLDivElement>(null);
 
   const steps = [
     {
@@ -46,7 +47,7 @@ export default function HowItWorksSection() {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "+=350%",
+          end: "+=450%",
           scrub: 1,
           pin: true,
           anticipatePin: 1,
@@ -68,6 +69,15 @@ export default function HowItWorksSection() {
       });
 
       // Animation Sequence
+
+      // Step 1: Title Animation
+      tl.to(titleRef.current, {
+        top: "10%",
+        yPercent: 0,
+        scale: 0.6,
+        duration: 1,
+        ease: "power2.inOut",
+      });
 
       // Card 1 enters to center
       tl.to(cardsRef.current[0], {
@@ -139,42 +149,30 @@ export default function HowItWorksSection() {
       ref={sectionRef}
       className="relative w-full h-screen overflow-hidden"
     >
-      {/* Background Image - Full Screen */}
+      {/* Background Video - Full Screen */}
       <div className="absolute inset-0 z-0 overflow-hidden" suppressHydrationWarning>
-        <Image
-          src="/images/how-it-works-bg.png"
-          alt="How It Works Background"
-          fill
-          className="object-cover"
-          priority
-        />
+        <video
+          className="absolute top-0 left-0 w-full h-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src="/Video ocean BG.mp4" type="video/mp4" />
+        </video>
       </div>
 
-      {/* Video BG Overlay - Full Screen */}
-      <div className="absolute inset-0 z-0 overflow-hidden" suppressHydrationWarning>
-        <div
-          className="absolute"
-          style={{
-            left: "-76px",
-            top: "-0.5px",
-            width: "calc(100% + 152px)",
-            height: "calc(100% + 1px)",
-          }}
-          suppressHydrationWarning
-        >
-          <Image
-            src="/images/how-it-works-video-bg.png"
-            alt="Video Background"
-            fill
-            className="object-cover opacity-10"
-          />
-        </div>
-      </div>
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 z-0 bg-black/85" />
 
       {/* Content Container */}
       <div className="relative z-10 w-full h-full flex flex-col items-center justify-center py-12 sm:py-16 md:py-20" suppressHydrationWarning>
         {/* Title Section - Fixed at top of content area */}
-        <div className="w-full max-w-[1440px] mx-auto px-4 pb-6 sm:pb-8 md:pb-10 flex flex-col items-center gap-2 absolute top-[10%] left-0 right-0 z-20" suppressHydrationWarning>
+        <div
+          ref={titleRef}
+          className="w-full max-w-[1440px] mx-auto px-4 pb-6 sm:pb-8 md:pb-10 flex flex-col items-center gap-2 absolute top-1/2 left-0 right-0 z-20 -translate-y-1/2"
+          suppressHydrationWarning
+        >
           <h2
             className="font-michroma text-2xl sm:text-3xl md:text-4xl lg:text-[48px] xl:text-[60px] leading-[1.4em] tracking-[-0.04em] text-center"
             style={{
