@@ -1,8 +1,7 @@
 import {
   HeroSection,
   ProblemProductWrapper,
-  HowItWorksSection,
-  FeaturesSection,
+  HowItWorksFeaturesWrapper,
   FutureFooterSection,
 } from "@/components/sections";
 import Header from "@/components/layout/Header";
@@ -17,8 +16,7 @@ export default function Home() {
 
       <HeroSection />
       <ProblemProductWrapper />
-      <HowItWorksSection />
-      <FeaturesSection />
+      <HowItWorksFeaturesWrapper />
       <FutureFooterSection />
     </main>
   );
