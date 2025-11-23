@@ -104,12 +104,12 @@ export default function HeroSection() {
       </div>
 
       {/* Content Section - Centered */}
-      <div className="relative z-10 flex flex-1 flex-col items-center justify-center self-stretch px-4 pt-20 sm:px-6 sm:pt-16 md:px-8 lg:px-10" suppressHydrationWarning>
-        <div className="flex w-full max-w-[800px] mx-auto flex-col items-center justify-center gap-4 sm:gap-6 md:gap-8" suppressHydrationWarning>
+      <div className="relative z-10 flex flex-1 flex-col items-center justify-center self-stretch px-4 pt-16 sm:px-6 sm:pt-20 md:px-8 lg:px-10" suppressHydrationWarning>
+        <div className="flex w-full max-w-[800px] mx-auto flex-col items-center justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8" suppressHydrationWarning>
           {/* Headline */}
           <h1
             ref={titleRef}
-            className="w-full text-center text-[32px] font-normal leading-[1.4em] tracking-[-0.04em] text-white sm:text-4xl md:text-5xl lg:text-[56px] whitespace-pre-line"
+            className="w-full text-center text-[28px] font-normal leading-[1.3em] tracking-[-0.04em] text-white xs:text-[32px] sm:text-[36px] md:text-[44px] lg:text-[52px] xl:text-[56px] whitespace-pre-line"
             style={{
               fontFamily: getFontFamily(language, "michroma"),
               textShadow: "0px 4px 4px rgba(0, 0, 0, 0.05)",
@@ -128,16 +128,16 @@ export default function HeroSection() {
           {/* Subheadline */}
           <p
             ref={subtitleRef}
-            className="w-full text-center text-xs leading-[1.5em] text-white/90 sm:text-sm md:text-base lg:text-lg whitespace-pre-line"
+            className="w-full text-center text-sm leading-[1.5em] text-white/90 sm:text-base md:text-lg lg:text-xl whitespace-pre-line px-2"
             style={{ fontFamily: getFontFamily(language, "inter") }}
           >
             {t("hero.subtitle")}
           </p>
 
           {/* CTA Button */}
-          <div ref={ctaRef} className="flex flex-col items-center justify-center w-full sm:w-auto" suppressHydrationWarning>
+          <div ref={ctaRef} className="flex flex-col items-center justify-center w-full sm:w-auto mt-2" suppressHydrationWarning>
             <button
-              className="flex items-center justify-center gap-2 rounded-[1000px] bg-[#0F408F] px-4 py-2.5 text-sm sm:px-5 sm:py-3 sm:text-base transition-all hover:bg-[#0D3678] active:scale-95"
+              className="flex items-center justify-center gap-2 rounded-[1000px] bg-[#0F408F] px-5 py-3 text-sm sm:px-6 sm:py-3.5 md:text-base transition-all hover:bg-[#0D3678] active:scale-95 min-h-[44px]"
               style={{ fontFamily: getFontFamily(language, "manrope") }}
             >
               <span className="text-center font-semibold leading-[1.5em] tracking-[-0.03em] text-white">
@@ -153,12 +153,12 @@ export default function HeroSection() {
       {/* Footer Info - Fixed at bottom */}
       <div
         ref={footerRef}
-        className="absolute bottom-4 left-0 right-0 z-10 flex items-center justify-between px-4 sm:bottom-6 sm:px-6 md:bottom-8 md:px-8 lg:px-10"
+        className="absolute bottom-3 left-0 right-0 z-10 flex items-end justify-between px-3 sm:bottom-4 sm:px-4 md:bottom-6 md:px-6 lg:bottom-8 lg:px-10 gap-2"
         suppressHydrationWarning
       >
         {/* Built in - Left */}
         <div
-          className="text-[14px] leading-tight text-white/80 sm:text-[14px]"
+          className="text-[11px] leading-tight text-white/80 sm:text-[13px] md:text-[14px] flex-shrink-0"
           style={{ fontFamily: getFontFamily(language, "manrope") }}
           suppressHydrationWarning
         >
@@ -170,9 +170,9 @@ export default function HeroSection() {
         </div>
 
         {/* Dive Deeper - Center */}
-        <div className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-1" suppressHydrationWarning>
+        <div className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-0.5 sm:gap-1" suppressHydrationWarning>
           <button
-            className="flex h-6 w-6 sm:h-8 sm:w-8 items-center justify-center rounded-full transition-all hover:bg-white/10 active:scale-95"
+            className="flex h-7 w-7 sm:h-8 sm:w-8 md:h-9 md:w-9 items-center justify-center rounded-full transition-all hover:bg-white/10 active:scale-95 min-h-[44px] min-w-[44px]"
             aria-label="Scroll down"
             onClick={() => {
               const nextSection = document.querySelector('#problem-solution');
@@ -185,7 +185,7 @@ export default function HeroSection() {
             }}
           >
             <svg
-              className="h-3 w-3 sm:h-4 sm:w-4 animate-bounce text-white"
+              className="h-4 w-4 sm:h-5 sm:w-5 animate-bounce text-white"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -209,7 +209,7 @@ export default function HeroSection() {
             </svg>
           </button>
           <span
-            className="text-[14px] text-white/80 sm:text-[14px]"
+            className="text-[11px] sm:text-[12px] md:text-[13px] text-white/80 hidden sm:block"
             style={{ fontFamily: getFontFamily(language, "manrope") }}
           >
             {t("hero.diveDeeper")}
@@ -218,7 +218,7 @@ export default function HeroSection() {
 
         {/* Power by - Right */}
         <div
-          className="flex flex-col items-end text-right text-[14px] leading-tight text-white/80 sm:text-[14px]"
+          className="flex flex-col items-end text-right text-[11px] leading-tight text-white/80 sm:text-[13px] md:text-[14px] flex-shrink-0"
           style={{ fontFamily: getFontFamily(language, "manrope") }}
           suppressHydrationWarning
         >
@@ -229,16 +229,16 @@ export default function HeroSection() {
             href="https://firstcognition.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 hover:underline"
+            className="flex items-center gap-1 sm:gap-2 hover:underline"
           >
             <Image
               src="/images/FC logo-symbol-transparent.png"
               alt="First Cognition Logo"
-              width={32}
-              height={32}
-              className="opacity-80 brightness-0 invert"
+              width={24}
+              height={24}
+              className="opacity-80 brightness-0 invert sm:w-[28px] sm:h-[28px] md:w-[32px] md:h-[32px]"
             />
-            {t("hero.firstCognition")}
+            <span className="hidden xs:inline">{t("hero.firstCognition")}</span>
           </a>
         </div>
       </div>

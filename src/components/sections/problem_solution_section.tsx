@@ -252,18 +252,18 @@ export default function ProblemSolutionSection() {
       {/* Problem Content */}
       <div
         ref={problemContentRef}
-        className="absolute inset-0 flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-10"
+        className="absolute inset-0 flex items-center justify-center px-3 py-4 sm:px-4 sm:py-6 md:px-6 lg:px-8 xl:px-10"
         suppressHydrationWarning
       >
         <div
-          className="flex w-full max-w-7xl flex-col items-center gap-6 sm:gap-8 md:gap-12 lg:flex-row lg:items-center lg:gap-16 xl:gap-[120px] lg:px-10 xl:px-20"
+          className="flex w-full max-w-7xl flex-col items-center gap-4 sm:gap-6 md:gap-8 lg:flex-row lg:items-center lg:gap-12 xl:gap-16 lg:px-6 xl:px-10"
           suppressHydrationWarning
         >
           {/* Left Content - Text */}
-          <div className="flex w-full flex-col justify-center gap-4 sm:gap-6 md:gap-8 lg:flex-1 lg:gap-8" suppressHydrationWarning>
+          <div className="flex w-full flex-col justify-center gap-3 sm:gap-4 md:gap-6 lg:flex-1 lg:gap-6" suppressHydrationWarning>
             {/* Label */}
             <h2
-              className="text-base sm:text-lg md:text-xl leading-[1.4em] tracking-[-0.04em] font-michroma"
+              className="text-sm sm:text-base md:text-lg lg:text-xl leading-[1.4em] tracking-[-0.04em] font-michroma"
               style={{
                 fontFamily: getFontFamily(language, "michroma"),
                 fontWeight: 400,
@@ -275,11 +275,11 @@ export default function ProblemSolutionSection() {
             </h2>
 
             {/* Content Group */}
-            <div className="flex flex-col items-start self-stretch gap-3 sm:gap-4 md:gap-6" suppressHydrationWarning>
+            <div className="flex flex-col items-start self-stretch gap-2 sm:gap-3 md:gap-4" suppressHydrationWarning>
               {/* Headline */}
               <div className="flex flex-col justify-center self-stretch" suppressHydrationWarning>
                 <h3
-                  className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] leading-[1.3em] tracking-[-0.04em] font-manrope"
+                  className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[44px] leading-[1.25em] tracking-[-0.04em] font-manrope"
                   style={{
                     fontFamily: getFontFamily(language, "manrope"),
                     fontWeight: 500,
@@ -292,7 +292,7 @@ export default function ProblemSolutionSection() {
 
               {/* Description */}
               <p
-                className="text-sm sm:text-base md:text-lg leading-[1.5em] tracking-[-0.03em] font-manrope"
+                className="text-xs sm:text-sm md:text-base lg:text-lg leading-[1.5em] tracking-[-0.03em] font-manrope"
                 style={{
                   fontFamily: getFontFamily(language, "manrope"),
                   fontWeight: 450,
@@ -305,9 +305,9 @@ export default function ProblemSolutionSection() {
           </div>
 
           {/* Right Content - Video */}
-          <div className="relative flex-shrink-0 w-full lg:w-auto" suppressHydrationWarning>
+          <div className="relative flex-shrink-0 w-full max-w-[500px] sm:max-w-[600px] lg:w-auto lg:max-w-none" suppressHydrationWarning>
             <div
-              className="relative overflow-hidden w-full aspect-[524/478] max-w-full lg:w-[524px] lg:h-[478px] rounded-xl sm:rounded-2xl md:rounded-3xl"
+              className="relative overflow-hidden w-full aspect-[524/478] lg:w-[450px] lg:h-[410px] xl:w-[524px] xl:h-[478px] rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl"
               style={{
                 backgroundColor: "#19549B",
               }}
@@ -331,35 +331,35 @@ export default function ProblemSolutionSection() {
       {/* Solution Content */}
       <div
         ref={solutionContentRef}
-        className="absolute inset-0 flex flex-col items-center justify-center px-4 py-12 sm:px-6 sm:py-16 md:px-8 md:py-24 lg:px-10 lg:py-[200px] opacity-0"
+        className="absolute inset-0 flex flex-col items-center justify-center px-3 py-8 sm:px-4 sm:py-12 md:px-6 md:py-16 lg:px-8 lg:py-20 opacity-0"
         suppressHydrationWarning
       >
-        <div className="flex w-full max-w-[800px] mx-auto flex-col items-center justify-center gap-8 sm:gap-12 md:gap-16 lg:gap-[120px] px-4 sm:px-6 md:px-10 lg:px-20" suppressHydrationWarning>
-          <div className="flex w-full flex-col items-center justify-center gap-4 sm:gap-6 md:gap-8" suppressHydrationWarning>
+        <div className="flex w-full max-w-[800px] mx-auto flex-col items-center justify-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 px-3 sm:px-4 md:px-6 lg:px-10" suppressHydrationWarning>
+          <div className="flex w-full flex-col items-center justify-center gap-3 sm:gap-4 md:gap-6" suppressHydrationWarning>
             {/* Small Title */}
             <h2
-              className="w-full text-center font-michroma text-base sm:text-lg md:text-xl leading-[1.4em] tracking-[-0.04em] text-[#2DD4C2] [text-shadow:0px_4px_4px_rgba(0,0,0,0.05)]"
+              className="w-full text-center font-michroma text-sm sm:text-base md:text-lg lg:text-xl leading-[1.4em] tracking-[-0.04em] text-[#2DD4C2] [text-shadow:0px_4px_4px_rgba(0,0,0,0.05)]"
               style={{ fontFamily: getFontFamily(language, "michroma") }}
             >
               {t("solution.label")}
             </h2>
 
             {/* Main Content Group - with text swap */}
-            <div className="relative flex w-full flex-col items-center gap-3 sm:gap-4 self-stretch" suppressHydrationWarning>
+            <div className="relative flex w-full flex-col items-center gap-2 sm:gap-3 self-stretch" suppressHydrationWarning>
               {/* Initial Text - Will fade out on scroll */}
               <div
                 ref={initialTextRef}
-                className="absolute inset-0 flex flex-col items-center gap-3 sm:gap-4"
+                className="absolute inset-0 flex flex-col items-center gap-2 sm:gap-3"
                 suppressHydrationWarning
               >
                 {/* Main Heading */}
                 <div
                   ref={solutionTitleRef}
-                  className="flex flex-col items-center gap-2 sm:gap-3"
+                  className="flex flex-col items-center gap-1 sm:gap-2"
                   suppressHydrationWarning
                 >
                   <h3
-                    className="text-center font-manrope text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-medium leading-[1.3em] tracking-[-0.04em] text-white/88"
+                    className="text-center font-manrope text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[44px] font-medium leading-[1.25em] tracking-[-0.04em] text-white/88 px-2"
                     style={{ fontFamily: getFontFamily(language, "manrope") }}
                   >
                     {t("solution.initialTitle")}
@@ -369,11 +369,11 @@ export default function ProblemSolutionSection() {
                 {/* Subtitle */}
                 <div
                   ref={solutionSubtitleRef}
-                  className="flex items-center justify-center gap-2 p-2"
+                  className="flex items-center justify-center gap-2 p-1 sm:p-2"
                   suppressHydrationWarning
                 >
                   <p
-                    className="text-center font-manrope text-sm sm:text-base md:text-lg font-normal leading-[1.5em] tracking-[-0.03em] text-white/55"
+                    className="text-center font-manrope text-xs sm:text-sm md:text-base lg:text-lg font-normal leading-[1.5em] tracking-[-0.03em] text-white/55 px-2"
                     style={{ fontFamily: getFontFamily(language, "manrope") }}
                   >
                     {t("solution.initialSubtitle")}
@@ -384,15 +384,15 @@ export default function ProblemSolutionSection() {
               {/* Options Text - Will fade in on scroll */}
               <div
                 ref={optionsTextRef}
-                className="flex flex-col items-center gap-3 sm:gap-4 opacity-0"
+                className="flex flex-col items-center gap-2 sm:gap-3 opacity-0"
                 suppressHydrationWarning
               >
                 {/* Browser Extension & Data Studio Options */}
-                <div className="flex flex-col items-center gap-3 sm:gap-4 self-stretch" suppressHydrationWarning>
+                <div className="flex flex-col items-center gap-2 sm:gap-3 self-stretch" suppressHydrationWarning>
                   {/* Browser Extension */}
-                  <div className="flex flex-row items-center gap-2 sm:gap-3" suppressHydrationWarning>
+                  <div className="flex flex-row items-center gap-1 sm:gap-2" suppressHydrationWarning>
                     <h1
-                      className="text-center font-manrope text-xl sm:text-2xl md:text-3xl lg:text-[44px] font-medium leading-[1.3em] tracking-[-0.04em] text-white/88"
+                      className="text-center font-manrope text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-[44px] font-medium leading-[1.25em] tracking-[-0.04em] text-white/88"
                       style={{ fontFamily: getFontFamily(language, "manrope") }}
                     >
                       <span className="text-white/60">{`{ `}</span>
@@ -410,9 +410,9 @@ export default function ProblemSolutionSection() {
                   </div>
 
                   {/* Data Studio */}
-                  <div className="flex flex-row items-center gap-2 sm:gap-3" suppressHydrationWarning>
+                  <div className="flex flex-row items-center gap-1 sm:gap-2" suppressHydrationWarning>
                     <h1
-                      className="text-center font-manrope text-xl sm:text-2xl md:text-3xl lg:text-[44px] font-medium leading-[1.3em] tracking-[-0.04em] text-white/88"
+                      className="text-center font-manrope text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-[44px] font-medium leading-[1.25em] tracking-[-0.04em] text-white/88"
                       style={{ fontFamily: getFontFamily(language, "manrope") }}
                     >
                       <span className="text-white/60">{`{ `}</span>
@@ -443,10 +443,10 @@ export default function ProblemSolutionSection() {
         </div>
       </div>
 
-      {/* Decorative SVG - Initially hidden */}
+      {/* Decorative SVG - Initially hidden, hidden on mobile */}
       <div
         ref={decorationRef}
-        className="pointer-events-none absolute left-[50%] top-[35%] -translate-x-1/2 -translate-y-1/2 h-[154px] w-[487px] sm:h-[205px] sm:w-[649px] md:h-[256px] md:w-[813px] lg:h-[308px] lg:w-[975px] lg:left-[50%] lg:top-[35%] lg:-translate-x-1/2 lg:-translate-y-1/2 rounded-[100px] opacity-0"
+        className="pointer-events-none absolute left-[50%] top-[35%] -translate-x-1/2 -translate-y-1/2 h-[120px] w-[380px] sm:h-[180px] sm:w-[570px] md:h-[220px] md:w-[697px] lg:h-[280px] lg:w-[888px] xl:h-[308px] xl:w-[975px] rounded-[100px] opacity-0 hidden sm:block"
         style={{ transform: 'rotate(-1.5deg)' }}
       >
         <Image

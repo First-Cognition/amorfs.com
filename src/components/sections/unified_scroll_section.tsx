@@ -12,7 +12,7 @@ import { getFontFamily } from "@/lib/utils/fonts";
 export default function UnifiedScrollSection() {
     const t = useTranslation();
     const { language } = useLanguage();
-    
+
     // Main wrapper ref
     const wrapperRef = useRef<HTMLElement>(null);
 
@@ -325,10 +325,10 @@ export default function UnifiedScrollSection() {
             // Overlap: Fade in footer video background with blur effect
             tl.fromTo(footerVideoContainerRef.current,
                 { opacity: 0, filter: "blur(15px)" },
-                { 
-                    opacity: 1, 
-                    filter: "blur(0px)", 
-                    duration: 1.2, 
+                {
+                    opacity: 1,
+                    filter: "blur(0px)",
+                    duration: 1.2,
                     ease: "power2.out",
                     pointerEvents: "auto"
                 },
@@ -400,7 +400,7 @@ export default function UnifiedScrollSection() {
             </div>
 
             {/* ===== LAYER 2: HOW IT WORKS + FEATURES CONTENT (z-10) ===== */}
-            
+
             {/* How It Works Content */}
             <div
                 ref={hiwContentRef}
@@ -410,11 +410,11 @@ export default function UnifiedScrollSection() {
                 {/* Title Section */}
                 <div
                     ref={hiwTitleRef}
-                    className="w-full max-w-[1440px] mx-auto px-4 pb-6 sm:pb-8 md:pb-10 flex flex-col items-center gap-2 absolute top-1/2 left-0 right-0 z-20 -translate-y-1/2"
+                    className="w-full max-w-[1440px] mx-auto px-3 pb-4 sm:px-4 sm:pb-6 md:pb-8 lg:pb-10 flex flex-col items-center gap-1 sm:gap-2 absolute top-1/2 left-0 right-0 z-20 -translate-y-1/2"
                     suppressHydrationWarning
                 >
                     <h2
-                        className="font-michroma text-2xl sm:text-3xl md:text-4xl lg:text-[48px] xl:text-[60px] leading-[1.4em] tracking-[-0.04em] text-center"
+                        className="font-michroma text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[48px] 2xl:text-[60px] leading-[1.3em] tracking-[-0.04em] text-center px-2"
                         style={{
                             fontFamily: getFontFamily(language, "michroma"),
                             color: "#2DD4C2",
@@ -426,35 +426,29 @@ export default function UnifiedScrollSection() {
                 </div>
 
                 {/* Cards Container */}
-                <div className="relative w-full max-w-[1440px] mx-auto px-4 h-full flex items-center justify-center mt-20" suppressHydrationWarning>
+                <div className="relative w-full max-w-[1440px] mx-auto px-3 sm:px-4 h-full flex items-center justify-center mt-16 sm:mt-20" suppressHydrationWarning>
                     {steps.map((step, index) => {
                         const IconComponent = step.icon;
                         return (
                             <div
                                 key={index}
                                 ref={(el) => { cardsRef.current[index] = el; }}
-                                className="absolute left-1/2 top-1/2 w-full max-w-[900px] bg-[#DDEBF9] border-2 border-[#A0C2E0] rounded-2xl sm:rounded-3xl md:rounded-[60px] p-0 overflow-hidden shadow-lg"
+                                className="absolute left-1/2 top-1/2 w-[95%] max-w-[600px] sm:max-w-[750px] md:max-w-[900px] bg-[#DDEBF9] border-2 border-[#A0C2E0] rounded-xl sm:rounded-2xl md:rounded-3xl lg:rounded-[60px] p-0 overflow-hidden shadow-lg"
                                 style={{
                                     zIndex: index + 1,
                                     willChange: "transform, opacity, filter",
                                 }}
                             >
                                 <div
-                                    className="flex flex-col sm:flex-row items-center justify-center w-full mx-auto"
-                                    style={{
-                                        gap: "20px",
-                                        padding: "20px",
-                                        boxSizing: "border-box",
-                                    }}
+                                    className="flex flex-col sm:flex-row items-center justify-center w-full mx-auto gap-3 sm:gap-4 md:gap-5 p-3 sm:p-4 md:p-5"
                                     suppressHydrationWarning
                                 >
                                     {/* Left Content */}
                                     <div
-                                        className="flex flex-col justify-center flex-shrink-0 w-full sm:w-auto p-4 sm:p-6 md:p-8"
+                                        className="flex flex-col justify-center flex-shrink-0 w-full sm:w-auto p-2 sm:p-4 md:p-6 gap-2 sm:gap-3"
                                         style={{
-                                            gap: "12px",
                                             width: "100%",
-                                            maxWidth: "300px",
+                                            maxWidth: "280px",
                                         }}
                                         suppressHydrationWarning
                                     >
@@ -474,11 +468,11 @@ export default function UnifiedScrollSection() {
 
                                         {/* Title */}
                                         <h3
-                                            className="font-manrope text-xl sm:text-2xl md:text-3xl lg:text-[32px]"
+                                            className="font-manrope text-base sm:text-lg md:text-xl lg:text-2xl xl:text-[32px]"
                                             style={{
                                                 fontFamily: getFontFamily(language, "manrope"),
                                                 fontWeight: 500,
-                                                lineHeight: "1.25em",
+                                                lineHeight: "1.2em",
                                                 letterSpacing: "-0.03em",
                                                 color: "#073071",
                                             }}
@@ -503,7 +497,7 @@ export default function UnifiedScrollSection() {
 
                                     {/* Right Image Placeholder */}
                                     <div
-                                        className="bg-white rounded-xl sm:rounded-2xl md:rounded-[40px] flex-shrink-0 w-full sm:w-auto aspect-[453/300] sm:w-[453px] sm:h-[300px]"
+                                        className="bg-white rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-[40px] flex-shrink-0 w-full sm:w-auto aspect-[453/300] max-w-[400px] sm:max-w-[450px] md:w-[453px] md:h-[300px]"
                                         suppressHydrationWarning
                                     />
                                 </div>
@@ -516,14 +510,14 @@ export default function UnifiedScrollSection() {
             {/* Features Content */}
             <div
                 ref={featuresContentRef}
-                className="absolute inset-0 z-10 w-full h-full flex flex-col items-center justify-center py-8 sm:py-12 md:py-16 lg:py-[60px] px-4"
+                className="absolute inset-0 z-10 w-full h-full flex flex-col items-center justify-center py-6 px-3 sm:py-8 sm:px-4 md:py-12 md:px-6 lg:py-16 lg:px-8"
                 suppressHydrationWarning
             >
-                <div className="w-full max-w-[1440px] mx-auto flex flex-col items-center gap-4 sm:gap-5 md:gap-6" suppressHydrationWarning>
+                <div className="w-full max-w-[1440px] mx-auto flex flex-col items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6" suppressHydrationWarning>
                     {/* Title */}
                     <h2
                         ref={featuresTitleRef}
-                        className="font-michroma text-xl sm:text-2xl md:text-[28px] leading-[1.4] tracking-[-0.04em] text-center whitespace-pre-line"
+                        className="font-michroma text-base sm:text-lg md:text-xl lg:text-2xl xl:text-[28px] leading-[1.35] tracking-[-0.04em] text-center whitespace-pre-line px-2"
                         style={{
                             fontFamily: getFontFamily(language, "michroma"),
                             color: "#2DD4C2"
@@ -533,7 +527,7 @@ export default function UnifiedScrollSection() {
                     </h2>
 
                     {/* Features Container */}
-                    <div className="relative w-full max-w-[1294px] aspect-[1294/524] min-h-[200px] sm:min-h-[300px] md:min-h-[400px]" suppressHydrationWarning>
+                    <div className="relative w-full max-w-[1294px] aspect-[1294/524] min-h-[180px] sm:min-h-[250px] md:min-h-[350px] lg:min-h-[400px]" suppressHydrationWarning>
                         {/* Globe Video - Centered */}
                         <div
                             ref={globeRef}
@@ -641,17 +635,17 @@ export default function UnifiedScrollSection() {
                 {/* Future Card Content */}
                 <div
                     ref={futureCardRef}
-                    className="absolute inset-0 flex items-center justify-center px-4"
+                    className="absolute inset-0 flex items-center justify-center px-3 sm:px-4"
                     suppressHydrationWarning
                 >
                     <div
-                        className="relative w-full max-w-[760px] rounded-2xl sm:rounded-3xl md:rounded-[60px] border-2 border-white bg-[rgba(255,255,255,0.82)] p-6 sm:p-8 md:p-12 lg:p-[60px] backdrop-blur-[4px]"
+                        className="relative w-full max-w-[760px] rounded-xl sm:rounded-2xl md:rounded-3xl lg:rounded-[60px] border-2 border-white bg-[rgba(255,255,255,0.82)] p-4 sm:p-6 md:p-10 lg:p-12 xl:p-[60px] backdrop-blur-[4px]"
                         suppressHydrationWarning
                     >
-                        <div className="flex flex-col items-center gap-4 sm:gap-5" suppressHydrationWarning>
+                        <div className="flex flex-col items-center gap-3 sm:gap-4 md:gap-5" suppressHydrationWarning>
                             {/* Title */}
                             <h2
-                                className="text-center text-xl sm:text-2xl md:text-3xl lg:text-[32px] font-semibold leading-[1.25em] tracking-[-0.03em]"
+                                className="text-center text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-[32px] font-semibold leading-[1.2em] tracking-[-0.03em] px-2"
                                 style={{
                                     fontFamily: getFontFamily(language, "manrope"),
                                     color: "#073071",
@@ -668,9 +662,9 @@ export default function UnifiedScrollSection() {
                             </div>
 
                             {/* Description */}
-                            <div className="w-full max-w-[500px]" suppressHydrationWarning>
+                            <div className="w-full max-w-[500px] px-2" suppressHydrationWarning>
                                 <p
-                                    className="text-center text-sm sm:text-base md:text-lg leading-[1.5em] tracking-[-0.03em]"
+                                    className="text-center text-xs sm:text-sm md:text-base lg:text-lg leading-[1.5em] tracking-[-0.03em]"
                                     style={{
                                         fontFamily: getFontFamily(language, "manrope"),
                                         color: "#525252",
@@ -688,9 +682,9 @@ export default function UnifiedScrollSection() {
                             </div>
 
                             {/* Scroll Hint Button */}
-                            <div className="mt-4 sm:mt-5 flex justify-center" suppressHydrationWarning>
+                            <div className="mt-3 sm:mt-4 md:mt-5 flex justify-center" suppressHydrationWarning>
                                 <button
-                                    className="group relative rounded-full border border-[#0F408F] px-4 py-2.5 sm:px-5 sm:py-3 text-center text-sm sm:text-base font-semibold capitalize leading-[1.5em] tracking-[-0.03em] text-[#0F408F] transition-all hover:bg-[#0F408F] hover:text-white cursor-default"
+                                    className="group relative rounded-full border border-[#0F408F] px-4 py-2 sm:px-5 sm:py-2.5 md:py-3 text-center text-xs sm:text-sm md:text-base font-semibold capitalize leading-[1.5em] tracking-[-0.03em] text-[#0F408F] transition-all hover:bg-[#0F408F] hover:text-white cursor-default min-h-[44px]"
                                     style={{
                                         fontFamily: getFontFamily(language, "manrope"),
                                     }}
@@ -706,16 +700,16 @@ export default function UnifiedScrollSection() {
                 {/* Footer CTA Content */}
                 <div
                     ref={footerContentRef}
-                    className="absolute inset-0 flex items-center justify-center px-4"
+                    className="absolute inset-0 flex items-center justify-center px-3 sm:px-4"
 
                     suppressHydrationWarning
                 >
-                    <div className="flex w-full max-w-[1440px] flex-col items-center gap-6">
+                    <div className="flex w-full max-w-[1440px] flex-col items-center gap-4 sm:gap-6">
                         {/* CTA Section */}
-                        <div className="flex flex-col items-center gap-4 sm:gap-6">
+                        <div className="flex flex-col items-center gap-3 sm:gap-4 md:gap-6">
                             {/* Title */}
                             <h3
-                                className="text-center text-3xl sm:text-4xl md:text-5xl lg:text-[60px] font-normal leading-[1.3em] tracking-[-0.04em] text-white"
+                                className="text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[60px] font-normal leading-[1.25em] tracking-[-0.04em] text-white px-2"
                                 style={{
                                     fontFamily: getFontFamily(language, "michroma"),
                                     textShadow: "0 0.5px 0 #FFFFFF",
@@ -731,21 +725,21 @@ export default function UnifiedScrollSection() {
                             </h3>
 
                             {/* Buttons Container */}
-                            <div className="relative flex flex-wrap justify-center items-start gap-3 sm:gap-4 md:gap-6">
+                            <div className="relative flex flex-wrap justify-center items-start gap-2 sm:gap-3 md:gap-4 lg:gap-6">
                                 {/* Install Extension Button */}
                                 <Magnet
                                     padding={50}
                                     magnetStrength={10}
-                                    wrapperClassName="cursor-pointer sm:!p-[75px] md:!p-[100px]"
+                                    wrapperClassName="cursor-pointer sm:!p-[60px] md:!p-[75px] lg:!p-[100px]"
                                 >
-                                    <div className="relative flex h-[140px] w-[140px] sm:h-[160px] sm:w-[160px] md:h-[180px] md:w-[180px] lg:h-[200px] lg:w-[200px] flex-col items-center justify-center gap-2 sm:gap-3 md:gap-4 rounded-full border-2 border-white/55 bg-white/17 p-4 sm:p-5 md:p-6 backdrop-blur-[20px] transition-all hover:bg-white/25 mt-0">
+                                    <div className="relative flex h-[110px] w-[110px] sm:h-[140px] sm:w-[140px] md:h-[160px] md:w-[160px] lg:h-[180px] lg:w-[180px] xl:h-[200px] xl:w-[200px] flex-col items-center justify-center gap-1 sm:gap-2 md:gap-3 lg:gap-4 rounded-full border-2 border-white/55 bg-white/17 p-3 sm:p-4 md:p-5 lg:p-6 backdrop-blur-[20px] transition-all hover:bg-white/25 mt-0">
                                         <svg
                                             width="24"
                                             height="24"
                                             viewBox="0 0 24 24"
                                             fill="none"
                                             xmlns="http://www.w3.org/2000/svg"
-                                            className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7"
+                                            className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7"
                                         >
                                             <path
                                                 d="M21 16V8C21 6.89543 20.1046 6 19 6H5C3.89543 6 3 6.89543 3 8V16M21 16C21 17.1046 20.1046 18 19 18H5C3.89543 18 3 17.1046 3 16M21 16L21 18M3 16L3 18M8 11L12 15M12 15L16 11M12 15V6"
@@ -756,7 +750,7 @@ export default function UnifiedScrollSection() {
                                             />
                                         </svg>
                                         <span
-                                            className="text-center text-sm sm:text-base md:text-lg lg:text-[20px] font-semibold leading-[1.4em] tracking-[-0.03em] text-white"
+                                            className="text-center text-xs sm:text-sm md:text-base lg:text-lg xl:text-[20px] font-semibold leading-[1.3em] tracking-[-0.03em] text-white"
                                             style={{
                                                 fontFamily: getFontFamily(language, "manrope"),
                                             }}
@@ -775,9 +769,9 @@ export default function UnifiedScrollSection() {
                                 <Magnet
                                     padding={50}
                                     magnetStrength={10}
-                                    wrapperClassName="cursor-pointer sm:!p-[75px] md:!p-[100px]"
+                                    wrapperClassName="cursor-pointer sm:!p-[60px] md:!p-[75px] lg:!p-[100px]"
                                 >
-                                    <div className="relative flex h-[140px] w-[140px] sm:h-[160px] sm:w-[160px] md:h-[180px] md:w-[180px] lg:h-[200px] lg:w-[200px] flex-col items-center justify-center gap-2 sm:gap-3 md:gap-4 rounded-full border-2 border-white/55 bg-white/17 p-4 sm:p-5 md:p-6 backdrop-blur-[20px] transition-all hover:bg-white/25 mt-8 sm:mt-10 md:mt-12">
+                                    <div className="relative flex h-[110px] w-[110px] sm:h-[140px] sm:w-[140px] md:h-[160px] md:w-[160px] lg:h-[180px] lg:w-[180px] xl:h-[200px] xl:w-[200px] flex-col items-center justify-center gap-1 sm:gap-2 md:gap-3 lg:gap-4 rounded-full border-2 border-white/55 bg-white/17 p-3 sm:p-4 md:p-5 lg:p-6 backdrop-blur-[20px] transition-all hover:bg-white/25 mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12">
                                         <svg
                                             width="24"
                                             height="24"
