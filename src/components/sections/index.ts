@@ -8,5 +8,6 @@ export { default as FutureSection } from "./future_section";
 export { default as FooterSection } from "./footer_section";
 export { default as FutureFooterSection } from "./future_footer_section";
 export { default as HowItWorksFeaturesWrapper } from "./how_it_works_features_wrapper";
+export { default as UnifiedScrollSection } from "./unified_scroll_section";
 
 
