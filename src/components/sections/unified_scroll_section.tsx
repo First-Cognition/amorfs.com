@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import { BookmarkCheck, FolderOpen, RefreshCw } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Magnet from "@/components/Magnet";
+import TextType from "@/components/TextType";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { getFontFamily } from "@/lib/utils/fonts";
@@ -13,6 +14,7 @@ import { getFontFamily } from "@/lib/utils/fonts";
 export default function UnifiedScrollSection() {
     const t = useTranslation();
     const { language } = useLanguage();
+    const [footerVisible, setFooterVisible] = useState(false);
 
     // Main wrapper ref
     const wrapperRef = useRef<HTMLElement>(null);
@@ -369,7 +371,9 @@ export default function UnifiedScrollSection() {
                 opacity: 1,
                 y: 0,
                 duration: 0.7,
-                ease: "power2.out"
+                ease: "power2.out",
+                onStart: () => setFooterVisible(true),
+                onReverseComplete: () => setFooterVisible(false)
             }, "-=0.3");
 
             // Hold final footer content
@@ -709,21 +713,35 @@ export default function UnifiedScrollSection() {
                         {/* CTA Section */}
                         <div className="flex flex-col items-center gap-1 sm:gap-2">
                             {/* Title */}
-                            <h3
-                                className="mt-20 sm:mt-30 text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[60px] font-normal leading-[1.25em] tracking-[-0.04em] text-white px-2 "
-                                style={{
-                                    fontFamily: getFontFamily(language, "michroma"),
-                                    textShadow: "0 0.5px 0 #FFFFFF",
-                                    WebkitTextStroke: "0.5px #FFFFFF",
-                                }}
-                            >
-                                {t("future.ctaTitle").split("\n").map((line, i) => (
-                                    <React.Fragment key={i}>
-                                        {line}
-                                        {i < t("future.ctaTitle").split("\n").length - 1 && <br />}
-                                    </React.Fragment>
-                                ))}
-                            </h3>
+                            {footerVisible ? (
+                                <TextType
+                                    text={t("future.ctaTitle")}
+                                    as="h3"
+                                    className="mt-20 sm:mt-30 text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[60px] font-normal leading-[1.25em] tracking-[-0.04em] text-white px-2"
+                                    style={{
+                                        fontFamily: getFontFamily(language, "michroma"),
+                                        textShadow: "0 0.5px 0 #FFFFFF",
+                                        WebkitTextStroke: "0.5px #FFFFFF",
+                                    }}
+                                    startOnVisible={true}
+                                />
+                            ) : (
+                                <h3
+                                    className="mt-20 sm:mt-30 text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[60px] font-normal leading-[1.25em] tracking-[-0.04em] text-white px-2 invisible"
+                                    style={{
+                                        fontFamily: getFontFamily(language, "michroma"),
+                                        textShadow: "0 0.5px 0 #FFFFFF",
+                                        WebkitTextStroke: "0.5px #FFFFFF",
+                                    }}
+                                >
+                                    {t("future.ctaTitle").split("\n").map((line, i) => (
+                                        <React.Fragment key={i}>
+                                            {line}
+                                            {i < t("future.ctaTitle").split("\n").length - 1 && <br />}
+                                        </React.Fragment>
+                                    ))}
+                                </h3>
+                            )}
 
                             {/* Buttons Container */}
                             <div className="relative flex flex-wrap justify-center items-start gap-2 sm:gap-3 md:gap-4 lg:gap-6">
