@@ -462,7 +462,7 @@ export default function UnifiedScrollSection() {
                     <source src="/Video ocean BG.mp4" type="video/mp4" />
                 </video>
                 {/* Dark Overlay */}
-                <div className="absolute inset-0 bg-black/85" />
+                <div className="absolute inset-0 bg-[#0a1628]/80" />
             </div>
 
             {/* ===== LAYER 2: HOW IT WORKS + FEATURES CONTENT (z-10) ===== */}
