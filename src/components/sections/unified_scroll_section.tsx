@@ -499,22 +499,22 @@ export default function UnifiedScrollSection() {
                             <div
                                 key={index}
                                 ref={(el) => { cardsRef.current[index] = el; }}
-                                className="absolute left-1/2 top-1/2 w-[95%] max-w-[600px] sm:max-w-[750px] md:max-w-[900px] bg-[#DDEBF9] border-2 border-[#A0C2E0] rounded-xl sm:rounded-2xl md:rounded-3xl lg:rounded-[60px] p-0 overflow-hidden shadow-lg"
+                                className="absolute left-1/2 top-1/2 w-[95%] max-w-[500px] sm:max-w-[650px] md:max-w-[800px] bg-[#DDEBF9] border-2 border-[#A0C2E0] rounded-xl sm:rounded-2xl md:rounded-3xl lg:rounded-[40px] p-0 overflow-hidden shadow-lg"
                                 style={{
                                     zIndex: index + 1,
                                     willChange: "transform, opacity, filter",
                                 }}
                             >
                                 <div
-                                    className="flex flex-col sm:flex-row items-center justify-center w-full mx-auto gap-3 sm:gap-4 md:gap-5 p-3 sm:p-4 md:p-5"
+                                    className="flex flex-col sm:flex-row items-center justify-center w-full mx-auto gap-2 sm:gap-3 md:gap-4 p-2 sm:p-3 md:p-4"
                                     suppressHydrationWarning
                                 >
                                     {/* Left Content */}
                                     <div
-                                        className="flex flex-col justify-center flex-shrink-0 w-full sm:w-auto p-2 sm:p-4 md:p-6 gap-2 sm:gap-3"
+                                        className="flex flex-col justify-center flex-shrink-0 w-full sm:w-auto p-2 sm:p-3 md:p-4 gap-2 sm:gap-2"
                                         style={{
                                             width: "100%",
-                                            maxWidth: "280px",
+                                            maxWidth: "260px",
                                         }}
                                         suppressHydrationWarning
                                     >
@@ -563,7 +563,7 @@ export default function UnifiedScrollSection() {
 
                                     {/* Right Video */}
                                     <div
-                                        className="bg-white rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-[40px] flex-shrink-0 w-full sm:w-auto aspect-[453/300] max-w-[400px] sm:max-w-[450px] md:w-[453px] md:h-[300px] overflow-hidden cursor-pointer relative group"
+                                        className="bg-white rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-[30px] flex-shrink-0 w-full sm:w-auto aspect-[450/340] max-w-[380px] sm:max-w-[420px] md:w-[450px] md:h-[340px] overflow-hidden cursor-pointer relative group"
                                         onClick={() => toggleVideoPlayback(index)}
                                         suppressHydrationWarning
                                     >
