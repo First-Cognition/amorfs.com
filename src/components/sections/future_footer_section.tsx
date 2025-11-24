@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Magnet from "@/components/Magnet";
@@ -40,12 +41,12 @@ export default function FutureFooterSection() {
       // Phase 1: Fade in and animate Future content from bottom
       mainTimeline.fromTo(
         futureCardRef.current,
-        { 
+        {
           opacity: 0,
           scale: 0.85,
           y: 80
         },
-        { 
+        {
           opacity: 1,
           scale: 1,
           y: 0,
@@ -78,7 +79,7 @@ export default function FutureFooterSection() {
       // Phase 4: Fade in Footer content
       mainTimeline.fromTo(
         footerContentRef.current,
-        { 
+        {
           opacity: 0,
           y: 50
         },
@@ -219,22 +220,14 @@ export default function FutureFooterSection() {
                 wrapperClassName="cursor-pointer sm:!p-[75px] md:!p-[100px]"
               >
                 <div className="relative flex h-[140px] w-[140px] sm:h-[160px] sm:w-[160px] md:h-[180px] md:w-[180px] lg:h-[200px] lg:w-[200px] flex-col items-center justify-center gap-2 sm:gap-3 md:gap-4 rounded-full border-2 border-white/55 bg-white/17 p-4 sm:p-5 md:p-6 backdrop-blur-[20px] transition-all hover:bg-white/25 mt-0">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7"
-                  >
-                    <path
-                      d="M21 16V8C21 6.89543 20.1046 6 19 6H5C3.89543 6 3 6.89543 3 8V16M21 16C21 17.1046 20.1046 18 19 18H5C3.89543 18 3 17.1046 3 16M21 16L21 18M3 16L3 18M8 11L12 15M12 15L16 11M12 15V6"
-                      stroke="white"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
+                  <div className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 relative">
+                    <Image
+                      src="/images/download.svg"
+                      alt="Install Extension"
+                      fill
+                      className="object-contain"
                     />
-                  </svg>
+                  </div>
                   <span
                     className="text-center text-sm sm:text-base md:text-lg lg:text-[20px] font-semibold leading-[1.4em] tracking-[-0.03em] text-white"
                     style={{
@@ -258,29 +251,14 @@ export default function FutureFooterSection() {
                 wrapperClassName="cursor-pointer sm:!p-[75px] md:!p-[100px]"
               >
                 <div className="relative flex h-[140px] w-[140px] sm:h-[160px] sm:w-[160px] md:h-[180px] md:w-[180px] lg:h-[200px] lg:w-[200px] flex-col items-center justify-center gap-2 sm:gap-3 md:gap-4 rounded-full border-2 border-white/55 bg-white/17 p-4 sm:p-5 md:p-6 backdrop-blur-[20px] transition-all hover:bg-white/25 mt-8 sm:mt-10 md:mt-12">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7"
-                  >
-                    <path
-                      d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z"
-                      stroke="white"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
+                  <div className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 relative">
+                    <Image
+                      src="/images/click.svg"
+                      alt="Open Studio"
+                      fill
+                      className="object-contain"
                     />
-                    <path
-                      d="M9 22V12H15V22"
-                      stroke="white"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  </div>
                   <span
                     className="text-center text-sm sm:text-base md:text-lg lg:text-[20px] font-semibold leading-[1.4em] tracking-[-0.03em] text-white"
                     style={{
@@ -304,36 +282,14 @@ export default function FutureFooterSection() {
                 wrapperClassName="cursor-pointer sm:!p-[75px] md:!p-[100px]"
               >
                 <div className="relative flex h-[140px] w-[140px] sm:h-[160px] sm:w-[160px] md:h-[180px] md:w-[180px] lg:h-[206px] lg:w-[206px] flex-col items-center justify-center gap-2 sm:gap-3 md:gap-4 rounded-full border-2 border-white/55 bg-white/17 p-4 sm:p-5 md:p-6 backdrop-blur-[20px] transition-all hover:bg-white/25 mt-4 sm:mt-5 md:mt-6">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7"
-                  >
-                    <path
-                      d="M12 2L2 7L12 12L22 7L12 2Z"
-                      stroke="white"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
+                  <div className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 relative">
+                    <Image
+                      src="/images/dollar.svg"
+                      alt="View Pricing"
+                      fill
+                      className="object-contain"
                     />
-                    <path
-                      d="M2 17L12 22L22 17"
-                      stroke="white"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M2 12L12 17L22 12"
-                      stroke="white"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  </div>
                   <span
                     className="text-center text-sm sm:text-base md:text-lg lg:text-[20px] font-semibold leading-[1.4em] tracking-[-0.03em] text-white"
                     style={{
@@ -353,7 +309,7 @@ export default function FutureFooterSection() {
           </div>
 
           {/* Bottom Bar */}
-          <div className="absolute bottom-0 left-0 right-0 w-full px-4 sm:px-6 md:px-8 lg:px-10 py-3 sm:py-4">
+          <div className="absolute bottom-0 left-0 right-0 w-full px-6 sm:px-8 md:px-10 py-6 sm:py-8">
             {/* Enhanced gradient overlay for better text readability */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
             <div className="relative mx-auto flex max-w-[1440px] flex-col items-center justify-between gap-3 sm:gap-4 sm:flex-row">
