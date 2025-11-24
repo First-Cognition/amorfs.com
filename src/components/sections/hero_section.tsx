@@ -104,7 +104,7 @@ export default function HeroSection() {
       </div>
 
       {/* Content Section - Centered */}
-      <div className="relative z-10 flex flex-1 flex-col items-center justify-center self-stretch px-4 pt-16 sm:px-6 sm:pt-20 md:px-8 lg:px-10" suppressHydrationWarning>
+      <div className="relative z-10 flex flex-1 flex-col items-center justify-center self-stretch px-4 pt-16 pb-24 sm:px-6 sm:pt-20 sm:pb-28 md:px-8 md:pb-32 lg:px-10 lg:pb-36" suppressHydrationWarning>
         <div className="flex w-full max-w-[800px] mx-auto flex-col items-center justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8" suppressHydrationWarning>
           {/* Headline */}
           <h1
@@ -238,7 +238,7 @@ export default function HeroSection() {
               height={24}
               className="opacity-80 brightness-0 invert sm:w-[28px] sm:h-[28px] md:w-[32px] md:h-[32px]"
             />
-            <span className="hidden xs:inline">{t("hero.firstCognition")}</span>
+            <span>{t("hero.firstCognition")}</span>
           </a>
         </div>
       </div>
