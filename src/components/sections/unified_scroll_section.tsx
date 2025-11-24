@@ -188,12 +188,14 @@ export default function UnifiedScrollSection() {
             gsap.set(futureCardRef.current, {
                 opacity: 0,
                 scale: 0.85,
-                y: 80
+                y: 80,
+                pointerEvents: "none"
             });
 
             gsap.set(footerContentRef.current, {
                 opacity: 0,
-                y: 50
+                y: 50,
+                pointerEvents: "none"
             });
 
             // ===== PHASE 1: HOW IT WORKS ANIMATION =====
@@ -322,6 +324,7 @@ export default function UnifiedScrollSection() {
                 filter: "blur(20px)",
                 scale: 1.05,
                 duration: 1,
+                pointerEvents: "none",
                 ease: "power2.inOut"
             });
 
@@ -349,7 +352,8 @@ export default function UnifiedScrollSection() {
                 scale: 1,
                 y: 0,
                 duration: 1.8,
-                ease: "power2.out"
+                ease: "power2.out",
+                pointerEvents: "auto"
             });
 
             // Hold Future content visible
@@ -363,7 +367,8 @@ export default function UnifiedScrollSection() {
                 scale: 0.95,
                 y: -30,
                 duration: 0.6,
-                ease: "power2.in"
+                ease: "power2.in",
+                pointerEvents: "none"
             });
 
             // Fade in Footer content
@@ -372,6 +377,7 @@ export default function UnifiedScrollSection() {
                 y: 0,
                 duration: 0.7,
                 ease: "power2.out",
+                pointerEvents: "auto",
                 onStart: () => setFooterVisible(true),
                 onReverseComplete: () => setFooterVisible(false)
             }, "-=0.3");
@@ -687,16 +693,20 @@ export default function UnifiedScrollSection() {
                             </div>
 
                             {/* Scroll Hint Button */}
-                            <div className="mt-3 sm:mt-4 md:mt-5 flex justify-center" suppressHydrationWarning>
-                                <button
-                                    className="group relative rounded-full border border-[#0F408F] px-4 py-2 sm:px-5 sm:py-2.5 md:py-3 text-center text-xs sm:text-sm md:text-base font-semibold capitalize leading-[1.5em] tracking-[-0.03em] text-[#0F408F] transition-all hover:bg-[#0F408F] hover:text-white cursor-default min-h-[44px]"
+                            <div className="mt-3 sm:mt-4 md:mt-5 flex justify-center relative z-20 pointer-events-auto" suppressHydrationWarning>
+                                <a
+                                    href="https://www.firstcognition.com"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="group relative rounded-full border-2 border-[#0F408F] px-4 py-2 sm:px-5 sm:py-2.5 md:py-3 text-center text-xs sm:text-sm md:text-base font-semibold capitalize leading-[1.5em] tracking-[-0.03em] text-[#0F408F] transition-all duration-300 hover:bg-[#0F408F] hover:text-white hover:shadow-xl hover:shadow-[#0F408F]/50 hover:scale-110 active:scale-100 cursor-pointer min-h-[44px] inline-flex items-center justify-center pointer-events-auto"
                                     style={{
                                         fontFamily: getFontFamily(language, "manrope"),
+                                        pointerEvents: "auto",
                                     }}
                                 >
                                     Learn More Our Vision
-                                    <span className="absolute left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#0F408F] opacity-0 transition-opacity group-hover:opacity-20" />
-                                </button>
+                                    <span className="absolute left-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#0F408F] opacity-0 transition-all duration-500 group-hover:opacity-10 group-hover:scale-125 -z-10" />
+                                </a>
                             </div>
                         </div>
                     </div>
