@@ -35,6 +35,58 @@ export default function UnifiedScrollSection() {
     const futureCardRef = useRef<HTMLDivElement>(null);
     const footerContentRef = useRef<HTMLDivElement>(null);
 
+    // Video refs for play/pause control
+    const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+    const [userPausedVideos, setUserPausedVideos] = useState<Set<number>>(new Set());
+    const playPromisesRef = useRef<(Promise<void> | null)[]>([null, null, null]);
+
+    // Safe play function that handles the Promise properly
+    const safePlayVideo = async (video: HTMLVideoElement, index: number) => {
+        try {
+            const playPromise = video.play();
+            playPromisesRef.current[index] = playPromise;
+            await playPromise;
+            playPromisesRef.current[index] = null;
+        } catch (error) {
+            // Ignore AbortError - this happens when pause() is called before play() resolves
+            if (error instanceof Error && error.name !== 'AbortError') {
+                console.error('Video play error:', error);
+            }
+            playPromisesRef.current[index] = null;
+        }
+    };
+
+    // Safe pause function that waits for play promise if needed
+    const safePauseVideo = async (video: HTMLVideoElement, index: number) => {
+        const playPromise = playPromisesRef.current[index];
+        if (playPromise) {
+            try {
+                await playPromise;
+            } catch {
+                // Ignore errors
+            }
+        }
+        video.pause();
+    };
+
+    // Toggle play/pause for a specific video
+    const toggleVideoPlayback = async (index: number) => {
+        const video = videoRefs.current[index];
+        if (!video) return;
+        
+        if (video.paused) {
+            setUserPausedVideos(prev => {
+                const newSet = new Set(prev);
+                newSet.delete(index);
+                return newSet;
+            });
+            safePlayVideo(video, index);
+        } else {
+            setUserPausedVideos(prev => new Set(prev).add(index));
+            safePauseVideo(video, index);
+        }
+    };
+
     // Data for How It Works
     const steps = [
         {
@@ -42,18 +94,21 @@ export default function UnifiedScrollSection() {
             title: t("howItWorks.steps.capture.title"),
             description: t("howItWorks.steps.capture.description"),
             icon: BookmarkCheck,
+            video: "/images/1-Save.mp4",
         },
         {
             number: t("howItWorks.steps.store.number"),
             title: t("howItWorks.steps.store.title"),
             description: t("howItWorks.steps.store.description"),
             icon: FolderOpen,
+            video: "/images/2-Store.mp4",
         },
         {
             number: t("howItWorks.steps.reuse.number"),
             title: t("howItWorks.steps.reuse.title"),
             description: t("howItWorks.steps.reuse.description"),
             icon: RefreshCw,
+            video: "/images/3-Reuse.mp4",
         },
     ];
 
@@ -506,11 +561,37 @@ export default function UnifiedScrollSection() {
                                         </p>
                                     </div>
 
-                                    {/* Right Image Placeholder */}
+                                    {/* Right Video */}
                                     <div
-                                        className="bg-white rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-[40px] flex-shrink-0 w-full sm:w-auto aspect-[453/300] max-w-[400px] sm:max-w-[450px] md:w-[453px] md:h-[300px]"
+                                        className="bg-white rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-[40px] flex-shrink-0 w-full sm:w-auto aspect-[453/300] max-w-[400px] sm:max-w-[450px] md:w-[453px] md:h-[300px] overflow-hidden cursor-pointer relative group"
+                                        onClick={() => toggleVideoPlayback(index)}
                                         suppressHydrationWarning
-                                    />
+                                    >
+                                        <video
+                                            ref={(el) => { videoRefs.current[index] = el; }}
+                                            className="w-full h-full object-cover"
+                                            autoPlay
+                                            loop
+                                            muted
+                                            playsInline
+                                        >
+                                            <source src={step.video} type="video/mp4" />
+                                        </video>
+                                        {/* Play/Pause Overlay Icon */}
+                                        <div 
+                                            className={`absolute inset-0 flex items-center justify-center bg-black/20 transition-opacity duration-300 ${!userPausedVideos.has(index) ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'}`}
+                                        >
+                                            {!userPausedVideos.has(index) ? (
+                                                <svg className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 text-white drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                                                </svg>
+                                            ) : (
+                                                <svg className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 text-white drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M8 5v14l11-7z"/>
+                                                </svg>
+                                            )}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         );
