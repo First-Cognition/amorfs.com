@@ -43,15 +43,15 @@ export default function ProblemProductWrapper() {
                 className="absolute top-0 left-0 w-full h-screen pointer-events-none"
                 style={{ zIndex: 49 }}
             >
-                <div className="w-full h-full mix-blend-screen opacity-60">
+                <div className="w-full h-full mix-blend-screen opacity-100">
                     <LightRays
                         raysOrigin="top-center"
                         raysColor="#CFFAFE"
-                        raysSpeed={0.2}
-                        lightSpread={0.6}
-                        rayLength={0.8}
+                        raysSpeed={0.8}
+                        lightSpread={3.0}
+                        rayLength={1.0}
                         pulsating={true}
-                        fadeDistance={0.6}
+                        fadeDistance={0.5}
                         followMouse={true}
                         mouseInfluence={0.05}
                     />
