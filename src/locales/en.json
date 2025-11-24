@@ -85,7 +85,7 @@
       "capture": {
         "number": "1",
         "title": "Capture",
-        "description": "Enter information once in any web form. Amorfs saves it automatically."
+        "description": "Enter information once in any web form. Amorfs encrypts and saves it automatically. Only you have the keys. We never see your information."
       },
       "store": {
         "number": "2",
