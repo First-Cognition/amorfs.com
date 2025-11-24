@@ -69,15 +69,3 @@ html {
 @utility scroll-snap-align-center {
   scroll-snap-align: center;
 }
-
-
-/* Hide scrollbar for ScrollStack when using window scroll */
-.scroll-stack-no-scrollbar>div {
-  overflow: hidden !important;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.scroll-stack-no-scrollbar>div::-webkit-scrollbar {
-  display: none;
-}
