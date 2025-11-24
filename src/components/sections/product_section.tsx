@@ -327,116 +327,120 @@ export default function ProductSection() {
           suppressHydrationWarning
         >
           {/* Slide 1 - Amorfs Extension */}
-          <div className="product-slide flex h-full w-full flex-shrink-0 items-center justify-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-[120px] px-4 sm:px-6 md:px-8 lg:px-10 py-4 sm:py-6 flex-col lg:flex-row" suppressHydrationWarning>
-            {/* Left Side - Preview Box */}
-            <div className={`flex w-full lg:w-[596px] lg:h-[430px] h-[280px] sm:h-[320px] md:h-[360px] lg:h-[430px] shrink-0 items-center justify-center rounded-xl sm:rounded-2xl md:rounded-3xl border border-white/30 ${products[0].bgColor} p-3 sm:p-4 md:p-5`} suppressHydrationWarning>
-              {/* Placeholder for preview */}
-            </div>
-
-            {/* Right Side - Content */}
-            <div ref={slide1ContentRef} className="flex w-full lg:w-[500px] shrink-0 flex-col gap-4 sm:gap-5 md:gap-6" suppressHydrationWarning>
-              {/* Top Section - Badge, Title & Button */}
-              <div className="flex flex-col gap-3 sm:gap-4" suppressHydrationWarning>
-                <div className="flex items-center gap-2 sm:gap-3 animate-text" suppressHydrationWarning>
-                  <div className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-[#0E4478]/40" suppressHydrationWarning>
-                    <span className="font-['Michroma'] text-[10px] sm:text-xs font-normal leading-[1.4] tracking-[-0.04em] text-white">
-                      {products[0].number}
-                    </span>
-                  </div>
-                  <h3 className="font-['Michroma'] text-lg sm:text-xl md:text-2xl font-normal leading-[1.67] tracking-[-0.03em] text-white">
-                    {products[0].title}
-                  </h3>
-                </div>
-                <button className="w-fit rounded-full bg-white px-4 py-2 sm:px-6 sm:py-2.5 font-['Manrope'] text-xs sm:text-sm font-semibold leading-[1.71] tracking-[-0.02em] text-[#0A2647] transition-all hover:bg-white/90 active:scale-95 animate-text">
-                  {products[0].buttonText}
-                </button>
+          <div className="product-slide flex h-full w-full flex-shrink-0 items-center justify-center p-4 sm:p-6 md:p-8" suppressHydrationWarning>
+            <div className="flex w-full max-w-[1280px] h-auto shrink-0 items-center justify-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-[120px] rounded-[40px] border border-white/30 bg-white/[0.03] p-6 sm:p-8 md:p-12 flex-col lg:flex-row backdrop-blur-sm" suppressHydrationWarning>
+              {/* Left Side - Preview Box */}
+              <div className={`flex w-full lg:w-[596px] lg:h-[430px] h-[280px] sm:h-[320px] md:h-[360px] lg:h-[430px] shrink-0 items-center justify-center rounded-xl sm:rounded-2xl md:rounded-3xl border border-white/30 ${products[0].bgColor} p-3 sm:p-4 md:p-5`} suppressHydrationWarning>
+                {/* Placeholder for preview */}
               </div>
 
-              {/* Heading */}
-              <h4 className="font-['Manrope'] text-lg sm:text-xl md:text-2xl font-semibold leading-[1.3] tracking-[-0.02em] text-white animate-text">
-                {products[0].heading}
-              </h4>
-
-              {/* Description */}
-              <p className="font-['Manrope'] text-sm sm:text-base font-normal leading-[1.6] tracking-normal text-white/80 animate-text">
-                {products[0].description}
-              </p>
-
-              {/* Features Box */}
-              <div className="w-full rounded-xl sm:rounded-2xl border border-[#0E4478] bg-[#0A2647]/50 p-4 sm:p-5 animate-text" suppressHydrationWarning>
-                <p className="mb-2 sm:mb-3 font-['Manrope'] text-xs sm:text-sm font-bold leading-[1.5] tracking-normal text-white/90">
-                  {products[0].perfectFor}
-                </p>
-                <div className="flex flex-col gap-2 sm:gap-2.5" suppressHydrationWarning>
-                  {products[0].features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center gap-2 sm:gap-2.5" suppressHydrationWarning>
-                      <CheckCircle2 className="h-4 w-4 sm:h-5 sm:w-5 shrink-0 text-[#2DD4C2]" />
-                      <span className="font-['Manrope'] text-xs sm:text-sm font-normal leading-[1.5] tracking-normal text-[#2DD4C2]">
-                        {feature}
+              {/* Right Side - Content */}
+              <div ref={slide1ContentRef} className="flex w-full lg:w-[500px] shrink-0 flex-col gap-4 sm:gap-5 md:gap-6" suppressHydrationWarning>
+                {/* Top Section - Badge, Title & Button */}
+                <div className="flex flex-col gap-3 sm:gap-4" suppressHydrationWarning>
+                  <div className="flex items-center gap-2 sm:gap-3 animate-text" suppressHydrationWarning>
+                    <div className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-[#0E4478]/40" suppressHydrationWarning>
+                      <span className="font-['Michroma'] text-[10px] sm:text-xs font-normal leading-[1.4] tracking-[-0.04em] text-white">
+                        {products[0].number}
                       </span>
                     </div>
-                  ))}
+                    <h3 className="font-['Michroma'] text-lg sm:text-xl md:text-2xl font-normal leading-[1.67] tracking-[-0.03em] text-white">
+                      {products[0].title}
+                    </h3>
+                  </div>
+                  <button className="w-fit rounded-full bg-white px-4 py-2 sm:px-6 sm:py-2.5 font-['Manrope'] text-xs sm:text-sm font-semibold leading-[1.71] tracking-[-0.02em] text-[#0A2647] transition-all hover:bg-white/90 active:scale-95 animate-text">
+                    {products[0].buttonText}
+                  </button>
+                </div>
+
+                {/* Heading */}
+                <h4 className="font-['Manrope'] text-lg sm:text-xl md:text-2xl font-semibold leading-[1.3] tracking-[-0.02em] text-white animate-text">
+                  {products[0].heading}
+                </h4>
+
+                {/* Description */}
+                <p className="font-['Manrope'] text-sm sm:text-base font-normal leading-[1.6] tracking-normal text-white/80 animate-text">
+                  {products[0].description}
+                </p>
+
+                {/* Features Box */}
+                <div className="w-full rounded-xl sm:rounded-2xl border border-[#0E4478] bg-[#0A2647]/50 p-4 sm:p-5 animate-text" suppressHydrationWarning>
+                  <p className="mb-2 sm:mb-3 font-['Manrope'] text-xs sm:text-sm font-bold leading-[1.5] tracking-normal text-white/90">
+                    {products[0].perfectFor}
+                  </p>
+                  <div className="flex flex-col gap-2 sm:gap-2.5" suppressHydrationWarning>
+                    {products[0].features.map((feature, idx) => (
+                      <div key={idx} className="flex items-center gap-2 sm:gap-2.5" suppressHydrationWarning>
+                        <CheckCircle2 className="h-4 w-4 sm:h-5 sm:w-5 shrink-0 text-[#2DD4C2]" />
+                        <span className="font-['Manrope'] text-xs sm:text-sm font-normal leading-[1.5] tracking-normal text-[#2DD4C2]">
+                          {feature}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Slide 2 - Amorfs Studio */}
-          <div className="product-slide flex h-full w-full flex-shrink-0 items-center justify-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-[120px] px-4 sm:px-6 md:px-8 lg:px-10 py-4 sm:py-6 flex-col lg:flex-row" suppressHydrationWarning>
-            {/* Left Side - Preview Box */}
-            <div className={`flex w-full lg:w-[596px] lg:h-[430px] h-[280px] sm:h-[320px] md:h-[360px] lg:h-[430px] shrink-0 items-center justify-center rounded-xl sm:rounded-2xl md:rounded-3xl border border-white/30 ${products[1].bgColor} p-3 sm:p-4 md:p-5 overflow-hidden`} suppressHydrationWarning>
-              <Image
-                src="/images/Studio mockup (900x640).png"
-                alt="Amorfs Studio Preview"
-                width={900}
-                height={640}
-                className="w-full h-full object-contain"
-              />
-            </div>
-
-            {/* Right Side - Content */}
-            <div ref={slide2ContentRef} className="flex w-full lg:w-[500px] shrink-0 flex-col gap-4 sm:gap-5 md:gap-6" suppressHydrationWarning>
-              {/* Top Section - Badge, Title & Button */}
-              <div className="flex flex-col gap-3 sm:gap-4" suppressHydrationWarning>
-                <div className="flex items-center gap-2 sm:gap-3 animate-text" suppressHydrationWarning>
-                  <div className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-[#0E4478]/40" suppressHydrationWarning>
-                    <span className="font-['Michroma'] text-[10px] sm:text-xs font-normal leading-[1.4] tracking-[-0.04em] text-white">
-                      {products[1].number}
-                    </span>
-                  </div>
-                  <h3 className="font-['Michroma'] text-lg sm:text-xl md:text-2xl font-normal leading-[1.67] tracking-[-0.03em] text-white">
-                    {products[1].title}
-                  </h3>
-                </div>
-                <button className="w-fit rounded-full bg-white px-4 py-2 sm:px-6 sm:py-2.5 font-['Manrope'] text-xs sm:text-sm font-semibold leading-[1.71] tracking-[-0.02em] text-[#0A2647] transition-all hover:bg-white/90 active:scale-95 animate-text">
-                  {products[1].buttonText}
-                </button>
+          <div className="product-slide flex h-full w-full flex-shrink-0 items-center justify-center p-4 sm:p-6 md:p-8" suppressHydrationWarning>
+            <div className="flex w-full max-w-[1280px] h-auto shrink-0 items-center justify-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-[120px] rounded-[40px] border border-white/30 bg-white/[0.03] p-6 sm:p-8 md:p-12 flex-col lg:flex-row backdrop-blur-sm" suppressHydrationWarning>
+              {/* Left Side - Preview Box */}
+              <div className={`flex w-full lg:w-[596px] lg:h-[430px] h-[280px] sm:h-[320px] md:h-[360px] lg:h-[430px] shrink-0 items-center justify-center rounded-xl sm:rounded-2xl md:rounded-3xl border border-white/30 ${products[1].bgColor} overflow-hidden`} suppressHydrationWarning>
+                <Image
+                  src="/images/Studio mockup (900x640).png"
+                  alt="Amorfs Studio Preview"
+                  width={900}
+                  height={640}
+                  className="w-full h-full object-cover"
+                />
               </div>
 
-              {/* Heading */}
-              <h4 className="font-['Manrope'] text-lg sm:text-xl md:text-2xl font-semibold leading-[1.3] tracking-[-0.02em] text-white animate-text">
-                {products[1].heading}
-              </h4>
-
-              {/* Description */}
-              <p className="font-['Manrope'] text-sm sm:text-base font-normal leading-[1.6] tracking-normal text-white/80 animate-text">
-                {products[1].description}
-              </p>
-
-              {/* Features Box */}
-              <div className="w-full rounded-xl sm:rounded-2xl border border-[#0E4478] bg-[#0A2647]/50 p-4 sm:p-5 animate-text" suppressHydrationWarning>
-                <p className="mb-2 sm:mb-3 font-['Manrope'] text-xs sm:text-sm font-bold leading-[1.5] tracking-normal text-white/90">
-                  {products[1].perfectFor}
-                </p>
-                <div className="flex flex-col gap-2 sm:gap-2.5" suppressHydrationWarning>
-                  {products[1].features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center gap-2 sm:gap-2.5" suppressHydrationWarning>
-                      <CheckCircle2 className="h-4 w-4 sm:h-5 sm:w-5 shrink-0 text-[#2DD4C2]" />
-                      <span className="font-['Manrope'] text-xs sm:text-sm font-normal leading-[1.5] tracking-normal text-[#2DD4C2]">
-                        {feature}
+              {/* Right Side - Content */}
+              <div ref={slide2ContentRef} className="flex w-full lg:w-[500px] shrink-0 flex-col gap-4 sm:gap-5 md:gap-6" suppressHydrationWarning>
+                {/* Top Section - Badge, Title & Button */}
+                <div className="flex flex-col gap-3 sm:gap-4" suppressHydrationWarning>
+                  <div className="flex items-center gap-2 sm:gap-3 animate-text" suppressHydrationWarning>
+                    <div className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-[#0E4478]/40" suppressHydrationWarning>
+                      <span className="font-['Michroma'] text-[10px] sm:text-xs font-normal leading-[1.4] tracking-[-0.04em] text-white">
+                        {products[1].number}
                       </span>
                     </div>
-                  ))}
+                    <h3 className="font-['Michroma'] text-lg sm:text-xl md:text-2xl font-normal leading-[1.67] tracking-[-0.03em] text-white">
+                      {products[1].title}
+                    </h3>
+                  </div>
+                  <button className="w-fit rounded-full bg-white px-4 py-2 sm:px-6 sm:py-2.5 font-['Manrope'] text-xs sm:text-sm font-semibold leading-[1.71] tracking-[-0.02em] text-[#0A2647] transition-all hover:bg-white/90 active:scale-95 animate-text">
+                    {products[1].buttonText}
+                  </button>
+                </div>
+
+                {/* Heading */}
+                <h4 className="font-['Manrope'] text-lg sm:text-xl md:text-2xl font-semibold leading-[1.3] tracking-[-0.02em] text-white animate-text">
+                  {products[1].heading}
+                </h4>
+
+                {/* Description */}
+                <p className="font-['Manrope'] text-sm sm:text-base font-normal leading-[1.6] tracking-normal text-white/80 animate-text">
+                  {products[1].description}
+                </p>
+
+                {/* Features Box */}
+                <div className="w-full rounded-xl sm:rounded-2xl border border-[#0E4478] bg-[#0A2647]/50 p-4 sm:p-5 animate-text" suppressHydrationWarning>
+                  <p className="mb-2 sm:mb-3 font-['Manrope'] text-xs sm:text-sm font-bold leading-[1.5] tracking-normal text-white/90">
+                    {products[1].perfectFor}
+                  </p>
+                  <div className="flex flex-col gap-2 sm:gap-2.5" suppressHydrationWarning>
+                    {products[1].features.map((feature, idx) => (
+                      <div key={idx} className="flex items-center gap-2 sm:gap-2.5" suppressHydrationWarning>
+                        <CheckCircle2 className="h-4 w-4 sm:h-5 sm:w-5 shrink-0 text-[#2DD4C2]" />
+                        <span className="font-['Manrope'] text-xs sm:text-sm font-normal leading-[1.5] tracking-normal text-[#2DD4C2]">
+                          {feature}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
