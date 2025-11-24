@@ -184,29 +184,13 @@ export default function HeroSection() {
               }
             }}
           >
-            <svg
-              className="h-4 w-4 sm:h-5 sm:w-5 animate-bounce text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              {/* Mouse body */}
-              <path
-                d="M12 2C8.13 2 5 5.13 5 9v6c0 3.87 3.13 7 7 7s7-3.13 7-7V9c0-3.87-3.13-7-7-7z"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              {/* Scroll wheel */}
-              <line
-                x1="12"
-                y1="6"
-                x2="12"
-                y2="10"
-                strokeWidth={2}
-                strokeLinecap="round"
-              />
-            </svg>
+            <Image
+              src="/mouse.svg"
+              alt="Scroll down"
+              width={24}
+              height={24}
+              className="h-4 w-4 sm:h-5 sm:w-5 animate-bounce"
+            />
           </button>
           <span
             className="text-[11px] sm:text-[12px] md:text-[13px] text-white/80 hidden sm:block"

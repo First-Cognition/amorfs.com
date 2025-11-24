@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useMemo, useCallback } from "react";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
@@ -383,8 +384,14 @@ export default function ProductSection() {
           {/* Slide 2 - Amorfs Studio */}
           <div className="product-slide flex h-full w-full flex-shrink-0 items-center justify-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-[120px] px-4 sm:px-6 md:px-8 lg:px-10 py-4 sm:py-6 flex-col lg:flex-row" suppressHydrationWarning>
             {/* Left Side - Preview Box */}
-            <div className={`flex w-full lg:w-[596px] lg:h-[430px] h-[280px] sm:h-[320px] md:h-[360px] lg:h-[430px] shrink-0 items-center justify-center rounded-xl sm:rounded-2xl md:rounded-3xl border border-white/30 ${products[1].bgColor} p-3 sm:p-4 md:p-5`} suppressHydrationWarning>
-              {/* Placeholder for preview */}
+            <div className={`flex w-full lg:w-[596px] lg:h-[430px] h-[280px] sm:h-[320px] md:h-[360px] lg:h-[430px] shrink-0 items-center justify-center rounded-xl sm:rounded-2xl md:rounded-3xl border border-white/30 ${products[1].bgColor} p-3 sm:p-4 md:p-5 overflow-hidden`} suppressHydrationWarning>
+              <Image
+                src="/images/Studio mockup (900x640).png"
+                alt="Amorfs Studio Preview"
+                width={900}
+                height={640}
+                className="w-full h-full object-contain"
+              />
             </div>
 
             {/* Right Side - Content */}

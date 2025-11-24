@@ -226,21 +226,21 @@ export default function Header() {
               >
                 <button
                   onClick={() => handleLangChange("en")}
-                  className={`w-full px-4 py-2 text-left text-sm transition-colors hover:bg-white/20 ${currentLang === "EN"
+                  className={`w-full px-4 py-2 text-left text-sm transition-colors hover:bg-white/20 ${currentLang === "Tiếng Anh"
                     ? "bg-white/15 text-white"
                     : "text-white/88"
                     }`}
                 >
-                  EN
+                  English
                 </button>
                 <button
                   onClick={() => handleLangChange("vi")}
-                  className={`w-full px-4 py-2 text-left text-sm transition-colors hover:bg-white/20 ${currentLang === "VI"
+                  className={`w-full px-4 py-2 text-left text-sm transition-colors hover:bg-white/20 ${currentLang === "Tiếng Việt"
                     ? "bg-white/15 text-white"
                     : "text-white/88"
                     }`}
                 >
-                  VI
+                  Vietnamese
                 </button>
               </div>
             </>
@@ -466,23 +466,23 @@ export default function Header() {
                   <div className="mt-2 overflow-hidden rounded-lg border border-white/20 bg-white/10 backdrop-blur-md">
                     <button
                       onClick={() => handleLangChange("en")}
-                      className={`w-full px-4 py-3 text-left text-base transition-colors hover:bg-white/20 ${currentLang === "EN"
+                      className={`w-full px-4 py-3 text-left text-base transition-colors hover:bg-white/20 ${currentLang === "Tiếng Anh"
                         ? "bg-white/15 text-white"
                         : "text-white/88"
                         }`}
                       style={{ fontFamily: getFontFamily(language, "manrope") }}
                     >
-                      EN
+                      English
                     </button>
                     <button
                       onClick={() => handleLangChange("vi")}
-                      className={`w-full px-4 py-3 text-left text-base transition-colors hover:bg-white/20 ${currentLang === "VI"
+                      className={`w-full px-4 py-3 text-left text-base transition-colors hover:bg-white/20 ${currentLang === "Tiếng Việt"
                         ? "bg-white/15 text-white"
                         : "text-white/88"
                         }`}
                       style={{ fontFamily: getFontFamily(language, "manrope") }}
                     >
-                      VI
+                      Tiếng Việt
                     </button>
                   </div>
                 )}

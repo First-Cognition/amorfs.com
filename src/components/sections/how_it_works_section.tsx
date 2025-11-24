@@ -22,18 +22,21 @@ export default function HowItWorksSection() {
       title: t("howItWorks.steps.capture.title"),
       description: t("howItWorks.steps.capture.description"),
       icon: BookmarkCheck,
+      videoSrc: "/images/1-Save.mp4",
     },
     {
       number: t("howItWorks.steps.store.number"),
       title: t("howItWorks.steps.store.title"),
       description: t("howItWorks.steps.store.description"),
       icon: FolderOpen,
+      videoSrc: "/images/2-Store.mp4",
     },
     {
       number: t("howItWorks.steps.reuse.number"),
       title: t("howItWorks.steps.reuse.title"),
       description: t("howItWorks.steps.reuse.description"),
       icon: RefreshCw,
+      videoSrc: "/images/3-Reuse.mp4",
     },
   ];
 
@@ -261,11 +264,22 @@ export default function HowItWorksSection() {
                     </p>
                   </div>
 
-                  {/* Right Image Placeholder */}
                   <div
-                    className="bg-white rounded-xl sm:rounded-2xl md:rounded-[40px] flex-shrink-0 w-full sm:w-auto aspect-[453/300] sm:w-[453px] sm:h-[300px]"
+                    className="bg-white rounded-xl sm:rounded-2xl md:rounded-[40px] flex-shrink-0 w-full sm:w-auto aspect-[453/300] sm:w-[453px] sm:h-[300px] overflow-hidden relative"
                     suppressHydrationWarning
-                  />
+                  >
+                    <video
+                      key={step.videoSrc}
+                      className="w-full h-full object-cover"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                    >
+                      <source src={step.videoSrc} />
+                      <source src={step.videoSrc.replace('.mp4', '.mov')} type="video/quicktime" />
+                    </video>
+                  </div>
                 </div>
               </div>
             );
