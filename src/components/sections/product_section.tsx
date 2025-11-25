@@ -330,8 +330,14 @@ export default function ProductSection() {
           <div className="product-slide flex h-full w-full flex-shrink-0 items-center justify-center p-4 sm:p-6 md:p-8" suppressHydrationWarning>
             <div className="flex w-full max-w-[1280px] h-auto shrink-0 items-center justify-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-[120px] rounded-[40px] border border-white/30 bg-white/[0.03] p-6 sm:p-8 md:p-12 flex-col lg:flex-row backdrop-blur-sm" suppressHydrationWarning>
               {/* Left Side - Preview Box */}
-              <div className={`flex w-full lg:w-[596px] lg:h-[430px] h-[280px] sm:h-[320px] md:h-[360px] lg:h-[430px] shrink-0 items-center justify-center rounded-xl sm:rounded-2xl md:rounded-3xl border border-white/30 ${products[0].bgColor} p-3 sm:p-4 md:p-5`} suppressHydrationWarning>
-                {/* Placeholder for preview */}
+              <div className={`flex w-full lg:w-[596px] lg:h-[430px] h-[280px] sm:h-[320px] md:h-[360px] lg:h-[430px] shrink-0 items-center justify-center rounded-xl sm:rounded-2xl md:rounded-3xl border border-white/30 ${products[0].bgColor} overflow-hidden`} suppressHydrationWarning>
+                <Image
+                  src="/images/Still progress.png"
+                  alt="Amorfs Extension Preview"
+                  width={900}
+                  height={640}
+                  className="w-full h-full object-contain"
+                />
               </div>
 
               {/* Right Side - Content */}
