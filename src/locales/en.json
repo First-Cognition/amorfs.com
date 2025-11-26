@@ -81,6 +81,7 @@
   },
   "howItWorks": {
     "title": "How Amorfs Works",
+    "subtitle": "Simple on the Surface. Sophisticated Beneath.",
     "steps": {
       "capture": {
         "number": "1",

@@ -46,7 +46,7 @@ export default function ProblemProductWrapper() {
                 <div className="w-full h-full mix-blend-screen opacity-100">
                     <LightRays
                         raysOrigin="top-center"
-                        raysColor="#CFFAFE"
+                        raysColor="#8AD5FC"
                         raysSpeed={0.8}
                         lightSpread={3.0}
                         rayLength={1.0}

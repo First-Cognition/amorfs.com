@@ -139,6 +139,15 @@ export default function HeroSection() {
             <button
               className="flex items-center justify-center gap-2 rounded-[1000px] bg-[#0F408F] px-5 py-3 text-sm sm:px-6 sm:py-3.5 md:text-base transition-all hover:bg-[#0D3678] active:scale-95 min-h-[44px]"
               style={{ fontFamily: getFontFamily(language, "manrope") }}
+              onClick={() => {
+                const nextSection = document.querySelector('#problem-solution');
+                if (nextSection) {
+                  nextSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start',
+                  });
+                }
+              }}
             >
               <span className="text-center font-semibold leading-[1.5em] tracking-[-0.03em] text-white">
                 {t("hero.cta")}

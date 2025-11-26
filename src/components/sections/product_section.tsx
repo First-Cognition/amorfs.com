@@ -68,18 +68,21 @@ export default function ProductSection() {
       let scrollTriggerInstance: ScrollTrigger | null = null;
       let currentSlideIndex = 0;
 
+      // Set initial hidden state for all animate-text elements
+      const allAnimateTextElements = document.querySelectorAll('.animate-text');
+      gsap.set(allAnimateTextElements, {
+        y: 50,
+        opacity: 0,
+      });
+
       // Animate slide content with move-up effect
       const animateSlideContent = (slideRef: React.RefObject<HTMLDivElement | null>) => {
         if (!slideRef.current) return;
 
         const elements = slideRef.current.querySelectorAll('.animate-text');
 
-        gsap.fromTo(
+        gsap.to(
           elements,
-          {
-            y: 50,
-            opacity: 0,
-          },
           {
             y: 0,
             opacity: 1,
@@ -393,7 +396,7 @@ export default function ProductSection() {
           <div className="product-slide flex h-full w-full flex-shrink-0 items-center justify-center p-4 sm:p-6 md:p-8" suppressHydrationWarning>
             <div className="flex w-full max-w-[1280px] h-auto shrink-0 items-center justify-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-[120px] rounded-[40px] border border-white/30 bg-white/[0.03] p-6 sm:p-8 md:p-12 flex-col lg:flex-row backdrop-blur-sm" suppressHydrationWarning>
               {/* Left Side - Preview Box */}
-              <div className={`flex w-full lg:w-[596px] lg:h-[430px] h-[280px] sm:h-[320px] md:h-[360px] lg:h-[430px] shrink-0 items-center justify-center rounded-xl sm:rounded-2xl md:rounded-3xl border border-white/30 ${products[1].bgColor} overflow-hidden`} suppressHydrationWarning>
+              <div className={`flex w-full lg:w-[596px] lg:h-[430px] h-[280px] sm:h-[320px] md:h-[360px] lg:h-[430px] shrink-0 items-center justify-center rounded-xl sm:rounded-2xl md:rounded-3xl ${products[1].bgColor} overflow-hidden`} suppressHydrationWarning>
                 <Image
                   src="/images/Studio mockup (900x640).png"
                   alt="Amorfs Studio Preview"

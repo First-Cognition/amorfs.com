@@ -23,6 +23,7 @@ export default function UnifiedScrollSection() {
     const hiwContentRef = useRef<HTMLDivElement>(null);
     const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
     const hiwTitleRef = useRef<HTMLDivElement>(null);
+    const hiwSubtitleRef = useRef<HTMLParagraphElement>(null);
 
     // Features Refs
     const featuresContentRef = useRef<HTMLDivElement>(null);
@@ -215,7 +216,6 @@ export default function UnifiedScrollSection() {
                         yPercent: 150,
                         opacity: 0,
                         scale: 0.9,
-                        filter: "blur(10px)",
                         zIndex: i + 1
                     });
                 }
@@ -253,6 +253,13 @@ export default function UnifiedScrollSection() {
                 pointerEvents: "none"
             });
 
+            // Subtitle - start hidden
+            gsap.set(hiwSubtitleRef.current, {
+                opacity: 0,
+                y: 20,
+                visibility: "hidden"
+            });
+
             // ===== PHASE 1: HOW IT WORKS ANIMATION =====
 
             // Title Animation
@@ -264,12 +271,20 @@ export default function UnifiedScrollSection() {
                 ease: "power2.inOut",
             });
 
+            // Subtitle fade in AFTER title is fully scaled down
+            tl.to(hiwSubtitleRef.current, {
+                opacity: 1,
+                y: 0,
+                visibility: "visible",
+                duration: 0.3,
+                ease: "power2.out",
+            });
+
             // Card 1 enters
             tl.to(cardsRef.current[0], {
                 yPercent: -50,
                 opacity: 1,
                 scale: 1,
-                filter: "blur(0px)",
                 duration: 1,
                 ease: "power2.out",
             });
@@ -279,7 +294,6 @@ export default function UnifiedScrollSection() {
                 yPercent: -60,
                 scale: 0.95,
                 opacity: 0.6,
-                filter: "blur(4px)",
                 duration: 1,
                 ease: "power2.out",
             }, ">");
@@ -288,7 +302,6 @@ export default function UnifiedScrollSection() {
                 yPercent: -50,
                 opacity: 1,
                 scale: 1,
-                filter: "blur(0px)",
                 duration: 1,
                 ease: "power2.out",
             }, "<");
@@ -298,7 +311,6 @@ export default function UnifiedScrollSection() {
                 yPercent: -70,
                 scale: 0.9,
                 opacity: 0.4,
-                filter: "blur(8px)",
                 duration: 1,
                 ease: "power2.out",
             }, ">");
@@ -307,7 +319,6 @@ export default function UnifiedScrollSection() {
                 yPercent: -60,
                 scale: 0.95,
                 opacity: 0.6,
-                filter: "blur(4px)",
                 duration: 1,
                 ease: "power2.out",
             }, "<");
@@ -316,7 +327,6 @@ export default function UnifiedScrollSection() {
                 yPercent: -50,
                 opacity: 1,
                 scale: 1,
-                filter: "blur(0px)",
                 duration: 1,
                 ease: "power2.out",
             }, "<");
@@ -489,6 +499,18 @@ export default function UnifiedScrollSection() {
                     >
                         {t("howItWorks.title")}
                     </h2>
+                    <p
+                        ref={hiwSubtitleRef}
+                        className="font-manrope text-sm sm:text-base md:text-lg lg:text-xl text-center px-2 mt-2 sm:mt-3"
+                        style={{
+                            fontFamily: getFontFamily(language, "manrope"),
+                            color: "rgba(255, 255, 255, 0.8)",
+                            fontWeight: 400,
+                            letterSpacing: "-0.01em",
+                        }}
+                    >
+                        {t("howItWorks.subtitle")}
+                    </p>
                 </div>
 
                 {/* Cards Container */}
@@ -506,7 +528,7 @@ export default function UnifiedScrollSection() {
                                 }}
                             >
                                 <div
-                                    className="flex flex-col sm:flex-row items-center justify-center w-full mx-auto gap-2 sm:gap-3 md:gap-4 p-2 sm:p-3 md:p-4"
+                                    className="flex flex-col sm:flex-row items-center justify-center w-full mx-auto gap-4 sm:gap-6 md:gap-8 lg:gap-10 p-2 sm:p-3 md:p-4"
                                     suppressHydrationWarning
                                 >
                                     {/* Left Content */}

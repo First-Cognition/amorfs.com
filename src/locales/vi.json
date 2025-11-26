@@ -82,6 +82,7 @@
   },
   "howItWorks": {
     "title": "Amorfs hoạt động như thế nào",
+    "subtitle": "Đơn giản bên ngoài. Tinh vi bên trong.",
     "steps": {
       "capture": {
         "number": "1",
