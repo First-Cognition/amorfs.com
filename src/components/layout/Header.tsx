@@ -240,7 +240,7 @@ export default function Header() {
                     : "text-white/88"
                     }`}
                 >
-                  Vietnamese
+                  Tiếng Việt
                 </button>
               </div>
             </>

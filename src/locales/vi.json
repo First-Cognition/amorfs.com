@@ -7,15 +7,15 @@
       "faq": "Câu hỏi thường gặp",
       "contact": "Liên hệ"
     },
-    "installExtension": "Cài đặt Extension"
+    "installExtension": "Cài Đặt Extension"
   },
   "hero": {
     "title": "{Dữ Liệu} Của Bạn\nĐược Sắp Xếp Hoàn Hảo",
     "dataHighlight": "{Dữ Liệu}",
     "subtitle": "Không cần nhập lại.\nAmorfs tự động lưu lại mọi thông tin bạn nhập, bảo mật tuyệt đối,\nvà cho phép bạn sử dụng lại ở bất cứ đâu.\nHoặc biến đổi thành những thứ đẹp đẽ để chia sẻ.",
-    "cta": "Khám phá Amorfs Studio",
+    "cta": "Khám Phá Ngay",
     "diveDeeper": "Tìm hiểu thêm",
-    "builtIn": "Được xây dựng bởi",
+    "builtIn": "Được phát triển vào",
     "powerBy": "Được hỗ trợ bởi",
     "firstCognition": "First Cognition"
   },
@@ -27,9 +27,9 @@
   "solution": {
     "label": "Giải pháp Amorfs",
     "initialTitle": "Nhập một lần, dùng mọi nơi",
-    "initialSubtitle": "Chúng tôi giải quyết vấn đề dữ liệu từ gốc rễ. Không còn nhập lại vô tận. Không còn thông tin rời rạc.",
-    "optionsTitle": "Tiện ích trình duyệt",
-    "optionsTitle2": "Studio dữ liệu"
+    "initialSubtitle": "Chúng tôi giải quyết bài toán dữ liệu từ gốc rễ. Không còn nhập lại liên tục. Không còn thông tin rời rạc.",
+    "optionsTitle": "Amorfs Extension",
+    "optionsTitle2": "Amorfs Studio"
   },
   "product": {
     "extension": {
@@ -37,12 +37,13 @@
       "title": "Amorfs Extension",
       "buttonText": "Cài đặt Extension",
       "heading": "Không bao giờ phải nhập lại",
-      "description": "Tiện ích tự động theo dõi và lưu lại mọi thông tin bạn nhập vào biểu mẫu-tên, địa chỉ, sở thích, bất kỳ chi tiết nào. Lần sau, mọi thứ đã sẵn sàng, chỉ cần một cú nhấp để sử dụng lại.",
+      "description": "Tiện ích tự động theo dõi và lưu mọi thông tin bạn nhập vào biểu mẫu — từ tên, địa chỉ, sở thích cho đến bất kỳ chi tiết nào. Ở lần sử dụng tiếp theo, mọi thứ đã sẵn sàng, chỉ cần một cú nhấp là có thể dùng lại.",
       "perfectFor": "Phù hợp với:",
       "features": [
-        "Những người mệt mỏi với việc điền biểu mẫu lặp đi lặp lại",
+        "Những người đã mệt mỏi với việc điền biểu mẫu lặp đi lặp lại",
         "Trợ lý điều hành quản lý thông tin cho nhiều người",
         "Những ai coi trọng thời gian và quyền riêng tư"
+
       ]
     },
     "studio": {
@@ -50,7 +51,7 @@
       "title": "Amorfs Studio",
       "buttonText": "Mở Studio",
       "heading": "Sắp xếp. Thiết kế. Chia sẻ.",
-      "description": "Biến đổi dữ liệu của bạn thành những thứ đẹp đẽ. Amorfs Studio giúp bạn cá nhân hóa và sắp xếp thông tin, sau đó trình bày chúng với các mẫu bố cục tuyệt đẹp từ thư viện của chúng tôi hoặc tự tạo mẫu riêng.",
+      "description": "Biến dữ liệu của bạn thành những nội dung đẹp mắt. Amorfs Studio cho phép bạn cá nhân hóa và sắp xếp thông tin, sau đó trình bày chúng bằng các mẫu bố cục tinh tế từ thư viện của chúng tôi — hoặc bạn có thể tự tạo mẫu riêng.",
       "perfectFor": "Phù hợp với:",
       "features": [
         "Lập danh mục kho báu một cách chuyên nghiệp",
@@ -63,7 +64,7 @@
       "title": "Quyền riêng tư của bạn",
       "title2": "Được đảm bảo",
       "description1": "Kiến trúc zero-knowledge",
-      "description2": "của chúng tôi đảm bảo chúng tôi không bao giờ thấy dữ liệu chưa mã hóa của bạn. Bạn hoàn toàn kiểm soát."
+      "description2": "Chúng tôi đảm bảo chúng tôi không bao giờ thấy dữ liệu chưa mã hóa của bạn. Bạn hoàn toàn kiểm soát."
     }
   },
   "features": {

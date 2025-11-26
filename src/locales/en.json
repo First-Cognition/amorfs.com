@@ -13,7 +13,7 @@
     "title": "Your {Data}\nBeautifully Organized Finally",
     "dataHighlight": "{Data}",
     "subtitle": "Stop retyping the same information.\nAmorfs captures what you enter once, stores it securely,\nand lets you reuse it anywhere.\nOr transform it into something beautiful to share.",
-    "cta": "Explore Amorfs Studio",
+    "cta": "Explore More",
     "diveDeeper": "Dive Deeper",
     "builtIn": "Built in",
     "powerBy": "Power by",
@@ -28,8 +28,8 @@
     "label": "Amorfs Solution",
     "initialTitle": "Capture Once, Use Everywhere",
     "initialSubtitle": "We're solving data from the ground up. No more endless retyping. No more scattered information.",
-    "optionsTitle": "Browser Extension",
-    "optionsTitle2": "Data Studio"
+    "optionsTitle": "Amorfs Extension",
+    "optionsTitle2": "Amorfs Studio"
   },
   "product": {
     "extension": {
@@ -85,7 +85,7 @@
       "capture": {
         "number": "1",
         "title": "Capture",
-        "description": "Enter information once in any web form. Amorfs encrypts and saves it automatically. Only you have the keys. We never see your information."
+        "description": "Enter information once in any web form. Amorfs saves it automatically."
       },
       "store": {
         "number": "2",
