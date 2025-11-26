@@ -862,7 +862,7 @@ export default function UnifiedScrollSection() {
                                 <Magnet
                                     padding={50}
                                     magnetStrength={10}
-                                    wrapperClassName="cursor-pointer sm:!p-[60px] md:!p-[75px] lg:!p-[100px]"
+                                    wrapperClassName="cursor-pointer sm:!p-[48px] md:!p-[60px] lg:!p-[80px]"
                                 >
                                     <div className="relative flex h-[110px] w-[110px] sm:h-[140px] sm:w-[140px] md:h-[160px] md:w-[160px] lg:h-[180px] lg:w-[180px] xl:h-[200px] xl:w-[200px] flex-col items-center justify-center gap-1 sm:gap-2 md:gap-3 lg:gap-4 rounded-full border-2 border-white/55 bg-white/17 p-3 sm:p-4 md:p-5 lg:p-6 backdrop-blur-[20px] transition-all hover:bg-white/25 mt-0">
                                         <div className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 relative">
@@ -893,7 +893,7 @@ export default function UnifiedScrollSection() {
                                 <Magnet
                                     padding={50}
                                     magnetStrength={10}
-                                    wrapperClassName="cursor-pointer sm:!p-[60px] md:!p-[75px] lg:!p-[100px]"
+                                    wrapperClassName="cursor-pointer sm:!p-[48px] md:!p-[60px] lg:!p-[80px]"
                                 >
                                     <div className="relative flex h-[110px] w-[110px] sm:h-[140px] sm:w-[140px] md:h-[160px] md:w-[160px] lg:h-[180px] lg:w-[180px] xl:h-[200px] xl:w-[200px] flex-col items-center justify-center gap-1 sm:gap-2 md:gap-3 lg:gap-4 rounded-full border-2 border-white/55 bg-white/17 p-3 sm:p-4 md:p-5 lg:p-6 backdrop-blur-[20px] transition-all hover:bg-white/25 mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12">
                                         <div className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 relative">
@@ -924,7 +924,7 @@ export default function UnifiedScrollSection() {
                                 <Magnet
                                     padding={50}
                                     magnetStrength={10}
-                                    wrapperClassName="cursor-pointer sm:!p-[75px] md:!p-[100px]"
+                                    wrapperClassName="cursor-pointer sm:!p-[48px] md:!p-[60px] lg:!p-[80px]"
                                 >
                                     <div className="relative flex h-[140px] w-[140px] sm:h-[160px] sm:w-[160px] md:h-[180px] md:w-[180px] lg:h-[206px] lg:w-[206px] flex-col items-center justify-center gap-2 sm:gap-3 md:gap-4 rounded-full border-2 border-white/55 bg-white/17 p-4 sm:p-5 md:p-6 backdrop-blur-[20px] transition-all hover:bg-white/25 mt-4 sm:mt-5 md:mt-6">
                                         <div className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 relative">
