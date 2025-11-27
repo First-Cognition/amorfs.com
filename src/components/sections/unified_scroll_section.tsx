@@ -209,6 +209,7 @@ export default function UnifiedScrollSection() {
             // ===== INITIAL STATES =====
 
             // How It Works cards - start hidden
+            // Newer cards (higher index) should appear on top when old cards go down
             cardsRef.current.forEach((card, i) => {
                 if (card) {
                     gsap.set(card, {
@@ -216,7 +217,7 @@ export default function UnifiedScrollSection() {
                         yPercent: 150,
                         opacity: 0,
                         scale: 0.9,
-                        zIndex: i + 1
+                        zIndex: i + 1 // Card 0 = zIndex 1 (bottom), Card 2 = zIndex 3 (top)
                     });
                 }
             });
@@ -280,7 +281,7 @@ export default function UnifiedScrollSection() {
                 ease: "power2.out",
             });
 
-            // Card 1 enters
+            // Card 1 enters from bottom to center
             tl.to(cardsRef.current[0], {
                 yPercent: -50,
                 opacity: 1,
@@ -289,9 +290,9 @@ export default function UnifiedScrollSection() {
                 ease: "power2.out",
             });
 
-            // Card 2 enters, Card 1 moves up
+            // Card 2 enters, Card 1 moves DOWN (reversed)
             tl.to(cardsRef.current[0], {
-                yPercent: -60,
+                yPercent: -40,
                 scale: 0.95,
                 opacity: 0.6,
                 duration: 1,
@@ -306,9 +307,9 @@ export default function UnifiedScrollSection() {
                 ease: "power2.out",
             }, "<");
 
-            // Card 3 enters, others move up
+            // Card 3 enters, others move DOWN (reversed)
             tl.to(cardsRef.current[0], {
-                yPercent: -70,
+                yPercent: -30,
                 scale: 0.9,
                 opacity: 0.4,
                 duration: 1,
@@ -316,7 +317,7 @@ export default function UnifiedScrollSection() {
             }, ">");
 
             tl.to(cardsRef.current[1], {
-                yPercent: -60,
+                yPercent: -40,
                 scale: 0.95,
                 opacity: 0.6,
                 duration: 1,
