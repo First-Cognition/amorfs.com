@@ -63,8 +63,8 @@
     "privacy": {
       "title": "Riêng tư của bạn",
       "title2": "Được bảo vệ",
-      "description1": "Kiến trúc zero-knowledge —",
-      "description2": "chúng tôi không bao giờ nhìn thấy dữ liệu chưa mã hóa của bạn. Bạn nắm toàn quyền kiểm soát."
+      "description1": "Kiến trúc zero-knowledge",
+      "description2": "của chúng tôi không bao giờ nhìn thấy dữ liệu chưa mã hóa của bạn. Bạn nắm toàn quyền kiểm soát."
     }
   },
   "features": {

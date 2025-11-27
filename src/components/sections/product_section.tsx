@@ -6,7 +6,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { Draggable } from "gsap/Draggable";
-import { CheckCircle2, ShieldCheck } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
 
 // Debounce helper
@@ -472,8 +472,13 @@ export default function ProductSection() {
               <div className="relative z-10 flex w-full lg:w-[550px] shrink-0 flex-col gap-1" suppressHydrationWarning>
                 {/* Shield Icon - Positioned at top right */}
                 <div className="flex justify-end mb-4 sm:mb-6 animate-text" suppressHydrationWarning>
-                  <div className="flex items-center justify-center rounded-full bg-[#67E4F9]/[0.08] p-4 sm:p-5 md:p-6 rotate-[15deg]" suppressHydrationWarning>
-                    <ShieldCheck className="h-10 w-10 sm:h-12 sm:w-12 md:h-16 md:w-16 lg:h-[70px] lg:w-[70px] text-[#67E4F9]" strokeWidth={1.5} />
+                  <div className="relative w-[100px] h-[100px] sm:w-[120px] sm:h-[120px] md:w-[140px] md:h-[140px] lg:w-[150px] lg:h-[150px] rotate-[15deg] translate-y-[100px]" suppressHydrationWarning>
+                    <Image
+                      src="/icon privacy.png"
+                      alt="Privacy Shield Icon"
+                      fill
+                      className="object-contain"
+                    />
                   </div>
                 </div>
 
