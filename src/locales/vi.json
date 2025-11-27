@@ -4,30 +4,31 @@
       "pricing": "Bảng giá",
       "technology": "Công nghệ",
       "blog": "Tin tức",
-      "faq": "Câu hỏi thường gặp",
+      "faq": "Hỏi đáp",
       "contact": "Liên hệ"
     },
-    "installExtension": "Cài Đặt Extension"
+    "installExtension": "Cài Đặt Extension",
+    "comingSoon": "Sắp ra mắt!"
   },
   "hero": {
-    "title": "{Dữ Liệu} Của Bạn\nĐược Sắp Xếp Hoàn Hảo",
+    "title": "{Dữ Liệu} Của Bạn\nGọn Gàng Chưa Từng Có",
     "dataHighlight": "{Dữ Liệu}",
-    "subtitle": "Không cần nhập lại.\nAmorfs tự động lưu lại mọi thông tin bạn nhập, bảo mật tuyệt đối,\nvà cho phép bạn sử dụng lại ở bất cứ đâu.\nHoặc biến đổi thành những thứ đẹp đẽ để chia sẻ.",
+    "subtitle": "Không cần gõ lại.\nAmorfs tự động lưu mọi thông tin bạn nhập,\nbảo mật tuyệt đối, sẵn sàng dùng lại mọi lúc.\nHoặc biến chúng thành những thứ đẹp đẽ để chia sẻ.",
     "cta": "Khám Phá Ngay",
     "diveDeeper": "Tìm hiểu thêm",
-    "builtIn": "Được phát triển vào",
-    "powerBy": "Được hỗ trợ bởi",
+    "builtIn": "Ra mắt",
+    "powerBy": "Phát triển bởi",
     "firstCognition": "First Cognition"
   },
   "problem": {
-    "label": "Vấn đề dữ liệu",
-    "title": "Bạn phải nhập lại cùng một thông tin nhiều lần",
-    "description": "Biểu mẫu, hồ sơ, đơn đăng ký-sự lặp lại không ngừng. Dữ liệu của bạn bị phân tán trên hàng chục trang web, bị khóa trong các định dạng không tương thích, không thể tái sử dụng."
+    "label": "Vấn đề",
+    "title": "Bạn cứ phải gõ đi gõ lại cùng một thông tin",
+    "description": "Form đăng ký, hồ sơ cá nhân, đơn xin việc — lặp lại mãi không dứt. Dữ liệu của bạn nằm rải rác khắp nơi, bị nhốt trong những định dạng không tương thích, chẳng thể dùng lại được."
   },
   "solution": {
     "label": "Giải pháp Amorfs",
     "initialTitle": "Nhập một lần, dùng mọi nơi",
-    "initialSubtitle": "Chúng tôi giải quyết bài toán dữ liệu từ gốc rễ. Không còn nhập lại liên tục. Không còn thông tin rời rạc.",
+    "initialSubtitle": "Chúng tôi xử lý vấn đề dữ liệu từ gốc. Không còn gõ lại. Không còn thông tin tản mác.",
     "optionsTitle": "Amorfs Extension",
     "optionsTitle2": "Amorfs Studio"
   },
@@ -35,15 +36,14 @@
     "extension": {
       "number": "1",
       "title": "Amorfs Extension",
-      "buttonText": "Cài đặt Extension",
-      "heading": "Không bao giờ phải nhập lại",
-      "description": "Tiện ích tự động theo dõi và lưu mọi thông tin bạn nhập vào biểu mẫu — từ tên, địa chỉ, sở thích cho đến bất kỳ chi tiết nào. Ở lần sử dụng tiếp theo, mọi thứ đã sẵn sàng, chỉ cần một cú nhấp là có thể dùng lại.",
-      "perfectFor": "Phù hợp với:",
+      "buttonText": "Cài Extension",
+      "heading": "Gõ một lần, dùng mãi mãi",
+      "description": "Extension theo dõi khi bạn điền form và tự động lưu lại — tên, địa chỉ, sở thích, bất kỳ chi tiết nào bạn nhập. Lần sau, mọi thứ đã sẵn sàng, chỉ cần một cú nhấp là xong.",
+      "perfectFor": "Dành cho:",
       "features": [
-        "Những người đã mệt mỏi với việc điền biểu mẫu lặp đi lặp lại",
-        "Trợ lý điều hành quản lý thông tin cho nhiều người",
-        "Những ai coi trọng thời gian và quyền riêng tư"
-
+        "Ai chán ngấy việc điền form lặp đi lặp lại",
+        "Trợ lý quản lý thông tin cho nhiều người",
+        "Ai coi trọng thời gian và sự riêng tư"
       ]
     },
     "studio": {
@@ -51,68 +51,74 @@
       "title": "Amorfs Studio",
       "buttonText": "Mở Studio",
       "heading": "Sắp xếp. Thiết kế. Chia sẻ.",
-      "description": "Biến dữ liệu của bạn thành những nội dung đẹp mắt. Amorfs Studio cho phép bạn cá nhân hóa và sắp xếp thông tin, sau đó trình bày chúng bằng các mẫu bố cục tinh tế từ thư viện của chúng tôi — hoặc bạn có thể tự tạo mẫu riêng.",
-      "perfectFor": "Phù hợp với:",
+      "description": "Biến dữ liệu thành thứ gì đó đẹp mắt. Amorfs Studio cho phép bạn cá nhân hóa và sắp xếp thông tin, rồi trình bày chúng với những mẫu bố cục tuyệt đẹp từ thư viện — hoặc tự tạo mẫu riêng.",
+      "perfectFor": "Dành cho:",
       "features": [
-        "Lập danh mục kho báu một cách chuyên nghiệp",
-        "Tạo các bài thuyết trình dữ liệu đẹp mắt",
-        "Sắp xếp và trưng bày bất kỳ bộ sưu tập nào",
-        "Tạo mẫu để người khác sử dụng"
+        "Lập danh mục bộ sưu tập một cách chuyên nghiệp",
+        "Tạo bài thuyết trình dữ liệu ấn tượng",
+        "Sắp xếp và trưng bày mọi bộ sưu tập",
+        "Thiết kế mẫu cho người khác dùng"
       ]
     },
     "privacy": {
-      "title": "Quyền riêng tư của bạn",
-      "title2": "Được đảm bảo",
-      "description1": "Kiến trúc zero-knowledge",
-      "description2": "Chúng tôi đảm bảo chúng tôi không bao giờ thấy dữ liệu chưa mã hóa của bạn. Bạn hoàn toàn kiểm soát."
+      "title": "Riêng tư của bạn",
+      "title2": "Được bảo vệ",
+      "description1": "Kiến trúc zero-knowledge —",
+      "description2": "chúng tôi không bao giờ nhìn thấy dữ liệu chưa mã hóa của bạn. Bạn nắm toàn quyền kiểm soát."
     }
   },
   "features": {
-    "title": "Mọi thứ\nBạn cần",
+    "title": "Mọi Thứ\nBạn Cần",
     "badges": {
       "zeroKnowledge": "Zero\nKnowledge",
-      "crossDevices": "Đa thiết bị",
-      "beautifulTemplates": "Mẫu đẹp",
-      "instantReuse": "Tái sử dụng tức thì",
-      "languageAgnostic": "Không phụ thuộc ngôn ngữ",
+      "crossDevices": "Đồng bộ\nđa thiết bị",
+      "beautifulTemplates": "Mẫu thiết kế đẹp",
+      "instantReuse": "Dùng lại ngay",
+      "languageAgnostic": "Đa ngôn ngữ",
       "easySharing": "Chia sẻ dễ dàng",
       "fullControl": "Kiểm soát hoàn toàn",
-      "autoCapture": "Tự động\nGhi lại"
+      "autoCapture": "Tự động\nghi nhận"
     }
   },
   "howItWorks": {
-    "title": "Amorfs hoạt động như thế nào",
-    "subtitle": "Đơn giản bên ngoài. Tinh vi bên trong.",
+    "title": "Amorfs hoạt động thế nào",
+    "subtitle": "Đơn giản bề ngoài. Tinh vi bên trong.",
     "steps": {
       "capture": {
         "number": "1",
-        "title": "Ghi lại",
-        "description": "Nhập thông tin một lần vào bất kỳ biểu mẫu web nào. Amorfs tự động lưu lại."
+        "title": "Ghi nhận",
+        "description": "Nhập thông tin một lần vào bất kỳ form web nào. Amorfs tự động lưu lại."
       },
       "store": {
         "number": "2",
         "title": "Lưu trữ",
-        "description": "Dữ liệu của bạn được lưu ở định dạng văn bản trực quan, dễ đọc, dễ chỉnh sửa và chia sẻ, được hỗ trợ bởi mô hình ngữ nghĩa tinh vi hiểu được các khái niệm, không chỉ đơn thuần là văn bản."
+        "description": "Dữ liệu được lưu ở định dạng văn bản trực quan, dễ đọc và chỉnh sửa — với mô hình ngữ nghĩa hiểu khái niệm, không chỉ văn bản."
       },
       "reuse": {
         "number": "3",
         "title": "Tái sử dụng",
-        "description": "Điền biểu mẫu ngay lập tức. Biến đổi dữ liệu thành các bài thuyết trình đẹp mắt. Chia sẻ với người khác."
+        "description": "Điền form tức thì. Biến dữ liệu thành bài thuyết trình đẹp mắt. Chia sẻ với mọi người."
       }
     }
   },
   "future": {
-    "title": "Thúc đẩy tương lai của AI",
-    "description": "Amorfs không chỉ là một công cụ.\n\nĐây là nền tảng cho cách các hệ thống thông minh nên hiểu thông tin.\n\nBằng cách ghi lại dữ liệu với độ chính xác tuyệt đối và biểu diễn chúng ở cấp độ khái niệm, Amorfs giúp AI suy luận chính xác và hiệu quả hơn. Đây là cái nhìn về tương lai nơi dữ liệu được xử lý một cách liền mạch, thông minh và tự nhiên.",
-    "button": "Tìm hiểu thêm về tầm nhìn của chúng tôi",
+    "title": "Kiến tạo tương lai AI",
+    "description": "Amorfs không chỉ là công cụ.\n\nĐây là nền tảng cho cách các hệ thống thông minh hiểu thông tin.\n\nBằng cách ghi nhận dữ liệu với độ chính xác tuyệt đối và biểu diễn ở cấp độ khái niệm, Amorfs giúp AI suy luận chính xác và hiệu quả hơn. Đây là cái nhìn về tương lai nơi dữ liệu luân chuyển liền mạch, thông minh và tự nhiên.",
+    "descriptionBold": "Amorfs không chỉ là công cụ.",
+    "descriptionNormal": "Đây là nền tảng cho cách các hệ thống thông minh hiểu thông tin.\n\nBằng cách ghi nhận dữ liệu với độ chính xác tuyệt đối và biểu diễn ở cấp độ khái niệm, Amorfs giúp AI suy luận chính xác và hiệu quả hơn. Đây là cái nhìn về tương lai nơi dữ liệu luân chuyển liền mạch, thông minh và tự nhiên.",
+    "button": "Tìm hiểu tầm nhìn",
     "ctaTitle": "Dữ liệu của bạn\nTheo cách của bạn",
     "installExtension": "Cài đặt\nExtension",
     "openStudio": "Mở\nStudio",
     "viewPricing": "Xem\nBảng giá"
   },
+  "contact": {
+    "email": "Email (contact@amorfs.com)",
+    "twitter": "AmorfsHQ"
+  },
   "footer": {
     "copyright": "© 2025 Amorfs. Bảo lưu mọi quyền.",
     "privacy": "Chính sách bảo mật",
-    "terms": "Điều khoản và điều kiện"
+    "terms": "Điều khoản sử dụng"
   }
 }

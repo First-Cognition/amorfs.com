@@ -787,12 +787,15 @@ export default function UnifiedScrollSection() {
                                     }}
                                 >
                                     <span className="font-semibold" style={{ color: "#073071" }}>
-                                        Amorfs is not just a tool.
+                                        {t("future.descriptionBold")}
                                     </span>
                                     <br />
-                                    It's the foundation for how intelligent systems should understand information.
-                                    <br />
-                                    By capturing small data with complete fidelity and representing it at the concept level, Amorfs enables AI to reason more accurately and efficiently. It's a glimpse into a future where data flows seamlessly, intelligently, and naturally.
+                                    {t("future.descriptionNormal").split("\n").map((line, i, arr) => (
+                                        <React.Fragment key={i}>
+                                            {line}
+                                            {i < arr.length - 1 && <br />}
+                                        </React.Fragment>
+                                    ))}
                                 </p>
                             </div>
 
@@ -808,7 +811,7 @@ export default function UnifiedScrollSection() {
                                         pointerEvents: "auto",
                                     }}
                                 >
-                                    Learn More Our Vision
+                                    {t("future.button")}
                                     <span className="absolute left-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#0F408F] opacity-0 transition-all duration-500 group-hover:opacity-10 group-hover:scale-125 -z-10" />
                                 </a>
                             </div>

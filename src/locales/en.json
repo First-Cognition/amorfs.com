@@ -7,7 +7,8 @@
       "faq": "FAQ",
       "contact": "Contact"
     },
-    "installExtension": "Install Extension"
+    "installExtension": "Install Extension",
+    "comingSoon": "Coming soon!"
   },
   "hero": {
     "title": "Your {Data}\nBeautifully Organized Finally",
@@ -54,7 +55,7 @@
       "perfectFor": "Perfect for ones:",
       "features": [
         "Catalog treasures with style",
-        "craft beautiful data presentations",
+        "Craft beautiful data presentations",
         "Organize and showcase any collection",
         "Create templates others can use"
       ]
@@ -103,11 +104,17 @@
   "future": {
     "title": "Powering the Future of AI",
     "description": "Amorfs is not just a tool.\n\nIt's the foundation for how intelligent systems should understand information.\n\nBy capturing small data with complete fidelity and representing it at the concept level, Amorfs enables AI to reason more accurately and efficiently. It's a glimpse into a future where data flows seamlessly, intelligently, and naturally.",
-    "button": "Learn more our vision",
+    "descriptionBold": "Amorfs is not just a tool.",
+    "descriptionNormal": "It's the foundation for how intelligent systems should understand information.\n\nBy capturing small data with complete fidelity and representing it at the concept level, Amorfs enables AI to reason more accurately and efficiently. It's a glimpse into a future where data flows seamlessly, intelligently, and naturally.",
+    "button": "Learn More Our Vision",
     "ctaTitle": "Your Data\nYour Way",
     "installExtension": "Install\nExtension",
     "openStudio": "Open\nStudio",
     "viewPricing": "View\nPricing"
+  },
+  "contact": {
+    "email": "Email (contact@amorfs.com)",
+    "twitter": "AmorfsHQ"
   },
   "footer": {
     "copyright": "© 2025 Amorfs. All rights reserved.",

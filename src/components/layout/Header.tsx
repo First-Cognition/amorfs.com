@@ -64,7 +64,7 @@ export default function Header() {
             sideOffset={8}
             className="bg-white/95 text-emerald-600 font-medium px-4 py-2 text-sm rounded-lg shadow-lg border border-emerald-200"
           >
-            Coming soon!
+            {t("header.comingSoon")}
           </TooltipContent>
         </Tooltip>
 
@@ -83,7 +83,7 @@ export default function Header() {
             sideOffset={8}
             className="bg-white/95 text-emerald-600 font-medium px-4 py-2 text-sm rounded-lg shadow-lg border border-emerald-200"
           >
-            Coming soon!
+            {t("header.comingSoon")}
           </TooltipContent>
         </Tooltip>
         <a
@@ -138,7 +138,7 @@ export default function Header() {
                 style={{ fontFamily: getFontFamily(language, "manrope") }}
               >
                 <div className="px-4 py-3 text-sm text-white/88 border-b border-white/10 cursor-default">
-                  Email (contact@amorfs.com)
+                  {t("contact.email")}
                 </div>
                 <a
                   href="https://x.com/AmorfsHQ"
@@ -153,7 +153,7 @@ export default function Header() {
                   >
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                   </svg>
-                  AmorfsHQ
+                  {t("contact.twitter")}
                 </a>
               </div>
             </>
@@ -355,12 +355,12 @@ export default function Header() {
                     {t("header.nav.pricing")}
                   </button>
                 </TooltipTrigger>
-                <TooltipContent
+                  <TooltipContent
                   side="right"
                   sideOffset={8}
                   className="bg-white/95 text-emerald-600 font-medium px-4 py-2 text-sm rounded-lg shadow-lg border border-emerald-200"
                 >
-                  Coming soon!
+                  {t("header.comingSoon")}
                 </TooltipContent>
               </Tooltip>
 
@@ -379,7 +379,7 @@ export default function Header() {
                   sideOffset={8}
                   className="bg-white/95 text-emerald-600 font-medium px-4 py-2 text-sm rounded-lg shadow-lg border border-emerald-200"
                 >
-                  Coming soon!
+                  {t("header.comingSoon")}
                 </TooltipContent>
               </Tooltip>
               <a
