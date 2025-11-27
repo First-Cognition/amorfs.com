@@ -4,18 +4,21 @@ import {
   UnifiedScrollSection,
 } from "@/components/sections";
 import Header from "@/components/layout/Header";
+import ClientLayout from "@/components/layout/ClientLayout";
 
 export default function Home() {
   return (
-    <main className="relative w-full overflow-x-hidden scroll-snap-type-y scroll-snap-mandatory">
-      {/* Global Header */}
-      <div className="fixed left-0 right-0 top-0 z-50">
-        <Header />
-      </div>
+    <ClientLayout>
+      <main className="relative w-full overflow-x-hidden scroll-snap-type-y scroll-snap-mandatory">
+        {/* Global Header */}
+        <div className="fixed left-0 right-0 top-0 z-50">
+          <Header />
+        </div>
 
-      <HeroSection />
-      <ProblemProductWrapper />
-      <UnifiedScrollSection />
-    </main>
+        <HeroSection />
+        <ProblemProductWrapper />
+        <UnifiedScrollSection />
+      </main>
+    </ClientLayout>
   );
 }

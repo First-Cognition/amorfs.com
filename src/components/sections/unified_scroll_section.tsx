@@ -10,6 +10,7 @@ import TextType from "@/components/TextType";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { getFontFamily } from "@/lib/utils/fonts";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 export default function UnifiedScrollSection() {
     const t = useTranslation();
@@ -863,35 +864,48 @@ export default function UnifiedScrollSection() {
                             {/* Buttons Container */}
                             <div className="relative flex flex-wrap justify-center items-start gap-2 sm:gap-3 md:gap-4 lg:gap-6">
                                 {/* Install Extension Button */}
-                                <Magnet
-                                    padding={50}
-                                    magnetStrength={10}
-                                    wrapperClassName="cursor-pointer sm:!p-[48px] md:!p-[60px] lg:!p-[80px]"
-                                >
-                                    <div className="relative flex h-[110px] w-[110px] sm:h-[140px] sm:w-[140px] md:h-[160px] md:w-[160px] lg:h-[180px] lg:w-[180px] xl:h-[200px] xl:w-[200px] flex-col items-center justify-center gap-1 sm:gap-2 md:gap-3 lg:gap-4 rounded-full border-2 border-white/55 bg-white/17 p-3 sm:p-4 md:p-5 lg:p-6 backdrop-blur-[20px] transition-all hover:bg-white/25 mt-0">
-                                        <div className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 relative">
-                                            <Image
-                                                src="/images/download.svg"
-                                                alt="Install Extension"
-                                                fill
-                                                className="object-contain"
-                                            />
+                                <Tooltip delayDuration={100}>
+                                    <TooltipTrigger asChild>
+                                        <div className="relative">
+                                            <Magnet
+                                                padding={50}
+                                                magnetStrength={10}
+                                                wrapperClassName="cursor-pointer sm:!p-[48px] md:!p-[60px] lg:!p-[80px]"
+                                            >
+                                                <div className="relative flex h-[110px] w-[110px] sm:h-[140px] sm:w-[140px] md:h-[160px] md:w-[160px] lg:h-[180px] lg:w-[180px] xl:h-[200px] xl:w-[200px] flex-col items-center justify-center gap-1 sm:gap-2 md:gap-3 lg:gap-4 rounded-full border-2 border-white/55 bg-white/17 p-3 sm:p-4 md:p-5 lg:p-6 backdrop-blur-[20px] transition-all hover:bg-white/25 mt-0">
+                                                    <div className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 relative">
+                                                        <Image
+                                                            src="/images/download.svg"
+                                                            alt="Install Extension"
+                                                            fill
+                                                            className="object-contain"
+                                                        />
+                                                    </div>
+                                                    <span
+                                                        className="text-center text-xs sm:text-sm md:text-base lg:text-lg xl:text-[20px] font-semibold leading-[1.3em] tracking-[-0.03em] text-white"
+                                                        style={{
+                                                            fontFamily: getFontFamily(language, "manrope"),
+                                                        }}
+                                                    >
+                                                        {t("future.installExtension").split("\n").map((line, i) => (
+                                                            <React.Fragment key={i}>
+                                                                {line}
+                                                                {i < t("future.installExtension").split("\n").length - 1 && <br />}
+                                                            </React.Fragment>
+                                                        ))}
+                                                    </span>
+                                                </div>
+                                            </Magnet>
                                         </div>
-                                        <span
-                                            className="text-center text-xs sm:text-sm md:text-base lg:text-lg xl:text-[20px] font-semibold leading-[1.3em] tracking-[-0.03em] text-white"
-                                            style={{
-                                                fontFamily: getFontFamily(language, "manrope"),
-                                            }}
-                                        >
-                                            {t("future.installExtension").split("\n").map((line, i) => (
-                                                <React.Fragment key={i}>
-                                                    {line}
-                                                    {i < t("future.installExtension").split("\n").length - 1 && <br />}
-                                                </React.Fragment>
-                                            ))}
-                                        </span>
-                                    </div>
-                                </Magnet>
+                                    </TooltipTrigger>
+                                    <TooltipContent
+                                        side="top"
+                                        sideOffset={-40}
+                                        className="bg-white/95 text-emerald-600 font-medium px-4 py-2 text-sm rounded-lg shadow-lg border border-emerald-200 z-50"
+                                    >
+                                        {t("header.comingSoon")}
+                                    </TooltipContent>
+                                </Tooltip>
 
                                 {/* Open Studio Button */}
                                 <Magnet
@@ -899,7 +913,12 @@ export default function UnifiedScrollSection() {
                                     magnetStrength={10}
                                     wrapperClassName="cursor-pointer sm:!p-[48px] md:!p-[60px] lg:!p-[80px]"
                                 >
-                                    <div className="relative flex h-[110px] w-[110px] sm:h-[140px] sm:w-[140px] md:h-[160px] md:w-[160px] lg:h-[180px] lg:w-[180px] xl:h-[200px] xl:w-[200px] flex-col items-center justify-center gap-1 sm:gap-2 md:gap-3 lg:gap-4 rounded-full border-2 border-white/55 bg-white/17 p-3 sm:p-4 md:p-5 lg:p-6 backdrop-blur-[20px] transition-all hover:bg-white/25 mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12">
+                                    <a
+                                        href="https://amorfs.com/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="relative flex h-[110px] w-[110px] sm:h-[140px] sm:w-[140px] md:h-[160px] md:w-[160px] lg:h-[180px] lg:w-[180px] xl:h-[200px] xl:w-[200px] flex-col items-center justify-center gap-1 sm:gap-2 md:gap-3 lg:gap-4 rounded-full border-2 border-white/55 bg-white/17 p-3 sm:p-4 md:p-5 lg:p-6 backdrop-blur-[20px] transition-all hover:bg-white/25 mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12"
+                                    >
                                         <div className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 relative">
                                             <Image
                                                 src="/images/click.svg"
@@ -921,39 +940,51 @@ export default function UnifiedScrollSection() {
                                                 </React.Fragment>
                                             ))}
                                         </span>
-                                    </div>
+                                    </a>
                                 </Magnet>
 
                                 {/* View Pricing Button */}
-                                <Magnet
-                                    padding={50}
-                                    magnetStrength={10}
-                                    wrapperClassName="cursor-pointer sm:!p-[48px] md:!p-[60px] lg:!p-[80px]"
-                                >
-                                    <div className="relative flex h-[140px] w-[140px] sm:h-[160px] sm:w-[160px] md:h-[180px] md:w-[180px] lg:h-[206px] lg:w-[206px] flex-col items-center justify-center gap-2 sm:gap-3 md:gap-4 rounded-full border-2 border-white/55 bg-white/17 p-4 sm:p-5 md:p-6 backdrop-blur-[20px] transition-all hover:bg-white/25 mt-4 sm:mt-5 md:mt-6">
-                                        <div className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 relative">
-                                            <Image
-                                                src="/images/dollar.svg"
-                                                alt="View Pricing"
-                                                fill
-                                                className="object-contain"
-                                            />
+                                <Tooltip delayDuration={100}>
+                                    <TooltipTrigger asChild>
+                                        <div className="relative">
+                                            <Magnet
+                                                magnetStrength={10}
+                                                wrapperClassName="cursor-pointer sm:!p-[48px] md:!p-[60px] lg:!p-[80px]"
+                                            >
+                                                <div className="relative flex h-[140px] w-[140px] sm:h-[160px] sm:w-[160px] md:h-[180px] md:w-[180px] lg:h-[206px] lg:w-[206px] flex-col items-center justify-center gap-2 sm:gap-3 md:gap-4 rounded-full border-2 border-white/55 bg-white/17 p-4 sm:p-5 md:p-6 backdrop-blur-[20px] transition-all hover:bg-white/25 mt-4 sm:mt-5 md:mt-6">
+                                                    <div className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 relative">
+                                                        <Image
+                                                            src="/images/dollar.svg"
+                                                            alt="View Pricing"
+                                                            fill
+                                                            className="object-contain"
+                                                        />
+                                                    </div>
+                                                    <span
+                                                        className="text-center text-sm sm:text-base md:text-lg lg:text-[20px] font-semibold leading-[1.4em] tracking-[-0.03em] text-white"
+                                                        style={{
+                                                            fontFamily: getFontFamily(language, "manrope"),
+                                                        }}
+                                                    >
+                                                        {t("future.viewPricing").split("\n").map((line, i) => (
+                                                            <React.Fragment key={i}>
+                                                                {line}
+                                                                {i < t("future.viewPricing").split("\n").length - 1 && <br />}
+                                                            </React.Fragment>
+                                                        ))}
+                                                    </span>
+                                                </div>
+                                            </Magnet>
                                         </div>
-                                        <span
-                                            className="text-center text-sm sm:text-base md:text-lg lg:text-[20px] font-semibold leading-[1.4em] tracking-[-0.03em] text-white"
-                                            style={{
-                                                fontFamily: getFontFamily(language, "manrope"),
-                                            }}
-                                        >
-                                            {t("future.viewPricing").split("\n").map((line, i) => (
-                                                <React.Fragment key={i}>
-                                                    {line}
-                                                    {i < t("future.viewPricing").split("\n").length - 1 && <br />}
-                                                </React.Fragment>
-                                            ))}
-                                        </span>
-                                    </div>
-                                </Magnet>
+                                    </TooltipTrigger>
+                                    <TooltipContent
+                                        side="top"
+                                        sideOffset={-40}
+                                        className="bg-white/95 text-emerald-600 font-medium px-4 py-2 text-sm rounded-lg shadow-lg border border-emerald-200 z-50"
+                                    >
+                                        {t("header.comingSoon")}
+                                    </TooltipContent>
+                                </Tooltip>
                             </div>
                         </div>
 

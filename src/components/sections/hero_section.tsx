@@ -9,7 +9,7 @@ import { getFontFamily } from "@/lib/utils/fonts";
 
 export default function HeroSection() {
   const t = useTranslation();
-  const { language } = useLanguage();
+  const { language, isLoaded } = useLanguage();
   const videoRef = useRef<HTMLVideoElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
@@ -17,38 +17,52 @@ export default function HeroSection() {
   const footerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // GSAP animation for hero content
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    // Wait for loading screen to finish before running animations
+    if (!isLoaded) return;
 
-    tl.from(titleRef.current, {
-      y: 100,
+    // Set initial state to hidden (in case elements are visible before animation)
+    gsap.set([titleRef.current, subtitleRef.current, ctaRef.current, footerRef.current], {
       opacity: 0,
+      y: (i) => [100, 50, 30, 20][i],
+    });
+
+    // Delay to wait for the ClientLayout fade-in animation (0.5s) to complete
+    const animationDelay = 0.6;
+
+    // GSAP animation for hero content
+    const tl = gsap.timeline({ 
+      defaults: { ease: "power3.out" },
+      delay: animationDelay,
+    });
+
+    tl.to(titleRef.current, {
+      y: 0,
+      opacity: 1,
       duration: 1,
-      delay: 0.3,
     })
-      .from(
+      .to(
         subtitleRef.current,
         {
-          y: 50,
-          opacity: 0,
+          y: 0,
+          opacity: 1,
           duration: 0.8,
         },
         "-=0.5"
       )
-      .from(
+      .to(
         ctaRef.current,
         {
-          y: 30,
-          opacity: 0,
+          y: 0,
+          opacity: 1,
           duration: 0.6,
         },
         "-=0.4"
       )
-      .from(
+      .to(
         footerRef.current,
         {
-          y: 20,
-          opacity: 0,
+          y: 0,
+          opacity: 1,
           duration: 0.6,
         },
         "-=0.3"
@@ -82,8 +96,9 @@ export default function HeroSection() {
 
     return () => {
       window.removeEventListener('wheel', handleWheel);
+      tl.kill();
     };
-  }, []);
+  }, [isLoaded]);
 
   return (
     <section id="hero" className="relative flex min-h-screen w-full flex-col overflow-hidden scroll-snap-align-start">

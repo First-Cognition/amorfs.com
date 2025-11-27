@@ -224,7 +224,6 @@ export default function ProblemSolutionSection() {
 
       return () => {
         window.removeEventListener('wheel', handleWheel);
-        ctx.revert();
       };
     }, sectionRef);
 
