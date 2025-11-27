@@ -457,9 +457,9 @@ export default function ProductSection() {
 
           {/* Slide 3 - Privacy */}
           <div className="product-slide flex h-full w-full flex-shrink-0 items-center justify-center p-4 sm:p-6 md:p-8" suppressHydrationWarning>
-            <div className="relative flex w-full max-w-[1280px] h-auto shrink-0 items-center justify-center gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 flex-col lg:flex-row" suppressHydrationWarning>
+            <div ref={slide3ContentRef} className="relative flex w-full max-w-[1280px] h-auto shrink-0 items-center justify-center gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 flex-col lg:flex-row" suppressHydrationWarning>
               {/* Left Side - Heading */}
-              <div ref={slide3ContentRef} className="flex w-full lg:w-auto shrink-0 flex-col leading-none lg:self-start lg:pt-8" suppressHydrationWarning>
+              <div className="flex w-full lg:w-auto shrink-0 flex-col leading-none lg:self-start lg:pt-8" suppressHydrationWarning>
                 <h2 className="font-['Manrope'] text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[72px] font-medium leading-[1.1] tracking-[-0.04em] text-white/[0.35] animate-text">
                   {t("product.privacy.title")}
                 </h2>
