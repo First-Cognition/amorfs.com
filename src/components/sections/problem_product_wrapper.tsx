@@ -31,19 +31,19 @@ export default function ProblemProductWrapper() {
 
     return (
         <div ref={wrapperRef} className="relative min-h-screen w-full">
-            {/* Sections Container - Base layer */}
+            {/* Sections Container - Base layer with content */}
             <div className="relative" style={{ zIndex: 1 }}>
                 <ProblemSolutionSection />
                 <ProductSection />
             </div>
 
-            {/* Light Rays Effect - Pinned by GSAP to cover the entire wrapper duration */}
+            {/* Light Rays Effect - Overlay with additive blend mode (only brightens, never darkens) */}
             <div
                 ref={raysRef}
                 className="absolute top-0 left-0 w-full h-screen pointer-events-none"
-                style={{ zIndex: 49 }}
+                style={{ zIndex: 2 }}
             >
-                <div className="w-full h-full mix-blend-screen opacity-100">
+                <div className="w-full h-full mix-blend-plus-lighter opacity-60">
                     <LightRays
                         raysOrigin="top-center"
                         raysColor="#8AD5FC"

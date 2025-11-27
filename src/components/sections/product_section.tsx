@@ -456,31 +456,35 @@ export default function ProductSection() {
           </div>
 
           {/* Slide 3 - Privacy */}
-          <div className="product-slide relative flex h-full w-full flex-shrink-0 items-center justify-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-[120px] px-4 sm:px-6 md:px-8 lg:px-16 xl:px-[200px] py-6 sm:py-8 md:py-10 flex-col lg:flex-row" suppressHydrationWarning>
-            {/* Left Side - Heading */}
-            <div ref={slide3ContentRef} className="flex w-full lg:w-[400px] shrink-0 flex-col leading-none self-start pt-0 sm:pt-8 md:pt-12 lg:pt-[150px]" suppressHydrationWarning>
-              <h2 className="font-['Manrope'] text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[72px] font-medium leading-[1.1] tracking-[-0.04em] text-white/[0.35] animate-text">
-                {t("product.privacy.title")}
-              </h2>
-              <h2 className="font-['Manrope'] text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[72px] font-medium leading-[1.1] tracking-[-0.04em] text-white animate-text">
-                {t("product.privacy.title2")}
-              </h2>
-            </div>
-
-            {/* Right Side - Description with Icon */}
-            <div className="relative z-10 flex w-full lg:w-[600px] shrink-0 flex-col gap-1 self-end pb-0 sm:pb-8 md:pb-12 lg:pb-[150px]" suppressHydrationWarning>
-              {/* Shield Icon - Absolute positioned with lower z-index and rotated */}
-              <div className="absolute -right-4 sm:-right-8 md:-right-[50px] -top-8 sm:-top-12 md:-top-[60px] z-0 flex items-center justify-center rounded-full bg-[#67E4F9]/[0.08] p-4 sm:p-6 md:p-8 lg:p-10 rotate-[15deg]" suppressHydrationWarning>
-                <ShieldCheck className="h-8 w-8 sm:h-12 sm:w-12 md:h-16 md:w-16 lg:h-[90px] lg:w-[90px] text-[#67E4F9]" strokeWidth={1.5} />
+          <div className="product-slide flex h-full w-full flex-shrink-0 items-center justify-center p-4 sm:p-6 md:p-8" suppressHydrationWarning>
+            <div className="relative flex w-full max-w-[1280px] h-auto shrink-0 items-center justify-center gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 flex-col lg:flex-row" suppressHydrationWarning>
+              {/* Left Side - Heading */}
+              <div ref={slide3ContentRef} className="flex w-full lg:w-auto shrink-0 flex-col leading-none lg:self-start lg:pt-8" suppressHydrationWarning>
+                <h2 className="font-['Manrope'] text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[72px] font-medium leading-[1.1] tracking-[-0.04em] text-white/[0.35] animate-text">
+                  {t("product.privacy.title")}
+                </h2>
+                <h2 className="font-['Manrope'] text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[72px] font-medium leading-[1.1] tracking-[-0.04em] text-white animate-text">
+                  {t("product.privacy.title2")}
+                </h2>
               </div>
 
-              {/* Description Text */}
-              <p className="relative z-10 font-['Manrope'] text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-[34px] font-medium leading-[1.3] tracking-[-0.03em] text-white animate-text">
-                {t("product.privacy.description1")}
-              </p>
-              <p className="relative z-10 font-['Manrope'] text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-[34px] font-medium leading-[1.3] tracking-[-0.03em] text-white/[0.5] animate-text">
-                {t("product.privacy.description2")}
-              </p>
+              {/* Right Side - Description with Icon */}
+              <div className="relative z-10 flex w-full lg:w-[550px] shrink-0 flex-col gap-1" suppressHydrationWarning>
+                {/* Shield Icon - Positioned at top right */}
+                <div className="flex justify-end mb-4 sm:mb-6 animate-text" suppressHydrationWarning>
+                  <div className="flex items-center justify-center rounded-full bg-[#67E4F9]/[0.08] p-4 sm:p-5 md:p-6 rotate-[15deg]" suppressHydrationWarning>
+                    <ShieldCheck className="h-10 w-10 sm:h-12 sm:w-12 md:h-16 md:w-16 lg:h-[70px] lg:w-[70px] text-[#67E4F9]" strokeWidth={1.5} />
+                  </div>
+                </div>
+
+                {/* Description Text */}
+                <p className="relative z-10 font-['Manrope'] text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-[34px] font-medium leading-[1.3] tracking-[-0.03em] text-white animate-text">
+                  {t("product.privacy.description1")}
+                </p>
+                <p className="relative z-10 font-['Manrope'] text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-[34px] font-medium leading-[1.3] tracking-[-0.03em] text-white/[0.5] animate-text">
+                  {t("product.privacy.description2")}
+                </p>
+              </div>
             </div>
           </div>
         </div>

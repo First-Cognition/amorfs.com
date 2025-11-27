@@ -235,7 +235,7 @@ export default function Header() {
                 </button>
                 <button
                   onClick={() => handleLangChange("vi")}
-                  className={`w-full px-4 py-2 text-left text-sm transition-colors hover:bg-white/20 ${currentLang === "Tiếng Việt"
+                  className={`w-full px-4 py-2 text-left text-sm transition-colors hover:bg-white/20 whitespace-nowrap ${currentLang === "Tiếng Việt"
                     ? "bg-white/15 text-white"
                     : "text-white/88"
                     }`}
@@ -476,7 +476,7 @@ export default function Header() {
                     </button>
                     <button
                       onClick={() => handleLangChange("vi")}
-                      className={`w-full px-4 py-3 text-left text-base transition-colors hover:bg-white/20 ${currentLang === "Tiếng Việt"
+                      className={`w-full px-4 py-3 text-left text-base transition-colors hover:bg-white/20 whitespace-nowrap ${currentLang === "Tiếng Việt"
                         ? "bg-white/15 text-white"
                         : "text-white/88"
                         }`}
