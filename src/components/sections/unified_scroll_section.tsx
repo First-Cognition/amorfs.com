@@ -501,7 +501,7 @@ export default function UnifiedScrollSection() {
                     </h2>
                     <p
                         ref={hiwSubtitleRef}
-                        className="font-manrope text-sm sm:text-base md:text-lg lg:text-xl text-center px-2 mt-2 sm:mt-3"
+                        className="font-manrope text-base sm:text-lg md:text-xl lg:text-3xl text-center px-3 mt-2 sm:mt-4"
                         style={{
                             fontFamily: getFontFamily(language, "manrope"),
                             color: "rgba(255, 255, 255, 0.8)",
