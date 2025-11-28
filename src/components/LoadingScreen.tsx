@@ -18,6 +18,7 @@ export default function LoadingScreen({
 }: LoadingScreenProps) {
   const lottieRef = useRef<LottieRefCurrentProps>(null);
   const [shouldLoop, setShouldLoop] = useState(true);
+  const [shouldFadeOut, setShouldFadeOut] = useState(false);
 
   // When translations are loaded, stop looping and let the current animation finish
   useEffect(() => {
@@ -35,9 +36,15 @@ export default function LoadingScreen({
   };
 
   const handleComplete = () => {
-    // Animation finished its final run
-    if (!shouldLoop && onAnimationComplete) {
-      onAnimationComplete();
+    // Animation finished its final run - trigger fade out
+    if (!shouldLoop) {
+      setShouldFadeOut(true);
+      // Call onAnimationComplete after fade out animation
+      setTimeout(() => {
+        if (onAnimationComplete) {
+          onAnimationComplete();
+        }
+      }, 500); // Match the fade out duration
     }
   };
 
@@ -60,12 +67,18 @@ export default function LoadingScreen({
             }}
           />
 
-          {/* Lottie Animation */}
+          {/* Lottie Animation - Scaled 2x and with fade out effect */}
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="relative z-10 w-40 h-40 md:w-56 md:h-56"
+            animate={{ 
+              scale: 1, 
+              opacity: shouldFadeOut ? 0 : 1 
+            }}
+            transition={{ 
+              duration: shouldFadeOut ? 0.5 : 0.6, 
+              ease: shouldFadeOut ? "easeIn" : "easeOut" 
+            }}
+            className="relative z-10 w-80 h-80 md:w-112 md:h-112"
           >
             <Lottie
               lottieRef={lottieRef}
@@ -77,18 +90,6 @@ export default function LoadingScreen({
               style={{ width: "100%", height: "100%" }}
             />
           </motion.div>
-
-          {/* Pulsing ring effect */}
-          <motion.div
-            initial={{ scale: 0.5, opacity: 0.6 }}
-            animate={{ scale: 1.5, opacity: 0 }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              ease: "easeOut",
-            }}
-            className="absolute w-40 h-40 md:w-56 md:h-56 rounded-full border-2 border-white/20"
-          />
         </motion.div>
       )}
     </AnimatePresence>
