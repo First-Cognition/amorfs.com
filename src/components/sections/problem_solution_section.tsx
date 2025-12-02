@@ -8,7 +8,6 @@ import Image from "next/image";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { getFontFamily } from "@/lib/utils/fonts";
-import TextType from "@/components/TextType";
 
 
 export default function ProblemSolutionSection() {
@@ -19,8 +18,6 @@ export default function ProblemSolutionSection() {
   const solutionContentRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const decorationRef = useRef<HTMLDivElement>(null);
-  const initialTextRef = useRef<HTMLDivElement>(null);
-  const optionsTextRef = useRef<HTMLDivElement>(null);
   const solutionTitleRef = useRef<HTMLDivElement>(null);
   const solutionSubtitleRef = useRef<HTMLDivElement>(null);
 
@@ -54,144 +51,89 @@ export default function ProblemSolutionSection() {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "+=300%", // Pin for longer scroll to accommodate both sections
-          scrub: 1,
+          end: "+=120%", // Reduced from 300% - much shorter scroll duration
+          scrub: 0.5,
           pin: true,
           anticipatePin: 1,
         },
       });
 
-      // Phase 1: Show Problem content
+      // Phase 1: Show Problem content briefly
       mainTimeline.fromTo(
         problemContentRef.current,
         { opacity: 1, y: 0 },
-        { opacity: 1, y: 0, duration: 0.3 }
+        { opacity: 1, y: 0, duration: 0.1 }
       );
 
-      // Phase 2: Fade out Problem content
+      // Phase 2: Fade out Problem content quickly
       mainTimeline.to(
         problemContentRef.current,
         {
           opacity: 0,
           y: -50,
-          duration: 0.3,
+          duration: 0.2,
         },
-        "+=0.3"
+        "+=0.1"
       );
 
-      // Phase 3: Fade in Solution content AND decoration icons
+      // Phase 3: Fade in Solution content rapidly
       mainTimeline.fromTo(
         solutionContentRef.current,
-        { opacity: 0, y: 50 },
+        { opacity: 0, y: 30 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.3,
+          duration: 0.2,
         },
         "-=0.1"
       );
 
-      // Animate solution title with simple move-up effect (like hero title)
+      // Animate solution title quickly
       if (solutionTitleRef.current) {
         mainTimeline.fromTo(
           solutionTitleRef.current,
-          { y: 50, opacity: 0 },
+          { y: 30, opacity: 0 },
           {
             y: 0,
             opacity: 1,
-            duration: 0.8,
-            ease: "power3.out",
+            duration: 0.3,
+            ease: "power2.out",
+          },
+          "-=0.15"
+        );
+      }
+
+      // Animate solution subtitle quickly
+      if (solutionSubtitleRef.current) {
+        mainTimeline.fromTo(
+          solutionSubtitleRef.current,
+          { y: 20, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.25,
+            ease: "power2.out",
           },
           "-=0.2"
         );
       }
 
-      // Animate solution subtitle with simple move-up effect
-      if (solutionSubtitleRef.current) {
-        mainTimeline.fromTo(
-          solutionSubtitleRef.current,
-          { y: 30, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.6,
-            ease: "power3.out",
-          },
-          "-=0.5"
-        );
-      }
-
-      // Fade in decoration icons at the same time as Solution content
+      // Fade in decoration icons quickly - no moving around
       if (decorationRef.current) {
         mainTimeline.fromTo(
           decorationRef.current,
-          { opacity: 0, scale: 0.8 },
+          { opacity: 0, scale: 0.95 },
           {
             opacity: 1,
             scale: 1,
-            duration: 1,
+            duration: 0.3,
           },
-          "-=0.3"
+          "-=0.2"
         );
       }
 
-      // Phase 4: Text swap within Solution (Initial -> Options)
-      mainTimeline.to(
-        initialTextRef.current,
-        {
-          opacity: 0,
-          y: -30,
-          duration: 0.3,
-        },
-        "+=0.3"
-      );
-
-      mainTimeline.fromTo(
-        optionsTextRef.current,
-        {
-          opacity: 0,
-          y: 30,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.4,
-        },
-        "-=0.2"
-      );
-
-      // Animate decoration with parallax effect (only when visible)
-      if (decorationRef.current) {
-        gsap.fromTo(
-          decorationRef.current,
-          {
-            y: 100,
-          },
-          {
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: "50% top", // Start parallax after solution appears
-              end: "bottom top",
-              scrub: 1.5,
-            },
-            y: -100,
-            ease: "none",
-          }
-        );
-
-      }
-      if (decorationRef.current) {
-        mainTimeline.fromTo(
-          decorationRef.current,
-          { opacity: 0, scale: 0.8 },
-          {
-            opacity: 1,
-            scale: 1,
-            duration: 1,
-          },
-          "-=0.3"
-        );
-      }
+      // Hold solution content visible briefly before next section
+      mainTimeline.to({}, { duration: 0.15 });
 
       // Custom scroll handler for "gentle scroll" up to Hero
       let isScrolling = false;
@@ -234,7 +176,7 @@ export default function ProblemSolutionSection() {
     <section
       id="problem-solution"
       ref={sectionRef}
-      className="relative h-screen w-full overflow-hidden scroll-snap-align-start opacity-0"
+      className="relative z-10 h-screen w-full overflow-hidden scroll-snap-align-start opacity-0"
     >
       {/* Background Image - Shared for both Problem and Solution */}
       <div className="absolute inset-0 z-0" suppressHydrationWarning>
@@ -343,99 +285,34 @@ export default function ProblemSolutionSection() {
               {t("solution.label")}
             </h2>
 
-            {/* Main Content Group - with text swap */}
-            <div className="relative flex w-full flex-col items-center gap-2 sm:gap-3 self-stretch" suppressHydrationWarning>
-              {/* Initial Text - Will fade out on scroll */}
+            {/* Main Content Group - simplified without text swap */}
+            <div className="flex w-full flex-col items-center gap-2 sm:gap-3 self-stretch" suppressHydrationWarning>
+              {/* Main Heading */}
               <div
-                ref={initialTextRef}
-                className="absolute inset-0 flex flex-col items-center gap-2 sm:gap-3"
+                ref={solutionTitleRef}
+                className="flex flex-col items-center gap-1 sm:gap-2"
                 suppressHydrationWarning
               >
-                {/* Main Heading */}
-                <div
-                  ref={solutionTitleRef}
-                  className="flex flex-col items-center gap-1 sm:gap-2"
-                  suppressHydrationWarning
+                <h3
+                  className="text-center font-manrope text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[44px] font-medium leading-[1.25em] tracking-[-0.04em] text-white/88 px-2"
+                  style={{ fontFamily: getFontFamily(language, "manrope") }}
                 >
-                  <h3
-                    className="text-center font-manrope text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[44px] font-medium leading-[1.25em] tracking-[-0.04em] text-white/88 px-2"
-                    style={{ fontFamily: getFontFamily(language, "manrope") }}
-                  >
-                    {t("solution.initialTitle")}
-                  </h3>
-                </div>
-
-                {/* Subtitle */}
-                <div
-                  ref={solutionSubtitleRef}
-                  className="flex items-center justify-center gap-2 p-1 sm:p-2"
-                  suppressHydrationWarning
-                >
-                  <p
-                    className="text-center font-manrope text-xs sm:text-sm md:text-base lg:text-lg font-normal leading-[1.5em] tracking-[-0.03em] text-white/55 px-2"
-                    style={{ fontFamily: getFontFamily(language, "manrope") }}
-                  >
-                    {t("solution.initialSubtitle")}
-                  </p>
-                </div>
+                  {t("solution.initialTitle")}
+                </h3>
               </div>
 
-              {/* Options Text - Will fade in on scroll */}
+              {/* Subtitle */}
               <div
-                ref={optionsTextRef}
-                className="flex flex-col items-center gap-2 sm:gap-3 opacity-0"
+                ref={solutionSubtitleRef}
+                className="flex items-center justify-center gap-2 p-1 sm:p-2"
                 suppressHydrationWarning
               >
-                {/* Browser Extension & Data Studio Options */}
-                <div className="flex flex-col items-center gap-2 sm:gap-3 self-stretch" suppressHydrationWarning>
-                  {/* Browser Extension */}
-                  <div className="flex flex-row items-center gap-1 sm:gap-2" suppressHydrationWarning>
-                    <h1
-                      className="text-center font-manrope text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-[44px] font-medium leading-[1.25em] tracking-[-0.04em] text-white/88"
-                      style={{ fontFamily: getFontFamily(language, "manrope") }}
-                    >
-                      <span className="text-white/60">{`{ `}</span>
-                      <TextType
-                        text={t("solution.optionsTitle")}
-                        as="span"
-                        className="inline"
-                        typingSpeed={80}
-                        initialDelay={500}
-                        loop={false}
-                        showCursor={false}
-                      />
-                      <span className="text-white/60">{` }`}</span>
-                    </h1>
-                  </div>
-
-                  {/* Data Studio */}
-                  <div className="flex flex-row items-center gap-1 sm:gap-2" suppressHydrationWarning>
-                    <h1
-                      className="text-center font-manrope text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-[44px] font-medium leading-[1.25em] tracking-[-0.04em] text-white/88"
-                      style={{ fontFamily: getFontFamily(language, "manrope") }}
-                    >
-                      <span className="text-white/60">{`{ `}</span>
-                      <TextType
-                        text={t("solution.optionsTitle2")}
-                        as="span"
-                        className="inline"
-                        typingSpeed={80}
-                        initialDelay={1500}
-                        loop={false}
-                        showCursor={false}
-                      />
-                      <span className="text-white/60">{` }`}</span>
-                    </h1>
-                  </div>
-                </div>
-              </div>
-
-              {/* Spacer to maintain layout height */}
-              <div className="invisible flex flex-col items-center gap-2 sm:gap-3" suppressHydrationWarning>
-                <h1 className="text-center font-manrope text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-medium leading-[1.3em] tracking-[-0.04em] text-white/88">
-                  Capture Once, <br />
-                  Use Everywhere
-                </h1>
+                <p
+                  className="text-center font-manrope text-xs sm:text-sm md:text-base lg:text-lg font-normal leading-[1.5em] tracking-[-0.03em] text-white/55 px-2"
+                  style={{ fontFamily: getFontFamily(language, "manrope") }}
+                >
+                  {t("solution.initialSubtitle")}
+                </p>
               </div>
             </div>
           </div>
@@ -445,8 +322,8 @@ export default function ProblemSolutionSection() {
       {/* Decorative SVG - Initially hidden, hidden on mobile */}
       <div
         ref={decorationRef}
-        className="pointer-events-none absolute left-[50%] top-[35%] -translate-x-1/2 -translate-y-1/2 h-[120px] w-[380px] sm:h-[180px] sm:w-[570px] md:h-[220px] md:w-[697px] lg:h-[280px] lg:w-[888px] xl:h-[308px] xl:w-[975px] rounded-[100px] opacity-0 hidden sm:block"
-        style={{ transform: 'rotate(-1.5deg)' }}
+        className="pointer-events-none absolute left-[50%] top-[50%] -translate-x-1/2 -translate-y-1/2 h-[120px] w-[380px] sm:h-[180px] sm:w-[570px] md:h-[220px] md:w-[697px] lg:h-[280px] lg:w-[888px] xl:h-[308px] xl:w-[975px] rounded-[100px] opacity-0 hidden sm:block"
+        style={{ transform: 'translate(-50%, -50%) rotate(-1.5deg)' }}
       >
         <Image
           src="/images/solution-decoration.svg"

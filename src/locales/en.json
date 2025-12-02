@@ -7,17 +7,17 @@
       "faq": "FAQ",
       "contact": "Contact"
     },
-    "installExtension": "Install Extension",
+    "installExtension": "Visit Studio",
     "comingSoon": "Coming soon!"
   },
   "hero": {
-    "title": "Your {Data}\nBeautifully Organized Finally",
-    "dataHighlight": "{Data}",
+    "title": "Your [Data]\nBeautifully Organized Finally",
+    "dataHighlight": "[Data]",
     "subtitle": "Stop retyping the same information.\nAmorfs captures what you enter once, stores it securely,\nand lets you reuse it anywhere.\nOr transform it into something beautiful to share.",
     "cta": "Explore More",
     "diveDeeper": "Dive Deeper",
     "builtIn": "Built in",
-    "powerBy": "Power by",
+    "powerBy": "Powered by",
     "firstCognition": "First Cognition"
   },
   "problem": {
@@ -102,9 +102,9 @@
     }
   },
   "future": {
-    "title": "Powering the Future of AI",
-    "description": "Amorfs is not just a tool.\n\nIt's the foundation for how intelligent systems should understand information.\n\nBy capturing small data with complete fidelity and representing it at the concept level, Amorfs enables AI to reason more accurately and efficiently. It's a glimpse into a future where data flows seamlessly, intelligently, and naturally.",
-    "descriptionBold": "Amorfs is not just a tool.",
+    "title": "Amorfs is not just a tool",
+    "description": "It's the foundation for how intelligent systems should understand information.\n\nBy capturing small data with complete fidelity and representing it at the concept level, Amorfs enables AI to reason more accurately and efficiently. It's a glimpse into a future where data flows seamlessly, intelligently, and naturally.",
+    "descriptionBold": "",
     "descriptionNormal": "It's the foundation for how intelligent systems should understand information.\n\nBy capturing small data with complete fidelity and representing it at the concept level, Amorfs enables AI to reason more accurately and efficiently. It's a glimpse into a future where data flows seamlessly, intelligently, and naturally.",
     "button": "Learn More Our Vision",
     "ctaTitle": "Your Data\nYour Way",

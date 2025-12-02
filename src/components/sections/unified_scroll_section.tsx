@@ -195,13 +195,13 @@ export default function UnifiedScrollSection() {
         if (!wrapperRef.current) return;
 
         const ctx = gsap.context(() => {
-            // ===== UNIFIED TIMELINE with Extended Duration =====
+            // ===== UNIFIED TIMELINE with Reduced Duration =====
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: wrapperRef.current,
                     start: "top top",
-                    end: "+=1200%", // Extended to accommodate all 3 sections
-                    scrub: 1,
+                    end: "+=700%", // Reduced from 1200% for faster scroll experience
+                    scrub: 0.5,
                     pin: true,
                     anticipatePin: 1,
                 },
@@ -264,12 +264,12 @@ export default function UnifiedScrollSection() {
 
             // ===== PHASE 1: HOW IT WORKS ANIMATION =====
 
-            // Title Animation
+            // Title Animation - faster
             tl.to(hiwTitleRef.current, {
                 top: "10%",
                 yPercent: 0,
                 scale: 0.6,
-                duration: 1,
+                duration: 0.6,
                 ease: "power2.inOut",
             });
 
@@ -278,7 +278,7 @@ export default function UnifiedScrollSection() {
                 opacity: 1,
                 y: 0,
                 visibility: "visible",
-                duration: 0.3,
+                duration: 0.2,
                 ease: "power2.out",
             });
 
@@ -287,7 +287,7 @@ export default function UnifiedScrollSection() {
                 yPercent: -50,
                 opacity: 1,
                 scale: 1,
-                duration: 1,
+                duration: 0.6,
                 ease: "power2.out",
             });
 
@@ -296,7 +296,7 @@ export default function UnifiedScrollSection() {
                 yPercent: -40,
                 scale: 0.95,
                 opacity: 0.6,
-                duration: 1,
+                duration: 0.6,
                 ease: "power2.out",
             }, ">");
 
@@ -304,7 +304,7 @@ export default function UnifiedScrollSection() {
                 yPercent: -50,
                 opacity: 1,
                 scale: 1,
-                duration: 1,
+                duration: 0.6,
                 ease: "power2.out",
             }, "<");
 
@@ -313,7 +313,7 @@ export default function UnifiedScrollSection() {
                 yPercent: -30,
                 scale: 0.9,
                 opacity: 0.4,
-                duration: 1,
+                duration: 0.6,
                 ease: "power2.out",
             }, ">");
 
@@ -321,7 +321,7 @@ export default function UnifiedScrollSection() {
                 yPercent: -40,
                 scale: 0.95,
                 opacity: 0.6,
-                duration: 1,
+                duration: 0.6,
                 ease: "power2.out",
             }, "<");
 
@@ -329,111 +329,111 @@ export default function UnifiedScrollSection() {
                 yPercent: -50,
                 opacity: 1,
                 scale: 1,
-                duration: 1,
+                duration: 0.6,
                 ease: "power2.out",
             }, "<");
 
-            // Hold HIW state briefly
-            tl.to({}, { duration: 0.5 });
+            // Brief hold for HIW state
+            tl.to({}, { duration: 0.3 });
 
-            // ===== PHASE 2: TRANSITION TO FEATURES =====
+            // ===== PHASE 2: TRANSITION TO FEATURES (Rapid) =====
 
-            // Fade out HIW content
+            // Fade out HIW content quickly
             tl.to(hiwContentRef.current, {
                 opacity: 0,
-                y: -50,
-                duration: 1,
+                y: -30,
+                duration: 0.4,
                 pointerEvents: "none",
                 ease: "power2.inOut"
             });
 
-            // Fade in Features content
+            // Fade in Features content rapidly
             tl.to(featuresContentRef.current, {
                 opacity: 1,
                 y: 0,
-                duration: 1,
+                duration: 0.4,
                 pointerEvents: "auto",
-                ease: "power2.inOut"
-            }, "<0.5");
+                ease: "power2.out"
+            }, "<0.2");
 
-            // Hold to view features content
-            tl.to({}, { duration: 1.5 });
+            // Brief hold to view features content
+            tl.to({}, { duration: 0.3 });
 
-            // ===== PHASE 3: GLOBE ZOOM & EXIT =====
+            // ===== PHASE 3: GLOBE ZOOM & EXIT (Quick) =====
 
-            // Hide Badges and Features Title
+            // Hide Badges and Features Title quickly
             const activeBadges = badgesRef.current.filter(Boolean);
             tl.to([activeBadges, featuresTitleRef.current], {
                 opacity: 0,
-                scale: 0.5,
-                duration: 0.6,
+                scale: 0.9,
+                duration: 0.3,
                 ease: "power2.in"
             });
 
-            // Zoom Globe by 90%
+            // Zoom Globe quickly
             if (globeRef.current) {
                 tl.to(globeRef.current, {
                     scale: 1.9,
-                    duration: 1.2,
+                    duration: 0.5,
                     ease: "power2.inOut",
                     transformOrigin: "center center"
-                }, "<0.2");
+                }, "<0.1");
             }
 
-            // Hold the zoomed globe
-            tl.to({}, { duration: 0.5 });
+            // Very brief hold
+            tl.to({}, { duration: 0.2 });
 
-            // ===== PHASE 4: BLUR TRANSITION TO FOOTER (NEW) =====
+            // ===== PHASE 4: BLUR TRANSITION TO FOOTER =====
 
-            // Blur + fade out entire features section
+            // Blur + fade out entire features section quickly
             tl.to(featuresContentRef.current, {
                 opacity: 0,
-                filter: "blur(20px)",
-                scale: 1.05,
-                duration: 1,
+                filter: "blur(15px)",
+                scale: 1.02,
+                duration: 0.5,
                 pointerEvents: "none",
                 ease: "power2.inOut"
             });
 
             // Overlap: Fade in footer video background with blur effect
             tl.fromTo(footerVideoContainerRef.current,
-                { opacity: 0, filter: "blur(15px)" },
+                { opacity: 0, filter: "blur(10px)" },
                 {
                     opacity: 1,
                     filter: "blur(0px)",
-                    duration: 1.2,
+                    duration: 0.6,
                     ease: "power2.out",
                     pointerEvents: "auto"
                 },
-                "<0.6" // Start 0.6s before features fade completes (overlap)
+                "<0.3"
             );
 
             // ===== PHASE 5: FUTURE CARD ANIMATION =====
 
-            // Hold background for a moment
-            tl.to({}, { duration: 0.8 });
+            // Brief hold for background
+            tl.to({}, { duration: 0.3 });
 
             // Fade in Future card
             tl.to(futureCardRef.current, {
                 opacity: 1,
                 scale: 1,
                 y: 0,
-                duration: 1.8,
+                duration: 0.8,
                 ease: "power2.out",
                 pointerEvents: "auto"
             });
 
-            // Hold Future content visible
-            tl.to({}, { duration: 1.2 });
+            // Brief hold for Future content
+            tl.to({}, { duration: 0.5 });
 
             // ===== PHASE 6: TRANSITION TO FOOTER CONTENT =====
 
             // Fade out Future card
             tl.to(futureCardRef.current, {
                 opacity: 0,
-                scale: 0.95,
-                y: -30,
-                duration: 0.6,
+                scale: 0.97,
+                y: -20,
+                duration: 0.4,
                 ease: "power2.in",
                 pointerEvents: "none"
             });
@@ -442,15 +442,15 @@ export default function UnifiedScrollSection() {
             tl.to(footerContentRef.current, {
                 opacity: 1,
                 y: 0,
-                duration: 0.7,
+                duration: 0.5,
                 ease: "power2.out",
                 pointerEvents: "auto",
                 onStart: () => setFooterVisible(true),
                 onReverseComplete: () => setFooterVisible(false)
-            }, "-=0.3");
+            }, "-=0.2");
 
             // Hold final footer content
-            tl.to({}, { duration: 1 });
+            tl.to({}, { duration: 0.5 });
 
         }, wrapperRef);
 
@@ -460,7 +460,7 @@ export default function UnifiedScrollSection() {
     return (
         <section
             ref={wrapperRef}
-            className="relative w-full h-screen overflow-hidden"
+            className="relative z-10 w-full h-screen overflow-hidden"
         >
             {/* ===== LAYER 1: Ocean Background Video (z-0) ===== */}
             <div className="absolute inset-0 z-0 overflow-hidden" suppressHydrationWarning>

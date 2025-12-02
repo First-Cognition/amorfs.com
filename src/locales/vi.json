@@ -7,12 +7,12 @@
       "faq": "Hỏi đáp",
       "contact": "Liên hệ"
     },
-    "installExtension": "Cài Đặt Extension",
+    "installExtension": "Truy Cập Studio",
     "comingSoon": "Sắp ra mắt!"
   },
   "hero": {
-    "title": "{Dữ Liệu} Của Bạn\nGọn Gàng Chưa Từng Có",
-    "dataHighlight": "{Dữ Liệu}",
+    "title": "[Dữ Liệu] Của Bạn\nGọn Gàng Chưa Từng Có",
+    "dataHighlight": "[Dữ Liệu]",
     "subtitle": "Không cần gõ lại.\nAmorfs tự động lưu mọi thông tin bạn nhập,\nbảo mật tuyệt đối, sẵn sàng dùng lại mọi lúc.\nHoặc biến chúng thành những thứ đẹp đẽ để chia sẻ.",
     "cta": "Khám Phá Ngay",
     "diveDeeper": "Tìm hiểu thêm",
@@ -102,9 +102,9 @@
     }
   },
   "future": {
-    "title": "Kiến tạo tương lai AI",
-    "description": "Amorfs không chỉ là công cụ.\n\nĐây là nền tảng cho cách các hệ thống thông minh hiểu thông tin.\n\nBằng cách ghi nhận dữ liệu với độ chính xác tuyệt đối và biểu diễn ở cấp độ khái niệm, Amorfs giúp AI suy luận chính xác và hiệu quả hơn. Đây là cái nhìn về tương lai nơi dữ liệu luân chuyển liền mạch, thông minh và tự nhiên.",
-    "descriptionBold": "Amorfs không chỉ là công cụ.",
+    "title": "Amorfs không chỉ là công cụ",
+    "description": "Đây là nền tảng cho cách các hệ thống thông minh hiểu thông tin.\n\nBằng cách ghi nhận dữ liệu với độ chính xác tuyệt đối và biểu diễn ở cấp độ khái niệm, Amorfs giúp AI suy luận chính xác và hiệu quả hơn. Đây là cái nhìn về tương lai nơi dữ liệu luân chuyển liền mạch, thông minh và tự nhiên.",
+    "descriptionBold": "",
     "descriptionNormal": "Đây là nền tảng cho cách các hệ thống thông minh hiểu thông tin.\n\nBằng cách ghi nhận dữ liệu với độ chính xác tuyệt đối và biểu diễn ở cấp độ khái niệm, Amorfs giúp AI suy luận chính xác và hiệu quả hơn. Đây là cái nhìn về tương lai nơi dữ liệu luân chuyển liền mạch, thông minh và tự nhiên.",
     "button": "Tìm hiểu tầm nhìn",
     "ctaTitle": "Dữ liệu của bạn\nTheo cách của bạn",

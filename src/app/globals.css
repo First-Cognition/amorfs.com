@@ -69,3 +69,13 @@ html {
 @utility scroll-snap-align-center {
   scroll-snap-align: center;
 }
+
+/* Cursor pointer for interactive elements */
+button,
+a,
+[role="button"],
+input[type="button"],
+input[type="submit"],
+.clickable {
+  cursor: pointer !important;
+}
