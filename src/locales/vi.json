@@ -23,22 +23,22 @@
   "problem": {
     "label": "Vấn đề",
     "title": "Bạn cứ phải gõ đi gõ lại cùng một thông tin",
-    "description": "Form đăng ký, hồ sơ cá nhân, đơn xin việc — lặp lại mãi không dứt. Dữ liệu của bạn nằm rải rác khắp nơi, bị nhốt trong những định dạng không tương thích, chẳng thể dùng lại được."
+    "description": "Form đăng ký, hồ sơ cá nhân, đơn xin việc - lặp lại mãi không dứt.\nDữ liệu của bạn nằm rải rác khắp nơi, bị nhốt trong những định dạng không tương thích, chẳng thể dùng lại được."
   },
   "solution": {
     "label": "Giải pháp Amorfs",
     "initialTitle": "Nhập một lần, dùng mọi nơi",
-    "initialSubtitle": "Chúng tôi xử lý vấn đề dữ liệu từ gốc. Không còn gõ lại. Không còn thông tin tản mác.",
+    "initialSubtitle": "Chúng tôi xử lý vấn đề dữ liệu từ gốc.\nKhông còn gõ lại.\nKhông còn thông tin tản mác.",
     "optionsTitle": "Amorfs Extension",
     "optionsTitle2": "Amorfs Studio"
   },
   "product": {
     "extension": {
-      "number": "1",
+      "number": "2",
       "title": "Amorfs Extension",
       "buttonText": "Cài Extension",
       "heading": "Gõ một lần, dùng mãi mãi",
-      "description": "Extension theo dõi khi bạn điền form và tự động lưu lại — tên, địa chỉ, sở thích, bất kỳ chi tiết nào bạn nhập. Lần sau, mọi thứ đã sẵn sàng, chỉ cần một cú nhấp là xong.",
+      "description": "Extension theo dõi khi bạn điền form và tự động lưu lại - tên, địa chỉ, sở thích, bất kỳ chi tiết nào bạn nhập. Lần sau, mọi thứ đã sẵn sàng, chỉ cần một cú nhấp là xong.",
       "perfectFor": "Dành cho:",
       "features": [
         "Ai chán ngấy việc điền form lặp đi lặp lại",
@@ -47,11 +47,11 @@
       ]
     },
     "studio": {
-      "number": "2",
+      "number": "1",
       "title": "Amorfs Studio",
       "buttonText": "Mở Studio",
       "heading": "Sắp xếp. Thiết kế. Chia sẻ.",
-      "description": "Biến dữ liệu thành thứ gì đó đẹp mắt. Amorfs Studio cho phép bạn cá nhân hóa và sắp xếp thông tin, rồi trình bày chúng với những mẫu bố cục tuyệt đẹp từ thư viện — hoặc tự tạo mẫu riêng.",
+      "description": "Biến dữ liệu thành thứ gì đó đẹp mắt. Amorfs Studio cho phép bạn cá nhân hóa và sắp xếp thông tin, rồi trình bày chúng với những mẫu bố cục tuyệt đẹp từ thư viện - hoặc tự tạo mẫu riêng.",
       "perfectFor": "Dành cho:",
       "features": [
         "Lập danh mục bộ sưu tập một cách chuyên nghiệp",
@@ -87,17 +87,17 @@
       "capture": {
         "number": "1",
         "title": "Ghi nhận",
-        "description": "Nhập thông tin một lần vào bất kỳ form web nào. Amorfs tự động lưu lại."
+        "description": "Dữ liệu được lưu ở định dạng văn bản trực quan, dễ đọc và chỉnh sửa - với mô hình ngữ nghĩa hiểu khái niệm, không chỉ văn bản."
       },
       "store": {
         "number": "2",
-        "title": "Lưu trữ",
-        "description": "Dữ liệu được lưu ở định dạng văn bản trực quan, dễ đọc và chỉnh sửa — với mô hình ngữ nghĩa hiểu khái niệm, không chỉ văn bản."
+        "title": "Cá nhân hóa",
+        "description": "Biến dữ liệu của bạn trở nên sống động với các kiểu định dạng được tạo và chia sẻ bởi cộng đồng nhà thiết kế đang phát triển của chúng tôi."
       },
       "reuse": {
         "number": "3",
-        "title": "Tái sử dụng",
-        "description": "Điền form tức thì. Biến dữ liệu thành bài thuyết trình đẹp mắt. Chia sẻ với mọi người."
+        "title": "Chia sẻ & Tái sử dụng",
+        "description": "Đăng lên mạng xã hội và email. Nhận, áp dụng và điều chỉnh. Tạo và hoán đổi kiểu. Biến dữ liệu thành của riêng bạn."
       }
     }
   },
@@ -108,16 +108,16 @@
     "descriptionNormal": "Đây là nền tảng cho cách các hệ thống thông minh hiểu thông tin.\n\nBằng cách ghi nhận dữ liệu với độ chính xác tuyệt đối và biểu diễn ở cấp độ khái niệm, Amorfs giúp AI suy luận chính xác và hiệu quả hơn. Đây là cái nhìn về tương lai nơi dữ liệu luân chuyển liền mạch, thông minh và tự nhiên.",
     "button": "Tìm hiểu tầm nhìn",
     "ctaTitle": "Dữ liệu của bạn\nTheo cách của bạn",
-    "installExtension": "Cài đặt\nExtension",
+    "installExtension": "Tin tức\nCập nhật",
     "openStudio": "Mở\nStudio",
-    "viewPricing": "Xem\nBảng giá"
+    "viewPricing": "Hỏi đáp"
   },
   "contact": {
     "email": "Email (contact@amorfs.com)",
     "twitter": "AmorfsHQ"
   },
   "footer": {
-    "copyright": "© 2025 Amorfs. Bảo lưu mọi quyền.",
+    "copyright": "© 2025 First Cognition Pty Ltd. Bảo lưu mọi quyền.",
     "privacy": "Chính sách bảo mật",
     "terms": "Điều khoản sử dụng"
   }

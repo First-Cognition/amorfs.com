@@ -45,6 +45,22 @@ export default function ProductSection() {
     if (!sectionRef.current || !slidesContainerRef.current || !slidesInnerRef.current) return;
 
     const ctx = gsap.context(() => {
+      // Set initial opacity for section fade-in effect
+      gsap.set(sectionRef.current, { opacity: 0 });
+
+      // Fade-in animation when section enters viewport (transition from Problem section)
+      gsap.to(sectionRef.current, {
+        opacity: 1,
+        duration: 0.6,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          end: "top 40%",
+          scrub: 0.5,
+        },
+      });
+
       const slides = gsap.utils.toArray<HTMLElement>(".product-slide");
       const numSlides = slides.length;
       const progressPerItem = 1 / (numSlides - 1);
@@ -271,20 +287,6 @@ export default function ProductSection() {
   // Memoize products array to prevent recreation on every render
   const products = useMemo(() => [
     {
-      number: t("product.extension.number"),
-      title: t("product.extension.title"),
-      buttonText: t("product.extension.buttonText"),
-      heading: t("product.extension.heading"),
-      description: t("product.extension.description"),
-      perfectFor: t("product.extension.perfectFor"),
-      features: [
-        t("product.extension.features.0"),
-        t("product.extension.features.1"),
-        t("product.extension.features.2"),
-      ],
-      bgColor: "bg-[#9EC2E7]",
-    },
-    {
       number: t("product.studio.number"),
       title: t("product.studio.title"),
       buttonText: t("product.studio.buttonText"),
@@ -296,6 +298,20 @@ export default function ProductSection() {
         t("product.studio.features.1"),
         t("product.studio.features.2"),
         t("product.studio.features.3"),
+      ],
+      bgColor: "bg-[#9EC2E7]",
+    },
+    {
+      number: t("product.extension.number"),
+      title: t("product.extension.title"),
+      buttonText: t("product.extension.buttonText"),
+      heading: t("product.extension.heading"),
+      description: t("product.extension.description"),
+      perfectFor: t("product.extension.perfectFor"),
+      features: [
+        t("product.extension.features.0"),
+        t("product.extension.features.1"),
+        t("product.extension.features.2"),
       ],
       bgColor: "bg-[#9EC2E7]",
     },
@@ -329,17 +345,17 @@ export default function ProductSection() {
           }}
           suppressHydrationWarning
         >
-          {/* Slide 1 - Amorfs Extension */}
+          {/* Slide 1 - Amorfs Studio */}
           <div className="product-slide flex h-full w-full flex-shrink-0 items-center justify-center p-4 sm:p-6 md:p-8" suppressHydrationWarning>
             <div className="flex w-full max-w-[1280px] h-auto shrink-0 items-center justify-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-[120px] rounded-[40px] border border-white/30 bg-white/[0.03] p-6 sm:p-8 md:p-12 flex-col lg:flex-row backdrop-blur-sm" suppressHydrationWarning>
               {/* Left Side - Preview Box */}
-              <div className={`flex w-full lg:w-[596px] lg:h-[430px] h-[280px] sm:h-[320px] md:h-[360px] lg:h-[430px] shrink-0 items-center justify-center rounded-xl sm:rounded-2xl md:rounded-3xl border border-white/30 ${products[0].bgColor} overflow-hidden`} suppressHydrationWarning>
+              <div className={`flex w-full lg:w-[596px] lg:h-[430px] h-[280px] sm:h-[320px] md:h-[360px] lg:h-[430px] shrink-0 items-center justify-center rounded-xl sm:rounded-2xl md:rounded-3xl ${products[0].bgColor} overflow-hidden`} suppressHydrationWarning>
                 <Image
-                  src="/images/Still progress.png"
-                  alt="Amorfs Extension Preview"
+                  src="/images/Studio mockup (900x640).png"
+                  alt="Amorfs Studio Preview"
                   width={900}
                   height={640}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover"
                 />
               </div>
 
@@ -357,6 +373,9 @@ export default function ProductSection() {
                       {products[0].title}
                     </h3>
                   </div>
+                  <button className="w-fit rounded-full bg-white px-4 py-2 sm:px-6 sm:py-2.5 font-['Manrope'] text-xs sm:text-sm font-semibold leading-[1.71] tracking-[-0.02em] text-[#0A2647] transition-all hover:bg-white/90 active:scale-95 animate-text">
+                    {products[0].buttonText}
+                  </button>
                 </div>
 
                 {/* Heading */}
@@ -389,17 +408,17 @@ export default function ProductSection() {
             </div>
           </div>
 
-          {/* Slide 2 - Amorfs Studio */}
+          {/* Slide 2 - Amorfs Extension */}
           <div className="product-slide flex h-full w-full flex-shrink-0 items-center justify-center p-4 sm:p-6 md:p-8" suppressHydrationWarning>
             <div className="flex w-full max-w-[1280px] h-auto shrink-0 items-center justify-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-[120px] rounded-[40px] border border-white/30 bg-white/[0.03] p-6 sm:p-8 md:p-12 flex-col lg:flex-row backdrop-blur-sm" suppressHydrationWarning>
               {/* Left Side - Preview Box */}
-              <div className={`flex w-full lg:w-[596px] lg:h-[430px] h-[280px] sm:h-[320px] md:h-[360px] lg:h-[430px] shrink-0 items-center justify-center rounded-xl sm:rounded-2xl md:rounded-3xl ${products[1].bgColor} overflow-hidden`} suppressHydrationWarning>
+              <div className={`flex w-full lg:w-[596px] lg:h-[430px] h-[280px] sm:h-[320px] md:h-[360px] lg:h-[430px] shrink-0 items-center justify-center rounded-xl sm:rounded-2xl md:rounded-3xl border border-white/30 ${products[1].bgColor} overflow-hidden`} suppressHydrationWarning>
                 <Image
-                  src="/images/Studio mockup (900x640).png"
-                  alt="Amorfs Studio Preview"
+                  src="/images/Still progress.png"
+                  alt="Amorfs Extension Preview"
                   width={900}
                   height={640}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               </div>
 
@@ -417,9 +436,6 @@ export default function ProductSection() {
                       {products[1].title}
                     </h3>
                   </div>
-                  <button className="w-fit rounded-full bg-white px-4 py-2 sm:px-6 sm:py-2.5 font-['Manrope'] text-xs sm:text-sm font-semibold leading-[1.71] tracking-[-0.02em] text-[#0A2647] transition-all hover:bg-white/90 active:scale-95 animate-text">
-                    {products[1].buttonText}
-                  </button>
                 </div>
 
                 {/* Heading */}

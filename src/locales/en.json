@@ -23,18 +23,18 @@
   "problem": {
     "label": "Data Problem",
     "title": "You enter the same information",
-    "description": "Forms, profiles, applications - endless repetition. Your data is scattered across dozens of sites, locked away in incompatible formats, impossible to reuse."
+    "description": "Forms, profiles, applications - endless repetition.\nYour data is scattered across dozens of sites, locked away in incompatible formats, impossible to reuse."
   },
   "solution": {
     "label": "Amorfs Solution",
     "initialTitle": "Capture Once, Use Everywhere",
-    "initialSubtitle": "We're solving data from the ground up. No more endless retyping. No more scattered information.",
+    "initialSubtitle": "We're solving data from the ground up.\nNo more endless retyping.\nNo more scattered information.",
     "optionsTitle": "Amorfs Extension",
     "optionsTitle2": "Amorfs Studio"
   },
   "product": {
     "extension": {
-      "number": "1",
+      "number": "2",
       "title": "Amorfs Extension",
       "buttonText": "Install Extension",
       "heading": "Never Retype the Same Thing Twice",
@@ -47,7 +47,7 @@
       ]
     },
     "studio": {
-      "number": "2",
+      "number": "1",
       "title": "Amorfs Studio",
       "buttonText": "Open Studio",
       "heading": "Curate. Design. Share.",
@@ -87,17 +87,17 @@
       "capture": {
         "number": "1",
         "title": "Capture",
-        "description": "Enter information once in any web form. Amorfs saves it automatically."
+        "description": "Your data lives in an intuitive text format that's easy to read, edit, and share backed by a sophisticated semantic model that understands concepts, not just text."
       },
       "store": {
         "number": "2",
-        "title": "Store",
-        "description": "Your data lives in an intuitive text format that's easy to read, edit, and share backed by a sophisticated semantic model that understands concepts, not just text."
+        "title": "Personalise",
+        "description": "Bring your data to life with embedded styling, created and shared by our growing community of designers."
       },
       "reuse": {
         "number": "3",
-        "title": "Reuse",
-        "description": "Fill forms instantly. Transform data into beautiful presentations. Share with others."
+        "title": "Share and Reuse",
+        "description": "Post on socials and email. Receive, adopt and adapt. Create and swap styles. Make your data personal."
       }
     }
   },
@@ -108,16 +108,16 @@
     "descriptionNormal": "It's the foundation for how intelligent systems should understand information.\n\nBy capturing small data with complete fidelity and representing it at the concept level, Amorfs enables AI to reason more accurately and efficiently. It's a glimpse into a future where data flows seamlessly, intelligently, and naturally.",
     "button": "Learn More Our Vision",
     "ctaTitle": "Your Data\nYour Way",
-    "installExtension": "Install\nExtension",
+    "installExtension": "News\nUpdate",
     "openStudio": "Open\nStudio",
-    "viewPricing": "View\nPricing"
+    "viewPricing": "FAQ"
   },
   "contact": {
     "email": "Email (contact@amorfs.com)",
     "twitter": "AmorfsHQ"
   },
   "footer": {
-    "copyright": "© 2025 Amorfs. All rights reserved.",
+    "copyright": "© 2025 First Cognition Pty Ltd. All rights reserved.",
     "privacy": "Privacy and Policy",
     "terms": "Terms and Conditions"
   }

@@ -86,22 +86,43 @@ export default function Header() {
             {t("header.comingSoon")}
           </TooltipContent>
         </Tooltip>
-        <a
-          href="#blog"
-          className="text-center text-base leading-[1.5em] text-white/88 transition-colors hover:text-white"
-          style={{ fontFamily: getFontFamily(language, "manrope") }}
-          suppressHydrationWarning
-        >
-          {t("header.nav.blog")}
-        </a>
-        <a
-          href="#faq"
-          className="text-center text-base leading-[1.5em] text-white/88 transition-colors hover:text-white"
-          style={{ fontFamily: getFontFamily(language, "manrope") }}
-          suppressHydrationWarning
-        >
-          {t("header.nav.faq")}
-        </a>
+        {/* News Button with Tooltip */}
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <button
+              className="text-center text-base leading-[1.5em] text-white/88 transition-colors hover:text-white cursor-pointer"
+              style={{ fontFamily: getFontFamily(language, "manrope") }}
+            >
+              {t("header.nav.blog")}
+            </button>
+          </TooltipTrigger>
+          <TooltipContent
+            side="bottom"
+            sideOffset={8}
+            className="bg-white/95 text-emerald-600 font-medium px-4 py-2 text-sm rounded-lg shadow-lg border border-emerald-200"
+          >
+            {t("header.comingSoon")}
+          </TooltipContent>
+        </Tooltip>
+
+        {/* FAQ Button with Tooltip */}
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <button
+              className="text-center text-base leading-[1.5em] text-white/88 transition-colors hover:text-white cursor-pointer"
+              style={{ fontFamily: getFontFamily(language, "manrope") }}
+            >
+              {t("header.nav.faq")}
+            </button>
+          </TooltipTrigger>
+          <TooltipContent
+            side="bottom"
+            sideOffset={8}
+            className="bg-white/95 text-emerald-600 font-medium px-4 py-2 text-sm rounded-lg shadow-lg border border-emerald-200"
+          >
+            {t("header.comingSoon")}
+          </TooltipContent>
+        </Tooltip>
 
         {/* Contact Dropdown */}
         <div className="relative">
@@ -382,22 +403,43 @@ export default function Header() {
                   {t("header.comingSoon")}
                 </TooltipContent>
               </Tooltip>
-              <a
-                href="#blog"
-                className="rounded-lg px-4 py-3 text-base font-medium leading-[1.5em] text-white/88 transition-colors hover:bg-white/10 hover:text-white"
-                style={{ fontFamily: getFontFamily(language, "manrope") }}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {t("header.nav.blog")}
-              </a>
-              <a
-                href="#faq"
-                className="rounded-lg px-4 py-3 text-base font-medium leading-[1.5em] text-white/88 transition-colors hover:bg-white/10 hover:text-white"
-                style={{ fontFamily: getFontFamily(language, "manrope") }}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {t("header.nav.faq")}
-              </a>
+              {/* News Button with Tooltip - Mobile */}
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <button
+                    className="rounded-lg px-4 py-3 text-base font-medium leading-[1.5em] text-white/88 transition-colors hover:bg-white/10 hover:text-white text-left w-full"
+                    style={{ fontFamily: getFontFamily(language, "manrope") }}
+                  >
+                    {t("header.nav.blog")}
+                  </button>
+                </TooltipTrigger>
+                <TooltipContent
+                  side="right"
+                  sideOffset={8}
+                  className="bg-white/95 text-emerald-600 font-medium px-4 py-2 text-sm rounded-lg shadow-lg border border-emerald-200"
+                >
+                  {t("header.comingSoon")}
+                </TooltipContent>
+              </Tooltip>
+
+              {/* FAQ Button with Tooltip - Mobile */}
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <button
+                    className="rounded-lg px-4 py-3 text-base font-medium leading-[1.5em] text-white/88 transition-colors hover:bg-white/10 hover:text-white text-left w-full"
+                    style={{ fontFamily: getFontFamily(language, "manrope") }}
+                  >
+                    {t("header.nav.faq")}
+                  </button>
+                </TooltipTrigger>
+                <TooltipContent
+                  side="right"
+                  sideOffset={8}
+                  className="bg-white/95 text-emerald-600 font-medium px-4 py-2 text-sm rounded-lg shadow-lg border border-emerald-200"
+                >
+                  {t("header.comingSoon")}
+                </TooltipContent>
+              </Tooltip>
               <a
                 href="#contact"
                 className="rounded-lg px-4 py-3 text-base font-medium leading-[1.5em] text-white/88 transition-colors hover:bg-white/10 hover:text-white"

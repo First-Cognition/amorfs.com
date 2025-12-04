@@ -51,7 +51,7 @@ export default function ProblemSolutionSection() {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "+=120%", // Reduced from 300% - much shorter scroll duration
+          end: "+=140%", // Extended to include fade-out transition to Product section
           scrub: 0.5,
           pin: true,
           anticipatePin: 1,
@@ -134,6 +134,31 @@ export default function ProblemSolutionSection() {
 
       // Hold solution content visible briefly before next section
       mainTimeline.to({}, { duration: 0.15 });
+
+      // Phase 5: Fade out Solution content for transition to Product section
+      mainTimeline.to(
+        solutionContentRef.current,
+        {
+          opacity: 0,
+          y: -40,
+          duration: 0.25,
+          ease: "power2.in",
+        },
+        "+=0.05"
+      );
+
+      // Fade out decoration during transition
+      if (decorationRef.current) {
+        mainTimeline.to(
+          decorationRef.current,
+          {
+            opacity: 0,
+            scale: 0.9,
+            duration: 0.2,
+          },
+          "<"
+        );
+      }
 
       // Custom scroll handler for "gentle scroll" up to Hero
       let isScrolling = false;
@@ -233,7 +258,7 @@ export default function ProblemSolutionSection() {
 
               {/* Description */}
               <p
-                className="text-xs sm:text-sm md:text-base lg:text-lg leading-[1.5em] tracking-[-0.03em] font-manrope"
+                className="text-xs sm:text-sm md:text-base lg:text-lg leading-[1.5em] tracking-[-0.03em] font-manrope whitespace-pre-line"
                 style={{
                   fontFamily: getFontFamily(language, "manrope"),
                   fontWeight: 450,
@@ -262,7 +287,7 @@ export default function ProblemSolutionSection() {
                 playsInline
                 className="h-full w-full object-cover"
               >
-                <source src="/VIdeo problem.mp4" type="video/mp4" />
+                <source src="/video problem (2).mp4" type="video/mp4" />
               </video>
             </div>
           </div>
@@ -308,7 +333,7 @@ export default function ProblemSolutionSection() {
                 suppressHydrationWarning
               >
                 <p
-                  className="text-center font-manrope text-xs sm:text-sm md:text-base lg:text-lg font-normal leading-[1.5em] tracking-[-0.03em] text-white/55 px-2"
+                  className="text-center font-manrope text-xs sm:text-sm md:text-base lg:text-lg font-normal leading-[1.5em] tracking-[-0.03em] text-white/55 px-2 whitespace-pre-line"
                   style={{ fontFamily: getFontFamily(language, "manrope") }}
                 >
                   {t("solution.initialSubtitle")}
@@ -322,7 +347,7 @@ export default function ProblemSolutionSection() {
       {/* Decorative SVG - Initially hidden, hidden on mobile */}
       <div
         ref={decorationRef}
-        className="pointer-events-none absolute left-[50%] top-[50%] -translate-x-1/2 -translate-y-1/2 h-[120px] w-[380px] sm:h-[180px] sm:w-[570px] md:h-[220px] md:w-[697px] lg:h-[280px] lg:w-[888px] xl:h-[308px] xl:w-[975px] rounded-[100px] opacity-0 hidden sm:block"
+        className="pointer-events-none absolute left-[80%] top-[80%] -translate-x-1/2 -translate-y-1/2 h-[120px] w-[380px] sm:h-[180px] sm:w-[570px] md:h-[220px] md:w-[697px] lg:h-[280px] lg:w-[888px] xl:h-[308px] xl:w-[975px] rounded-[100px] opacity-0 hidden sm:block"
         style={{ transform: 'translate(-50%, -50%) rotate(-1.5deg)' }}
       >
         <Image
