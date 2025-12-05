@@ -916,7 +916,7 @@ export default function UnifiedScrollSection() {
                                     wrapperClassName="cursor-pointer sm:!p-[48px] md:!p-[60px] lg:!p-[80px]"
                                 >
                                     <a
-                                        href="https://amorfs.com/"
+                                        href="https://app.amorfs.com/"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="relative flex h-[110px] w-[110px] sm:h-[140px] sm:w-[140px] md:h-[160px] md:w-[160px] lg:h-[180px] lg:w-[180px] xl:h-[200px] xl:w-[200px] flex-col items-center justify-center gap-1 sm:gap-2 md:gap-3 lg:gap-4 rounded-full border-2 border-white/55 bg-white/17 p-3 sm:p-4 md:p-5 lg:p-6 backdrop-blur-[20px] transition-all hover:bg-white/25 mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12"

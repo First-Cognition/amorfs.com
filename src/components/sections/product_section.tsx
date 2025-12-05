@@ -373,9 +373,14 @@ export default function ProductSection() {
                       {products[0].title}
                     </h3>
                   </div>
-                  <button className="w-fit rounded-full bg-white px-4 py-2 sm:px-6 sm:py-2.5 font-['Manrope'] text-xs sm:text-sm font-semibold leading-[1.71] tracking-[-0.02em] text-[#0A2647] transition-all hover:bg-white/90 active:scale-95 animate-text">
+                  <a
+                    href="https://app.amorfs.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-fit rounded-full bg-white px-4 py-2 sm:px-6 sm:py-2.5 font-['Manrope'] text-xs sm:text-sm font-semibold leading-[1.71] tracking-[-0.02em] text-[#0A2647] transition-all hover:bg-white/90 active:scale-95 animate-text"
+                  >
                     {products[0].buttonText}
-                  </button>
+                  </a>
                 </div>
 
                 {/* Heading */}

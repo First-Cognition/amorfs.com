@@ -269,14 +269,17 @@ export default function Header() {
         </div>
 
         {/* Install Extension Button */}
-        <button
+        <a
+          href="https://app.amorfs.com/"
+          target="_blank"
+          rel="noopener noreferrer"
           className="flex h-10 items-center justify-center gap-2 rounded-full border border-white/55 bg-white/11 px-4 py-2 transition-all hover:bg-white/20"
           style={{ fontFamily: getFontFamily(language, "manrope") }}
         >
           <span className="text-center text-sm font-semibold leading-[1.71em] tracking-[-0.02em] text-white">
             {t("header.installExtension")}
           </span>
-        </button>
+        </a>
       </nav>
 
       {/* Mobile Menu Button */}
@@ -531,7 +534,10 @@ export default function Header() {
               </div>
 
               {/* Install Extension Button */}
-              <button
+              <a
+                href="https://app.amorfs.com/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex w-full items-center justify-center gap-2 rounded-full border border-white/55 bg-white/11 px-4 py-3 transition-all hover:bg-white/20"
                 style={{ fontFamily: getFontFamily(language, "manrope") }}
                 onClick={() => setIsMobileMenuOpen(false)}
@@ -539,7 +545,7 @@ export default function Header() {
                 <span className="text-center text-base font-semibold leading-[1.71em] tracking-[-0.02em] text-white">
                   {t("header.installExtension")}
                 </span>
-              </button>
+              </a>
             </div>
           </div>
         </div>
